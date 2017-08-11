@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Defines offers (currently only Zuora offers).</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>ZTCodeSetup</fullName>
+        <description>Set of fields used as view only on TCode edit page.</description>
+        <displayedFields>
+            <field>Friendly_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Frequency__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Base_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Discount__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Discount_Duration__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>ZTCodeSetup</label>
+    </fieldSets>
+    <fields>
+        <fullName>Auto_Renew__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if subscription using this offer should auto-renew with term expiry.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if subscription using this offer should auto-renew with term expiry.</inlineHelpText>
+        <label>Auto Renew</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Base_Price__c</fullName>
+        <description>Base monthly price for digital (Zuora) subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Base monthly price for digital (Zuora) subscription.</inlineHelpText>
+        <label>Base Price</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Description for the Offer.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description for the Offer.</inlineHelpText>
+        <label>Description</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Discount_Duration__c</fullName>
+        <description>Amount of billing periods for which the discount should be applicable.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount of billing periods for which the discount should be applicable.</inlineHelpText>
+        <label>Discount Duration</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Discount__c</fullName>
+        <description>Discount that should be applicable for the subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Discount that should be applicable for the subscription.</inlineHelpText>
+        <label>Discount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Free_Trial__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if this offer is a free trial one.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if this offer is a free trial one.</inlineHelpText>
+        <label>Free Trial</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Frequency__c</fullName>
+        <description>Frequency of payment for the subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Frequency of payment for the subscription.</inlineHelpText>
+        <label>Frequency</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>ZOffer_Frequency</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Friendly_Name__c</fullName>
+        <description>Offer friendly name.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Offer friendly name.</inlineHelpText>
+        <label>Friendly Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Initial_Price__c</fullName>
+        <description>Pay Pal initial price. Value used for PayPal transactions. Resulting from different price calculation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Pay Pal initial price. Value used for PayPal transactions. Resulting from different price calculation.</inlineHelpText>
+        <label>PayPal Initial Price</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Initial_Term_Type__c</fullName>
+        <description>Frequency of initial term.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Frequency of initial term.</inlineHelpText>
+        <label>Initial Term Type</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>ZOffer_Term_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initial_Term__c</fullName>
+        <description>Defines subscription initial term.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines subscription initial term.</inlineHelpText>
+        <label>Initial Term</label>
+        <precision>16</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Restricted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if offer is restricted to single use in specific time.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if offer is restricted to single use in specific time.</inlineHelpText>
+        <label>Is Restricted</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Item_Description__c</fullName>
+        <description>Description passed to PayPal for the offer sold.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description passed to PayPal for the offer sold.</inlineHelpText>
+        <label>PayPal Item Description</label>
+        <length>127</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Main_Offer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Defines main offer for free trial/restricted offers.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines main offer for free trial/restricted offers.</inlineHelpText>
+        <label>Main Offer</label>
+        <referenceTo>Offer__c</referenceTo>
+        <relationshipLabel>Offers</relationshipLabel>
+        <relationshipName>Offers</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Offer_Name_Uniqueness__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>Added to make sure offer name is unique.</description>
+        <externalId>false</externalId>
+        <label>Offer Name Uniqueness</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Renewal_Term_Type__c</fullName>
+        <description>Frequency of renewal term.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Frequency of renewal term.</inlineHelpText>
+        <label>Renewal Term Type</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>ZOffer_Term_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Renewal_Term__c</fullName>
+        <description>Defines subscription renewal term.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines subscription renewal term.</inlineHelpText>
+        <label>Renewal Term</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sub_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Weekly_Advertised_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Weekly Advertised Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ZProduct__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Zuora Product</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Zuora Product</inlineHelpText>
+        <label>ZProduct</label>
+        <referenceTo>zqu__ZProduct__c</referenceTo>
+        <relationshipLabel>Offers</relationshipLabel>
+        <relationshipName>Offers</relationshipName>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Offer</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>ZProduct__c</columns>
+        <columns>Base_Price__c</columns>
+        <columns>Frequency__c</columns>
+        <columns>Friendly_Name__c</columns>
+        <columns>Name__c</columns>
+        <columns>Description__c</columns>
+        <columns>Initial_Term__c</columns>
+        <columns>Initial_Term_Type__c</columns>
+        <columns>Main_Offer__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Restricted</fullName>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Is_Restricted__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Free_Trial__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Restricted</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Offer Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Offers</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Base_Price__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Weekly_Advertised_Price__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Frequency__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ZProduct__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Discount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Discount_Duration__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Free_Trial__c</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Frequency__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Base_Price__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Weekly_Advertised_Price__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Is_Restricted__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Discount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Discount_Duration__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Free_Trial__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>NAME</lookupFilterFields>
+        <lookupFilterFields>Base_Price__c</lookupFilterFields>
+        <lookupFilterFields>Frequency__c</lookupFilterFields>
+        <lookupFilterFields>Discount__c</lookupFilterFields>
+        <lookupFilterFields>Discount_Duration__c</lookupFilterFields>
+        <lookupFilterFields>ZProduct__c</lookupFilterFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Base_Price__c</searchFilterFields>
+        <searchFilterFields>Frequency__c</searchFilterFields>
+        <searchFilterFields>Initial_Term__c</searchFilterFields>
+        <searchFilterFields>Initial_Term_Type__c</searchFilterFields>
+        <searchFilterFields>Weekly_Advertised_Price__c</searchFilterFields>
+        <searchFilterFields>ZProduct__c</searchFilterFields>
+        <searchResultsAdditionalFields>Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Base_Price__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Weekly_Advertised_Price__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Frequency__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ZProduct__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Both_discount_parameters_populated</fullName>
+        <active>true</active>
+        <description>Both discount parameters have to be populated.</description>
+        <errorConditionFormula>OR( 
+AND(ISBLANK(Discount__c), NOT(ISBLANK(Discount_Duration__c))), 
+AND(ISBLANK(Discount_Duration__c), NOT(ISBLANK(Discount__c))) 
+)</errorConditionFormula>
+        <errorMessage>Both discount parameters have to be populated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Child_offer_cannot_be_a_parent</fullName>
+        <active>true</active>
+        <description>Offers that have Main Offer field populated cannot be set as main offer.</description>
+        <errorConditionFormula>NOT(ISBLANK(Main_Offer__r.Main_Offer__c))</errorConditionFormula>
+        <errorDisplayField>Main_Offer__c</errorDisplayField>
+        <errorMessage>You cannot select an offer that already has the Main Offer field populated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Child_offer_partial_match_parent</fullName>
+        <active>true</active>
+        <description>Parents&apos; product and frequency have to match the child details.</description>
+        <errorConditionFormula>AND(NOT(ISBLANK(Main_Offer__c)),  OR(ZProduct__c !=  Main_Offer__r.ZProduct__c, TEXT(Frequency__c) != TEXT(Main_Offer__r.Frequency__c)))</errorConditionFormula>
+        <errorMessage>Frequency and product have to be same as for the main offer.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Initial_Price_Greater_than_Zero</fullName>
+        <active>true</active>
+        <description>Ititial_Price__c (PayPal Initial Price) has to be greater or equal to zero.</description>
+        <errorConditionFormula>OR(Initial_Price__c == null, Initial_Price__c &lt; 0)</errorConditionFormula>
+        <errorDisplayField>Initial_Price__c</errorDisplayField>
+        <errorMessage>Initial Price has to be greater or equal to zero.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Main_offer_required_for_promotions</fullName>
+        <active>true</active>
+        <description>Main offer is required for offers that are restricted or free trial.</description>
+        <errorConditionFormula>AND(
+ OR(Is_Restricted__c, Free_Trial__c),
+ OR(ISBLANK(Main_Offer__c), 
+   AND(NOT(ISBLANK(Main_Offer__c)), NOT(CONTAINS(Name, Main_Offer__r.Name)))
+ )
+)</errorConditionFormula>
+        <errorDisplayField>Main_Offer__c</errorDisplayField>
+        <errorMessage>Main offer is required for offers that are restricted or free trial. Name of child offer has to contain parent offer name.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Name_pattern_validation</fullName>
+        <active>true</active>
+        <description>Offer name can only consist of hyphen concatenated words. This is to match offers naming pattern after the migration. Later on, hopefully, the validation rule can be disabled.</description>
+        <errorConditionFormula>NOT(REGEX(Name, &quot;\\b(\\w*[-&apos;.]\\w*)+\\b&quot;))</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>Offer name can only consist of hyphen concatenated words.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

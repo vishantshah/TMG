@@ -1,0 +1,266 @@
+<apex:page id="pgCampaign" standardController="zqu__Quote__c" extensions="Zuora_OfferCodeStepController">
+    <apex:sectionHeader title="Quote" subtitle="Quote Campaigns Management"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/js/jqueryui/jquery-ui.min.css')}"/>
+    <style>
+        .pageMessageRestore .message{background-color: #ffc!Important; border-style: solid!Important; border-width: 1px!Important; color: #000!Important; padding: 6px 8px 6px 6px!Important; margin: 4px 20!Important;}
+        #dialogPanelContent{width:100%; display:none; height: 120px; margin:15px auto;}
+        .rowClass{cursor:pointer;line-height:3}
+        .selectedColor{background-color: #E3F3FF!Important;}
+        .messageTable td{border:none!Important}
+        .extendedRow{background-color: #E3DEB8!Important;}
+        .errorContent{color:red;}
+        .sectionCursor{cursor:pointer;}
+    </style>
+    <apex:form id="frmID">
+        <apex:pageMessages />
+        <apex:pageBlock id="pbMain" >
+            <apex:commandButton value="Cancel" action="{!cancel}" rendered="{!!bShowPage}"/>
+            <apex:pageBlockButtons id="pgblockButtons" rendered="{!bShowPage}">
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            <apex:outputPanel layout="none" rendered="{!bShowPage}" >
+                <apex:include pageName="QuoteRestrictedOfferWarning"/><br/>
+                <apex:pageBlockSection id="pgMainSectionQuoteDetails" title="Quote Details" columns="2">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputlabel value="Quote Name"/>
+                        <apex:outputPanel>
+                            <a href="/{!zqu__Quote__c.Id}">
+                                <apex:outputText value="{!zqu__Quote__c.Name}"/>
+                            </a>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem>
+                        <apex:outputlabel value="Subscriber Name"/>
+                        <apex:outputField value="{!zqu__Quote__c.zqu__Account__c}"/>
+                    </apex:pageBlockSectionItem>
+                     <apex:pageBlockSectionItem >
+                         <apex:outputlabel value="Quote Campaign"/><apex:outputText rendered="{!NOT(ISBLANK(zqu__Quote__c.Tcode__c))}" value="{!zqu__Quote__c.Tcode__r.Name} : {!zqu__Quote__c.Tcode__r.Description__c}"/>
+                     </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:actionFunction action="{!changeSortOrder}" name="sortList" rerender="offersTable" onComplete="bindJs();">
+                    <apex:param value="" name="sortField" assignTo="{!sOrderByParam}"/>
+                </apex:actionFunction>
+                <apex:pageBlockSection id="pgMainSectionCampaign" title="New Campaign" columns="1">
+                    <apex:pageBlockTable id="offersTable" value="{!lstTCodeOffers}" var="offer" rowClasses="rowClass">
+                        <apex:column headerValue="Action">
+                            <button cls="btn" onclick="startRequest(this, '{!offer.Id}'); return false;">Select</button>
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header">
+                                <apex:outputPanel onclick="sortList('TCodeManagement__r.Name');" styleClass="sectionCursor">
+                                    TCode
+                                    <apex:outputPanel rendered="{!sOrderByParam == 'TCodeManagement__r.Name'}">
+                                        &nbsp;<apex:image value="{!IF(bIsAscending,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:facet>
+
+                            <a href="/{!offer.TCodemanagement__c}" target="_blank">{!offer.TCodemanagement__r.Name}</a>
+                            <div style="display: none" class="discount_info">
+                                <apex:outputPanel rendered="{!OR(offer.Offer__r.Discount__c==null, dComparisonPrice==null)}">
+                                    <center>
+                                        <apex:outputLabel styleClass="labelCol" value="{!$Label.Tcode_Offer_has_no_discounts_error_message}"/>
+                                    </center>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!AND(dComparisonPrice!=null, sPeriodConverted!=null, offer.Offer__r.Discount__c!=null, dComparisonPrice>offer.Offer__r.Base_Price__c)}" styleClass="pageMessageRestore">
+                                    <apex:pageMessage severity="info" strength="2" title="Discount information" >
+                                        The standard price for the selected subscription ({!offer.Offer__r.Friendly_Name__c}) is <b>&pound;{!dComparisonPrice} per {!sPeriod}</b>. This means you save <b>&pound;{!ABS(dComparisonPrice - offer.Offer__r.Base_Price__c)} per {!sPeriod}</b> compared to the standard price.
+                                    </apex:pageMessage>
+                                </apex:outputPanel>
+                            </div>
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header">
+                                <apex:outputPanel onclick="sortList('TCodeManagement__r.Description__c');" styleClass="sectionCursor">
+                                    {!$ObjectType.TCodeManagement__c.fields.Description__c.Label}
+                                    <apex:outputPanel rendered="{!sOrderByParam == 'TCodeManagement__r.Description__c'}">
+                                        &nbsp;<apex:image value="{!IF(bIsAscending,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:facet>
+                            {!offer.TCodemanagement__r.Description__c}
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header">
+                                <apex:outputPanel onclick="sortList('Offer__r.Friendly_Name__c');" styleClass="sectionCursor">
+                                    {!$ObjectType.Offer__c.fields.Friendly_Name__c.Label}
+                                    <apex:outputPanel rendered="{!sOrderByParam == 'Offer__r.Friendly_Name__c'}">
+                                        &nbsp;<apex:image value="{!IF(bIsAscending,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <a href="/{!offer.Offer__c}" target="_blank">{!offer.Offer__r.Friendly_Name__c}</a>
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header">
+                                <apex:outputPanel onclick="sortList('Offer__r.Base_Price__c');" styleClass="sectionCursor">
+                                    {!$Label.Offer_Search_Offer_price_column_label}
+                                    <apex:outputPanel rendered="{!sOrderByParam == 'Offer__r.Base_Price__c'}">
+                                        &nbsp;<apex:image value="{!IF(bIsAscending,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:outputField value="{!offer.Offer__r.Base_Price__c}"/>
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header">
+                                <apex:outputPanel onclick="sortList('Offer__r.Discount__c');" styleClass="sectionCursor">
+                                    {!$ObjectType.Offer__c.fields.Discount__c.Label}
+                                    <apex:outputPanel rendered="{!sOrderByParam == 'Offer__r.Discount__c'}">
+                                        &nbsp;<apex:image value="{!IF(bIsAscending,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:outputField value="{!offer.Offer__r.Discount__c}" /> 
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header">
+                                <apex:outputPanel onclick="sortList('Offer__r.Discount_Duration__c');" styleClass="sectionCursor">
+                                    {!$ObjectType.Offer__c.fields.Discount_Duration__c.Label}
+                                    <apex:outputPanel rendered="{!sOrderByParam == 'Offer__r.Discount_Duration__c'}">
+                                        &nbsp;<apex:image value="{!IF(bIsAscending,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:outputField value="{!offer.Offer__r.Discount_Duration__c}" />
+                        </apex:column>
+                        <apex:column rendered="true">
+                            <apex:facet name="header">
+                                    {!$ObjectType.Incentive__c.labelPlural}
+                            </apex:facet>
+                            {!mapTCodeProductIdToAutoIncentive[offer.Id]}
+                        </apex:column>
+                    </apex:pageBlockTable>
+                 </apex:pageBlockSection>
+            </apex:outputPanel>
+            <apex:actionFunction action="{!addOfferCode}" name="selectOffer" status="selectStatus" rerender="rerenderTarget" oncomplete="populateResponseScreen();">
+                <apex:param name="tcodeProductId" assignTo="{!selectedId}" value=""/>
+            </apex:actionFunction>
+            <apex:outputPanel style="display:none" id="rerenderTarget">
+                <div id="responseContent">
+                    {!sResponse}
+                </div> 
+            </apex:outputPanel>
+            <div id="dialogPanel">
+                <div id="dialogPanelContent">
+                    <div id="responseHolder"></div>
+                    <div id="continueButton" style="display:none; text-align:center; margin-top:30px;">
+                        <button class="btn" onclick="closeWindowActions(); return false;" >Continue</button>
+                    </div>
+                    <div style="margin:0px auto; text-align:center">
+                        <div id="redirectMessage" style="display:none" >
+                            Redirecting...
+                        </div>
+                        <apex:actionStatus id="selectStatus">
+                            <apex:facet name="start">
+                                <apex:outputPanel style="vertical-align:middle">
+                                    <apex:image value="{!$Resource.Loading_Gif_Medium}" />
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </div>
+                   
+                </div>
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jqueryui/jquery-ui.min.js')}"/>
+    <script type="text/javascript">
+        j$ = jQuery.noConflict();
+        var response = '';
+        var elementBuffer = '';
+        var requestInProgress = false;
+        var success = false;
+        j$('.rowClass button').on('click', function(e){
+            e.stopPropagation();
+        });
+
+        //action triggering method 
+        function startRequest(element, offerId){
+            if(!requestInProgress){
+                j$('#responseHolder').removeClass('errorContent');
+                j$('#responseHolder').html('');
+                response = '';
+                requestInProgress = true;
+                j$('.rowClass button').attr('disabled', 'disabled');
+                j$('.rowClass button').css('color', '#ccc');
+                selectOffer(offerId);           
+            }
+            openDialog(element);
+        }
+
+        //instantiates or reopens dialog
+        function openDialog(element){
+            elementBuffer = element;
+            var jelement = j$(element).closest('tr');
+            j$('#dialogPanelContent').show();
+            if(j$('#dialogPanel').dialog('instance') === undefined){
+                j$('#dialogPanel').dialog({
+                    width: '30%',
+                    position: { my: 'center center', at:'center', of: jelement},
+                    modal: true,
+                    show: true,
+                    title: 'Offer Selection Outcome',
+                    beforeClose: function(){
+                        return closeWindowActions();
+                    }
+                });
+            }else{
+                j$('#dialogPanel').dialog('open');
+            }
+        }
+
+        //populates response and unlocks buttons if no error  
+        function populateResponseScreen(){
+            response = JSON.parse(j$('#responseContent').html());
+            j$('#responseHolder').html(response.message);
+            if(response != ''){
+                if(response.error == 'true'){
+                    j$('.rowClass button').removeAttr('disabled');
+                    j$('.rowClass button').css('color', '#000');
+                    j$('#responseHolder').addClass('errorContent');
+                }else{
+                    j$('div#continueButton').show();
+                    success = true;
+                }
+                openDialog(elementBuffer);
+            }else{
+                alert('Unable to load server response. Contact administrator.');
+            }  
+            requestInProgress = false;
+        }
+
+        //defines what should happen before the dialog is closed (also prevents from closing)
+        function closeWindowActions(){
+            if(success){
+                window.location ='/'+'{!zqu__Quote__c.Id}';
+                j$('#redirectMessage').show();
+                return false;
+            }
+            return true;
+        }
+
+       
+        //event handler to show extra discount information
+        function bindJs(){
+            j$('.rowClass').on('click', function(e){
+                var element = j$(this);
+                var numberOfColumns = j$('table[id$="offersTable"]').find("tr:first th").length;
+                if(element.hasClass('selectedColor')){
+                    element.removeClass('selectedColor');
+                    element.next('.extendedRow').remove();
+                    element.find('.discount_info').removeClass('discountInfoMoved');
+                }else{
+                    element.addClass('selectedColor');
+                    var infoHtml = element.find('.discount_info');
+                    element.after('<tr class="extendedRow"><td colspan="'+numberOfColumns+'"><div class="discountInfoMoved">'+infoHtml.html()+'</div></td></tr>').show();
+                }
+            });
+        }
+
+        j$(document).ready(function(){
+            bindJs();
+        });
+    </script>
+</apex:page>

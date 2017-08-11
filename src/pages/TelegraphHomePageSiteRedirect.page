@@ -1,0 +1,5 @@
+<apex:page>
+	 <script type="text/javascript">
+        window.top.location = "http://www.telegraph.co.uk";
+    </script>
+</apex:page>

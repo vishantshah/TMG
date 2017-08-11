@@ -1,0 +1,79 @@
+<apex:page controller="NewslettersController" action="{!getNewsletters}" sidebar="false" tabStyle="Newsletters__tab">
+
+	<apex:variable value="{!$Label.Newsletter_Category}"  	var="category" />
+	<apex:variable value="{!$Label.Newsletter_Name}" 	  	var="name" />
+	<apex:variable value="{!$Label.Newsletter_Frequency}" 	var="frequency" />
+	<apex:variable value="{!$Label.Newsletter_Description}" var="description" />
+	<apex:variable value="{!$Label.Newsletter_Retired}"   	var="retired" />
+
+	<apex:sectionHeader title="Newsletters" subtitle="Home" />
+	<apex:form >
+		<apex:pageBlock >
+			<apex:pageBlockButtons >
+				<apex:commandButton action="{!createNew}" value="New"/>
+			</apex:pageBlockButtons>
+			<apex:pageMessages />
+			<apex:pageBlockTable id="newslettersTable" value="{!lstNewsletters}" var="nLetter" rendered="{!lstNewsletters.size > 0}">
+				<apex:column headerValue="Action" styleClass="actionColumn" > <!-- ACTION -->
+					<apex:commandLink value="View" action="{!viewRecord}" styleClass="actionLink">
+						<apex:param assignTo="{!selectedNewsletterId}" value="{!nLetter.id}" name="id" />
+					</apex:commandLink>&nbsp;|&nbsp;
+					<apex:commandLink value="Edit" action="{!editRecord}" styleClass="actionLink">
+						<apex:param assignTo="{!selectedNewsletterId}" value="{!nLetter.id}" name="id" />
+					</apex:commandLink>
+		        </apex:column>
+
+				<apex:column > <!-- CATEGORY -->
+					<apex:facet name="header">                    
+	                    <apex:commandLink action="{!sort}" value="{!category} {!IF(sortField==category,IF(sortOrder='asc','▲','▼'),'')}" rerender="newslettersTable">
+	             			<apex:param value="{!category}" assignTo="{!sortField}" ></apex:param>
+	             			<apex:param value="{!IF(sortOrder='asc', 'desc', 'asc')}" assignTo="{!sortOrder}" />
+	           			</apex:commandLink>
+					</apex:facet>
+					<apex:outputText value="{!nLetter.category}"/>
+				</apex:column>
+
+				<apex:column > <!-- NAME -->
+					<apex:facet name="header">                    
+	                    <apex:commandLink action="{!sort}" value="{!name} {!IF(sortField==name,IF(sortOrder='asc','▲','▼'),'')}" rerender="newslettersTable">
+	             			<apex:param value="{!name}" assignTo="{!sortField}" ></apex:param>
+	             			<apex:param value="{!IF(sortOrder='asc', 'desc', 'asc')}" assignTo="{!sortOrder}" />
+	           			</apex:commandLink>
+					</apex:facet>
+					<apex:outputText value="{!nLetter.name}"/>
+				</apex:column>
+
+				<apex:column > <!-- FREQUENCY -->
+					<apex:facet name="header">                    
+	                    <apex:commandLink action="{!sort}" value="{!frequency} {!IF(sortField==frequency,IF(sortOrder='asc','▲','▼'),'')}" rerender="newslettersTable">
+	             			<apex:param value="{!frequency}" assignTo="{!sortField}" ></apex:param>
+	             			<apex:param value="{!IF(sortOrder='asc', 'desc', 'asc')}" assignTo="{!sortOrder}" />
+	           			</apex:commandLink>
+					</apex:facet>
+					<apex:outputText value="{!nLetter.frequency}"/>
+				</apex:column>
+
+				<apex:column > <!-- DESCRIPTION -->
+					<apex:facet name="header">                    
+	                    <apex:commandLink action="{!sort}" value="{!description} {!IF(sortField==description,IF(sortOrder='asc','▲','▼'),'')}" rerender="newslettersTable">
+	             			<apex:param value="{!description}" assignTo="{!sortField}" ></apex:param>
+	             			<apex:param value="{!IF(sortOrder='asc', 'desc', 'asc')}" assignTo="{!sortOrder}" />
+	           			</apex:commandLink>
+					</apex:facet>
+					<apex:outputText value="{!nLetter.Description}"/>
+				</apex:column>
+
+				<apex:column >
+					<apex:facet name="header"> <!-- RETIRED -->                  
+	                    <apex:commandLink action="{!sort}" value="{!retired} {!IF(sortField==retired,IF(sortOrder='asc','▲','▼'),'')}" rerender="newslettersTable">
+	             			<apex:param value="{!retired}" assignTo="{!sortField}" ></apex:param>
+	             			<apex:param value="{!IF(sortOrder='asc', 'desc', 'asc')}" assignTo="{!sortOrder}" />
+	           			</apex:commandLink>
+					</apex:facet>
+					<apex:outputText value="{!IF(nLetter.retired, 'Yes', 'No')}"/>
+				</apex:column>
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+	</apex:form>
+	
+</apex:page>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Website - Newsletter - non receipt</name>
+    <style>none</style>
+    <subject>Case:{!Case.CaseNumber} {!EmailMessage.Subject}</subject>
+    <textOnly>The Telegraph Digital Services Team
+
+{!Case.CreatedDate}
+
+
+
+Dear {!Contact.FirstName},
+
+Thank you for contacting The Telegraph.
+
+If you are experiencing any problems with the arrival of your newsletters, please make sure that they are not going directly into your spam box or re-directed from an un-used email address.
+
+Should you find these have not arrived into any junk or spam folder; please log in with your chosen email and password at www.telegraph.co.uk. You can then navigate to &quot;my account&quot; in the top right corner of the screen and select &quot;Newsletters&quot; to manage the newsletters you are subscribed to. Remove any selected newsletters followed by refreshing the page to re-select the newsletters once more.
+
+Should you require any further assistance please do not hesitate to contact us at digitalservices@telegraph.co.uk Alternatively, you can call our free helpline on 0800 316 3500, or for outside the UK 0044 1622 33 5007. Our representatives are available to take your call, Monday to Friday 9am to 5pm and Saturday 9am to 1pm.
+
+Kind regards,
+
+Digital Services
+The Telegraph Media Group
+
+For more information or help regarding our Digital products please visit www.telegraph.co.uk/help.
+
+*The Telegraph Contact Centre is open Monday to Friday, 9am-5pm and Saturdays, 9am-1pm. Closed on Sundays and Bank Holidays.
+
+You have received this email in relation to your Telegraph Subscription. Please do not reply to this email.
+
+In accordance with the 1998 Data Protection Act, Telegraph Media Group Limited is committed to protecting your privacy. If you wish to know more, please access our privacy policy.
+
+This email is from Telegraph Media Group Limited - 111 Buckingham Palace Road, London SW1W 0DT. Registered in England under No. 451593.</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Adjustment_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Voucher Activity Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Voucher_Activity_Action__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Holiday Return</fullName>
+                <default>false</default>
+                    <label>Holiday Return</label>
+                </value>
+                <value>
+                <fullName>Voucher Return</fullName>
+                <default>false</default>
+                    <label>Voucher Return</label>
+                </value>
+                <value>
+                <fullName>Voucher Resend - Full Pack</fullName>
+                <default>false</default>
+                    <label>Voucher Resend - Full Pack</label>
+                </value>
+                <value>
+                <fullName>Voucher Resend - Part Pack</fullName>
+                <default>false</default>
+                    <label>Voucher Resend - Part Pack</label>
+                </value>
+                <value>
+                <fullName>Voucher Send - Part Pack</fullName>
+                <default>false</default>
+                    <label>Voucher Send - Part Pack</label>
+                </value>
+                <value>
+                <fullName>Voucher Return without Refund</fullName>
+                <default>false</default>
+                    <label>Voucher Return without Refund</label>
+                </value>
+                <value>
+                <fullName>Outside of Policy</fullName>
+                <default>false</default>
+                    <label>Outside of Policy</label>
+                </value>
+                <value>
+                <fullName>Exceeded Policy</fullName>
+                <default>false</default>
+                    <label>Exceeded Policy</label>
+                </value>
+                <value>
+                <fullName>Pre-notification of Holiday</fullName>
+                <default>false</default>
+                    <label>Pre-notification of Holiday</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Vouchers Sent</controllingFieldValue>
+                <valueName>Voucher Resend - Full Pack</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers Sent</controllingFieldValue>
+                <valueName>Voucher Resend - Part Pack</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers Sent</controllingFieldValue>
+                <valueName>Voucher Send - Part Pack</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers Received</controllingFieldValue>
+                <valueName>Holiday Return</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers Received</controllingFieldValue>
+                <valueName>Voucher Return</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers Received</controllingFieldValue>
+                <valueName>Pre-notification of Holiday</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers Sent Back To Customers</controllingFieldValue>
+                <valueName>Outside of Policy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers Sent Back To Customers</controllingFieldValue>
+                <valueName>Exceeded Policy</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Approval_Date__c</fullName>
+        <description>Date refund was approved and processed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date refund was approved and processed</inlineHelpText>
+        <label>Approval Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Approved_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approved By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Voucher_Activities</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <length>4000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Date_Vouchers_Received__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>For vouchers received, enter the date the vouchers have actually been received (affects vouchers in hand)</inlineHelpText>
+        <label>Date Vouchers Received</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Deferred_Asset_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Deferred Asset Value</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ExecuteValidationRules__c</fullName>
+        <description>Execute validation rules only for records created after go live date.</description>
+        <externalId>false</externalId>
+        <formula>IF ( 
+ISBLANK($Setup.Configuration__c.VoucherRefundGoLiveDate__c), 
+TRUE, 
+DATEVALUE(CreatedDate) &gt;= $Setup.Configuration__c.VoucherRefundGoLiveDate__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Execute Validation Rules</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Fulfilled_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The name of the person who fulfilled the voucher activity details and submitted refund for approval or processed refund if the refund value is below threshold.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the person who fulfilled the voucher activity details and submitted refund for approval or processed refund if the refund value is below threshold.</inlineHelpText>
+        <label>Fulfilled By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Voucher_Activities_Fulfilled_By</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Fulfilled_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Fulfilled Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Vouchers_Calc__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Vouchers Calc</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Vouchers__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Number_of_Vouchers_Calc__c &gt; 0,Number_of_Vouchers_Calc__c  ,IF(OR(ispickval( Adjustment_Type__c,&quot;Voucher Return&quot;),ispickval( Adjustment_Type__c,&quot;Holiday Return&quot;),ispickval( Adjustment_Type__c,&quot;Voucher Resend - Part Pack&quot;),ispickval( Adjustment_Type__c,&quot;Voucher Send - Part Pack&quot;),ispickval( Adjustment_Type__c,&quot;Goodwill&quot;)),(End_Date__c - Start_Date__c)+1,null))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Vouchers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Outstanding_balance_to_from_customer__c</fullName>
+        <externalId>false</externalId>
+        <formula>Subscription__r.Outstanding_Balance_to_from_Customer__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Outstanding Balance To/From Customer</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>    
+    <fields>
+        <fullName>Overlaps_Other_Voucher_Activity__c</fullName>
+        <externalId>false</externalId>
+        <label>Overlaps Other Voucher Activity</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Refund_Amount__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+	OR(
+		ISPICKVAL(Adjustment_Type__c, &quot;Holiday Return&quot;), 
+		ISPICKVAL(Adjustment_Type__c, &quot;Voucher Return&quot;)
+	), 
+	Voucher_Value__c,
+	null
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Refund Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Refund_Due__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check if a monetary refund is due to the subscriber</inlineHelpText>
+        <label>Refund Due</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Refund_Method__c</fullName>
+        <externalId>false</externalId>
+        <label>Refund Method</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Cheque not created</fullName>
+                <default>false</default>
+                    <label>Cheque not created</label>
+                </value>
+                <value>
+                <fullName>System created cheque</fullName>
+                <default>false</default>
+                    <label>System created cheque</label>
+                </value>
+                <value>
+                <fullName>Manual created cheque</fullName>
+                <default>false</default>
+                    <label>Manual created cheque</label>
+                </value>
+                <value>
+                <fullName>Refunded to Card</fullName>
+                <default>false</default>
+                    <label>Refunded to Card</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Refund_Status__c</fullName>
+        <description>Status of a refund</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of a refund</inlineHelpText>
+        <label>Refund Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Processed</fullName>
+                <default>false</default>
+                    <label>Processed</label>
+                </value>
+                <value>
+                <fullName>Waiting For Approval</fullName>
+                <default>false</default>
+                    <label>Waiting For Approval</label>
+                </value>
+                <value>
+                <fullName>Pending</fullName>
+                <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                <fullName>Partially Processed</fullName>
+                <default>false</default>
+                    <label>Partially Processed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Resend_Letter_Version__c</fullName>
+        <description>Letter version for resends. If VA Start Date = Sub Start Date set to SS, else SD</description>
+        <externalId>false</externalId>
+        <formula>IF ( AND( Start_Date__c = Subscription__r.Start_Date__c, ISPICKVAL (Adjustment_Type__c, &quot;Voucher Resend - Full Pack&quot;)),&quot;SS&quot;, &quot;SD&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Letter version for resends. If VA Start Date = Sub Start Date set to SS, else SD</inlineHelpText>
+        <label>Resend Letter Version</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Subscription__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription</label>
+        <referenceTo>Subscription__c</referenceTo>
+        <relationshipLabel>Voucher Activities</relationshipLabel>
+        <relationshipName>Voucher_Activities</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Voucher_Activity_Action__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the type of voucher activity action you are entering</inlineHelpText>
+        <label>Voucher Activity Action</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Vouchers Sent</fullName>
+                <default>false</default>
+                    <label>Vouchers Sent</label>
+                </value>
+                <value>
+                <fullName>Vouchers Received</fullName>
+                <default>false</default>
+                    <label>Vouchers Received</label>
+                </value>
+                <value>
+                <fullName>Vouchers Sent Back To Customers</fullName>
+                <default>false</default>
+                    <label>Vouchers Sent Back To Customers</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Voucher_Validity_in_Weeks_Calc__c</fullName>
+        <externalId>false</externalId>
+        <label>Voucher Validity in Weeks Calc</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Voucher_Validity_in_Weeks__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Voucher_Validity_in_Weeks_Calc__c &gt; 0, Voucher_Validity_in_Weeks_Calc__c ,FLOOR(((End_Date__c-Start_Date__c)+1)/7)+((MOD(((End_Date__c-Start_Date__c)+1),7))/10))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Voucher Validity in Weeks</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Voucher_Value_Calc__c</fullName>
+        <externalId>false</externalId>
+        <label>Voucher Value Calc</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Voucher_Value__c</fullName>
+        <description>Currency value of voucher adjustment.</description>
+        <externalId>false</externalId>
+        <formula>IF(Voucher_Value_Calc__c &gt; 0,Voucher_Value_Calc__c,
+IF(
+  OR(ISBLANK(Subscription__r.Low_Start_End_Date__c), 
+     Start_Date__c &gt; Subscription__r.Low_Start_End_Date__c
+  ),
+  (Subscription__r.Weekly_Price__c / 7)*((End_Date__c - Start_Date__c) + 1),
+  
+  IF(AND(Start_Date__c &lt;= Subscription__r.Low_Start_End_Date__c, End_Date__c &gt; Subscription__r.Low_Start_End_Date__c), 
+    ((Subscription__r.Low_Start_End_Date__c - Start_Date__c)+1)*(Subscription__r.Low_Start_Weekly_Price__c/7)
+    +((End_Date__c - Subscription__r.Low_Start_End_Date__c)*(Subscription__r.Weekly_Price__c / 7))
+    ,(Subscription__r.Low_Start_Weekly_Price__c / 7)*((End_Date__c - Start_Date__c) + 1)
+    
+  )
+)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Currency value of voucher adjustment.</inlineHelpText>
+        <label>Voucher Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Warning_Message__c</fullName>
+        <description>Warning message to be showed in VoucherActivityNotificationBanner</description>
+        <externalId>false</externalId>
+        <formula>If( 
+  ISPICKVAL(Adjustment_Type__c, 'Holiday Return'), if (
+  End_Date__c - Start_Date__c &gt; 42 &amp;&amp; Subscription__r.Subscription_Duration_Number__c = 52,
+  $Label.Duration_Exceeds_6_Weeks,
+  if (
+    End_Date__c - Start_Date__c &gt; 21 &amp;&amp; Subscription__r.Subscription_Duration_Number__c = 26,
+    $Label.Duration_Exceeds_3_Weeks,
+    &apos;&apos;
+  )
+),
+''
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Warning Message</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Voucher Activity</label>
+    <nameField>
+        <displayFormat>VA-{0000000000}</displayFormat>
+        <label>Voucher Activity Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Voucher Activities</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Date_Voucher_Received_mandatory</fullName>
+        <active>true</active>
+        <description>Date Voucher Received is mandatory for Holiday Return activity type.</description>
+        <errorConditionFormula>AND(ISPICKVAL(Adjustment_Type__c,&apos;Holiday Return&apos;), ISBLANK( Date_Vouchers_Received__c ))</errorConditionFormula>
+        <errorDisplayField>Date_Vouchers_Received__c</errorDisplayField>
+        <errorMessage>Date Voucher Received is mandatory for Holiday Return voucher activity type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>End_Date_26_Week_Validation</fullName>
+        <active>true</active>
+        <description>Validation for 26 week sub full pack resends</description>
+        <errorConditionFormula>AND($Profile.Name &lt;&gt; &quot;TMG System&quot;, 
+ISPICKVAL(Adjustment_Type__c, &quot;Voucher Resend - Full Pack&quot;), 
+AND(ISPICKVAL(Subscription__r.Subscription_Duration_Picklist__c, &quot;26&quot;)), 
+AND (End_Date__c &lt;&gt; Subscription__r.Voucher_Pack_1_End_Date__c , 
+End_Date__c &lt;&gt; Subscription__r.Voucher_Pack_2_End_Date__c ))</errorConditionFormula>
+        <errorDisplayField>End_Date__c</errorDisplayField>
+        <errorMessage>End date must be the same as the listed voucher pack date on the sub</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Full_Resends_end_date_validation</fullName>
+        <active>true</active>
+        <description>Full resend end date should be the same as the batch start date for standard subs</description>
+        <errorConditionFormula>AND(
+   $Profile.Name &lt;&gt; &quot;TMG System&quot;,
+   ISPICKVAL(Adjustment_Type__c, &quot;Voucher Resend - Full Pack&quot;),
+   Subscription__r.Subscription_Duration_Number__c == 52,
+   AND(
+       End_Date__c &lt;&gt; Subscription__r.Voucher_Pack_1_End_Date__c,
+       End_Date__c &lt;&gt; Subscription__r.Voucher_Pack_2_End_Date__c,
+       End_Date__c &lt;&gt; Subscription__r.Voucher_Pack_3_End_Date__c,
+       End_Date__c &lt;&gt; Subscription__r.Voucher_Pack_4_End_Date__c
+   )
+)</errorConditionFormula>
+        <errorDisplayField>End_Date__c</errorDisplayField>
+        <errorMessage>End date of a full pack resend should adhere to the batch end date of the subscription</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Full_Resends_start_date_validation</fullName>
+        <active>true</active>
+        <description>Full resend start date should be the same as the batch start date for standard subs</description>
+        <errorConditionFormula>AND(
+   $Profile.Name &lt;&gt; &quot;TMG System&quot;, 
+   ISPICKVAL(Adjustment_Type__c, &quot;Voucher Resend - Full Pack&quot;),
+   Subscription__r.Subscription_Duration_Number__c == 52,
+   AND(
+      Start_Date__c &lt;&gt; Subscription__r.Voucher_Pack_1_Start_Date__c,
+      Start_Date__c &lt;&gt; Subscription__r.Voucher_Pack_2_Start_Date__c,
+      Start_Date__c &lt;&gt; Subscription__r.Voucher_Pack_3_Start_Date__c,
+      Start_Date__c &lt;&gt; Subscription__r.Voucher_Pack_4_Start_Date__c
+   )
+)</errorConditionFormula>
+        <errorDisplayField>Start_Date__c</errorDisplayField>
+        <errorMessage>Start date of a full pack resend should adhere to the batch start date of the subscription</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Holiday_Return_VA_for_Deceased_Customer</fullName>
+        <active>true</active>
+        <description>Holiday Return VA cannot be created for a Deceased Customer.</description>
+        <errorConditionFormula>AND(
+    ISPICKVAL(Adjustment_Type__c, &apos;Holiday Return&apos;),
+    ISPICKVAL(Subscription__r.Subscription_Status__c, &apos;Cancelled&apos;),
+    ISPICKVAL(Subscription__r.Cancellation_Reason__c, &apos;Deceased&apos;)
+)</errorConditionFormula>
+        <errorMessage>Holiday Return VA cannot be created for a Deceased Customer.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Lock_Record_If_Refund_Processed</fullName>
+        <active>true</active>
+        <description>Prevent record saving if Refund status is &apos;Processed&apos; for Holiday Return Voucher Activities</description>
+        <errorConditionFormula>AND(ISPICKVAL(Refund_Status__c, &apos;Processed&apos;),
+OR(ISCHANGED(Adjustment_Type__c),
+ISCHANGED(Date_Vouchers_Received__c),
+ISCHANGED(End_Date__c),
+ISCHANGED(Start_Date__c),
+ISCHANGED(Subscription__c),
+ISCHANGED(Voucher_Activity_Action__c))
+)</errorConditionFormula>
+        <errorMessage>Voucher refund already processed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_Date_Validation_26_week</fullName>
+        <active>true</active>
+        <description>voucher date validation for 26 week full pack resends</description>
+        <errorConditionFormula>AND(
+   $Profile.Name &lt;&gt; &quot;TMG System&quot;, 
+   ISPICKVAL(Adjustment_Type__c, &quot;Voucher Resend - Full Pack&quot;), 
+   Subscription__r.Subscription_Duration_Number__c == 26, 
+   AND(ISPICKVAL(Subscription__r.Subscription_Duration_Picklist__c, &quot;26&quot;)), 
+   AND(
+      Start_Date__c &lt;&gt; Subscription__r.Voucher_Pack_1_Start_Date__c, 
+      Start_Date__c &lt;&gt; Subscription__r.Voucher_Pack_2_Start_Date__c
+   ) 
+)</errorConditionFormula>
+        <errorDisplayField>Start_Date__c</errorDisplayField>
+        <errorMessage>The Start date must match the voucher pack dates on the Subscription</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Voucher_Activity_Length_More_Than_6_week</fullName>
+        <active>false</active>
+        <description>Voucher Activity of Type Holiday Return period between Start Date and End Date should be less than 6 weeks</description>
+        <errorConditionFormula>AND(
+    End_Date__c - Start_Date__c &gt; 42,
+    ISPICKVAL(Adjustment_Type__c, &apos;Holiday Return&apos;),
+    ExecuteValidationRules__c
+)</errorConditionFormula>
+        <errorMessage>Voucher Refund does not comply with Holiday Voucher Refund Policy because is longer than 6 weeks.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Voucher_Adjustment_Creation_Sub_Status</fullName>
+        <active>true</active>
+        <description>This Validation Rule prevents the user from creating a Voucher Adjustment unless the associated Subscription Status is Pending, Active, In Renewal, Lapsed and Pending Cancellation.
+SMS-93: Changed to vouchers sent only</description>
+        <errorConditionFormula>IF(OR($Profile.Name = &quot;TMG System&quot;, 
+      $Profile.Name =&quot;TMG Subs Administrator&quot;), false, 
+IF(OR(
+ISPICKVAL(Subscription__r.Subscription_Status__c , &quot;Pending&quot;), ISPICKVAL(Subscription__r.Subscription_Status__c , &quot;Active&quot;), ISPICKVAL(Subscription__r.Subscription_Status__c , &quot;In Renewal&quot;), 
+ISPICKVAL(Subscription__r.Subscription_Status__c , &quot;Pending Cancellation&quot;),
+ISPICKVAL(Subscription__r.Subscription_Status__c , &quot;Lapsed&quot;),
+ISPICKVAL(Voucher_Activity_Action__c , &quot;Vouchers Received&quot;),
+(AND(ISPICKVAL(Voucher_Activity_Action__c , &quot;Vouchers Sent&quot;),ISPICKVAL(Adjustment_Type__c , &quot;Voucher Send - Part Pack&quot;)))), False, True)
+)</errorConditionFormula>
+        <errorMessage>Vouchers can only be sent when the associated Subscription Status is Pending, Active, In Renewal, Lapsed or Pending Cancellation.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Voucher_Dates_6Months_Outside_Subs_Dates</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( 
+OR(Start_Date__c &lt; Subscription__r.Start_Date__c - 178,
+   End_Date__c &gt; Subscription__r.End_Date__c + 178),
+ISPICKVAL(Voucher_Activity_Action__c , &quot;Vouchers Sent&quot;), 
+ISPICKVAL(Adjustment_Type__c , &quot;Voucher Send - Part Pack&quot;) 
+)</errorConditionFormula>
+        <errorMessage>The voucher start date cannot be 6 months before the subscription start date or 6 months after subscription end date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Voucher_Dates_Inside_Sub_Period</fullName>
+        <active>true</active>
+        <description>Voucher Resend - Part Pack can only be created with start and end date within the subscription period</description>
+        <errorConditionFormula>AND( 
+   OR(Start_Date__c &lt; Subscription__r.Start_Date__c,
+   End_Date__c &gt; Subscription__r.End_Date__c),
+   ISPICKVAL(Voucher_Activity_Action__c , &quot;Vouchers Sent&quot;), 
+   ISPICKVAL(Adjustment_Type__c , &quot;Voucher Resend - Part Pack&quot;) 
+)</errorConditionFormula>
+        <errorMessage>You can only create a Voucher Resend - Part Pack within the Subscription Period.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Voucher_Dates_Outside_Subs_Dates</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( 
+    OR(
+       AND(Start_Date__c &gt;= Subscription__r.Start_Date__c,                  
+           Start_Date__c &lt;= Subscription__r.End_Date__c), 
+       AND(End_Date__c &gt;= Subscription__r.Start_Date__c, 
+           End_Date__c &lt;= Subscription__r.End_Date__c) 
+       ), 
+    ISPICKVAL(Voucher_Activity_Action__c , &quot;Vouchers Sent&quot;), 
+    ISPICKVAL(Adjustment_Type__c , &quot;Voucher Send - Part Pack&quot;) 
+)</errorConditionFormula>
+        <errorMessage>You can only create a Voucher Send - Part Pack outside of the Subscription Period.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Voucher_EndDate_Not_Greater_Sub_EndDate</fullName>
+        <active>true</active>
+        <description>Voucher End Date should be not greater than Subscription End Date</description>
+        <errorConditionFormula>AND(
+    NOT($Profile.Name = &quot;TMG System&quot;),
+    End_Date__c &gt;  Subscription__r.End_Date__c  , 
+    NOT(ISPICKVAL( Voucher_Activity_Action__c, &apos;Vouchers Sent&apos;) ),
+    ExecuteValidationRules__c
+)</errorConditionFormula>
+        <errorMessage>The voucher end date cannot be after the subscription end date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Voucher_Start_Date_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+    NOT($Profile.Name = &quot;TMG System&quot;),
+    Start_Date__c &lt;  Subscription__r.Start_Date__c  , 
+    NOT(ISPICKVAL( Voucher_Activity_Action__c, &apos;Vouchers Sent&apos;) ),
+    ExecuteValidationRules__c
+)</errorConditionFormula>
+        <errorMessage>The voucher start date cannot be before the subscription start date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Voucher_end_date_check</fullName>
+        <active>true</active>
+        <description>Checks the end date of a voucher activity isn&apos;t before the start date of the voucher activity.</description>
+        <errorConditionFormula>End_Date__c&lt;Start_Date__c</errorConditionFormula>
+        <errorDisplayField>End_Date__c</errorDisplayField>
+        <errorMessage>The End Date must be greater than the Start Date</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Refund</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Refund</masterLabel>
+        <openType>replace</openType>
+        <page>VoucherActivityRefund</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

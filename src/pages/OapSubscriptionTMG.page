@@ -1,0 +1,564 @@
+<apex:page controller="OapSubscriptionTMG" id="OapSubscriptionTMG" tabstyle="Inbound_And_Coupons__tab">
+    <apex:includeScript value="{!$Resource.tmgDisabler}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/css/tableStyle.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/css/offlineFlowStyle.css')}"/>
+
+    <style>
+        .MarketingPos { float:left;padding-top: 4px }
+        .button{
+            -moz-border-radius:3px 3px 3px 3px;
+            background:url("/img/alohaSkin/btn_sprite.png") repeat-x scroll right top #E8E8E9;
+            border-color:#B5B5B5 #B5B5B5 #7F7F7F;
+            border-style:solid; border-width:1px;
+            color:#333333; font-size:0.9em; font-weight:bold;
+            margin:2px; padding:3px 3px;
+            text-decoration:none;
+        }
+        .SpaceChkBox{margin-left: 20px }
+        .BoldOutputLabels{font-weight: bold}
+        .emailStyle{padding-top:4px; display:block;}
+        .l3{margin-left:3px}
+        .r10{margin-right:10px}
+        .RedFont {color: red; font-size: 16px}
+        .FloatImageToCentre {margin-top: 2%;margin-left: 45%;position:absolute}
+        .NewLine{ padding-bottom: 15px;}
+    </style>
+    <script>
+        var Field1;
+        var Field2;
+        var Field3;
+        var MkTMGEmail;
+        var MkTMGPhone;
+        var MkTMGPost;
+        var MkTMGSMS;
+        var debug = true;
+
+        function SelectAllTMG(setting){
+            if(setting == true){
+                document.getElementById(MkTMGEmail).checked = true;
+                document.getElementById(MkTMGPhone).checked = true;
+                document.getElementById(MkTMGPost).checked = true;
+                document.getElementById(MkTMGSMS).checked = true;
+            }else{
+                document.getElementById(MkTMGEmail).checked = false;
+                document.getElementById(MkTMGPhone).checked = false;
+                document.getElementById(MkTMGPost).checked = false;
+                document.getElementById(MkTMGSMS).checked = false;
+            }
+        }
+    </script>
+
+    <apex:sectionHeader title="Outbound Subscription Acquisition" rendered="{!$CurrentPage.parameters.OrderMethod=='Outbound'}"/>
+    <apex:sectionHeader title="Inbound Subscription Acquisition" rendered="{!$CurrentPage.parameters.OrderMethod!='Outbound'}"/>
+
+    <apex:outputPanel id="oapPage">
+        <apex:pageBlock rendered="{!AND(bRenderForm, selectedProduct == 'Premium', NOT(ISNULL(paymentValues)))}" id="pricing">
+             <apex:pageBlockTable value="{!PaymentValues}" var="Price">
+                <apex:column headerValue="Type" value="{!Price.sType}" rendered="{!bShowPricesType}"/>
+                <apex:column headerValue="Weekly Rate" title="Weekly Rate" value="{!Price.weeklyPrice}"/>
+                <apex:column headerValue="1st Monthly Payment" title="1st Monthly Payment" value="{!Price.firstMontlyPayment}"/>
+                <apex:column headerValue="Subsequent Monthly Payments" title="Subsequent Monthly Payments" value="{!Price.subsequentMonthlyPayment}"/>
+                <apex:column headerValue="Quarterly Payments" title="Quarterly Payments" value="{!Price.quaterlyPayment}"/>
+                <apex:column headerValue="26 Weeks" title="26 Weeks" value="{!Price.creditCard26WkPayment}"/>
+                <apex:column headerValue="Annual Payments(52 Weeks)" title="Annual Payments(52 Weeks)" value="{!Price.creditCard52WkPayment}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+        <apex:form id="oapForm">
+            <apex:pagemessages id="topErrors" escape="false"/>
+            <c:ProductSwitch psController="{!productSwitcher}" toRerender="oapPage" rendered="{!!bRenderForm}" showDigitalPrices="{!!bIsPremium}" showLowStartPrice="{!bIsLowStart}" />
+
+            <apex:outputPanel rendered="{!bRenderForm}">
+                <apex:pageBlock mode="edit" title="{!$CurrentPage.parameters.selectedProduct} Subscriber Information" >
+
+                <div id="displaythisimage" style="display: none">
+                     <apex:image styleclass="FloatImageToCentre" value="{!URLFOR($Resource.WebRegImages,'spinner.gif')}" />
+                </div>
+
+                <apex:pageBlockSection columns="1" title="Personal details of the subscriber">
+                    <apex:outputPanel rendered="{!$CurrentPage.parameters.selectedProduct == 'Premium'}">
+                        <p class="NewLine">
+                            <apex:outputText escape="false" rendered="{!NOT(ISBLANK(subscriptionName))}" value="{!$Label.Offline_Acquisition_Offered_Sub}">
+                                <apex:param value="{!subscriptionId}" />
+                                <apex:param value="{!subscriptionName}" />
+                            </apex:outputText>
+                             <apex:outputText escape="false" value="{!$Label.Offline_Acquisition_Selected_tcode}">
+                                <apex:param value="{!tCode}" />
+                            </apex:outputText><br/>
+                            <apex:outputText rendered="{!NOT(ISBLANK(weeklyPriceDisplayedLowStart))}" escape="false" value="{!$Label.Offline_Acquisition_Subscription_low_start_price}">
+                                <apex:param value="{!weeklyPriceDisplayedLowStart}" />
+                                <apex:param value="{!weeklyPriceDisplayed}" />
+                                <apex:param value="{!currentCampaign.Low_Start_Period__c}" />
+                            </apex:outputText>
+                            <apex:outputText rendered="{!ISBLANK(weeklyPriceDisplayedLowStart)}" escape="false" value="{!$Label.Offline_Acquisition_Subscription_price_standard}">
+                                <apex:param value="{!weeklyPriceDisplayed}" />
+                            </apex:outputText>
+                        </p>
+                    </apex:outputPanel>
+
+                    <apex:pageBlockSectionItem >
+                       <apex:outputLabel value="Title" />
+                       <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+
+                            <apex:selectList onchange="document.getElementById('{!$Component.OtherTitle}').value = '';" size="1" value="{!subscriber.Salutation}" required="true">
+                                <apex:selectOptions value="{!lstPersonTitleValues}" />
+                            </apex:selectList>
+
+                            <apex:outputLabel style="margin-left: 20px" value="Given Title" /><apex:inputText style="margin-left: 20px" id="OtherTitle" value="{!OtherTitle}" />
+                       </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem >
+                       <apex:outputLabel value="First Name" />
+                       <apex:outputPanel styleClass="requiredInput" layout="block">
+                          <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <apex:inputText id="FirstName" value="{!subscriber.FirstName}" required="true" />
+                       </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem >
+                       <apex:outputLabel value="Surname" />
+                       <apex:outputPanel styleClass="requiredInput" layout="block">
+                          <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <apex:inputText value="{!subscriber.LastName}" id="lastName"/>
+                       </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <script>
+                        var lastName = "{!$Component.lastName}";
+                    </script>
+
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="PostCode" value="PostCode:" />
+                        <apex:outputPanel >
+                            <apex:inputText id="PostCode" required="true" value="{!subscriber.PersonMailingPostalCode}" style="float: left;"/>
+                            <script>
+                                var PostCode = '{!$Component.PostCode}';
+                            </script>
+                            <c:PostCodeLookup />
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:inputField id="Addrline1" required="true" value="{!subscriber.PersonMailingStreet}" />
+                    <apex:inputField id="City" required="true" value="{!subscriber.PersonMailingCity}" />
+                    <apex:inputField id="county" value="{!subscriber.PersonMailingState}" />
+
+                    <script>
+                        Field1 = '{!$Component.Addrline1}';
+                        Field2 = '{!$Component.City}';
+                        Field3 = '{!$Component.County}';
+                    </script>
+
+                    <!-- Fixed on UK for PREMIUM Version -->
+                    <apex:pageBlockSectionItem rendered="{!$CurrentPage.parameters.selectedProduct == 'Premium'}">
+                        <apex:outputLabel value="Country" for="ctr" />
+                        <apex:outputPanel layout="block">
+                            <apex:selectList id="countries" value="{!subscriber.PersonMailingCountry}" size="1" disabled="true">
+                                <apex:selectOptions value="{!Countries}" />
+                            </apex:selectList>
+                       </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                    <!-- Required for DIGITAL Version -->
+                    <apex:pageBlockSectionItem rendered="{!$CurrentPage.parameters.selectedProduct == 'Digital'}">
+                        <apex:outputLabel value="Country" for="ctr" />
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:selectList id="countries" value="{!subscriber.PersonMailingCountry}" size="1" >
+                                <apex:selectOptions value="{!Countries}" />
+                            </apex:selectList>
+                       </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem rendered="{!$CurrentPage.parameters.selectedProduct == 'Digital'}">
+                        <apex:outputLabel value="Email:" styleClass="emailStyle" />
+                        <apex:outputPanel id="DigitalEmailPanel" styleClass="requiredInput" layout="block">
+                            <!-- new customer -->
+                            <apex:outputPanel rendered="{!ISNULL(subscriber.Id)}">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <apex:inputText id="DigitalNewEmail" value="{!subscriber.PersonEmail}" required="true" style="width:300px;"/>
+                            </apex:outputPanel>
+                            <!-- existing customer -->
+                            <apex:outputPanel rendered="{!NOT(ISNULL(subscriber.Id))}">
+                                <apex:actionRegion >
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                                    <apex:outputText value="{!subscriber.PersonEmail}" styleClass="r10 l3" />
+                                    <apex:commandButton action="{!displayChangeEmailIFrame}" value="{!$Label.Add_Change_Email}" rerender="iFramePanel" />
+                                </apex:actionRegion>
+                                <apex:inputHidden id="DigitalEmail" value="{!subscriber.PersonEmail}" />
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+
+                        <apex:pageBlockSectionItem rendered="{!$CurrentPage.parameters.selectedProduct == 'Premium'}">
+                        <apex:outputLabel value="Email:" styleClass="emailStyle" />
+                        <apex:outputPanel id="PremiumEmailPanel">
+                            <!-- new customer -->
+                            <apex:outputPanel rendered="{!ISNULL(subscriber.Id)}">
+                                <apex:inputText id="PremiumNewEmail" value="{!subscriber.PersonEmail}" style="width:300px;"/>
+                            </apex:outputPanel>
+                            <!-- existing customer -->
+                            <apex:outputPanel rendered="{!NOT(ISNULL(subscriber.Id))}">
+                                <apex:actionRegion >
+                                    <apex:outputText value="{!subscriber.PersonEmail}" styleClass="r10" />
+                                    <apex:commandButton action="{!displayChangeEmailIFrame}" value="{!$Label.Add_Change_Email}" rerender="iFramePanel" />
+                                </apex:actionRegion>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                    <!-- iFrame -->
+                    <apex:actionRegion >
+                        <apex:actionFunction action="{!hideChangeEmailIFrame}" name="hideIFrame" rerender="iFramePanel" />
+                    </apex:actionRegion>
+                    <apex:actionRegion >
+                        <apex:actionFunction action="{!refetchSubscriberEmail}" name="refetchEmail" rerender="iFramePanel, DigitalEmailPanel, PremiumEmailPanel" />
+                    </apex:actionRegion>
+                    <apex:pageBlockSectionItem rendered="{!NOT(ISNULL(subscriber.Id))}">
+                        <apex:outputLabel />
+                        <apex:outputPanel id="iFramePanel">
+                            <apex:outputPanel rendered="{!AND(showEmailIFrame,$CurrentPage.parameters.selectedProduct == 'Digital')}">
+                                <apex:iframe width="550" height="260" src="/apex/SubscriberEmailManagementIFrame?id={!subscriber.Id}&isiframe=true&required=true" scrolling="true" />
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!AND(showEmailIFrame,$CurrentPage.parameters.selectedProduct == 'Premium')}">
+                                <apex:iframe width="550" height="260" src="/apex/SubscriberEmailManagementIFrame?id={!subscriber.Id}&isiframe=true" scrolling="true" />
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                        <apex:inputField value="{!subscriber.phone}" />
+                        <apex:inputField value="{!subscriber.PersonMobilePhone}" />
+                        <apex:inputField value="{!subscriber.PersonHomePhone}" />
+                        <apex:inputField value="{!subscriber.DateofBirth__c}"/>
+
+                        <!-- Not sure why the decision was made to use Number. Maybe able to use checkbox instead of Number, but would affect DSOS so this will have to be done later by changing DSOS and OAP together -->
+                        <apex:outputPanel layout="block" rendered="{!OR($CurrentPage.parameters.OrderMethod != 'Outbound', AND($CurrentPage.parameters.OrderMethod == 'Outbound', $CurrentPage.parameters.selectedProduct == 'Premium'))}">
+                            <h3 style="margin-left: 0px" class="formSubHead">Marketing Preferences</h3>
+                            <p><i>{!$Label.Marketing_Preference_Group_Companies}</i></p>
+                            <p><i>
+                            <apex:outputPanel layout="block" style="overflow:auto">
+                                <apex:outputLabel styleClass="checkbox">
+                                    <apex:inputCheckBox onchange="SelectAllTMG(this.checked)" styleClass="checkbox" style="float:left"/>
+                                    <apex:outputText value="Select All/None" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                                <apex:outputLabel style="margin-left: -10px" styleClass="checkbox">
+                                    <apex:inputCheckBox id="TMG_Promo_Email" value="{!TMG_Promo_Email}" styleClass="checkbox SpaceChkBox" style="float:left"/>
+                                    <apex:outputText value="Email" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                                <apex:outputLabel style="margin-left: -10px" styleClass="checkbox">
+                                    <apex:inputCheckBox id="TMG_Promo_Phone" value="{!TMG_Promo_Phone}" styleClass="checkbox SpaceChkBox" style="float:left"/>
+                                    <apex:outputText value="Phone" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                                <apex:outputLabel style="margin-left: -10px" styleClass="checkbox">
+                                    <apex:inputCheckBox id="TMG_Promo_Post" value="{!TMG_Promo_Post}" styleClass="checkbox SpaceChkBox" style="float:left"/>
+                                    <apex:outputText value="Post" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                                <apex:outputLabel style="margin-left: -10px" styleClass="checkbox">
+                                    <apex:inputCheckBox id="TMG_Promo_Sms" value="{!TMG_Promo_Sms}" styleClass="checkbox SpaceChkBox" style="float:left"/>
+                                    <apex:outputText value="SMS" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                            </apex:outputPanel>
+                            </i></p>
+
+                            <p style="display:block">Our <a target="_blank" href="{!$Setup.Configuration__c.Privacy_Policy_URL__c}"><u>Privacy Policy</u></a> on our website will give you more information on how we handle data.</p>
+                            <br/>
+
+                            <script type="text/javascript">
+                                MkTMGEmail = '{!$Component.TMG_Promo_Email}';
+                                MkTMGPhone = '{!$Component.TMG_Promo_Phone}';
+                                MkTMGPost = '{!$Component.TMG_Promo_Post}';
+                                MkTMGSMS = '{!$Component.TMG_Promo_Sms}';
+                            </script>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+
+                <div style="height:20px;">
+                    <apex:actionStatus id="premiumStatus">
+                        <apex:facet name="start">
+                            <apex:outputPanel >
+                                <apex:image value="{!$Resource.Loading_Gif}" /> Requesting...
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:facet name="stop"></apex:facet>
+                    </apex:actionStatus>
+                </div>
+
+                <!-- PRODUCT INFORMATION AND CHANGE SECTION -->
+                <c:ProductSwitch psController="{!productSwitcher}" toRerender="productBlockId, pricing, selectedTCodeInfo, premiumPB, startDatesId, digitalProductInformation, topErrors, startDatesId" rendered="{!bRenderForm}" showDigitalPrices="{!!bIsPremium}" showLowStartPrice="{!bIsLowStart}" />
+                <!-- Digital Only  -->
+
+                <apex:pageBlock mode="edit" rendered="{!$CurrentPage.parameters.selectedProduct == 'Digital' && $CurrentPage.parameters.isActive=='false'}" id="digitalProductInformation">
+                    <apex:pageMessages id="digitalErrors" escape="false"/>
+                    <apex:pageBlockSection title="Details of the subscription product" columns="2">
+                        <apex:pageBlockSectionItem >
+                           <apex:outputLabel value="Select Your Subscription Type" />
+                           <apex:outputPanel styleClass="requiredInput" layout="block">
+                                <apex:actionRegion >
+                                    <apex:selectRadio styleClass="customRadio" value="{!subscriptionType}" required="true">
+                                        <apex:selectOptions value="{!lstSubscriptionTypes}"/>
+                                        <apex:actionSupport event="onchange" action="{!selectSubscription}" rerender="PaymentType,incentivesSelec,incentiveDesc,digitalErrors,topErrors" status="premiumStatus" />
+                                    </apex:selectRadio>
+                                </apex:actionRegion>
+                           </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Payment Type" />
+                            <apex:outputPanel styleClass="requiredInput" layout="block" id="PaymentType">
+                                <apex:selectRadio styleClass="customRadio" value="{!paymentType}" required="true">
+                                    <apex:selectOptions value="{!paymentOptionsList}"/>
+                                </apex:selectRadio>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Incentives" />
+                            <apex:outputPanel styleClass="requiredInput" layout="block" id="incentivesSelec">
+                                <apex:outputText value="No Incentives available" rendered="{!NOT(bRenderIncentives)}" />
+                                <apex:actionRegion >
+                                    <apex:selectList size="1" value="{!selectedIncentive}" rendered="{!bRenderIncentives}">
+                                         <apex:selectOptions value="{!lstActiveIncentives}" />
+                                         <apex:actionSupport event="onchange" rerender="incentiveDesc, digitalErrors" status="myStatus"/>
+                                     </apex:selectList>
+                                 </apex:actionRegion>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Incentive Description" />
+                            <apex:outputPanel styleClass="requiredInput" layout="block" id="incentiveDesc">
+                                <apex:outputText value="{!incentiveDescription}" />
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:actionStatus id="mySave">
+                            <apex:facet name="start">
+                                <apex:commandbutton value="{!$Label.Offline_Acquisition_Save_and_take_payment_button}" action="{!saveAndTakePayment}" disabled="true" status="mySave"/>
+                            </apex:facet>
+                            <apex:facet name="stop">
+                                <apex:commandbutton value="{!$Label.Offline_Acquisition_Save_and_take_payment_button}" action="{!saveAndTakePayment}" disabled="false" reRender="oapForm"  status="mySave"/>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+                <!-- End Digital ONly  -->
+
+                <!-- PREMIUM -->
+                <apex:pageBlock mode="edit" rendered="{!$CurrentPage.parameters.selectedProduct == 'Premium'}" id="premiumPB">
+                    <apex:pageMessages id="premiumErrors" escape="false"/>
+                    <apex:pageBlockSection id="subscriptionProduct" title="Details of the subscription product" columns="1">
+                         <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Subscription Duration" />
+                            <apex:outputPanel styleClass="requiredInput" layout="block">
+                                <apex:actionRegion >
+                                   <apex:selectRadio styleClass="customRadio" value="{!subscriptionType}">
+                                        <apex:selectOptions value="{!lstSubscriptionTypes}"/>
+                                        <apex:actionSupport event="onchange" rerender="subscriptionProduct, subscriptionProductDetails, startDatesId, chequeSectionId, premiumErrors,topErrors" action="{!selectSubscription}" status="premiumStatus"/>
+                                    </apex:selectRadio>
+                                </apex:actionRegion>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="2" id="subscriptionProductDetails"  >
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Payment Type" />
+                            <apex:outputPanel styleClass="requiredInput" layout="block" id="premiumPaymentType">
+                                <apex:actionRegion >
+                                    <apex:selectRadio styleClass="customRadio" value="{!paymentType}">
+                                        <apex:selectOptions value="{!paymentOptionsList}"/>
+                                        <apex:actionSupport event="onchange" rerender="subscriptionProduct, subscriptionProductDetails, startDatesId, chequeSectionId, premiumErrors" action="{!populateFrequencies}" status="premiumStatus"/>
+                                    </apex:selectRadio>
+                                </apex:actionRegion>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+
+                        <apex:pageBlockSectionItem rendered="{!NOT(ISNULL(lstFrequencies))}">
+                            <apex:outputLabel value="Payment Frequency" for="freq"/>
+                            <apex:outputPanel id="premiumPaymentFreq">
+                                <apex:actionRegion >
+                                    <apex:selectRadio styleClass="customRadio" value="{!paymentFrequency}" id="freq">
+                                        <apex:selectOptions value="{!lstFrequencies}"/>
+                                    </apex:selectRadio>
+                                </apex:actionRegion>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                        <apex:outputText value="" rendered="{!ISNULL(lstFrequencies)}" />
+
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Incentives" />
+                            <apex:outputPanel styleClass="requiredInput" layout="block" id="incentivesSelecPremium">
+                                <apex:outputText value="No Incentives available" rendered="{!NOT(bRenderIncentives)}" />
+                                <apex:actionRegion >
+                                    <apex:selectList size="1" value="{!selectedIncentive}" rendered="{!bRenderIncentives}">
+                                         <apex:selectOptions value="{!lstActiveIncentives}" />
+                                         <apex:actionSupport event="onchange" rerender="incentiveDescPremium, premiumErrors" status="myStatus"/>
+                                     </apex:selectList>
+                                 </apex:actionRegion>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+
+                        <apex:pageBlockSectionItem rendered="{!bRenderIncentives}">
+                            <apex:outputLabel value="Incentive Description" />
+                            <apex:outputPanel styleClass="requiredInput" layout="block" id="incentiveDescPremium">
+                                <apex:outputText value="{!incentiveDescription}" />
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+
+                    <apex:pageBlockSection id="startDatesId" title="Select Start Dates" columns="2">
+                        <apex:pageBlockSectionItem >
+                           <apex:outputLabel value="Select Your Voucher Start Date" />
+                           <apex:outputPanel styleClass="requiredInput" layout="block">
+                              <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <apex:selectList size="1" value="{!PreferedStartDate}">
+                                    <apex:selectOptions value="{!PreferredStartDatesList}" />
+                                </apex:selectList>
+                           </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+
+                        <apex:pageBlockSectionItem rendered="{!AND(bIsContinuous, paymentType != 'Cheque')}">
+                           <apex:outputLabel value="Select Your Payment Start Date" />
+                           <apex:outputPanel styleClass="requiredInput" layout="block" id="paymentStartDateId">
+                              <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <apex:selectList size="1" value="{!preferedStartPaymentDate}">
+                                    <apex:selectOption itemValue="1" itemLabel="1" />
+                                    <apex:selectOption itemValue="15" itemLabel="15" />
+                                </apex:selectList>
+                           </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+
+                    <apex:actionRegion >
+                        <apex:pageBlockSection title="Select Delivery Options" columns="1">
+                            <apex:outputLink styleclass="button" value="/apex/SearchRetailers" target="_blank" id="retailerLink">Quick Search Retailers</apex:outputLink>
+                            <apex:pageBlockSectionItem >
+                                 <apex:outputLabel value="Select Delivery Option" for="radioOptions"/>
+                                 <apex:selectRadio id="radioOptions" value="{!SelectedDelivery}" required="true" styleClass="customRadio">
+                                     <apex:SelectOptions value="{!lstDeliveryOptions}"></apex:SelectOptions>
+                                     <apex:actionsupport event="onchange" rerender="RetailerResults,ShowSelectedRetailerID,ShowSelectedRetailer, premiumErrors" status="RefreshDelivery" />
+                                 </apex:selectRadio>
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                    </apex:actionRegion>
+
+                    <!-- Start HND -->
+                    <apex:outputPanel id="ShowSelectedRetailerID" >
+                        <apex:actionRegion >
+                            <apex:pageBlockSection title="Select Retailer By ID" columns="2" rendered="{!SelectedDelivery == 'HND'}">
+                                <apex:pageBlockSectionItem rendered="{!$CurrentPage.parameters.OrderMethod=='Outbound'}">
+                                    <apex:outputLabel value="Retailer ID" for="RetailerID"/>
+                                    <apex:outputPanel >
+                                        <apex:inputText id="RetailerID" title="Retailer ID"  value="{!retailerID}" />
+                                        &nbsp;<apex:commandButton action="{!selectRetailerByID}" value="Select" rerender="ShowSelectedRetailer" status="retrieveretailersById"/>
+                                        &nbsp;<apex:actionstatus id="retrieveretailersById" startText="Retrieving retailers please wait...." />
+                                    </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                            </apex:pageBlockSection>
+                        </apex:actionRegion>
+                    </apex:outputPanel>
+
+                    <apex:outputPanel id="RetailerResults">
+                        <apex:actionRegion >
+                            <apex:pageBlockSection id="RetailerTable" columns="2" rendered="{!SelectedDelivery == 'HND'}">
+
+                                <apex:pageBlockSectionItem >
+                                     <apex:outputLabel styleclass="BoldOutputLabels" value="Search Retailer By Post Code" for="PostcodeRetailSearch"/>
+                                     <apex:outputPanel >
+                                        <apex:inputText id="PostcodeRetailSearch" value="{!PostcodeRetailSearch}" />
+                                        &nbsp;<apex:commandButton action="{!RetrieveAllRetailers}" value="Retrieve Retailers" rerender="OutputRetailers, OutputRetailers, premiumErrors" status="retrieveretailers"/>
+                                        &nbsp;<apex:actionstatus id="retrieveretailers" startText="Retrieving retailers please wait...." />
+                                    </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+
+                            </apex:pageBlockSection>
+                        </apex:actionRegion>
+                        <apex:outputPanel layout="block" id="OutputRetailers" >
+                            <apex:pageBlockSection columns="1" rendered="{!displayRetailerResults}">
+                                <!-- Returns list of retailers -->
+                                    <apex:outputPanel layout="block" rendered="{!DisplayRetailers}" >
+                                        <apex:pageBlockTable value="{!AllActiveRetailers}" var="Retailers">
+                                                <apex:column headerValue="Name" title="Name" value="{!Retailers.Retailer.Name}"/>
+                                                <apex:column headerValue="Address" title="Address" value="{!Retailers.Retailer.BillingStreet} {!Retailers.Retailer.BillingCity} {!Retailers.Retailer.BillingPostalCode}"/>
+                                                <apex:column headerValue="Ret Multi" title="Ret Multi" value="{!Retailers.Retailer.Retmulti__c}"/>
+                                                <apex:column headerValue="Sub Count" title="Sub Count" value="{!Retailers.ValidSubsCount}"/>
+                                                <apex:column headerValue="Select" title="Select" >
+                                                <!-- actionRegion dont work correctly if you have inputfields outside the region that have required="true" and no value has been entered, because when the page is returns it checks that no value is entered
+                                                adding immediate="true" forces the page to return with no errors
+                                                 -->
+                                                    <apex:commandLink action="{!selectRetailer}"  value="Select" immediate="true" rerender="ShowSelectedRetailer, premiumErrors">
+                                                        <apex:param name="SelectedRetailer" value="{!Retailers.Retailer.ID}" assignTo="{!SelectedRetailer}" />
+                                                    </apex:commandLink>
+                                                </apex:column>
+
+                                        </apex:pageBlockTable>
+                                    </apex:outputPanel>
+                            </apex:pageBlockSection>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    <apex:outputPanel id="ShowSelectedRetailer" >
+                        <apex:outputLabel styleclass="BoldOutputLabels" value="Selected Retailer  -  {!SelectedRetailerName} - {!retailerPostalCode}" rendered="{!AND(SelectedDelivery == 'HND', displayRetailerResults)}" />
+                     </apex:outputPanel>
+                    <!-- End HND  -->
+
+                    <!-- Offers -->
+                    <apex:pageBlockSection title="Subscription Offers" rendered="{!AND($CurrentPage.parameters.selectedProduct == 'Premium', displayOfferSection)}" columns="1">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel style="padding: 2px 0px 20px 33px;" value="Confirmation Offer Required:"></apex:outputLabel>
+                            <apex:outputPanel >
+                                <apex:actionRegion >
+                                <apex:selectRadio style="margin-left: 127px" value="{!selectedOfferOptions}" styleClass="customRadio">
+                                    <apex:selectOptions value="{!OfferOptions}" />
+                                    <apex:actionSupport event="onchange" rerender="premiumPB" status="mySavePremium" action="{!CheckSelectedOffer}"/>
+                                </apex:selectRadio>
+                                </apex:actionRegion>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+
+                    <!-- Cheques -->
+                    <apex:outputPanel id="chequeSectionId">
+                        <apex:pageBlockSection id="pbsectionId" columns="1" title="Cheque Payment Details" rendered="{!paymentType == 'Cheque'}">
+                               <h3 class="formSubHead">Create a new cheque batch or select an existing batch</h3><span class="RedFont">*</span>
+                               <apex:outputPanel id="outpanelId" styleclass="labelCol" >
+                                   <apex:outputLabel style="padding: 2px 20px 20px 33px;" value="Create new batch"></apex:outputLabel>
+                                   <apex:inputcheckBox id="batchcheckId" style="align: left;width: 100px;" value="{!CreateNewBatch}" onclick="makeReadonly(this,'{!$Component.oapForm.premiumPB.pbsectionId.dropdownId}')"/>
+                                </apex:outputPanel>
+
+                                <apex:outputLabel style="padding-left: 73px;font-size: 12pt" styleclass="ORStatement" value="OR"></apex:outputLabel>
+
+                                <apex:outputPanel id="selectoptionPanelId" styleclass="labelCol" >
+                                    <apex:outputLabel style="padding: 2px 20px 20px 33px;" value="Select existing batch:"></apex:outputLabel>
+                                    <apex:selectList id="dropdownId" styleclass="ThisCombo" style="margin-left: 127px" size="1" value="{!ChequeBatchSelected}" styleClass="paymentOpt" onclick="makeOptionReadonly(this,'{!$Component.oapForm.premiumPB.pbsectionId.batchcheckId}')">
+                                        <apex:selectOptions value="{!ChequeBatchOptions}" />
+                                    </apex:selectList>
+                                </apex:outputpanel>
+
+                                <apex:inputField value="{!cheque.Name_on_Cheque__c}" required="true" />
+                                <apex:inputField value="{!cheque.Account_Number__c}" required="true" />
+                                <apex:inputField value="{!cheque.Sort_Code__c}" required="true" />
+                                <apex:inputField value="{!cheque.Ref_Number_on_Cheque__c}" required="true" />
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                    <br/>
+
+                    <apex:pageBlockButtons id="blockButtons" location="bottom">
+                        <apex:actionStatus id="mySavePremium">
+                             <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:commandbutton value="{!saveBtnName}" action="{!saveAndTakePayment}" disabled="true" status="mySavePremium"/>
+                                    <apex:image value="{!$Resource.Loading_Gif}" /> Processing...
+                                </apex:outputPanel>
+                             </apex:facet>
+                             <apex:facet name="stop">
+                                <apex:commandbutton value="{!saveBtnName}" action="{!saveAndTakePayment}" disabled="false" rerender="oapForm" status="mySavePremium" />
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+            </apex:outputPanel>
+        </apex:form>
+    </apex:outputPanel>
+</apex:page>

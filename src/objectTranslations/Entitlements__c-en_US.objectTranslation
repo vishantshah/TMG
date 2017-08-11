@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Entitlements</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Entitlements</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active Entitlement Value --></label>
+        <name>Active_Entitlement_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- InRenewal Entitlement Value --></label>
+        <name>InRenewal_Entitlement_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive Entitlement Value --></label>
+        <name>Inactive_Entitlement_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pending Entitlement value --></label>
+        <name>Pending_Entitlement_value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Option Product Type --></label>
+        <name>Pricing_Option_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recently Inactive Entitlement Value --></label>
+        <name>Recently_Inactive_Entitlement_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

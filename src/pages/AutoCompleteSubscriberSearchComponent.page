@@ -1,0 +1,167 @@
+<apex:page controller="AutoSubscriberSearchComponentController" showHeader="false">
+	<apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"/>
+	<apex:includeScript value="/support/console/29.0/integration.js"/>
+	<apex:stylesheet value="{!URLFOR($Resource.ConsoleComponentStyle, 'searchComponent.css')}"/>
+
+	<div class="searchComponentTitle">
+		<h2>{!$Label.AutoSearchSubscriberComponentTitle}</h2>
+	</div>
+	<div class="searchComponentDiv">
+		<form autocomplete="off">
+			<input type="text" id="search_text" size="50" maxlength="100" placeholder="{!$Label.AutoCompleteSearchPlaceHolder}" onkeyup="getRemoteSubscriber();" onblur="getRemoteSubscriber();"/>
+		</form>
+		<HR />
+		<div class="searchResults" id="searchResultsBody">
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		var globalId = '';
+		var globalName = '';
+		var maxIndex = 0;
+		var highlitedIndex = 0;
+		
+		//Event handler to auto focus on the search input field on the opening of the component.
+		var openComponent = function (result) {
+			$("input#search_text").focus();
+		};
+
+		sforce.console.onCustomConsoleComponentButtonClicked(openComponent);  
+		
+		//Overriding up, down and enter keys
+		document.onkeydown = checkKey;
+		function checkKey(e) {
+		
+		    e = e || window.event;
+			
+		    if (e.keyCode == '38') {
+				if (window.maxIndex > 0 && window.highlitedIndex > 0){
+					if (window.globalId != '' && window.globalName != '') {
+						$("#resultRow" + window.highlitedIndex).toggleClass('HighLitedSearchRow SearchRow');
+						highlitedIndex = window.highlitedIndex - 1;
+						$("#resultRow" + window.highlitedIndex).toggleClass('HighLitedSearchRow SearchRow');
+					}
+				}
+				return false;
+		    }
+		    else if (e.keyCode == '40') {
+		        if (window.maxIndex > 0 && window.maxIndex > window.highlitedIndex){
+					if (window.globalId != '' && window.globalName != '') {
+						$("#resultRow" + window.highlitedIndex).toggleClass('HighLitedSearchRow SearchRow');
+						highlitedIndex = window.highlitedIndex + 1;
+						$("#resultRow" + window.highlitedIndex).toggleClass('HighLitedSearchRow SearchRow');
+					}
+				}
+				return false;
+		    }
+		    else if (e.keyCode == '13') {
+		        if (window.globalId != '' && window.globalName != '') {
+		        	$("#resultLink" + window.highlitedIndex).trigger('click');
+				}
+				return false;
+		    }
+		}
+		
+		//Openning of the tabs.
+		function OpenPrimaryTab(id, tabname) {
+			//Open a new primary tab with the user profile in it.
+			sforce.console.openPrimaryTab(null, "/" + id, true, tabname, openSuccess, tabname);
+		}
+          
+		var openSuccess = function openSuccess(result) {
+			//Report whether opening the new tab was successful, if needed
+			if (result.success == false)
+			{
+			  alert("{!$Label.TabCantBeOpened}");
+			}
+			
+			//Minimize the component after opening
+			sforce.console.setCustomConsoleComponentWindowVisible(false);
+			return;
+		};
+		
+		/**
+		* Method that searches users, given a searchString, invoking the @RemoteAction method 
+		* in the controller.
+		*/
+		function getRemoteSubscriber() {
+			if (window.event.keyCode >= '48' || window.event.keyCode == '8' || window.event.keyCode == '46') {
+				var topic = $("input#search_text").val();
+				topic = topic.trim();
+				if (topic != "" && topic != null && topic.length >= 4) {
+					globalId = '';
+					globalName = '';
+					maxIndex = 0;
+					highlitedIndex = 0;
+					$("#searchResultsBody").empty();
+					$("#searchResultsBody").append("<div class='searchError'>{!$Label.AutoSearchSearchingLabel}</div>");
+					//Invokes the @RemoteAction method
+					Visualforce.remoting.Manager.invokeAction(
+					'{!$RemoteAction.AutoSubscriberSearchComponentController.doAutoCompleteSearch}',
+						topic, 
+						//Define callback function
+						function(result, event){
+							//If the method executed correctly, fill the results table Body.
+							if (event.status) {
+								//Make sure the search results display the last search input
+								if (topic != $("input#search_text").val().trim())
+								{
+									return;
+								}
+								if (result != null) {
+									$("#searchResultsBody").empty();
+									var i = 0;
+									$.each(result, function( key, value ) {
+											var templateText = "";
+											if (i == 0) {
+												globalId = value.Id;
+												globalName = value.Name;
+												highlitedIndex = i;
+												templateText = "<div id='resultRow" + i + "' class='HighLitedSearchRow'>";
+											}
+											else {
+												templateText = "<div id='resultRow" + i + "' class='SearchRow'>";
+											}
+											templateText = templateText + "<div class='searchUserDetails'><div class='searchUserDetailsLine'><table><tr>";
+											templateText = templateText + "<td><img src='" + value.TMG_Model_Score_Img__c + "' width='30' height='25'/></td>";
+											templateText = templateText + "<td style='width:130px;'><a href='#' id='resultLink" + i + "' onClick='OpenPrimaryTab(\"" + value.Id + "\",\"" + value.Name + "\");return false;'>" + value.Name + "</a></td>";
+											templateText = templateText + "<td style='width:130px;'>" + value.RecordType.Name + "</td>";
+											templateText = templateText + "<td style='width:60px;'>" + value.PersonMailingPostalCode + "</td>";
+											templateText = templateText + "<td style='width:60px;'>" + value.Subscriber_Number_static__c + "</td>";
+											templateText = templateText + "<td style='width:200px;'>" + value.PersonEmail + "</td>";
+											templateText = templateText + "<td style='width:100px;'>" + value.PersonHomePhone + "</td>";
+											templateText = templateText + "</tr></table></div>";
+											//Append row to the table
+											$("#searchResultsBody").append(templateText);
+											i++;
+										}
+									);
+									maxIndex = i - 1;
+								}
+								else {
+									//Reset variables and show message for no results
+									globalId = '';
+									globalName = '';
+									maxIndex = 0;
+									highlitedIndex = 0;
+									$("#searchResultsBody").empty();
+									$("#searchResultsBody").append("<div class='searchError'>{!$Label.AutoSearchSubscriberNoResults}</div>");
+								}
+							}
+							else {
+								//Reset variable and display error message
+								globalId = '';
+								globalName = '';
+								maxIndex = 0;
+								highlitedIndex = 0;
+								$("#searchResultsBody").empty();
+								$("#searchResultsBody").append("<div class='searchError'>{!$Label.UnknownError}</div>");
+							}
+						}, 
+						{escape: true}
+					);
+				}
+			}
+		}
+	</script>
+</apex:page>

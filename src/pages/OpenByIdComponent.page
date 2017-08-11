@@ -1,0 +1,111 @@
+<apex:page controller="OpenByIdComponentController">
+	<apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"/>
+	<apex:includeScript value="/support/console/29.0/integration.js"/>
+	<apex:stylesheet value="{!URLFOR($Resource.ConsoleComponentStyle, 'searchComponent.css')}"/>
+	
+	<div class="searchComponentTitle">
+		<h2>{!$Label.OpenByIdComponentTitle}</h2>
+	</div>
+	
+	<div class="searchComponentDiv">
+		<form autocomplete="on">
+			<input type="text" id="search_text" size="50" maxlength="20" placeholder="{!$Label.OpenByIdPlaceHolder}"/>
+			<input type="button" id="makeSearch" value="{!$Label.OpenButton}" onclick="openByIdRemote();"/>
+		</form>
+		<HR />
+		<div class="searchResults" id="searchResultsBody">
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		globalCaseNumber = '';
+		globalAccountName = '';
+		//Override the enter key functionality triggering the "makeSearch" button click event.
+		$('input').bind('keypress',
+			function (event){
+				if (event.keyCode == 13){
+					$("#makeSearch").trigger('click');
+					return false;
+				}
+			}
+		);
+		
+		//Event handler to auto focus on the search input field on the opening of the component.
+		var openComponent = function (result) {
+			$("input#search_text").focus();
+		};
+		sforce.console.onCustomConsoleComponentButtonClicked(openComponent);  
+		
+		//Openning of the tabs.
+		function OpenPrimaryTab(id, tabname) {
+			//Open a new primary tab with the user profile in it.
+			sforce.console.openPrimaryTab(null, "/" + id, true, tabname, openSuccess, tabname);
+		}
+          
+		var openSuccess = function openSuccess(result) {
+			//Report whether opening the new tab was successful, if needed
+			if (result.success == false)
+			{
+				sforce.console.focusPrimaryTabByName(window.globalAccountName);
+			}
+			
+			//Minimize the component after opening
+			sforce.console.setCustomConsoleComponentWindowVisible(false);
+			return;
+		};
+		
+		function generateAndOpenConsoleURL(accountId, caseId) {
+			sforce.console.generateConsoleUrl(['/' + accountId, '/' + caseId], openConsoleUrl);
+		}
+		var openConsoleUrl = function showConsoleUrl(result) {
+			sforce.console.openConsoleUrl(null, result.consoleUrl, true, [window.globalAccountName, window.globalCaseNumber], [window.globalAccountName, window.globalCaseNumber]);
+		}
+		
+		/**
+		* Method that searches users, given a searchString, invoking the @RemoteAction method 
+		* in the controller.
+		*/
+		function openByIdRemote() {
+			var topic = $("input#search_text").val();
+			topic = topic.trim();
+			if (topic != "" && topic != null && topic.length >= 3) {
+				//Invokes the @RemoteAction method
+				Visualforce.remoting.Manager.invokeAction(
+				'{!$RemoteAction.OpenByIdComponentController.doOpenById}',
+					topic, 
+					//Define callback function
+					function(result, event){
+						//If the method executed correctly, fill the results table Body.
+						if (event.status) {
+							if (result != null) {
+								if (result.accountId == null) {
+									globalAccountName = result.resultName;
+									OpenPrimaryTab(result.resultId, result.resultName);
+								}
+								else {
+									globalCaseNumber = result.resultName;
+									globalAccountName = result.accountName;
+									
+									generateAndOpenConsoleURL(result.accountId, result.resultId);
+								}
+								$("#searchResultsBody").empty();
+							}
+							else {
+								//Show error
+								$("#searchResultsBody").empty();
+								$("#searchResultsBody").append("<div class='searchError'>{!$Label.AutoSearchSubscriberNoResults}</div>");
+							}
+						}
+						else {
+							//Show error
+							alert(event.message + " " + event.where);
+							$("#searchResultsBody").empty();
+							$("#searchResultsBody").append("<div class='searchError'>{!$Label.UnknownError}</div>");
+						}
+					}, 
+					{escape: true}
+				);
+			}
+		}
+	</script>
+</apex:page>

@@ -1,0 +1,200 @@
+<apex:page id="pgMidTermDiscounts" tabstyle="Account" controller="Zuora_ManageMidTermDiscountsController">
+<script>
+
+    function isDecimalNumber(evt) {
+        var charCode = (event.which) ? event.which : event.keyCode;
+         if (charCode != 46 && charCode > 31 
+           && (charCode < 48 || charCode > 57))
+            return false;
+
+         if(event.target.value.indexOf('.') >=0 && charCode == 46)
+            return false;
+
+         return true;
+    }
+
+    function isWholeNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+    function DisableButton() {
+         var btn = document.getElementById("pgMidTermDiscounts:pgForm:pbMain:pgMainSectionOfferCode:pgButtonsSection:pgButtonSave");
+         btn.disabled = true;
+     }
+    	 
+     function EnableButton() {
+         var btn = document.getElementById("pgMidTermDiscounts:pgForm:pbMain:pgMainSectionOfferCode:pgButtonsSection:pgButtonSave");
+         btn.disabled = false;
+     }
+</script>
+
+<apex:sectionHeader title="Quote" subtitle="Manage Mid Term Discounts"/>
+<apex:form id="pgForm">
+	<apex:actionFunction name="goToSubscriptionPage" action="{!goToSubscriptionPage}" immediate="true" />
+	<apex:actionFunction name="goToHomePage" action="{!goToHomePage}" immediate="true"/>
+	<apex:actionFunction name="stayOnPage" action="{!stayOnPage}" immediate="true"/>
+	<zqu:Notification options="{!notificationOptions}" id="pnlNotification"/>
+	<zqu:StatusModal ID="statusModalVar" statusMessage="Please wait while page loads..."/>
+	<apex:actionStatus id="AjaxStatus" onstart="javascript:displayStatusModal();" onstop="javascript:closeStatusModal();"></apex:actionStatus>
+
+	<apex:pageBlock id="pbMain" >
+        <apex:pageBlockSection id="pgMainSectionQuoteDetails" title="{!$Label.Mid_Term_Discount_Details_Label}" columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:outputlabel value="{!$Label.Mid_Term_Discount_Account_Header}"/>
+                <apex:outputlink value="/{!currentSubscriptionObj.Zuora__Account__c}" id="accountLink">{!currentSubscriptionObj.Zuora__Account__r.Name}</apex:outputLink>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!IsRenderMidTermReason}">
+                <apex:outputlabel value="{!$Label.Mid_Term_Discount_Reason_Label}"/>
+                <apex:outputpanel >
+	                <div class="requiredInput">
+	                   <div class="requiredBlock"></div>
+	                   <apex:inputfield value="{!quoteObj.Mid_term_Discount_Reason__c}"/>
+	                </div>
+                </apex:outputpanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!PossibleEffectiveDates.size==1}">
+            		<apex:pageBlockSectionItem />
+           	 		<apex:outputLabel style="font-weight:bold;color:red" value="{!$Label.Mid_Term_Discount_No_More_Discount_Can_Be_Applied_Error_Message}"/>
+           	</apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!PossibleEffectiveDates.size>1}">
+                <apex:outputlabel value="{!$Label.Mid_Term_Discount_Effective_Date_Label}"/>
+                <apex:outputpanel id="pnlEffectiveDate">
+		                <div class="requiredInput">
+		                   <div class="requiredBlock"></div>
+	                			<apex:SelectList Value="{!selectedEffectiveDate}" multiselect="false" size="1">
+	                				<apex:actionSupport event="onchange" action="{!stayOnPage}" reRender="pnlNoPeriods"/>
+				        			<apex:selectOptions Value="{!PossibleEffectiveDates}"/>
+				        		</apex:SelectList>
+	                	</div>
+                </apex:outputpanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!PossibleEffectiveDates.size>1}">
+                <apex:outputlabel value="{!$Label.Mid_Term_Number_of_Periods_Label}"/>
+                <apex:outputpanel id="pnlNoPeriods" >
+	                <div class="requiredInput">
+	                   <div class="requiredBlock"></div>
+			                <apex:SelectList Value="{!selectedNumberOfPeriods}" multiselect="false" size="1">
+			        			<apex:selectOptions Value="{!NumberOfPeriods}"/>
+			        		</apex:SelectList>
+			        </div>
+			    </apex:outputpanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!PossibleEffectiveDates.size>1}">
+        		<apex:outputlabel value="{!$Label.Manage_Mid_Term_Discounts_Discount_Amount_Label}"/>
+        		<apex:outputpanel >
+	                <div class="requiredInput">
+	                   <div class="requiredBlock"></div>
+        					<apex:inputText value="{!discountAmount}" onkeypress="return isDecimalNumber(event)"/>
+        			</div>
+        		</apex:outputpanel>
+        	</apex:pageBlockSectionItem>
+        	<apex:pageBlockSectionItem rendered="{!PossibleEffectiveDates.size>1}">
+        		<apex:outputPanel >
+	        		<center>
+	        			<apex:commandButton value="{!$Label.Mid_Term_Add_Discount_Button_Label}" action="{!addNewDiscount}" rerender="pgAddedDiscounts,pgBillingPreviewSection,pnlNotification,pgMainSectionQuoteDetails,pnlEffectiveDate"/>
+	        		</center>
+        		</apex:outputPanel>
+        	</apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection id="pgAddedDiscounts" title="{!$Label.Mid_Term_Added_Discounts_Section_Header}" columns="1" rendered="{!OR(PossibleEffectiveDates.size>1,lstNewMidTermDiscounts.size>0)}">
+        	<apex:outputPanel rendered="{!lstNewMidTermDiscounts.size==0}">
+        		<center>
+        			<apex:outputLabel value="{!$Label.Mid_Term_Discount_No_Discounts_Added_Error_Message}"/>
+        		</center>
+        	</apex:outputPanel>
+        	
+        	<apex:outputPanel rendered="{!lstNewMidTermDiscounts.size>0}">
+        		<center>
+        			<apex:pageblockTable value="{!lstNewMidTermDiscounts}" var="discount" columnsWidth="50%,22.5%,22.5%,5%" style="width:50%;">
+        				<apex:column headerValue="{!$Label.Mid_Term_Discount_Effective_Date_Column_Header}">
+        					<apex:outputText value="{0, date, dd/MM/YYYY}">
+                            	<apex:param value="{!discount.effectiveDate}" /> 
+                        	</apex:outputText>
+        				</apex:column>
+        				<apex:column headerValue="{!$Label.Mid_Term_Discount_Number_of_Periods_Column_Header}">
+        					{!discount.numberOfPeriod}
+        				</apex:column>
+        				<apex:column headerValue="{!$Label.Mid_Term_Discount_Discount_Amount_Column_Header}">
+        					<apex:outputText value="{0, number, £ #,###,###,###,###,###.##}"  id="TotalServiceId">
+                            	<apex:param value="{!discount.discountAmount}"/>
+                       		</apex:outputText>
+        				</apex:column>
+        				<apex:column >	
+        					<apex:commandbutton action="{!removeNewDiscount}" rerender="pgAddedDiscounts,pgBillingPreviewSection,pnlEffectiveDate,pnlNoPeriods,pgMainSectionQuoteDetails" image="{!URLFOR($Resource.DeleteButton)}" style="height:20px;width:20px;border-width:0px;cursor:pointer;" onclick="if(!confirm('{!$Label.Mid_Term_Discount_Remove_Discount_Confirmation_Message}')){return false;}">
+        						<apex:param name="deleteDiscount"
+				                value="true"
+				                assignTo="{!discount.isDelete}"/>
+        					</apex:commandbutton>
+        				</apex:column>s
+        			</apex:pageblockTable>
+        		</center>
+        	</apex:outputPanel>
+        </apex:pageBlockSection>
+       	
+       	<apex:pageBlockSection id="pgBillingPreviewSection" title="{!$Label.Mid_Term_Discount_Billing_Preview_Section_Header}" columns="1">
+       		<apex:outputPanel >
+       			<center>
+		       		<apex:pageBlockTable value="{!lstInvoiceItems}" var="invoiceItem" columnsWidth="10%,45%,45%" style="width:70%;" rendered="{!lstInvoiceItems.size>0}">
+		                    <apex:column headerValue="#" value="{!invoiceItem.InvoiceItemIndex}" style="{!IF(OR(invoiceItem.isNewDiscountApplied,invoiceItem.isOldDiscountApplied),'background-color:#F2F5A9;', '')}"/>
+		                    <apex:column headerValue="{!$Label.Mid_Term_Discount_Billing_Preview_Date_Column_Header}" style="{!IF(OR(invoiceItem.isNewDiscountApplied,invoiceItem.isOldDiscountApplied),'background-color:#F2F5A9;', '')}">
+		                        <apex:outputText value="{0, date, dd/MM/YYYY}">
+		                            <apex:param value="{!invoiceItem.invoiceItemDate}" /> 
+		                        </apex:outputText>
+		                        <apex:facet name="footer">
+		                            <apex:outputText value="{!$Label.Offer_Search_Total_Label}" style="float: right;"/>
+		                        </apex:facet>
+		                    </apex:column>
+		                    <apex:column headerValue="{!$Label.Mid_Term_Discount_Billing_Preview_Amount_Column_Header}" style="{!IF(OR(invoiceItem.isNewDiscountApplied,invoiceItem.isOldDiscountApplied),'background-color:#F2F5A9;', '')}">
+		                        <apex:outputText value="{0, number, £ #,###,###,###,###,###.##}"  id="TotalServiceId">
+		                            <apex:param value="{!IF(invoiceItem.isNewDiscountApplied,invoiceItem.discountedInvoiceItemAmount,invoiceItem.invoiceItemAmount)}"/>
+		                        </apex:outputText>
+		                        
+		                        <apex:facet name="footer">
+		                               <apex:outputLabel value="{!$Label.Offer_Search_Grand_Total_Label}"/>
+		                               <apex:outputText value="{0, number, £ #,###,###,###,###,##0.00}"  id="GrandTotalService">
+		                                   <apex:param value="{!totalInvoices}"/>
+		                               </apex:outputText>
+		                        </apex:facet>
+		                    </apex:column>
+		                    
+		                </apex:pageBlockTable>
+	                </center>
+                </apex:outputPanel>
+       	</apex:pageBlockSection>
+        
+        <center>
+        	<apex:commandButton value="{!$Label.Mid_Term_Discount_Save_Button_Label}" action="{!saveMidTermDiscounts}" rerender="pnlNotification,SaveInProgress" Status="SaveInProgress" rendered="{!OR(PossibleEffectiveDates.size>1,lstNewMidTermDiscounts.size>0)}"/>
+	        <apex:commandButton value="{!$Label.Mid_Term_Discount_Cancel_Button_Label}" action="{!cancel}"/>
+	        <apex:commandButton value="{!$Label.Mid_Term_Discount_Reset_Button_Label}" action="{!reset}" onclick="if(!confirm('{!$Label.Mid_Term_Discount_Reset_Discounts_Confirmation}')){return false;}" Status="ResetInProgress" rerender="ResetInProgress,pgAddedDiscounts,pgBillingPreviewSection,pnlEffectiveDate,pnlNoPeriods,pgMainSectionQuoteDetails"/>
+	        
+	        <apex:actionStatus stopText="" id="ResetInProgress">
+		    		<apex:facet name="start" >
+		    			<apex:outputPanel >
+	         			  	<center>
+		         			  	<apex:outputLabel value="{!$Label.Mid_Term_Discount_Reset_In_Progress_Label}"/>
+		         			   <apex:image url="{!$Resource.Loading_Gif}" height="40" width="40" />
+	         			   </center>   
+         			   </apex:outputPanel>                   
+        			</apex:facet>
+		    </apex:actionStatus>
+	        
+        	<apex:actionStatus stopText="" id="SaveInProgress">
+		    		<apex:facet name="start" >
+		    			<apex:outputPanel >
+	         			  	<center>
+		         			  	<apex:outputLabel value="{!$Label.Mid_Term_Discount_Saving_Status_Message}"/>
+		         			   <apex:image url="{!$Resource.Loading_Gif}" height="40" width="40" />
+	         			   </center>   
+         			   </apex:outputPanel>                   
+        			</apex:facet>
+		    </apex:actionStatus>
+        </center>
+    </apex:pageBlock> 
+</apex:form>   
+</apex:page>

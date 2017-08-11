@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>POC</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>POCs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Address Line 5 --></label>
+        <name>Address_Line_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Digital Monthly Price --></label>
+        <name>Digital_Monthly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Digital Yearly Price --></label>
+        <name>Digital_Yearly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExpiryDate --></label>
+        <name>ExpiryDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- FirstName --></label>
+        <name>FirstName__c</name>
+    </fields>
+    <fields>
+        <label><!-- HiddenPOCPrice --></label>
+        <name>HiddenPOCPrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- HomeTelephone --></label>
+        <name>HomeTelephone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Household_ID --></label>
+        <name>Household_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individual_ID --></label>
+        <name>Individual_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- LastName --></label>
+        <name>LastName__c</name>
+    </fields>
+    <fields>
+        <label><!-- ListReference --></label>
+        <name>ListReference__c</name>
+    </fields>
+    <fields>
+        <label><!-- MobileTelephone --></label>
+        <name>MobileTelephone__c</name>
+    </fields>
+    <fields>
+        <label><!-- OrderTakenWave --></label>
+        <name>OrderTakenWave__c</name>
+    </fields>
+    <fields>
+        <label><!-- POC_ID --></label>
+        <name>POC_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premium Weekly Price --></label>
+        <name>POC_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- PostalCode --></label>
+        <name>PostalCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Special Data --></label>
+        <name>Special_Data__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>State__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street Address Line 2 --></label>
+        <name>Street_Address_Line_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street --></label>
+        <name>Street__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscriber Number --></label>
+        <name>Subscriber_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- TCodeManagement --></label>
+        <name>TCodeManagement__c</name>
+        <relationshipLabel><!-- POCs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- WeekNumber --></label>
+        <name>WeekNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- WorkTelehone --></label>
+        <name>WorkTelehone__c</name>
+    </fields>
+    <fields>
+        <label><!-- title --></label>
+        <name>title__c</name>
+    </fields>
+    <layouts>
+        <layout>POC Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Tcode is required --></errorMessage>
+        <name>Tcode_is_required</name>
+    </validationRules>
+</CustomObjectTranslation>

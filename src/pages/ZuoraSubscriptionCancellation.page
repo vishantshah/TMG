@@ -1,0 +1,190 @@
+<apex:page standardController="Zuora__Subscription__c" extensions="ZuoraSubscriptionCancellationController" showHeader="true" id="PgCancel" sidebar="false" tabStyle="zqu__Quote__c">
+
+<script type="text/javascript">
+/*
+    Developer   Jayant Sande (Accenture)
+    Date        20/01/2016
+*/
+
+window.onload = function() { 
+     
+     var x = document.getElementById('PgCancel:Cancellation_Options:Cancellation_Options:listCancellation'); 
+     var countX = x.length?x.length:x.size;
+     //alert(x.length);
+    for(i=0;i<countX;i++)
+    {
+        //alert(x.options[i].value);
+        if(x.options[i].value=='Amendment')
+        {
+            x.remove(i);
+        }
+    }
+     
+} 
+
+/*end code Jayant*/
+
+</script>
+<apex:sectionHeader title="Choose Cancellation Option:" />
+<div class="bPageTitle ptBreadcrumb paddingAdjust">&nbsp;&laquo;&nbsp;<a class="bPageTitle ptBreadcrumb breadCrumb" href="/{!Zuora__Subscription__c.Id}">Back to Subscription: {!Zuora__Subscription__c.Name}</a></div>
+       
+<apex:outputPanel id="errorMessage">
+    <apex:pageMessages escape="false"/>
+</apex:outputPanel>
+
+<apex:form id="Cancellation_Options">
+    <apex:pageBlock id="Cancellation_Options" rendered="{!renderPageItems}">       
+        <apex:outputPanel style="padding-left:35%;">
+            <center>
+            <table cellspacing="10" cellpadding="0">
+                <tr>
+                    <td colspan="2">
+                        <b>
+                        <apex:outputText value="{!$Label.Subscription_outside_Grace_Period_Label}" rendered="{!NOT(isSubscriptionInGracePeriod)}"/>
+                        <apex:outputText value="{!$Label.Subscription_Within_Grace_Period_Label}" rendered="{!isSubscriptionInGracePeriod}"/>
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <apex:selectRadio value="{!SelectedItem}" layout="pageDirection" rendered="{!if(items.size>1,true,false)}">
+                            <apex:selectOptions value="{!items}"/>
+                            <apex:actionSupport event="onchange" action="{!changePromoBool}"/>
+                        </apex:selectRadio>
+                        <apex:outputLabel value="{!items[0].label}" rendered="{!if(items.size==1,true,false)}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <apex:outputPanel style="text-align:right;padding-left:6.5%;" id="applypanel" rendered="{!NOT(isSubscriptionInGracePeriod)}">
+                            <apex:actionRegion >
+                                <apex:inputText id="cancellationDate" value="{!datename}" size="10" onfocus="DatePicker.pickDate(false, this , false);" disabled="{!promoBool}"/>
+                            </apex:actionRegion>
+                            <apex:actionStatus id="stsPromotionApply">
+                                <apex:facet name="start">
+                                    <apex:commandButton value="Previewing..." disabled="true" />
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandButton id="btnApplyPromoCode" action="{!previewCancellation}" 
+                                    value="Preview" rerender="apply_promotion_page_block,errorMessage,Cancellation_Preview" 
+                                    disabled="{!promoBool}" status="stsPromotionApply" rendered="{!!subscriptionEligibleMigratedHardCancellation}">
+                                    </apex:commandButton>
+                                </apex:facet>
+                            </apex:actionStatus>
+                        </apex:outputPanel>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <apex:outputPanel style="padding-left:2%;" id="Cancellation_Preview" rendered="{!!subscriptionEligibleMigratedHardCancellation}">
+                            Refund amount preview:&nbsp;<apex:outputText value="£ "/><apex:outputText style="font-weight:800" value="{!previewedCancellationAmount}"/>
+                        </apex:outputPanel>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Select Cancellation Reason:</td>
+                    <td>
+                        <div class="requiredInput">
+                            <div class="requiredBlock"></div>
+                            <apex:actionfunction name="refreshControls" action="{!RefreshControls}" rerender="subCancellationReason"/>
+                            <apex:inputfield value="{!subscriptionObj.Cancellation_Reason__c}" id="listCancellation" onchange="refreshControls();"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Select Sub-Cancellation Reason:</td>
+                    <td>
+                        <apex:outputpanel id="subCancellationReason">
+                            <apex:outputpanel rendered="{!IsSubCancellationRequired}">
+                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                    <apex:inputfield value="{!subscriptionObj.Sub_Cancellation_Reason__c}"/>
+                                </div>
+                            </apex:outputpanel>
+                            <apex:outputpanel rendered="{!not(IsSubCancellationRequired)}">
+                                <apex:inputfield value="{!subscriptionObj.Sub_Cancellation_Reason__c}"/>
+                            </apex:outputpanel>
+                        </apex:outputpanel>
+                    </td>
+                </tr>
+            </table>
+            </center>
+        </apex:outputPanel>
+    </apex:pageBlock>
+
+    <apex:outputPanel style="padding-left:35%;" id="cstdscntpanel">
+        <center>
+        <apex:actionStatus id="cancelling">
+            <apex:facet name="start">
+                <apex:outputPanel >
+                    <apex:commandButton value="Processing..." disabled="true" />
+                </apex:outputPanel>
+            </apex:facet>
+            <apex:facet name="stop">
+                <apex:outputPanel >
+                    <apex:commandButton action="{!cancelSubscription}" value="Process Cancellation" disabled="{!selectBool}" rerender="errorMessage,Cancellation_Preview,tstpopup" status="cancelling" rendered="{!renderPageItems}"/>
+                </apex:outputPanel>
+            </apex:facet>
+        </apex:actionStatus>
+        </center>
+    </apex:outputPanel>
+
+    <apex:outputPanel id="tstpopup">
+        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+            <apex:outputPanel style="text-align:center;" styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                <apex:outputText value="{!popUpText}" escape="false"/><br/>
+                <apex:commandButton value="{!if(isSuccessfullCancellation,'Done','Back')}" action="{!goBack}" rerender="tstpopup"/>
+            </apex:outputPanel>
+    </apex:outputPanel>
+
+</apex:form>
+ 
+<style type="text/css">
+    span.dateInput span.dateFormat{
+        display:none;
+    }
+    .custPopup{
+        background-color: white;
+        border-width: 2px;
+        border-style: solid;
+        z-index: 9999;
+        left: 50%;
+        padding:10px;
+        position: absolute;
+        /* These are the 3 css properties you will need to change so the popup 
+        displays in the center of the screen. First set the width. Then set 
+        margin-left to negative half of what the width is. You can add 
+        the height property for a fixed size pop up if you want.*/
+        width: 500px;
+        margin-left: -250px;
+        top:100px;
+    }
+    .popupBackground{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+    }
+
+    .breadCrumb {
+        color: #015ba7;
+        text-decoration: none;
+    }
+
+    .breadCrumb:hover { 
+        text-decoration: none;
+    }
+
+    .paddingAdjust {
+        padding: 0 !important;
+    }
+
+</style>
+</apex:page>

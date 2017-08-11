@@ -1,0 +1,3338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ComposeGmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LogCall</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MailMerge</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SendEmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewAll</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Agent_To_Call_Back__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If ticked the agent that last updated the task must call back the customer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If ticked the agent that last updated the task must call back the customer</inlineHelpText>
+        <label>Agent To Call Back</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Await_Call_Back_Time__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Specify the number of minutes to wait before csp is allowed to call back</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify the number of minutes to wait before user is allowed to call back</inlineHelpText>
+        <label>Await Call Back Time</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DateCallBack__c</fullName>
+        <description>Specify the date when the csp is allowed to call back. This must be provided along with the hour and the minute to call back</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify the date when the user is allowed to call back. This must be provided along with the hour and the minute to call back</inlineHelpText>
+        <label>DateCallBack</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Days_since_created__c</fullName>
+        <externalId>false</externalId>
+        <formula>NOW() - CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Days since created</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Detail__c</fullName>
+        <externalId>false</externalId>
+        <label>Detail</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Reason_For_Call__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes to internal offers</fullName>
+                    <default>false</default>
+                    <label>Yes to internal offers</label>
+                </value>
+                <value>
+                    <fullName>No to internal offers</fullName>
+                    <default>false</default>
+                    <label>No to internal offers</label>
+                </value>
+                <value>
+                    <fullName>Already receives internal offers</fullName>
+                    <default>false</default>
+                    <label>Already receives internal offers</label>
+                </value>
+                <value>
+                    <fullName>General information</fullName>
+                    <default>false</default>
+                    <label>General information</label>
+                </value>
+                <value>
+                    <fullName>Feedback</fullName>
+                    <default>false</default>
+                    <label>Feedback</label>
+                </value>
+                <value>
+                    <fullName>TMG Subscriber Availability</fullName>
+                    <default>false</default>
+                    <label>TMG Subscriber Availability</label>
+                </value>
+                <value>
+                    <fullName>Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Did not offer activation</fullName>
+                    <default>false</default>
+                    <label>Did not offer activation</label>
+                </value>
+                <value>
+                    <fullName>Successful live mobile activation</fullName>
+                    <default>false</default>
+                    <label>Successful live mobile activation</label>
+                </value>
+                <value>
+                    <fullName>Successful live iPad activation</fullName>
+                    <default>false</default>
+                    <label>Successful live iPad activation</label>
+                </value>
+                <value>
+                    <fullName>Already activated (iPad)</fullName>
+                    <default>false</default>
+                    <label>Already activated (iPad)</label>
+                </value>
+                <value>
+                    <fullName>Already activated (smartphone)</fullName>
+                    <default>false</default>
+                    <label>Already activated (smartphone)</label>
+                </value>
+                <value>
+                    <fullName>Customer will activate in own time (smartphone)</fullName>
+                    <default>false</default>
+                    <label>Customer will activate in own time (smartphone)</label>
+                </value>
+                <value>
+                    <fullName>Customer will activate in own time (iPad)</fullName>
+                    <default>false</default>
+                    <label>Customer will activate in own time (iPad)</label>
+                </value>
+                <value>
+                    <fullName>Declined mobile activation</fullName>
+                    <default>false</default>
+                    <label>Declined mobile activation</label>
+                </value>
+                <value>
+                    <fullName>Declined iPad activation</fullName>
+                    <default>false</default>
+                    <label>Declined iPad activation</label>
+                </value>
+                <value>
+                    <fullName>Does not have iPad</fullName>
+                    <default>false</default>
+                    <label>Does not have iPad</label>
+                </value>
+                <value>
+                    <fullName>Does not have smartphone</fullName>
+                    <default>false</default>
+                    <label>Does not have smartphone</label>
+                </value>
+                <value>
+                    <fullName>Voucher Query</fullName>
+                    <default>false</default>
+                    <label>Voucher Query</label>
+                </value>
+                <value>
+                    <fullName>Change Of Newsagent</fullName>
+                    <default>false</default>
+                    <label>Change Of Newsagent</label>
+                </value>
+                <value>
+                    <fullName>Voucher Resend (missing/not received)</fullName>
+                    <default>false</default>
+                    <label>Voucher Resend (missing/not received)</label>
+                </value>
+                <value>
+                    <fullName>Change of voucher type</fullName>
+                    <default>false</default>
+                    <label>Change of voucher type</label>
+                </value>
+                <value>
+                    <fullName>CC Payment Query</fullName>
+                    <default>false</default>
+                    <label>CC Payment Query</label>
+                </value>
+                <value>
+                    <fullName>DD Payment Query</fullName>
+                    <default>false</default>
+                    <label>DD Payment Query</label>
+                </value>
+                <value>
+                    <fullName>DD Reinstatement</fullName>
+                    <default>false</default>
+                    <label>DD Reinstatement</label>
+                </value>
+                <value>
+                    <fullName>Amendment to bank details</fullName>
+                    <default>false</default>
+                    <label>Amendment to bank details</label>
+                </value>
+                <value>
+                    <fullName>Loyalty – Clubs</fullName>
+                    <default>false</default>
+                    <label>Loyalty – Clubs</label>
+                </value>
+                <value>
+                    <fullName>Loyalty – Offers</fullName>
+                    <default>false</default>
+                    <label>Loyalty – Offers</label>
+                </value>
+                <value>
+                    <fullName>Loyalty – Events</fullName>
+                    <default>false</default>
+                    <label>Loyalty – Events</label>
+                </value>
+                <value>
+                    <fullName>Loyalty - Response to Sub Mailing</fullName>
+                    <default>false</default>
+                    <label>Loyalty - Response to Sub Mailing</label>
+                </value>
+                <value>
+                    <fullName>Sub email offer</fullName>
+                    <default>false</default>
+                    <label>Sub email offer</label>
+                </value>
+                <value>
+                    <fullName>Sub letter offer</fullName>
+                    <default>false</default>
+                    <label>Sub letter offer</label>
+                </value>
+                <value>
+                    <fullName>Sub letter and email offer</fullName>
+                    <default>false</default>
+                    <label>Sub letter and email offer</label>
+                </value>
+                <value>
+                    <fullName>Subscriber Card - Plastic</fullName>
+                    <default>false</default>
+                    <label>Subscriber Card - Plastic</label>
+                </value>
+                <value>
+                    <fullName>iPad WT</fullName>
+                    <default>false</default>
+                    <label>iPad WT</label>
+                </value>
+                <value>
+                    <fullName>Google Currents</fullName>
+                    <default>false</default>
+                    <label>Google Currents</label>
+                </value>
+                <value>
+                    <fullName>Pictures</fullName>
+                    <default>false</default>
+                    <label>Pictures</label>
+                </value>
+                <value>
+                    <fullName>Subscriber app</fullName>
+                    <default>false</default>
+                    <label>Subscriber app</label>
+                </value>
+                <value>
+                    <fullName>Kindle &gt; General information</fullName>
+                    <default>false</default>
+                    <label>Kindle &gt; General information</label>
+                </value>
+                <value>
+                    <fullName>Kindle &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Kindle &gt; Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Windows 8 &gt; General information</fullName>
+                    <default>false</default>
+                    <label>Windows 8 &gt; General information</label>
+                </value>
+                <value>
+                    <fullName>Windows 8 &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Windows 8 &gt; Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Website &gt; General information</fullName>
+                    <default>false</default>
+                    <label>Website &gt; General information</label>
+                </value>
+                <value>
+                    <fullName>Website &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Website &gt; Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Blackberry &gt; General information</fullName>
+                    <default>false</default>
+                    <label>Blackberry &gt; General information</label>
+                </value>
+                <value>
+                    <fullName>Blackberry &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Blackberry &gt; Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Reason</fullName>
+                    <default>false</default>
+                    <label>Reason</label>
+                </value>
+                <value>
+                    <fullName>Request data source</fullName>
+                    <default>false</default>
+                    <label>Request data source</label>
+                </value>
+                <value>
+                    <fullName>Sales and Customer Experience</fullName>
+                    <default>false</default>
+                    <label>Sales and Customer Experience</label>
+                </value>
+                <value>
+                    <fullName>Digital Services</fullName>
+                    <default>false</default>
+                    <label>Digital Services</label>
+                </value>
+                <value>
+                    <fullName>Reader Relations</fullName>
+                    <default>false</default>
+                    <label>Reader Relations</label>
+                </value>
+                <value>
+                    <fullName>Weekly Telegraph</fullName>
+                    <default>false</default>
+                    <label>Weekly Telegraph</label>
+                </value>
+                <value>
+                    <fullName>Announcements</fullName>
+                    <default>false</default>
+                    <label>Announcements</label>
+                </value>
+                <value>
+                    <fullName>Outbound</fullName>
+                    <default>false</default>
+                    <label>Outbound</label>
+                </value>
+                <value>
+                    <fullName>Travel Guides &gt; General Information</fullName>
+                    <default>false</default>
+                    <label>Travel Guides &gt; General Information</label>
+                </value>
+                <value>
+                    <fullName>Travel Guides &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Travel Guides &gt; Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Print Subscription</fullName>
+                    <default>false</default>
+                    <label>Print Subscription</label>
+                </value>
+                <value>
+                    <fullName>Tablet+ Subscription</fullName>
+                    <default>false</default>
+                    <label>Tablet+ Subscription</label>
+                </value>
+                <value>
+                    <fullName>Website+ Subscription</fullName>
+                    <default>false</default>
+                    <label>Website+ Subscription</label>
+                </value>
+                <value>
+                    <fullName>Clearing App</fullName>
+                    <default>false</default>
+                    <label>Clearing App</label>
+                </value>
+                <value>
+                    <fullName>Website &gt; Feedback</fullName>
+                    <default>false</default>
+                    <label>Website &gt; Feedback</label>
+                </value>
+                <value>
+                    <fullName>Apple News</fullName>
+                    <default>false</default>
+                    <label>Apple News</label>
+                </value>
+                <value>
+                    <fullName>Call Attempt 1</fullName>
+                    <default>false</default>
+                    <label>Call Attempt 1</label>
+                </value>
+                <value>
+                    <fullName>Call Attempt 2</fullName>
+                    <default>false</default>
+                    <label>Call Attempt 2</label>
+                </value>
+                <value>
+                    <fullName>Call Attempt 3</fullName>
+                    <default>false</default>
+                    <label>Call Attempt 3</label>
+                </value>
+                <value>
+                    <fullName>Accepted</fullName>
+                    <default>false</default>
+                    <label>Accepted</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - iOS &gt; Feedback</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS &gt; Feedback</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - iOS &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS &gt; Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - iOS &gt; General information</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS &gt; General information</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android &gt; Feedback</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android &gt; Feedback</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android &gt; Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android &gt; General Information</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android &gt; General Information</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon &gt; Feedback</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon &gt; Feedback</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon &gt; Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon &gt; General information</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon &gt; General information</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - iOS &gt; General information</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - iOS &gt; General information</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - iOS &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - iOS &gt; Troubleshooting</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - Android &gt; General information</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - Android &gt; General information</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - Android &gt; Troubleshooting</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - Android &gt; Troubleshooting</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - Android</controllingFieldValue>
+                <controllingFieldValue>Kindle</controllingFieldValue>
+                <controllingFieldValue>Windows 8</controllingFieldValue>
+                <controllingFieldValue>Blackberry</controllingFieldValue>
+                <controllingFieldValue>Travel Guides</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS</controllingFieldValue>
+                <valueName>Feedback</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - Android</controllingFieldValue>
+                <valueName>Telegraph App - Android &gt; General information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - Android</controllingFieldValue>
+                <valueName>Telegraph App - Android &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Kindle</controllingFieldValue>
+                <valueName>Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Kindle</controllingFieldValue>
+                <valueName>Kindle &gt; General information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Kindle</controllingFieldValue>
+                <valueName>Kindle &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website</controllingFieldValue>
+                <valueName>Website &gt; General information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website</controllingFieldValue>
+                <valueName>Website &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website</controllingFieldValue>
+                <valueName>Website &gt; Feedback</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Windows 8</controllingFieldValue>
+                <valueName>Windows 8 &gt; General information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Windows 8</controllingFieldValue>
+                <valueName>Windows 8 &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Payment Issue</controllingFieldValue>
+                <valueName>CC Payment Query</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Payment Issue</controllingFieldValue>
+                <valueName>DD Payment Query</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Payment Issue</controllingFieldValue>
+                <valueName>DD Reinstatement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Payment Issue</controllingFieldValue>
+                <valueName>Amendment to bank details</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove from database</controllingFieldValue>
+                <valueName>Reason</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove from database</controllingFieldValue>
+                <valueName>Request data source</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon</controllingFieldValue>
+                <valueName>Newspaper Edition App - Amazon &gt; Feedback</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon</controllingFieldValue>
+                <valueName>Newspaper Edition App - Amazon &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon</controllingFieldValue>
+                <valueName>Newspaper Edition App - Amazon &gt; General information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital - Other</controllingFieldValue>
+                <valueName>iPad WT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital - Other</controllingFieldValue>
+                <valueName>Google Currents</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital - Other</controllingFieldValue>
+                <valueName>Pictures</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital - Other</controllingFieldValue>
+                <valueName>Subscriber app</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital - Other</controllingFieldValue>
+                <valueName>Clearing App</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital - Other</controllingFieldValue>
+                <valueName>Apple News</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Blackberry</controllingFieldValue>
+                <valueName>Blackberry &gt; General information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Blackberry</controllingFieldValue>
+                <valueName>Blackberry &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Department Transfer</controllingFieldValue>
+                <valueName>Sales and Customer Experience</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Department Transfer</controllingFieldValue>
+                <valueName>Digital Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Department Transfer</controllingFieldValue>
+                <valueName>Reader Relations</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Department Transfer</controllingFieldValue>
+                <valueName>Weekly Telegraph</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Department Transfer</controllingFieldValue>
+                <valueName>Announcements</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Department Transfer</controllingFieldValue>
+                <valueName>Outbound</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android</controllingFieldValue>
+                <valueName>Newspaper Edition App - Android &gt; Feedback</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android</controllingFieldValue>
+                <valueName>Newspaper Edition App - Android &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android</controllingFieldValue>
+                <valueName>Newspaper Edition App - Android &gt; General Information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Yes to internal offers</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>No to internal offers</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Already receives internal offers</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Did not offer activation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Successful live mobile activation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Successful live iPad activation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Already activated (iPad)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Already activated (smartphone)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Customer will activate in own time (smartphone)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Customer will activate in own time (iPad)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Declined mobile activation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Declined iPad activation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Does not have iPad</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Renewal</controllingFieldValue>
+                <valueName>Does not have smartphone</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers</controllingFieldValue>
+                <valueName>Voucher Query</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers</controllingFieldValue>
+                <valueName>Change Of Newsagent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers</controllingFieldValue>
+                <valueName>Voucher Resend (missing/not received)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Vouchers</controllingFieldValue>
+                <valueName>Change of voucher type</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cancellation</controllingFieldValue>
+                <valueName>Print Subscription</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cancellation</controllingFieldValue>
+                <valueName>Tablet+ Subscription</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cancellation</controllingFieldValue>
+                <valueName>Website+ Subscription</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Travel Guides</controllingFieldValue>
+                <valueName>Travel Guides &gt; General Information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Travel Guides</controllingFieldValue>
+                <valueName>Travel Guides &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital Payment failure</controllingFieldValue>
+                <valueName>Call Attempt 1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital Payment failure</controllingFieldValue>
+                <valueName>Call Attempt 2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital Payment failure</controllingFieldValue>
+                <valueName>Call Attempt 3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Surprise and Delight</controllingFieldValue>
+                <valueName>Accepted</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Surprise and Delight</controllingFieldValue>
+                <valueName>Rejected</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Loyalty</controllingFieldValue>
+                <valueName>Loyalty – Clubs</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Loyalty</controllingFieldValue>
+                <valueName>Loyalty – Offers</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Loyalty</controllingFieldValue>
+                <valueName>Loyalty – Events</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Loyalty</controllingFieldValue>
+                <valueName>Loyalty - Response to Sub Mailing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subscriber Card Request</controllingFieldValue>
+                <valueName>Subscriber Card - Plastic</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - iOS</controllingFieldValue>
+                <valueName>Telegraph App - iOS &gt; General information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - iOS</controllingFieldValue>
+                <valueName>Telegraph App - iOS &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS</controllingFieldValue>
+                <valueName>Newspaper Edition App - iOS &gt; Feedback</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS</controllingFieldValue>
+                <valueName>Newspaper Edition App - iOS &gt; Troubleshooting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS</controllingFieldValue>
+                <valueName>Newspaper Edition App - iOS &gt; General information</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Further_Detail_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Further Detail 2</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Further_Detail__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Comments</fullName>
+                    <default>false</default>
+                    <label>Comments</label>
+                </value>
+                <value>
+                    <fullName>Favourites</fullName>
+                    <default>false</default>
+                    <label>Favourites</label>
+                </value>
+                <value>
+                    <fullName>Galleries</fullName>
+                    <default>false</default>
+                    <label>Galleries</label>
+                </value>
+                <value>
+                    <fullName>Images</fullName>
+                    <default>false</default>
+                    <label>Images</label>
+                </value>
+                <value>
+                    <fullName>Live View</fullName>
+                    <default>false</default>
+                    <label>Live View</label>
+                </value>
+                <value>
+                    <fullName>Sharing</fullName>
+                    <default>false</default>
+                    <label>Sharing</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+                <value>
+                    <fullName>Puzzles</fullName>
+                    <default>false</default>
+                    <label>Puzzles</label>
+                </value>
+                <value>
+                    <fullName>Email change</fullName>
+                    <default>false</default>
+                    <label>Email change</label>
+                </value>
+                <value>
+                    <fullName>Reset password</fullName>
+                    <default>false</default>
+                    <label>Reset password</label>
+                </value>
+                <value>
+                    <fullName>Entitlement Issues</fullName>
+                    <default>false</default>
+                    <label>Entitlement Issues</label>
+                </value>
+                <value>
+                    <fullName>Remember Me &amp; Cookies</fullName>
+                    <default>false</default>
+                    <label>Remember Me &amp; Cookies</label>
+                </value>
+                <value>
+                    <fullName>Buy Edition</fullName>
+                    <default>false</default>
+                    <label>Buy Edition</label>
+                </value>
+                <value>
+                    <fullName>Cartoons</fullName>
+                    <default>false</default>
+                    <label>Cartoons</label>
+                </value>
+                <value>
+                    <fullName>Prize Crossword (Sat)</fullName>
+                    <default>false</default>
+                    <label>Prize Crossword (Sat)</label>
+                </value>
+                <value>
+                    <fullName>Non-receipt</fullName>
+                    <default>false</default>
+                    <label>Non-receipt</label>
+                </value>
+                <value>
+                    <fullName>Unsubscribe</fullName>
+                    <default>false</default>
+                    <label>Unsubscribe</label>
+                </value>
+                <value>
+                    <fullName>Moderation Policy</fullName>
+                    <default>false</default>
+                    <label>Moderation Policy</label>
+                </value>
+                <value>
+                    <fullName>Profile Issues</fullName>
+                    <default>false</default>
+                    <label>Profile Issues</label>
+                </value>
+                <value>
+                    <fullName>User Disputes</fullName>
+                    <default>false</default>
+                    <label>User Disputes</label>
+                </value>
+                <value>
+                    <fullName>Mobile Website</fullName>
+                    <default>false</default>
+                    <label>Mobile Website</label>
+                </value>
+                <value>
+                    <fullName>Browser Issues</fullName>
+                    <default>false</default>
+                    <label>Browser Issues</label>
+                </value>
+                <value>
+                    <fullName>Broken Links</fullName>
+                    <default>false</default>
+                    <label>Broken Links</label>
+                </value>
+                <value>
+                    <fullName>Navigation Speed</fullName>
+                    <default>false</default>
+                    <label>Navigation Speed</label>
+                </value>
+                <value>
+                    <fullName>Price Increase</fullName>
+                    <default>false</default>
+                    <label>Price Increase</label>
+                </value>
+                <value>
+                    <fullName>Free Trial</fullName>
+                    <default>false</default>
+                    <label>Free Trial</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Price Negotiation</fullName>
+                    <default>false</default>
+                    <label>Price Negotiation</label>
+                </value>
+                <value>
+                    <fullName>Through Service</fullName>
+                    <default>false</default>
+                    <label>Through Service</label>
+                </value>
+                <value>
+                    <fullName>Look and Feel</fullName>
+                    <default>false</default>
+                    <label>Look and Feel</label>
+                </value>
+                <value>
+                    <fullName>Ease of Use</fullName>
+                    <default>false</default>
+                    <label>Ease of Use</label>
+                </value>
+                <value>
+                    <fullName>Smartphone</fullName>
+                    <default>false</default>
+                    <label>Smartphone</label>
+                </value>
+                <value>
+                    <fullName>Advertising</fullName>
+                    <default>false</default>
+                    <label>Advertising</label>
+                </value>
+                <value>
+                    <fullName>Metered Mode</fullName>
+                    <default>false</default>
+                    <label>Metered Mode</label>
+                </value>
+                <value>
+                    <fullName>Download</fullName>
+                    <default>false</default>
+                    <label>Download</label>
+                </value>
+                <value>
+                    <fullName>Text Size</fullName>
+                    <default>false</default>
+                    <label>Text Size</label>
+                </value>
+                <value>
+                    <fullName>Missing Edition</fullName>
+                    <default>false</default>
+                    <label>Missing Edition</label>
+                </value>
+                <value>
+                    <fullName>Download Failure</fullName>
+                    <default>false</default>
+                    <label>Download Failure</label>
+                </value>
+                <value>
+                    <fullName>Slow Download</fullName>
+                    <default>false</default>
+                    <label>Slow Download</label>
+                </value>
+                <value>
+                    <fullName>Page Load</fullName>
+                    <default>false</default>
+                    <label>Page Load</label>
+                </value>
+                <value>
+                    <fullName>Scroll and Swipe</fullName>
+                    <default>false</default>
+                    <label>Scroll and Swipe</label>
+                </value>
+                <value>
+                    <fullName>Sale</fullName>
+                    <default>false</default>
+                    <label>Sale</label>
+                </value>
+                <value>
+                    <fullName>No Sale</fullName>
+                    <default>false</default>
+                    <label>No Sale</label>
+                </value>
+                <value>
+                    <fullName>Already Set Up</fullName>
+                    <default>false</default>
+                    <label>Already Set Up</label>
+                </value>
+                <value>
+                    <fullName>Content Quality</fullName>
+                    <default>false</default>
+                    <label>Content Quality</label>
+                </value>
+                <value>
+                    <fullName>Content Quantity</fullName>
+                    <default>false</default>
+                    <label>Content Quantity</label>
+                </value>
+                <value>
+                    <fullName>Content Updates</fullName>
+                    <default>false</default>
+                    <label>Content Updates</label>
+                </value>
+                <value>
+                    <fullName>Usability</fullName>
+                    <default>false</default>
+                    <label>Usability</label>
+                </value>
+                <value>
+                    <fullName>Navigation</fullName>
+                    <default>false</default>
+                    <label>Navigation</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>App Features</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; Misc</controllingFieldValue>
+                <valueName>Comments</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>App Features</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <valueName>Favourites</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>App Features</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <valueName>Galleries</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>App Features</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Windows 8 &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <valueName>Images</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>App Features</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <valueName>Live View</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>App Features</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</controllingFieldValue>
+                <valueName>Sharing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>App Features</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Windows 8 &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <valueName>Video</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Windows 8 &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <valueName>Cartoons</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>App Features</controllingFieldValue>
+                <controllingFieldValue>Against</controllingFieldValue>
+                <controllingFieldValue>For</controllingFieldValue>
+                <controllingFieldValue>Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <valueName>Text Size</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Against</controllingFieldValue>
+                <controllingFieldValue>For</controllingFieldValue>
+                <controllingFieldValue>Misc</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</controllingFieldValue>
+                <valueName>Look and Feel</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Against</controllingFieldValue>
+                <controllingFieldValue>For</controllingFieldValue>
+                <controllingFieldValue>Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</controllingFieldValue>
+                <valueName>Advertising</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Against</controllingFieldValue>
+                <controllingFieldValue>For</controllingFieldValue>
+                <controllingFieldValue>Misc</controllingFieldValue>
+                <valueName>Content Quality</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Against</controllingFieldValue>
+                <controllingFieldValue>For</controllingFieldValue>
+                <controllingFieldValue>Misc</controllingFieldValue>
+                <valueName>Content Quantity</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Against</controllingFieldValue>
+                <controllingFieldValue>For</controllingFieldValue>
+                <controllingFieldValue>Misc</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <valueName>Content Updates</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Against</controllingFieldValue>
+                <controllingFieldValue>For</controllingFieldValue>
+                <controllingFieldValue>Misc</controllingFieldValue>
+                <valueName>Usability</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Against</controllingFieldValue>
+                <controllingFieldValue>For</controllingFieldValue>
+                <controllingFieldValue>Misc</controllingFieldValue>
+                <valueName>Navigation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <valueName>Email change</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <valueName>Reset password</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <valueName>Entitlement Issues</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <valueName>Remember Me &amp; Cookies</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <valueName>Mobile Website</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <valueName>Browser Issues</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <valueName>Broken Links</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <valueName>Navigation Speed</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <valueName>Page Load</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</controllingFieldValue>
+                <valueName>Scroll and Swipe</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Download Issues</controllingFieldValue>
+                <valueName>Missing Edition</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Download Issues</controllingFieldValue>
+                <valueName>Download Failure</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Download Issues</controllingFieldValue>
+                <valueName>Slow Download</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Email Newsletters</controllingFieldValue>
+                <valueName>Non-receipt</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Email Newsletters</controllingFieldValue>
+                <valueName>Unsubscribe</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Moderation</controllingFieldValue>
+                <valueName>Moderation Policy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Moderation</controllingFieldValue>
+                <valueName>Profile Issues</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Moderation</controllingFieldValue>
+                <valueName>User Disputes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Windows 8 &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</controllingFieldValue>
+                <valueName>Puzzles</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Price</controllingFieldValue>
+                <valueName>Price Increase</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Price</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <valueName>Free Trial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Price</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subscriber retained</controllingFieldValue>
+                <valueName>Price Negotiation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Subscriber retained</controllingFieldValue>
+                <valueName>Through Service</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Telegraph Login</controllingFieldValue>
+                <valueName>Metered Mode</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</controllingFieldValue>
+                <valueName>Ease of Use</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Website &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</controllingFieldValue>
+                <valueName>Smartphone</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback &gt; Misc</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; For</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</controllingFieldValue>
+                <valueName>Download</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Success</controllingFieldValue>
+                <valueName>Sale</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Success</controllingFieldValue>
+                <valueName>No Sale</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Success</controllingFieldValue>
+                <valueName>Already Set Up</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Further_Detail__c</fullName>
+        <externalId>false</externalId>
+        <label>Further Detail</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Detail__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - iOS &gt; Feedback &gt; Against</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS &gt; Feedback &gt; Against</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - iOS &gt; Feedback &gt; For</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS &gt; Feedback &gt; For</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Telegraph Login</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Telegraph Login</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android &gt; Troubleshooting &gt; Telegraph Login</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android &gt; Troubleshooting &gt; Telegraph Login</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android &gt; Feedback &gt; Against</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android &gt; Feedback &gt; Against</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android &gt; Feedback &gt; Misc</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android &gt; Feedback &gt; Misc</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android &gt; Feedback &gt; For</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android &gt; Feedback &gt; For</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Telegraph Login</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Telegraph Login</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon &gt; Feedback &gt; For</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon &gt; Feedback &gt; For</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - iOS &gt; Troubleshooting &gt; App Features</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - iOS &gt; Troubleshooting &gt; App Features</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - Android &gt; Troubleshooting &gt; App Features</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - Android &gt; Troubleshooting &gt; App Features</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Against</fullName>
+                    <default>false</default>
+                    <label>Against</label>
+                </value>
+                <value>
+                    <fullName>For</fullName>
+                    <default>false</default>
+                    <label>For</label>
+                </value>
+                <value>
+                    <fullName>Misc</fullName>
+                    <default>false</default>
+                    <label>Misc</label>
+                </value>
+                <value>
+                    <fullName>Apple Subs Info</fullName>
+                    <default>false</default>
+                    <label>Apple Subs Info</label>
+                </value>
+                <value>
+                    <fullName>Download Instructions</fullName>
+                    <default>false</default>
+                    <label>Download Instructions</label>
+                </value>
+                <value>
+                    <fullName>Features &amp; Functionality</fullName>
+                    <default>false</default>
+                    <label>Features &amp; Functionality</label>
+                </value>
+                <value>
+                    <fullName>Telegraph Login</fullName>
+                    <default>false</default>
+                    <label>Telegraph Login</label>
+                </value>
+                <value>
+                    <fullName>Website &gt; Troubleshooting &gt; Telegraph Login</fullName>
+                    <default>false</default>
+                    <label>Website &gt; Troubleshooting &gt; Telegraph Login</label>
+                </value>
+                <value>
+                    <fullName>Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Download Issues</fullName>
+                    <default>false</default>
+                    <label>Download Issues</label>
+                </value>
+                <value>
+                    <fullName>Updates</fullName>
+                    <default>false</default>
+                    <label>Updates</label>
+                </value>
+                <value>
+                    <fullName>Amazon Subs Info</fullName>
+                    <default>false</default>
+                    <label>Amazon Subs Info</label>
+                </value>
+                <value>
+                    <fullName>TMG Subscriber</fullName>
+                    <default>false</default>
+                    <label>TMG Subscriber</label>
+                </value>
+                <value>
+                    <fullName>Availability</fullName>
+                    <default>false</default>
+                    <label>Availability</label>
+                </value>
+                <value>
+                    <fullName>Payment</fullName>
+                    <default>false</default>
+                    <label>Payment</label>
+                </value>
+                <value>
+                    <fullName>Benefits</fullName>
+                    <default>false</default>
+                    <label>Benefits</label>
+                </value>
+                <value>
+                    <fullName>Access</fullName>
+                    <default>false</default>
+                    <label>Access</label>
+                </value>
+                <value>
+                    <fullName>Free Trial</fullName>
+                    <default>false</default>
+                    <label>Free Trial</label>
+                </value>
+                <value>
+                    <fullName>Tablet App</fullName>
+                    <default>false</default>
+                    <label>Tablet App</label>
+                </value>
+                <value>
+                    <fullName>App Features</fullName>
+                    <default>false</default>
+                    <label>App Features</label>
+                </value>
+                <value>
+                    <fullName>Payment - Amazon</fullName>
+                    <default>false</default>
+                    <label>Payment - Amazon</label>
+                </value>
+                <value>
+                    <fullName>Privacy &amp; Cookies Policy</fullName>
+                    <default>false</default>
+                    <label>Privacy &amp; Cookies Policy</label>
+                </value>
+                <value>
+                    <fullName>Pay Meter</fullName>
+                    <default>false</default>
+                    <label>Pay Meter</label>
+                </value>
+                <value>
+                    <fullName>Email Newsletters</fullName>
+                    <default>false</default>
+                    <label>Email Newsletters</label>
+                </value>
+                <value>
+                    <fullName>Site Performance</fullName>
+                    <default>false</default>
+                    <label>Site Performance</label>
+                </value>
+                <value>
+                    <fullName>Moderation</fullName>
+                    <default>false</default>
+                    <label>Moderation</label>
+                </value>
+                <value>
+                    <fullName>Gone away</fullName>
+                    <default>false</default>
+                    <label>Gone away</label>
+                </value>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                    <label>Deceased</label>
+                </value>
+                <value>
+                    <fullName>Unsolicited</fullName>
+                    <default>false</default>
+                    <label>Unsolicited</label>
+                </value>
+                <value>
+                    <fullName>General information</fullName>
+                    <default>false</default>
+                    <label>General information</label>
+                </value>
+                <value>
+                    <fullName>Subject Access Request</fullName>
+                    <default>false</default>
+                    <label>Subject Access Request</label>
+                </value>
+                <value>
+                    <fullName>Windows 8 &gt; Troubleshooting &gt; App Features</fullName>
+                    <default>false</default>
+                    <label>Windows 8 &gt; Troubleshooting &gt; App Features</label>
+                </value>
+                <value>
+                    <fullName>Blackberry &gt; Troubleshooting &gt; App Features</fullName>
+                    <default>false</default>
+                    <label>Blackberry &gt; Troubleshooting &gt; App Features</label>
+                </value>
+                <value>
+                    <fullName>TMG Subs Pack</fullName>
+                    <default>false</default>
+                    <label>TMG Subs Pack</label>
+                </value>
+                <value>
+                    <fullName>Kindle &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Kindle &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Windows 8 &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Windows 8 &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Website &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Website &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Blackberry &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Blackberry &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Google Play Store subs info</fullName>
+                    <default>false</default>
+                    <label>Google Play Store subs info</label>
+                </value>
+                <value>
+                    <fullName>Travel Guides &gt; Troubleshooting &gt; App Features</fullName>
+                    <default>false</default>
+                    <label>Travel Guides &gt; Troubleshooting &gt; App Features</label>
+                </value>
+                <value>
+                    <fullName>Travel Guides &gt; Troubleshooting &gt; Speed &amp; Performance</fullName>
+                    <default>false</default>
+                    <label>Travel Guides &gt; Troubleshooting &gt; Speed &amp; Performance</label>
+                </value>
+                <value>
+                    <fullName>Price</fullName>
+                    <default>false</default>
+                    <label>Price</label>
+                </value>
+                <value>
+                    <fullName>Editorial</fullName>
+                    <default>false</default>
+                    <label>Editorial</label>
+                </value>
+                <value>
+                    <fullName>Political</fullName>
+                    <default>false</default>
+                    <label>Political</label>
+                </value>
+                <value>
+                    <fullName>Lack of content</fullName>
+                    <default>false</default>
+                    <label>Lack of content</label>
+                </value>
+                <value>
+                    <fullName>App performance</fullName>
+                    <default>false</default>
+                    <label>App performance</label>
+                </value>
+                <value>
+                    <fullName>Competitor</fullName>
+                    <default>false</default>
+                    <label>Competitor</label>
+                </value>
+                <value>
+                    <fullName>No compatible devices</fullName>
+                    <default>false</default>
+                    <label>No compatible devices</label>
+                </value>
+                <value>
+                    <fullName>Lack of time</fullName>
+                    <default>false</default>
+                    <label>Lack of time</label>
+                </value>
+                <value>
+                    <fullName>Functionality</fullName>
+                    <default>false</default>
+                    <label>Functionality</label>
+                </value>
+                <value>
+                    <fullName>Product switch</fullName>
+                    <default>false</default>
+                    <label>Product switch</label>
+                </value>
+                <value>
+                    <fullName>Not known</fullName>
+                    <default>false</default>
+                    <label>Not known</label>
+                </value>
+                <value>
+                    <fullName>Ill health</fullName>
+                    <default>false</default>
+                    <label>Ill health</label>
+                </value>
+                <value>
+                    <fullName>Subscriber retained</fullName>
+                    <default>false</default>
+                    <label>Subscriber retained</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Website &gt; Feedback &gt; Against</fullName>
+                    <default>false</default>
+                    <label>Website &gt; Feedback &gt; Against</label>
+                </value>
+                <value>
+                    <fullName>Website &gt; Feedback &gt; For</fullName>
+                    <default>false</default>
+                    <label>Website &gt; Feedback &gt; For</label>
+                </value>
+                <value>
+                    <fullName>Website &gt; Feedback &gt; Misc</fullName>
+                    <default>false</default>
+                    <label>Website &gt; Feedback &gt; Misc</label>
+                </value>
+                <value>
+                    <fullName>Apple News</fullName>
+                    <default>false</default>
+                    <label>Apple News</label>
+                </value>
+                <value>
+                    <fullName>Duplicate Subscription</fullName>
+                    <default>false</default>
+                    <label>Duplicate Subscription</label>
+                </value>
+                <value>
+                    <fullName>Change of Payment Schedule</fullName>
+                    <default>false</default>
+                    <label>Change of Payment Schedule</label>
+                </value>
+                <value>
+                    <fullName>Success</fullName>
+                    <default>false</default>
+                    <label>Success</label>
+                </value>
+                <value>
+                    <fullName>No Answer</fullName>
+                    <default>false</default>
+                    <label>No Answer</label>
+                </value>
+                <value>
+                    <fullName>Call Back</fullName>
+                    <default>false</default>
+                    <label>Call Back</label>
+                </value>
+                <value>
+                    <fullName>Left Message</fullName>
+                    <default>false</default>
+                    <label>Left Message</label>
+                </value>
+                <value>
+                    <fullName>No Number</fullName>
+                    <default>false</default>
+                    <label>No Number</label>
+                </value>
+                <value>
+                    <fullName>Unobtainable</fullName>
+                    <default>false</default>
+                    <label>Unobtainable</label>
+                </value>
+                <value>
+                    <fullName>International</fullName>
+                    <default>false</default>
+                    <label>International</label>
+                </value>
+                <value>
+                    <fullName>Subscription Info</fullName>
+                    <default>false</default>
+                    <label>Subscription Info</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - Android &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Windows 8 &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; General information</controllingFieldValue>
+                <controllingFieldValue>General information</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; General Information</controllingFieldValue>
+                <controllingFieldValue>Travel Guides &gt; General Information</controllingFieldValue>
+                <valueName>Download Instructions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - Android &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Kindle &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Windows 8 &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; General information</controllingFieldValue>
+                <controllingFieldValue>General information</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; General Information</controllingFieldValue>
+                <controllingFieldValue>Travel Guides &gt; General Information</controllingFieldValue>
+                <valueName>Features &amp; Functionality</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - Android &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Windows 8 &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Travel Guides &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Updates</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Telegraph App - Android &gt; Troubleshooting &gt; App Features</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Telegraph App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - Android &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; General information</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>General information</controllingFieldValue>
+                <controllingFieldValue>Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; General Information</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; General information</controllingFieldValue>
+                <controllingFieldValue>General information</controllingFieldValue>
+                <valueName>Apple Subs Info</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Newspaper Edition App - iOS &gt; Troubleshooting &gt; App Features</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Newspaper Edition App - iOS &gt; Troubleshooting &gt; Telegraph Login</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Kindle &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Windows 8 &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Travel Guides &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Download Issues</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Telegraph App - iOS &gt; Troubleshooting &gt; App Features</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Telegraph App - iOS &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Telegraph App - iOS &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Kindle &gt; General information</controllingFieldValue>
+                <valueName>TMG Subs Pack</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Kindle &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Troubleshooting</controllingFieldValue>
+                <valueName>Payment - Amazon</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Kindle &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Kindle &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Windows 8 &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Troubleshooting</controllingFieldValue>
+                <valueName>Telegraph Login</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Windows 8 &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Windows 8 &gt; Troubleshooting &gt; App Features</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Windows 8 &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Windows 8 &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; General information</controllingFieldValue>
+                <controllingFieldValue>General information</controllingFieldValue>
+                <valueName>Privacy &amp; Cookies Policy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; General information</controllingFieldValue>
+                <controllingFieldValue>General information</controllingFieldValue>
+                <valueName>Pay Meter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; General information</controllingFieldValue>
+                <controllingFieldValue>General information</controllingFieldValue>
+                <valueName>Moderation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; General information</controllingFieldValue>
+                <valueName>Subscription Info</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Website &gt; Troubleshooting &gt; Telegraph Login</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; Troubleshooting</controllingFieldValue>
+                <controllingFieldValue>Troubleshooting</controllingFieldValue>
+                <valueName>Email Newsletters</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Website &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; General information</controllingFieldValue>
+                <controllingFieldValue>General information</controllingFieldValue>
+                <valueName>Amazon Subs Info</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Telegraph Login</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; App Features</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Newspaper Edition App - Amazon &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Blackberry &gt; Troubleshooting &gt; App Features</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Blackberry &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Blackberry &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Feedback</controllingFieldValue>
+                <valueName>Against</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Feedback</controllingFieldValue>
+                <valueName>For</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Feedback</controllingFieldValue>
+                <valueName>Misc</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Troubleshooting</controllingFieldValue>
+                <valueName>Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Troubleshooting</controllingFieldValue>
+                <valueName>App Features</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reason</controllingFieldValue>
+                <valueName>Gone away</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reason</controllingFieldValue>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Deceased</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Reason</controllingFieldValue>
+                <valueName>Unsolicited</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Request data source</controllingFieldValue>
+                <valueName>General information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Request data source</controllingFieldValue>
+                <valueName>Subject Access Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; General Information</controllingFieldValue>
+                <valueName>Google Play Store subs info</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Newspaper Edition App - Android &gt; Troubleshooting &gt; Telegraph Login</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Newspaper Edition App - Android &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Newspaper Edition App - Android &gt; Troubleshooting &gt; App Features</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Travel Guides &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Travel Guides &gt; Troubleshooting &gt; App Features</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Travel Guides &gt; Troubleshooting</controllingFieldValue>
+                <valueName>Travel Guides &gt; Troubleshooting &gt; Speed &amp; Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Price</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Editorial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Political</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Lack of content</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>App performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Competitor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>No compatible devices</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Lack of time</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Functionality</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Product switch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Not known</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Ill health</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Subscriber retained</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Apple News</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Duplicate Subscription</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tablet+ Subscription</controllingFieldValue>
+                <controllingFieldValue>Website+ Subscription</controllingFieldValue>
+                <valueName>Change of Payment Schedule</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; Feedback</controllingFieldValue>
+                <valueName>Website &gt; Feedback &gt; Against</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; Feedback</controllingFieldValue>
+                <valueName>Website &gt; Feedback &gt; For</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Website &gt; Feedback</controllingFieldValue>
+                <valueName>Website &gt; Feedback &gt; Misc</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback</controllingFieldValue>
+                <valueName>Newspaper Edition App - iOS &gt; Feedback &gt; Against</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback</controllingFieldValue>
+                <valueName>Newspaper Edition App - iOS &gt; Feedback &gt; For</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - iOS &gt; Feedback</controllingFieldValue>
+                <valueName>Newspaper Edition App - iOS &gt; Feedback &gt; Misc</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback</controllingFieldValue>
+                <valueName>Newspaper Edition App - Android &gt; Feedback &gt; Against</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback</controllingFieldValue>
+                <valueName>Newspaper Edition App - Android &gt; Feedback &gt; Misc</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Android &gt; Feedback</controllingFieldValue>
+                <valueName>Newspaper Edition App - Android &gt; Feedback &gt; For</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback</controllingFieldValue>
+                <valueName>Newspaper Edition App - Amazon &gt; Feedback &gt; For</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback</controllingFieldValue>
+                <valueName>Newspaper Edition App - Amazon &gt; Feedback &gt; Against</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newspaper Edition App - Amazon &gt; Feedback</controllingFieldValue>
+                <valueName>Newspaper Edition App - Amazon &gt; Feedback &gt; Misc</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Attempt 1</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 2</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 3</controllingFieldValue>
+                <valueName>Success</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Attempt 1</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 2</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 3</controllingFieldValue>
+                <valueName>No Answer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Attempt 1</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 2</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 3</controllingFieldValue>
+                <valueName>Call Back</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Attempt 1</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 2</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 3</controllingFieldValue>
+                <valueName>Left Message</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Attempt 1</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 2</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 3</controllingFieldValue>
+                <valueName>No Number</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Attempt 1</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 2</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 3</controllingFieldValue>
+                <valueName>Unobtainable</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Attempt 1</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 2</controllingFieldValue>
+                <controllingFieldValue>Call Attempt 3</controllingFieldValue>
+                <valueName>International</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Hour_Call_Back__c</fullName>
+        <description>Specify the hour when the csp is allowed to call back. This must be provided along with the date and the minute to call back</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify the hour when the user is allowed to call back. This must be provided along with the date and the minute to call back</inlineHelpText>
+        <label>Hour Call Back</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>InterviewURL__c</fullName>
+        <externalId>false</externalId>
+        <formula>If( Spark_ID__c &lt;&gt;&quot;&quot;, &quot;http://tmg.sparkstudiosaas.com:80/audit?loadSpaceID=&quot;&amp;Space_ID__c &amp;&quot;&amp;loadSparkID=&quot;&amp;Spark_ID__c&amp;&quot;&amp;loadInterviewID=&quot;&amp;Interview_ID__c,&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Interview Link</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interview_ID__c</fullName>
+        <description>Firefly Interview ID</description>
+        <externalId>false</externalId>
+        <label>Interview ID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>M_S__c</fullName>
+        <externalId>false</externalId>
+        <label>M&amp;S</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>£5</fullName>
+                    <default>false</default>
+                    <label>£5</label>
+                </value>
+                <value>
+                    <fullName>£10</fullName>
+                    <default>false</default>
+                    <label>£10</label>
+                </value>
+                <value>
+                    <fullName>£15</fullName>
+                    <default>false</default>
+                    <label>£15</label>
+                </value>
+                <value>
+                    <fullName>£20</fullName>
+                    <default>false</default>
+                    <label>£20</label>
+                </value>
+                <value>
+                    <fullName>£25</fullName>
+                    <default>false</default>
+                    <label>£25</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Manual_Voucher__c</fullName>
+        <externalId>false</externalId>
+        <label>Manual Voucher</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>1 Week</fullName>
+                    <default>false</default>
+                    <label>1 Week</label>
+                </value>
+                <value>
+                    <fullName>2 Weeks</fullName>
+                    <default>false</default>
+                    <label>2 Weeks</label>
+                </value>
+                <value>
+                    <fullName>3 Week</fullName>
+                    <default>false</default>
+                    <label>3 Week</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Minute_Call_Back__c</fullName>
+        <description>Specify the minute when the csp is allowed to call back. This must be provided along with the date and the hour to call back</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify the minute when the user is allowed to call back. This must be provided along with the date and the hour to call back</inlineHelpText>
+        <label>Minute Call Back</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>No_Sale_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>No Sale Reason</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Outcome__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Will renew in own time</fullName>
+                    <default>false</default>
+                    <label>Will renew in own time</label>
+                </value>
+                <value>
+                    <fullName>Price increase</fullName>
+                    <default>false</default>
+                    <label>Price increase</label>
+                </value>
+                <value>
+                    <fullName>No local participating newsagents</fullName>
+                    <default>false</default>
+                    <label>No local participating newsagents</label>
+                </value>
+                <value>
+                    <fullName>No delivery available</fullName>
+                    <default>false</default>
+                    <label>No delivery available</label>
+                </value>
+                <value>
+                    <fullName>Too much weekend content</fullName>
+                    <default>false</default>
+                    <label>Too much weekend content</label>
+                </value>
+                <value>
+                    <fullName>Dislike editorial content</fullName>
+                    <default>false</default>
+                    <label>Dislike editorial content</label>
+                </value>
+                <value>
+                    <fullName>Holiday voucher return too rigid</fullName>
+                    <default>false</default>
+                    <label>Holiday voucher return too rigid</label>
+                </value>
+                <value>
+                    <fullName>Prefer other publication</fullName>
+                    <default>false</default>
+                    <label>Prefer other publication</label>
+                </value>
+                <value>
+                    <fullName>Unhappy paying in advance</fullName>
+                    <default>false</default>
+                    <label>Unhappy paying in advance</label>
+                </value>
+                <value>
+                    <fullName>Want same perks as new subscribers</fullName>
+                    <default>false</default>
+                    <label>Want same perks as new subscribers</label>
+                </value>
+                <value>
+                    <fullName>Prefer to send cheque</fullName>
+                    <default>false</default>
+                    <label>Prefer to send cheque</label>
+                </value>
+                <value>
+                    <fullName>Broadsheet too large</fullName>
+                    <default>false</default>
+                    <label>Broadsheet too large</label>
+                </value>
+                <value>
+                    <fullName>Competitor offers are better</fullName>
+                    <default>false</default>
+                    <label>Competitor offers are better</label>
+                </value>
+                <value>
+                    <fullName>Partially sighted/illness</fullName>
+                    <default>false</default>
+                    <label>Partially sighted/illness</label>
+                </value>
+                <value>
+                    <fullName>Moved to a Care Home/Nursing Home</fullName>
+                    <default>false</default>
+                    <label>Moved to a Care Home/Nursing Home</label>
+                </value>
+                <value>
+                    <fullName>Difficulty in redeeming loyalty offers</fullName>
+                    <default>false</default>
+                    <label>Difficulty in redeeming loyalty offers</label>
+                </value>
+                <value>
+                    <fullName>Participating loyalty rewards not local enough</fullName>
+                    <default>false</default>
+                    <label>Participating loyalty rewards not local enough</label>
+                </value>
+                <value>
+                    <fullName>Scheduled Callback</fullName>
+                    <default>false</default>
+                    <label>Scheduled Callback</label>
+                </value>
+                <value>
+                    <fullName>Kindle Offer</fullName>
+                    <default>false</default>
+                    <label>Kindle Offer</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Will renew in own time</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Price increase</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>No local participating newsagents</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>No delivery available</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Too much weekend content</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Dislike editorial content</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Holiday voucher return too rigid</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Prefer other publication</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Unhappy paying in advance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Want same perks as new subscribers</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Prefer to send cheque</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Broadsheet too large</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Competitor offers are better</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Partially sighted/illness</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Moved to a Care Home/Nursing Home</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Difficulty in redeeming loyalty offers</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Participating loyalty rewards not local enough</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Scheduled Callback</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No Sale</controllingFieldValue>
+                <valueName>Kindle Offer</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>OB_Call_Formula__c</fullName>
+        <description>Assigns a number based on the status to be used as the sort of the OBCalling Apex Code.</description>
+        <externalId>false</externalId>
+        <formula>CASE (Status, &quot;Not Started&quot;, 1, &quot;In Progress&quot;, 2, &quot;Waiting on someone else&quot;, 3, &quot;Deferred&quot;, 4,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OB Calling Formula</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Outbound_Calling_Viewed_Date__c</fullName>
+        <description>Date on which the task was viewed in the outbound calling tab.</description>
+        <externalId>false</externalId>
+        <label>Outbound Calling Viewed Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Outbound_Calling_Viewed_Datetime__c</fullName>
+        <defaultValue>Now()</defaultValue>
+        <externalId>false</externalId>
+        <label>Outbound Calling Viewed Datetime</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Outbound_Calling_Viewed_Stamp__c</fullName>
+        <externalId>false</externalId>
+        <label>Outbound Calling Viewed DateTime Stamp</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Outcome__c</fullName>
+        <externalId>false</externalId>
+        <label>Outcome</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Status</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Started</fullName>
+                    <default>true</default>
+                    <label>Not Started</label>
+                </value>
+                <value>
+                    <fullName>Sale</fullName>
+                    <default>false</default>
+                    <label>Sale</label>
+                </value>
+                <value>
+                    <fullName>No Sale</fullName>
+                    <default>false</default>
+                    <label>No Sale</label>
+                </value>
+                <value>
+                    <fullName>Cheque Sales</fullName>
+                    <default>false</default>
+                    <label>Cheque Sales</label>
+                </value>
+                <value>
+                    <fullName>No Answer</fullName>
+                    <default>false</default>
+                    <label>No Answer</label>
+                </value>
+                <value>
+                    <fullName>Answerphone</fullName>
+                    <default>false</default>
+                    <label>Answerphone</label>
+                </value>
+                <value>
+                    <fullName>Busy</fullName>
+                    <default>false</default>
+                    <label>Busy</label>
+                </value>
+                <value>
+                    <fullName>Reschedule</fullName>
+                    <default>false</default>
+                    <label>Reschedule</label>
+                </value>
+                <value>
+                    <fullName>Wrong Number</fullName>
+                    <default>false</default>
+                    <label>Wrong Number</label>
+                </value>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                    <label>Deceased</label>
+                </value>
+                <value>
+                    <fullName>Renewal Details Sent</fullName>
+                    <default>false</default>
+                    <label>Renewal Details Sent</label>
+                </value>
+                <value>
+                    <fullName>No phone number</fullName>
+                    <default>false</default>
+                    <label>No phone number</label>
+                </value>
+                <value>
+                    <fullName>Cheque Received</fullName>
+                    <default>false</default>
+                    <label>Cheque Received</label>
+                </value>
+                <value>
+                    <fullName>Called customer - CC payment taken</fullName>
+                    <default>false</default>
+                    <label>Called customer - CC payment taken</label>
+                </value>
+                <value>
+                    <fullName>Called customer - Cheque sent</fullName>
+                    <default>false</default>
+                    <label>Called customer - Cheque sent</label>
+                </value>
+                <value>
+                    <fullName>Called customer - Refused to pay</fullName>
+                    <default>false</default>
+                    <label>Called customer - Refused to pay</label>
+                </value>
+                <value>
+                    <fullName>Called customer - customer will call back</fullName>
+                    <default>false</default>
+                    <label>Called customer - customer will call back</label>
+                </value>
+                <value>
+                    <fullName>DD Already Paid</fullName>
+                    <default>false</default>
+                    <label>DD Already Paid</label>
+                </value>
+                <value>
+                    <fullName>Duplicate Task</fullName>
+                    <default>false</default>
+                    <label>Duplicate Task</label>
+                </value>
+                <value>
+                    <fullName>Suspension letter sent</fullName>
+                    <default>false</default>
+                    <label>Suspension letter sent</label>
+                </value>
+                <value>
+                    <fullName>No Action Required</fullName>
+                    <default>false</default>
+                    <label>No Action Required</label>
+                </value>
+                <value>
+                    <fullName>Refund Due</fullName>
+                    <default>false</default>
+                    <label>Refund Due</label>
+                </value>
+                <value>
+                    <fullName>Data Corrected</fullName>
+                    <default>false</default>
+                    <label>Data Corrected</label>
+                </value>
+                <value>
+                    <fullName>Auto write off</fullName>
+                    <default>false</default>
+                    <label>Auto write off</label>
+                </value>
+                <value>
+                    <fullName>Additional Payment</fullName>
+                    <default>false</default>
+                    <label>Additional Payment</label>
+                </value>
+                <value>
+                    <fullName>1st Collection Letter Sent</fullName>
+                    <default>false</default>
+                    <label>1st Collection Letter Sent</label>
+                </value>
+                <value>
+                    <fullName>2nd Collection Letter Sent</fullName>
+                    <default>false</default>
+                    <label>2nd Collection Letter Sent</label>
+                </value>
+                <value>
+                    <fullName>Final Collection Letter Sent</fullName>
+                    <default>false</default>
+                    <label>Final Collection Letter Sent</label>
+                </value>
+                <value>
+                    <fullName>Retention - Phone</fullName>
+                    <default>false</default>
+                    <label>Retention - Phone</label>
+                </value>
+                <value>
+                    <fullName>Retention - Task</fullName>
+                    <default>false</default>
+                    <label>Retention - Task</label>
+                </value>
+                <value>
+                    <fullName>Retention - Email</fullName>
+                    <default>false</default>
+                    <label>Retention - Email</label>
+                </value>
+                <value>
+                    <fullName>Retention - Letter</fullName>
+                    <default>false</default>
+                    <label>Retention - Letter</label>
+                </value>
+                <value>
+                    <fullName>QA Review</fullName>
+                    <default>false</default>
+                    <label>QA Review</label>
+                </value>
+                <value>
+                    <fullName>Price Reduction Letter Sent</fullName>
+                    <default>false</default>
+                    <label>Price Reduction Letter Sent</label>
+                </value>
+                <value>
+                    <fullName>Collection Letter Sent</fullName>
+                    <default>false</default>
+                    <label>Collection Letter Sent</label>
+                </value>
+                <value>
+                    <fullName>Reduction Letter - Accepted</fullName>
+                    <default>false</default>
+                    <label>Reduction Letter - Accepted</label>
+                </value>
+                <value>
+                    <fullName>Reduction Letter - Declined</fullName>
+                    <default>false</default>
+                    <label>Reduction Letter - Declined</label>
+                </value>
+                <value>
+                    <fullName>NFA</fullName>
+                    <default>false</default>
+                    <label>NFA</label>
+                </value>
+                <value>
+                    <fullName>Written confirmation sent</fullName>
+                    <default>false</default>
+                    <label>Written confirmation sent</label>
+                </value>
+                <value>
+                    <fullName>Raised task/ case</fullName>
+                    <default>false</default>
+                    <label>Raised task/ case</label>
+                </value>
+                <value>
+                    <fullName>Subscription Amount Balanced</fullName>
+                    <default>false</default>
+                    <label>Subscription Amount Balanced</label>
+                </value>
+                <value>
+                    <fullName>Auto Completed</fullName>
+                    <default>false</default>
+                    <label>Auto Completed</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <valueName>No Answer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <valueName>Answerphone</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <valueName>Busy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <valueName>Reschedule</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <valueName>1st Collection Letter Sent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <valueName>2nd Collection Letter Sent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <valueName>Final Collection Letter Sent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <valueName>Collection Letter Sent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <controllingFieldValue>Not Started</controllingFieldValue>
+                <valueName>NFA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <controllingFieldValue>Not Started</controllingFieldValue>
+                <valueName>Written confirmation sent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In Progress</controllingFieldValue>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <controllingFieldValue>Not Started</controllingFieldValue>
+                <valueName>Raised task/ case</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <valueName>Sale</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <valueName>No Sale</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <valueName>Wrong Number</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <controllingFieldValue>Deferred</controllingFieldValue>
+                <valueName>Deceased</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Waiting on someone else</controllingFieldValue>
+                <valueName>Price Reduction Letter Sent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Cheque Sales</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Renewal Details Sent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>No phone number</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Cheque Received</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Called customer - CC payment taken</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Called customer - Cheque sent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Called customer - Refused to pay</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Called customer - customer will call back</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>DD Already Paid</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Duplicate Task</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Suspension letter sent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>No Action Required</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Refund Due</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Data Corrected</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Auto write off</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Additional Payment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Retention - Phone</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Retention - Task</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Retention - Email</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Retention - Letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>QA Review</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Reduction Letter - Accepted</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Reduction Letter - Declined</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Completed</controllingFieldValue>
+                <valueName>Subscription Amount Balanced</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Not Started</controllingFieldValue>
+                <valueName>Not Started</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Price_Priority_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Priority_Score__c &gt;= 0, Priority_Score__c + Sub_Weekly_Price__c, Priority_Score__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Price Priority Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Priority_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Viewed_Timestamp_Critical__c , -2, IF(OR( ISPICKVAL( Status , &apos;Completed&apos;) , ISNULL( Scheduled_Callback__c )),0, (NOW() - Scheduled_Callback__c)*1440))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Priority Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason_For_Call__c</fullName>
+        <description>Reason for customers call.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Reason for customers call.</inlineHelpText>
+        <label>Reason For Call</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Acquisition</fullName>
+                    <default>false</default>
+                    <label>Acquisition</label>
+                </value>
+                <value>
+                    <fullName>Renewal</fullName>
+                    <default>false</default>
+                    <label>Renewal</label>
+                </value>
+                <value>
+                    <fullName>Freepost Address</fullName>
+                    <default>false</default>
+                    <label>Freepost Address</label>
+                </value>
+                <value>
+                    <fullName>Batchwork</fullName>
+                    <default>false</default>
+                    <label>Batchwork</label>
+                </value>
+                <value>
+                    <fullName>Cashposting</fullName>
+                    <default>false</default>
+                    <label>Cashposting</label>
+                </value>
+                <value>
+                    <fullName>Vouchers</fullName>
+                    <default>false</default>
+                    <label>Vouchers</label>
+                </value>
+                <value>
+                    <fullName>Payment Issue</fullName>
+                    <default>false</default>
+                    <label>Payment Issue</label>
+                </value>
+                <value>
+                    <fullName>Updating Address</fullName>
+                    <default>false</default>
+                    <label>Updating Address</label>
+                </value>
+                <value>
+                    <fullName>Goodwill Holiday Enquiry</fullName>
+                    <default>false</default>
+                    <label>Goodwill Holiday Enquiry</label>
+                </value>
+                <value>
+                    <fullName>Cancellation</fullName>
+                    <default>false</default>
+                    <label>Cancellation</label>
+                </value>
+                <value>
+                    <fullName>Loyalty</fullName>
+                    <default>false</default>
+                    <label>Loyalty</label>
+                </value>
+                <value>
+                    <fullName>Subscriber Retained</fullName>
+                    <default>false</default>
+                    <label>Subscriber Retained</label>
+                </value>
+                <value>
+                    <fullName>Supplement Request</fullName>
+                    <default>false</default>
+                    <label>Supplement Request</label>
+                </value>
+                <value>
+                    <fullName>Subscriber Card Request</fullName>
+                    <default>false</default>
+                    <label>Subscriber Card Request</label>
+                </value>
+                <value>
+                    <fullName>Department Transfer</fullName>
+                    <default>false</default>
+                    <label>Department Transfer</label>
+                </value>
+                <value>
+                    <fullName>Website</fullName>
+                    <default>false</default>
+                    <label>Website</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - iOS</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - iOS</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Android</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Android</label>
+                </value>
+                <value>
+                    <fullName>Newspaper Edition App - Amazon</fullName>
+                    <default>false</default>
+                    <label>Newspaper Edition App - Amazon</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - iOS</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - iOS</label>
+                </value>
+                <value>
+                    <fullName>Telegraph App - Android</fullName>
+                    <default>false</default>
+                    <label>Telegraph App - Android</label>
+                </value>
+                <value>
+                    <fullName>Kindle</fullName>
+                    <default>false</default>
+                    <label>Kindle</label>
+                </value>
+                <value>
+                    <fullName>Windows 8</fullName>
+                    <default>false</default>
+                    <label>Windows 8</label>
+                </value>
+                <value>
+                    <fullName>Travel Guides</fullName>
+                    <default>false</default>
+                    <label>Travel Guides</label>
+                </value>
+                <value>
+                    <fullName>Blackberry</fullName>
+                    <default>false</default>
+                    <label>Blackberry</label>
+                </value>
+                <value>
+                    <fullName>Digital - Other</fullName>
+                    <default>false</default>
+                    <label>Digital - Other</label>
+                </value>
+                <value>
+                    <fullName>Remove from database</fullName>
+                    <default>false</default>
+                    <label>Remove from database</label>
+                </value>
+                <value>
+                    <fullName>Print Other</fullName>
+                    <default>false</default>
+                    <label>Print Other</label>
+                </value>
+                <value>
+                    <fullName>Digital Payment failure</fullName>
+                    <default>false</default>
+                    <label>Digital Payment failure</label>
+                </value>
+                <value>
+                    <fullName>Surprise and Delight</fullName>
+                    <default>false</default>
+                    <label>Surprise and Delight</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reduce_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Reduce Price</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Scheduled_Callback__c</fullName>
+        <description>Date/Time field for new outbound call task filter logic</description>
+        <externalId>false</externalId>
+        <label>Scheduled Callback</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Space_ID__c</fullName>
+        <description>Firefly Space ID</description>
+        <externalId>false</externalId>
+        <label>Space ID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Spark_ID__c</fullName>
+        <description>Firefly Spark ID</description>
+        <externalId>false</externalId>
+        <label>Spark ID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sub_Weekly_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub Weekly Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>TEST__c</fullName>
+        <externalId>false</externalId>
+        <formula>NOW() -  Outbound_Calling_Viewed_Datetime__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>TEST</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Task_Tag__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Tag</label>
+        <length>140</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Viewed_Timestamp_Critical__c</fullName>
+        <externalId>false</externalId>
+        <formula>(NOW()- Outbound_Calling_Viewed_Stamp__c )*1440 &lt; 29</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Viewed Timestamp Critical</label>
+        <type>Checkbox</type>
+    </fields>
+    <searchLayouts>
+        <searchResultsAdditionalFields>TASK.SUBJECT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHO_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHAT_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.DUE_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+</CustomObject>

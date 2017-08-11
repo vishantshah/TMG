@@ -1,0 +1,7 @@
+<apex:page controller="Zuora_sendToZBillingController" action="{!sendToZbilling}">
+	<apex:form >
+		<apex:actionFunction name="goToQuotePage" action="{!goToQuotePage}" immediate="true" />
+		<apex:actionFunction name="goToSummaryPage" action="{!goToSummaryPage}" immediate="true" />
+		<zqu:Notification options="{!notificationOptions}" />
+	</apex:form>
+</apex:page>

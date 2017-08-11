@@ -1,0 +1,234 @@
+<apex:page standardController="TCodeManagement__c" extensions="TCodeManagementController" sidebar="true">
+    <style type="text/css">
+        .customButton{height:20px;width:20px;cursor:pointer;margin:0 auto; text-align:center;}
+        .backlit {background-color: #E3F3FF!Important;}
+    </style>
+    <apex:form>
+        <apex:pageBlock title="{!$ObjectType.TCodeManagement__c.Label}" id="tCodePageBlock">
+            <apex:pageMessages id="errors" />
+            <apex:pageBlockButtons>
+                <apex:commandButton value="{!$Label.TCodeSetup_Save}" action="{!save}" />
+                <apex:commandButton value="{!$Label.TCodeSetup_Save_And_New}" action="{!saveAndNew}" />
+                <apex:commandButton value="{!$Label.TCodeSetup_Cancel}" action="{!cancel}" />
+            </apex:pageBlockButtons>
+            <!-- TCode Details section -->
+            <apex:pageBlockSection title="{!$Label.TCodeSetup_TCode}" id="tCodeSection" collapsible="false">
+                <apex:repeat value="{!$ObjectType.TCodeManagement__c.FieldSets.TCodeSetup}" var="field">
+                    <apex:inputField value="{!tCode[field.fieldPath]}" required="{!OR(field.required, field.dbrequired)}" />
+                </apex:repeat>
+                <apex:outputPanel>
+                    <apex:commandButton value="{!IF(canSeeAvailableProducts,'Hide Available Products','Show Available Products')}" action="{!toggleAvailableProducts}" rerender="productTables, tCodeSection" immediate="true" status="pageStatus" />
+                    &nbsp;&nbsp;&nbsp;
+                    <apex:actionStatus id="pageStatus" onstop="highlightRow();">
+                        <apex:facet name="start">
+                            <apex:outputPanel >
+                                <apex:image value="{!$Resource.Loading_Gif}" /> Processing...
+                            </apex:outputPanel>
+                        </apex:facet>
+                    </apex:actionStatus>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            <!-- TCode Product section -->
+            <apex:outputPanel id="productTables">
+                    <apex:pageBlockSection title="{!$Label.TCodeSetup_Available_Products}" columns="1" rendered="{!canSeeAvailableProducts}" collapsible="false">
+                        <!-- empty zProducts message -->
+                        <apex:outputPanel rendered="{!availableZProductsList.size=0}">
+                            {!$Label.TCodeSetup_No_ZProducts}
+                        </apex:outputPanel>
+                        <!-- zProducts table -->
+                            <apex:pageBlockTable value="{!availableZProductsList}" var="p" rendered="{!availableZProductsList.size>0}">
+                                 <apex:column headerValue="Action" style="width: 120px;">
+                                    <apex:outputPanel layout="none" rendered="{!OR(p.bShowAddZOffer, p.bShowAddOffer)}">
+                                        <apex:commandLink action="{!addTCodeProduct}" value="{!$Label.TCodeSetup_Add}" rerender="productTables" rendered="{!p.bShowAddOffer}" status="pageStatus">
+                                            <apex:param name="addProduct" value="{!p.product.Id}" assignTo="{!selectedProductId}" />
+                                        </apex:commandLink>
+                                        <apex:outputPanel layout="none" rendered="{!AND(p.bShowAddZOffer, p.bShowAddOffer)}">
+                                            &nbsp;|&nbsp;&nbsp;
+                                        </apex:outputPanel>
+                                        <apex:commandLink action="{!addTCodeProduct}" value="Add ZOffer" rerender="productTables" rendered="{!p.bShowAddZOffer}" status="pageStatus">
+                                            <apex:param name="addProduct" value="{!p.product.Id}" assignTo="{!selectedProductId}" />
+                                            <apex:param name="asZOffer" value="zoffer" assignTo="{!sZOffer}" />
+                                        </apex:commandLink>
+                                    </apex:outputPanel>
+                                </apex:column>
+                                <apex:column value="{!p.product.Name}" />
+                                <apex:column value="{!p.product.Print_Product__c}" />
+                            </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+                        <apex:pageBlockSection title="{!$Label.TCodeSetup_Selected_Products} - Print / MPP Digital Offers" columns="1" collapsible="false" id="selectedProducts">
+                            <!-- empty TCode products message -->
+                            <apex:outputPanel rendered="{!lstSelectedOffers.size=0}">
+                                {!$Label.TCodeSetup_No_TCode_Products}
+                            </apex:outputPanel>
+                            <!-- TCode products table -->
+                            <apex:pageBlockTable value="{!lstSelectedOffers}" var="tcodeProduct" rendered="{!lstSelectedOffers.size>0}" id="offers">
+                                 <apex:column headerValue="{!$ObjectType.TCode_Product__c.fields.Product__c.Label}">
+                                    <apex:outputField value="{!tcodeProduct.tp.Product__c}" />
+                                    <div style="display:none" class="rowId">{!tcodeProduct.iCustomIndex}</div>
+                                </apex:column>
+                                <apex:repeat value="{!$ObjectType.TCode_Product__c.FieldSets.TCodeSetup}" var="field">
+                                    <apex:column headerValue="{!field.Label}">
+                                        <apex:inputField value="{!tcodeProduct.tp[field.fieldPath]}" required="{!OR(field.required, field.dbrequired)}" />
+                                    </apex:column>
+                                </apex:repeat>
+                                <apex:column headerValue="{!$Label.TCodeSetup_View}">
+                                    <apex:commandLink action="{!viewIncentives}" value="{!$ObjectType.Incentive__c.labelPlural}" rerender="relatedTables, selectedProducts, selectedProductsZuoraOffers, errors" status="pageStatus" >
+                                        <apex:param assignTo="{!iSelectedIndex}" value="{!tcodeProduct.iCustomIndex}" name="seeOfferIncentives" />
+                                    </apex:commandLink>&nbsp; ({!tcodeProduct.lstIncentives.size})
+                                    <br/>
+                                    <apex:commandLink action="{!viewPricingOptions}" value="{!$ObjectType.Pricing_Options__c.Label}" rerender="relatedTables, selectedProducts, selectedProductsZuoraOffers, errors" status="pageStatus">
+                                        <apex:param assignTo="{!iSelectedIndex}" value="{!tcodeProduct.iCustomIndex}" name="seeOfferPricingOprions" />
+                                    </apex:commandLink>&nbsp; ({!tcodeProduct.lstPricingOptions.size})
+                                </apex:column>
+                                <apex:column headerValue="{!$Label.TCodeSetup_Delete}">
+                                    <apex:commandbutton action="{!removeTCodeProduct}" rerender="productTables, relatedTables, errors" image="{!URLFOR($Resource.DeleteButton)}" styleClass="customButton" onclick="if(!confirm('{!$Label.TCodeSetup_Delete_Product}')){return false;}">
+                                        <apex:param name="removeProduct" value="{!tcodeProduct.iCustomIndex}" assignTo="{!iSelectedIndex}" />
+                                    </apex:commandbutton>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection>
+                    <br />
+                    <apex:actionFunction action="{!refreshOfferSelection}" name="populateOfferFields" rerender="selectedProductsZuoraOffers" status="pageStatus" >
+                        <apex:param assignTo="{!iOfferRowToPopulate}" name="rowOfferId" id="rowOfferId" value="" />
+                    </apex:actionFunction>
+                    <apex:pageBlockSection title="{!$Label.TCodeSetup_Selected_Products} - Zuora Offers" columns="1" collapsible="false" id="selectedProductsZuoraOffers">
+                        <!-- empty TCode products message -->
+                        <apex:outputPanel rendered="{!lstSelectedZuoraOffers.size=0}">
+                            {!$Label.TCodeSetup_No_TCode_Products}
+                        </apex:outputPanel>
+                        <!-- TCode products table -->
+                        <apex:pageBlockTable value="{!lstSelectedZuoraOffers}" var="tcodeProductZuora" rendered="{!lstSelectedZuoraOffers.size>0}" id="zuoraOffers">
+                            <apex:column headerValue="{!$ObjectType.TCode_Product__c.fields.Product__c.Label}" >
+                                <apex:outputField value="{!tcodeProductZuora.tp.Product__c}" />
+                                <div style="display:none" class="rowId">{!tcodeProductZuora.iCustomIndex}</div>
+                            </apex:column>
+                            <apex:repeat value="{!$ObjectType.TCode_Product__c.FieldSets.ZTCodeSetup}" var="field">
+                                <apex:column headerValue="{!field.Label}">
+                                    <apex:inputField onchange="populateOfferFields('{!tcodeProductZuora.iCustomIndex}');" value="{!tcodeProductZuora.tp[field.fieldPath]}" required="{!OR(field.required, field.dbrequired)}" />
+                                </apex:column>
+                            </apex:repeat>
+                            <apex:repeat value="{!$ObjectType.Offer__c.FieldSets.ZTCodeSetup}" var="offerField">
+                                <apex:column headerValue="{!offerField.Label}">
+                                    <apex:outputField value="{!tcodeProductZuora.offer[offerField.fieldPath]}" />
+                                </apex:column>
+                            </apex:repeat>
+                            <apex:column headerValue="{!$Label.TCodeSetup_View}">
+                                <apex:commandLink action="{!viewIncentives}" value="{!$ObjectType.Incentive__c.labelPlural}" rerender="relatedTables, selectedProducts, selectedProductsZuoraOffers, errors" status="pageStatus" >
+                                    <apex:param assignTo="{!iSelectedIndex}" value="{!tcodeProductZuora.iCustomIndex}" name="seeZuoraOfferIncentives" />
+                                </apex:commandLink>&nbsp;({!tcodeProductZuora.lstIncentives.size})
+                            </apex:column>
+                            <apex:column headerValue="{!$Label.TCodeSetup_Delete}">
+                                    <apex:commandbutton action="{!removeTCodeProduct}" rerender="productTables, relatedTables, errors" image="{!URLFOR($Resource.DeleteButton)}" styleClass="customButton" onclick="if(!confirm('{!$Label.TCodeSetup_Delete_Product}')){return false;}"  status="pageStatus">
+                                        <apex:param name="removeProduct" value="{!tcodeProductZuora.iCustomIndex}" assignTo="{!iSelectedIndex}" />
+                                    </apex:commandbutton>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+            </apex:outputPanel>
+            <!-- hold the pageBlockSections in an output panel for rerendering purpouses -->
+            <apex:outputPanel id="relatedTables">
+                <!-- Pricing options that are related to the selected product -->
+                <apex:outputPanel rendered="{!OR(canViewPricingOptions, canViewIncentives)}" layout="none">
+                     <div style="display: none;" id="offerInContext">{!offerInContext.iCustomIndex}</div>
+                </apex:outputPanel>
+                <apex:pageBlockSection title="{!$ObjectType.Pricing_Options__c.Label}" id="pricingOptionsSection" rendered="{!canViewPricingOptions}" columns="1" collapsible="false">
+                    <apex:outputPanel>
+                        {!$Label.TCodeSetup_Selected_product}&nbsp;<apex:outputField value="{!offerInContext.tp.RecordTypeId}" /> for <b>{!offerInContext.sProductName}<apex:outputText value="; Offer:  {!offerInContext.offer.Name}" rendered="{!offerInContext.offer.Name != ''}" /></b>
+                    </apex:outputPanel>
+                    <!-- empty pricing options message -->
+                    <apex:outputPanel rendered="{!offerInContext.lstPricingOptions=0}">
+                        {!$Label.TCodeSetup_No_Pricing_Options}
+                    </apex:outputPanel>
+                    <!-- pricing options table -->
+                    <apex:variable var="rowIndex" value="{!0}" />
+                    <apex:pageBlockTable value="{!offerInContext.lstPricingOptions}" var="pricingOption" rendered="{!offerInContext.lstPricingOptions.size>0}">
+                        <apex:column headerValue="{!$ObjectType.Pricing_Options__c.fields.Name.Label}">
+                            <apex:outputLink value="/{!pricingOption.Id}" rendered="{!pricingOption.Id!=null}">{!pricingOption.Name}</apex:outputLink>
+                        </apex:column>
+                        <apex:repeat value="{!$ObjectType.Pricing_Options__c.FieldSets.TCodeSetup}" var="field" >
+                            <apex:column headerValue="{!field.Label}">
+                                <apex:inputField value="{!pricingOption[field.fieldPath]}" required="{!OR(field.required, field.dbrequired)}" />
+                            </apex:column>
+                        </apex:repeat>
+                        <apex:column headerValue="{!$Label.TCodeSetup_Delete}">
+                            <apex:commandbutton action="{!removePricingOption}" rerender="pricingOptionsSection, selectedProducts" image="{!URLFOR($Resource.DeleteButton)}" styleClass="customButton" onclick="if(!confirm('{!$Label.TCodeSetup_Delete_Pricing_Option}')){return false;}" immediate="true">
+                                <apex:param name="removePricingOption" value="{!rowIndex}" assignTo="{!selectedRow}" />
+                            </apex:commandbutton>
+                            <apex:variable var="rowIndex" value="{!rowIndex + 1}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                    <apex:pageBlockSectionItem>
+                        <apex:outputLabel />
+                        <apex:outputPanel>
+                            <apex:commandButton action="{!closeSection}" reRender="relatedTables, selectedProductsZuoraOffers, errors" value="{!$Label.TCodeSetup_Close}" onclick="removeHighlight();" status="pageStatus" />
+                            <apex:commandButton action="{!addPricingOption}" reRender="pricingOptionsSection, selectedProducts" value="{!$Label.TCodeSetup_Add}" immediate="true" status="pageStatus" />
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+
+                <!-- Incentives that are related to the selected product -->
+                <apex:pageBlockSection title="{!$ObjectType.TCode_Product_Incentive__c.Label}" id="incentivesSection" rendered="{!canViewIncentives}" columns="1" collapsible="false">
+                    <apex:outputPanel>
+                        {!$Label.TCodeSetup_Selected_product}&nbsp;<apex:outputField value="{!offerInContext.tp.RecordTypeId}" /> for <b>{!offerInContext.sProductName} <apex:outputText value="; Offer:  {!offerInContext.offer.Name}" rendered="{!offerInContext.offer.Name != ''}" /></b> 
+                    </apex:outputPanel>
+                    <!-- empty incentives message -->
+                    <apex:outputPanel rendered="{!offerInContext.lstIncentives.size=0}">
+                        {!$Label.TCodeSetup_No_Incentives}
+                    </apex:outputPanel>
+                    <!-- incentives table -->
+                    <apex:variable var="rowIndex" value="{!0}" />
+                    <apex:pageBlockTable value="{!offerInContext.lstIncentives}" var="incentive" rendered="{!offerInContext.lstIncentives.size>0}">
+                        <apex:column headerValue="{!$ObjectType.TCode_Product_Incentive__c.fields.Name.Label}">
+                            <apex:outputLink value="/{!incentive.Id}" rendered="{!incentive.Id!=null}">{!incentive.Name}</apex:outputLink>
+                        </apex:column>
+                        <apex:repeat value="{!$ObjectType.TCode_Product_Incentive__c.FieldSets.TCodeSetup}" var="field" >
+                            <apex:column headerValue="{!field.Label}" rendered="{!offerInContext.tp.RecordTypeId != zOfferRecordTypeId}">
+                                <apex:inputField value="{!incentive[field.fieldPath]}" required="{!OR(field.required, field.dbrequired)}"  />
+                            </apex:column>
+                        </apex:repeat>
+                        <apex:repeat value="{!$ObjectType.TCode_Product_Incentive__c.FieldSets.TCodeSetupZOffer}" var="field">
+                            <apex:column headerValue="{!field.Label}" rendered="{!offerInContext.tp.RecordTypeId == zOfferRecordTypeId}">
+                                <apex:inputField value="{!incentive[field.fieldPath]}" required="{!OR(field.required, field.dbrequired)}"   />
+                            </apex:column>
+                        </apex:repeat>
+                        <apex:column headerValue="{!$Label.TCodeSetup_Delete}">
+                            <apex:commandbutton action="{!removeIncentive}" rerender="incentivesSection, selectedProducts, selectedProductsZuoraOffers" image="{!URLFOR($Resource.DeleteButton)}" styleClass="customButton" onclick="if(!confirm('{!$Label.TCodeSetup_Delete_Incentive}')){return false;}" immediate="true">
+                                <apex:param name="removeIncentive" value="{!rowIndex}" assignTo="{!selectedRow}" />
+                            </apex:commandbutton>
+                            <apex:variable var="rowIndex" value="{!rowIndex + 1}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                    <apex:pageBlockSectionItem>
+                        <apex:outputLabel />
+                        <apex:outputPanel>
+                            <apex:commandButton action="{!closeSection}" reRender="relatedTables, selectedProductsZuoraOffers, errors" value="{!$Label.TCodeSetup_Close}" onclick="removeHighlight();" status="pageStatus" />
+                            <apex:commandButton action="{!addIncentive}" reRender="incentivesSection, selectedProducts, selectedProductsZuoraOffers" value="{!$Label.TCodeSetup_Add}" immediate="true" status="pageStatus" />
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <script type="text/javascript">
+        j$ = jQuery.noConflict();
+
+        function highlightRow(){
+            var idOfRow = j$('#offerInContext').html();
+            var tdOfRow = null;
+            j$('.rowId').each(function(e){
+                if(j$(this).html() == idOfRow){
+                    tdOfRow = j$(this);
+                }
+            });
+            if(tdOfRow != null){
+                tdOfRow.closest('tr').addClass('backlit');
+            }
+        }
+
+        function removeHighlight(){
+            j$('.backlit').removeClass('backlit');
+        }
+    </script>
+</apex:page>

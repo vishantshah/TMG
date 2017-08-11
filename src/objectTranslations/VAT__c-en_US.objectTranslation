@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VAT</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VAT</value>
+    </caseValues>
+    <fields>
+        <label><!-- EU Standard VAT Rate --></label>
+        <name>EU_Standard_VAT_Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premium Android --></label>
+        <name>Premium_Android__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premium Mobile Cost --></label>
+        <name>Premium_Mobile_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premium Mobile --></label>
+        <name>Premium_Mobile__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premium Tablet Cost --></label>
+        <name>Premium_Tablet_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premium Tablet --></label>
+        <name>Premium_Tablet__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premium Website Cost --></label>
+        <name>Premium_Website_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- UK Exempt VAT Rate --></label>
+        <name>UK_Exempt_VAT_Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- UK Export VAT Rate --></label>
+        <name>UK_Export_VAT_Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- UK Standard VAT Rate --></label>
+        <name>UK_Standard_VAT_Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vat_rate --></label>
+        <name>Vat_rate__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

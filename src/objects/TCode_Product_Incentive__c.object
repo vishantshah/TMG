@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Junction object between TCode Product and Incentives. Defines which incentives should be available for which campaign products. These are also limited by the subscription type (length/payment type setup).</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>TCodeSetup</fullName>
+        <description>Used in the TCodeSetup Page</description>
+        <displayedFields>
+            <field>Incentive__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Subscription_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>TCodeSetup</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>TCodeSetupZOffer</fullName>
+        <description>Used on tcode setup page, for zoffer type of tcode products.</description>
+        <displayedFields>
+            <field>Incentive__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Auto_Assign_for_Zuora_Subscription__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>TCodeSetupZOffer</label>
+    </fieldSets>
+    <fields>
+        <fullName>Auto_Assign_for_Zuora_Subscription__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if this incentive should be auto assigned to the subscription on activation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if this incentive should be auto assigned to the subscription on activation.</inlineHelpText>
+        <label>Auto Assign for Zuora Subscription</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Incentive_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>Incentive__r.Incentive_Description__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Incentive Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Incentive_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Incentive__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Incentive Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Incentive_Validity_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>Incentive__r.Validity_Status__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Incentive Validity Status</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Incentive__c</fullName>
+        <externalId>false</externalId>
+        <label>Incentive</label>
+        <referenceTo>Incentive__c</referenceTo>
+        <relationshipLabel>TCode Product Incentives</relationshipLabel>
+        <relationshipName>TCode_Product_Incentives</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Is_Incentive_Valid_For_Renewal__c</fullName>
+        <externalId>false</externalId>
+        <formula>Incentive__r.Is_Valid_For_Renewal__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Incentive Valid For Renewal</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_Type__c</fullName>
+        <description>Subscription type which for incentive are applicable</description>
+        <externalId>false</externalId>
+        <label>Subscription Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Continuous 13 Week Applicable</fullName>
+                    <default>false</default>
+                    <label>Continuous 13 Week Applicable</label>
+                </value>
+                <value>
+                    <fullName>Continuous 26 Week Applicable</fullName>
+                    <default>false</default>
+                    <label>Continuous 26 Week Applicable</label>
+                </value>
+                <value>
+                    <fullName>Continuous 52 Week Applicable</fullName>
+                    <default>false</default>
+                    <label>Continuous 52 Week Applicable</label>
+                </value>
+                <value>
+                    <fullName>One Off 13 Week Applicable</fullName>
+                    <default>false</default>
+                    <label>One Off 13 Week Applicable</label>
+                </value>
+                <value>
+                    <fullName>One Off 26 Week Applicable</fullName>
+                    <default>false</default>
+                    <label>One Off 26 Week Applicable</label>
+                </value>
+                <value>
+                    <fullName>One Off 52 Week Applicable</fullName>
+                    <default>false</default>
+                    <label>One Off 52 Week Applicable</label>
+                </value>
+                <value>
+                    <fullName>Digital - Monthly</fullName>
+                    <default>false</default>
+                    <label>Digital - Monthly</label>
+                </value>
+                <value>
+                    <fullName>Digital - Yearly</fullName>
+                    <default>false</default>
+                    <label>Digital - Yearly</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>TCode_Product__c</fullName>
+        <externalId>false</externalId>
+        <label>TCode Product</label>
+        <referenceTo>TCode_Product__c</referenceTo>
+        <relationshipLabel>TCode Product Incentives</relationshipLabel>
+        <relationshipName>TCode_Product_Incentives</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>TCode Product Incentive</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Incentive_Description__c</columns>
+        <columns>TCode_Product__c</columns>
+        <columns>Subscription_Type__c</columns>
+        <columns>Incentive_Validity_Status__c</columns>
+        <columns>Is_Incentive_Valid_For_Renewal__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>TPI-{00000}</displayFormat>
+        <label>TCode Product Incentive Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>TCode Product Incentives</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Incentive__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>TCode_Product__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Incentive_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Incentive_Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Subscription_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Incentive_Validity_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Is_Incentive_Valid_For_Renewal__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Incentive__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>TCode_Product__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Incentive_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Incentive_Description__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Subscription_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Incentive_Validity_Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Is_Incentive_Valid_For_Renewal__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Incentive__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TCode_Product__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Incentive_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Incentive_Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Subscription_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Incentive_Validity_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Is_Incentive_Valid_For_Renewal__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

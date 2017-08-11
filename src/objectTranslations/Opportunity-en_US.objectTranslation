@@ -1,0 +1,2783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Ad Campaign</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Ad Campaigns</value>
+    </caseValues>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Access</value>
+        </caseValues>
+        <name>opportunity_access</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Access Level</value>
+        </caseValues>
+        <name>opportunity_access_level</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Alert</value>
+        </caseValues>
+        <name>opportunity_alert</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Amount</value>
+        </caseValues>
+        <name>opportunity_amount</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign-based Briefcase</value>
+        </caseValues>
+        <name>opportunity_based_briefcase</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Close Date</value>
+        </caseValues>
+        <name>opportunity_close_date</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Closed</value>
+        </caseValues>
+        <name>opportunity_closed</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Competitor</value>
+        </caseValues>
+        <name>opportunity_competitor</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Competitor Report</value>
+        </caseValues>
+        <name>opportunity_competitor_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Contact</value>
+        </caseValues>
+        <name>opportunity_contact</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Contact Report</value>
+        </caseValues>
+        <name>opportunity_contact_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Contact Role</value>
+        </caseValues>
+        <name>opportunity_contact_role</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Creator</value>
+        </caseValues>
+        <name>opportunity_creator</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Currency</value>
+        </caseValues>
+        <name>opportunity_currency</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Description</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Description</value>
+        </caseValues>
+        <name>opportunity_description</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Division</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Division</value>
+        </caseValues>
+        <name>opportunity_division</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Edit</value>
+        </caseValues>
+        <name>opportunity_edit</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Field</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Fields</value>
+        </caseValues>
+        <name>opportunity_field</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Field History</value>
+        </caseValues>
+        <name>opportunity_field_history</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Field History ID</value>
+        </caseValues>
+        <name>opportunity_field_history_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Field History Report</value>
+        </caseValues>
+        <name>opportunity_field_history_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Forecast</value>
+        </caseValues>
+        <name>opportunity_forecast</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Forecast Category</value>
+        </caseValues>
+        <name>opportunity_forecast_category</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Forecast Edit</value>
+        </caseValues>
+        <name>opportunity_forecast_edit</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign History</value>
+        </caseValues>
+        <name>opportunity_history</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign History ID</value>
+        </caseValues>
+        <name>opportunity_history_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign History Information</value>
+        </caseValues>
+        <name>opportunity_history_information</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign History Report</value>
+        </caseValues>
+        <name>opportunity_history_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign ID</value>
+        </caseValues>
+        <name>opportunity_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Info</value>
+        </caseValues>
+        <name>opportunity_info</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Information</value>
+        </caseValues>
+        <name>opportunity_information</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Lead Source</value>
+        </caseValues>
+        <name>opportunity_lead_source</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Line Item</value>
+        </caseValues>
+        <name>opportunity_line_item</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Line Item Field</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Line Item Fields</value>
+        </caseValues>
+        <name>opportunity_line_item_field</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Line Item ID</value>
+        </caseValues>
+        <name>opportunity_line_item_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Name</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Names</value>
+        </caseValues>
+        <name>opportunity_name</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Owner</value>
+        </caseValues>
+        <name>opportunity_owner</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Owner Alias</value>
+        </caseValues>
+        <name>opportunity_owner_alias</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Owner Email</value>
+        </caseValues>
+        <name>opportunity_owner_email</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Partner Report</value>
+        </caseValues>
+        <name>opportunity_partner_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Picklists</value>
+        </caseValues>
+        <name>opportunity_picklists</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Pipeline</value>
+        </caseValues>
+        <name>opportunity_pipeline</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Pipeline Trend</value>
+        </caseValues>
+        <name>opportunity_pipeline_trend</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Quantity</value>
+        </caseValues>
+        <name>opportunity_quantity</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Record Type</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Record Types</value>
+        </caseValues>
+        <name>opportunity_record_type</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Report</value>
+        </caseValues>
+        <name>opportunity_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Schedule Report</value>
+        </caseValues>
+        <name>opportunity_schedule_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Source</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Sources</value>
+        </caseValues>
+        <name>opportunity_source</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Stage</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Stages</value>
+        </caseValues>
+        <name>opportunity_stage</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Stage Duration Report</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Stage Duration Report</value>
+        </caseValues>
+        <name>opportunity_stage_duration_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Stage ID</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Stage ID</value>
+        </caseValues>
+        <name>opportunity_stage_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Stage Name</value>
+        </caseValues>
+        <name>opportunity_stage_name</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Stage picklist value</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Stage picklist value</value>
+        </caseValues>
+        <name>opportunity_stage_picklist_value</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Stage Status</value>
+        </caseValues>
+        <name>opportunity_stage_status</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Status</value>
+        </caseValues>
+        <name>opportunity_status</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Team</value>
+        </caseValues>
+        <name>opportunity_team</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Team Member</value>
+        </caseValues>
+        <name>opportunity_team_member</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Team Member ID</value>
+        </caseValues>
+        <name>opportunity_team_member_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Territory</value>
+        </caseValues>
+        <name>opportunity_territory</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Territory</value>
+        </caseValues>
+        <name>opportunity_territory_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Trend</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Trends</value>
+        </caseValues>
+        <name>opportunity_trend</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Trend Information</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Trend Information</value>
+        </caseValues>
+        <name>opportunity_trend_information</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Trend Report</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Trend Report</value>
+        </caseValues>
+        <name>opportunity_trend_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign Type</value>
+        </caseValues>
+        <name>opportunity_type</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Campaign View</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Campaign Views</value>
+        </caseValues>
+        <name>opportunity_view</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <label><!-- Account Active --></label>
+        <name>Account_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual --></label>
+        <name>Actual__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ad Campaign Description (reporting) --></label>
+        <name>Ad_Campaign_Description_reporting__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ad Campaign Owner --></label>
+        <name>Ad_Campaign_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ad Description --></label>
+        <name>Ad_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ad Shape --></label>
+        <name>Ad_Shape__c</name>
+        <picklistValues>
+            <masterLabel>2nd Cover</masterLabel>
+            <translation><!-- 2nd Cover --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3rd Cover</masterLabel>
+            <translation><!-- 3rd Cover --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4th Cover</masterLabel>
+            <translation><!-- 4th Cover --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digest</masterLabel>
+            <translation><!-- Digest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Horizontal</masterLabel>
+            <translation><!-- Horizontal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Square</masterLabel>
+            <translation><!-- Square --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vertical</masterLabel>
+            <translation><!-- Vertical --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Ad Trading System --></label>
+        <name>Ad_Trading_System__c</name>
+        <picklistValues>
+            <masterLabel>Adazzle</masterLabel>
+            <translation><!-- Adazzle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MediaGenie</masterLabel>
+            <translation><!-- MediaGenie --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Metis</masterLabel>
+            <translation><!-- Metis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>iDesk</masterLabel>
+            <translation><!-- iDesk --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Ad Type --></label>
+        <name>Ad_Type__c</name>
+        <picklistValues>
+            <masterLabel>BOB Direct Response</masterLabel>
+            <translation><!-- BOB Direct Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insert – Supplied</masterLabel>
+            <translation><!-- Insert – Supplied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insert – We Print</masterLabel>
+            <translation><!-- Insert – We Print --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROB Direct Response</masterLabel>
+            <translation><!-- ROB Direct Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Run of Book</masterLabel>
+            <translation><!-- Run of Book --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Word Classified</masterLabel>
+            <translation><!-- Word Classified --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Added Value --></label>
+        <name>Added_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select Advertiser related to this Ad Campaign. Enter Advertiser Name or fragment of and click the Magnifying Glass to select the Advertiser. --></help>
+        <label><!-- Advertiser --></label>
+        <name>Advertiser__c</name>
+        <relationshipLabel><!-- Ad Campaigns --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Advertising Interest --></label>
+        <name>Advertising_Interest__c</name>
+        <picklistValues>
+            <masterLabel>Cable Television</masterLabel>
+            <translation><!-- Cable Television --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conference</masterLabel>
+            <translation><!-- Conference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email Marketing</masterLabel>
+            <translation><!-- Email Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation><!-- Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General</masterLabel>
+            <translation><!-- General --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magazine</masterLabel>
+            <translation><!-- Magazine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newsaper</masterLabel>
+            <translation><!-- Newsaper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outdoor</masterLabel>
+            <translation><!-- Outdoor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radio</masterLabel>
+            <translation><!-- Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research</masterLabel>
+            <translation><!-- Research --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Television</masterLabel>
+            <translation><!-- Television --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web</masterLabel>
+            <translation><!-- Web --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Age --></label>
+        <name>Age__c</name>
+        <picklistValues>
+            <masterLabel>12-14</masterLabel>
+            <translation><!-- 12-14 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15-17</masterLabel>
+            <translation><!-- 15-17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18-20</masterLabel>
+            <translation><!-- 18-20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>21-24</masterLabel>
+            <translation><!-- 21-24 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25-29</masterLabel>
+            <translation><!-- 25-29 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30-34</masterLabel>
+            <translation><!-- 30-34 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>35-39</masterLabel>
+            <translation><!-- 35-39 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>40-44</masterLabel>
+            <translation><!-- 40-44 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>45-49</masterLabel>
+            <translation><!-- 45-49 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50-54</masterLabel>
+            <translation><!-- 50-54 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>55-59</masterLabel>
+            <translation><!-- 55-59 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60-64</masterLabel>
+            <translation><!-- 60-64 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>65+</masterLabel>
+            <translation><!-- 65+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&lt;12</masterLabel>
+            <translation><!-- &lt;12 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Agency Commission, if applicable. This is automatically populated. --></help>
+        <label><!-- Agency Commission --></label>
+        <name>Agency_Commission__c</name>
+    </fields>
+    <fields>
+        <help><!-- If the Agency has provided a reference number from their own system (i.e. Adazzle), enter it here. --></help>
+        <label><!-- Agency Reference Number --></label>
+        <name>Agency_Reference_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates whether Campaign is at risk or not. --></help>
+        <label><!-- At Risk? --></label>
+        <name>At_Risk__c</name>
+    </fields>
+    <fields>
+        <label><!-- Audience Reach --></label>
+        <name>Audience_Reach__c</name>
+        <picklistValues>
+            <masterLabel>International</masterLabel>
+            <translation><!-- International --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Local</masterLabel>
+            <translation><!-- Local --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National</masterLabel>
+            <translation><!-- National --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional</masterLabel>
+            <translation><!-- Regional --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Barter --></label>
+        <name>Barter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Best Case (Amount) --></label>
+        <name>Best_Case_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Best Case (Quantity) --></label>
+        <name>Best_Case_Quantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the Billing Party here. Typically the Agency or Advertiser. Enter in name or fragment of then click the Magnifying Glass to select Billing Party. --></help>
+        <label><!-- Billing Party --></label>
+        <name>Billing_Party__c</name>
+        <relationshipLabel><!-- Opportunities (Billing Party) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Bonus? --></label>
+        <name>Bonus__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date when signed IO (or appropriate contractual cover) was provided. --></help>
+        <label><!-- Booking Date --></label>
+        <name>Booking_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the date when first briefed by the customer about this Ad Campaign. --></help>
+        <label><!-- Briefing Date --></label>
+        <name>Briefing_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget --></label>
+        <name>Budget__c</name>
+    </fields>
+    <fields>
+        <help><!-- Channel where advert will be placed --></help>
+        <label><!-- Business Unit --></label>
+        <name>Business_Unit__c</name>
+        <picklistValues>
+            <masterLabel>Admin</masterLabel>
+            <translation><!-- Admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contra</masterLabel>
+            <translation><!-- Contra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create</masterLabel>
+            <translation><!-- Create --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Mobile</masterLabel>
+            <translation><!-- Create Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create TV</masterLabel>
+            <translation><!-- Create TV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Display</masterLabel>
+            <translation><!-- Display --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprises</masterLabel>
+            <translation><!-- Enterprises --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expat</masterLabel>
+            <translation><!-- Expat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International</masterLabel>
+            <translation><!-- International --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation><!-- Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remnant</masterLabel>
+            <translation><!-- Remnant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialist Sales</masterLabel>
+            <translation><!-- Specialist Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialist Sales Mobile</masterLabel>
+            <translation><!-- Specialist Sales Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TV</masterLabel>
+            <translation><!-- TV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Travel</masterLabel>
+            <translation><!-- Travel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Travel Mobile</masterLabel>
+            <translation><!-- Travel Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VOS</masterLabel>
+            <translation><!-- VOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce</masterLabel>
+            <translation><!-- eCommerce --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CC --></label>
+        <name>CC__c</name>
+    </fields>
+    <fields>
+        <label><!-- CPM Target --></label>
+        <name>CPM_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CPM --></label>
+        <name>CPM__c</name>
+    </fields>
+    <fields>
+        <help><!-- Estimated nett budget for this Ad Campaign. When you add flights to an Ad Campaign, the sum of the value of those flights is calculate and displayed in the &quot;Gross Amount&quot; field. --></help>
+        <label><!-- Est. Nett Campaign Budget --></label>
+        <name>Campaign_Budget__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter Campaign End Date here. --></help>
+        <label><!-- Campaign End Date --></label>
+        <name>Campaign_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Objective --></label>
+        <name>Campaign_Objective__c</name>
+    </fields>
+    <fields>
+        <help><!-- Start Date for Campaign. --></help>
+        <label><!-- Campaign Start Date --></label>
+        <name>Campaign_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Services Email --></label>
+        <name>Client_Services_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closed Lost Reason --></label>
+        <name>Closed_Lost_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Color --></label>
+        <name>Color__c</name>
+        <picklistValues>
+            <masterLabel>2C</masterLabel>
+            <translation><!-- 2C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4C</masterLabel>
+            <translation><!-- 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4C Bleed</masterLabel>
+            <translation><!-- 4C Bleed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5C</masterLabel>
+            <translation><!-- 5C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B/W</masterLabel>
+            <translation><!-- B/W --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B/W+1color</masterLabel>
+            <translation><!-- B/W+1color --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Complexity --></label>
+        <name>Complexity__c</name>
+        <picklistValues>
+            <masterLabel>1. Very simple</masterLabel>
+            <translation><!-- 1. Very simple --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2. Simple</masterLabel>
+            <translation><!-- 2. Simple --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3. Medium</masterLabel>
+            <translation><!-- 3. Medium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4. Complex</masterLabel>
+            <translation><!-- 4. Complex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5. Extremely complex</masterLabel>
+            <translation><!-- 5. Extremely complex --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Complexity explanation --></help>
+        <label><!-- Complexity explanation --></label>
+        <name>Complexity_explanation__c</name>
+    </fields>
+    <fields>
+        <help><!-- Cost Percentage is calculated as Total Net Cost as a percentage of Expected Revenue --></help>
+        <label><!-- Cost Percentage --></label>
+        <name>Cost_Percentage__c</name>
+    </fields>
+    <fields>
+        <help><!-- DTI Number of this Ad Campaign. --></help>
+        <label><!-- DTI --></label>
+        <name>DTI_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Date --></label>
+        <name>Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Discount --></label>
+        <name>Discount_Line_Items_del__c</name>
+    </fields>
+    <fields>
+        <help><!-- DART number for this campaign --></help>
+        <label><!-- DART --></label>
+        <name>Doubleclick_Reference__c</name>
+    </fields>
+    <fields>
+        <label><!-- Editorial Category --></label>
+        <name>Editorial_Category__c</name>
+        <picklistValues>
+            <masterLabel>Apparel</masterLabel>
+            <translation><!-- Apparel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baby</masterLabel>
+            <translation><!-- Baby --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beauty</masterLabel>
+            <translation><!-- Beauty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Family Activity</masterLabel>
+            <translation><!-- Family Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fashion/Trends/Celebrity</masterLabel>
+            <translation><!-- Fashion/Trends/Celebrity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food</masterLabel>
+            <translation><!-- Food --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health</masterLabel>
+            <translation><!-- Health --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home</masterLabel>
+            <translation><!-- Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lifestyle</masterLabel>
+            <translation><!-- Lifestyle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Position</masterLabel>
+            <translation><!-- No Position --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology</masterLabel>
+            <translation><!-- Technology --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Education --></label>
+        <name>Education__c</name>
+        <picklistValues>
+            <masterLabel>BA/BS</masterLabel>
+            <translation><!-- BA/BS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grad</masterLabel>
+            <translation><!-- Grad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HS</masterLabel>
+            <translation><!-- HS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Campaign report sent to Client --></label>
+        <name>End_Campaign_report_sent_to_Client__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Est. Net Forecast --></label>
+        <name>Est_Net_Forecast__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected Quantity --></label>
+        <name>Expected_Quantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Revenue the flights on this Ad Campaign will generate, weighted by the probability of the current stage. For example, a deal worth £100 at the 5% In Conversation stage would have an Expected Revenue of £5. --></help>
+        <label><!-- Expected Revenue --></label>
+        <name>Expected_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flight Duration (Days) --></label>
+        <name>Flight_Duration_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Thru --></label>
+        <name>Flight_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flight Optimization --></label>
+        <name>Flight_Optimization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flight/Start Date --></label>
+        <name>Flight_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flight completed --></label>
+        <name>Flight_completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flight completion status --></label>
+        <name>Flight_completion_status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 10 --></label>
+        <name>Forecast_Month_10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 11 --></label>
+        <name>Forecast_Month_11__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 12 --></label>
+        <name>Forecast_Month_12__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 13 --></label>
+        <name>Forecast_Month_13__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 14 --></label>
+        <name>Forecast_Month_14__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 15 --></label>
+        <name>Forecast_Month_15__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 16 --></label>
+        <name>Forecast_Month_16__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 17 --></label>
+        <name>Forecast_Month_17__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 18 --></label>
+        <name>Forecast_Month_18__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 19 --></label>
+        <name>Forecast_Month_19__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 1 --></label>
+        <name>Forecast_Month_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 20 --></label>
+        <name>Forecast_Month_20__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 21 --></label>
+        <name>Forecast_Month_21__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 22 --></label>
+        <name>Forecast_Month_22__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 23 --></label>
+        <name>Forecast_Month_23__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 24 --></label>
+        <name>Forecast_Month_24__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 2 --></label>
+        <name>Forecast_Month_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 3 --></label>
+        <name>Forecast_Month_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 4 --></label>
+        <name>Forecast_Month_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 5 --></label>
+        <name>Forecast_Month_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 6 --></label>
+        <name>Forecast_Month_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 7 --></label>
+        <name>Forecast_Month_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 8 --></label>
+        <name>Forecast_Month_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Month 9 --></label>
+        <name>Forecast_Month_9__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast --></label>
+        <name>Forecast__c</name>
+    </fields>
+    <fields>
+        <label><!-- Frequency --></label>
+        <name>Frequency__c</name>
+        <picklistValues>
+            <masterLabel>10X</masterLabel>
+            <translation><!-- 10X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11X</masterLabel>
+            <translation><!-- 11X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12X</masterLabel>
+            <translation><!-- 12X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18X</masterLabel>
+            <translation><!-- 18X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1X</masterLabel>
+            <translation><!-- 1X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24X</masterLabel>
+            <translation><!-- 24X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2X</masterLabel>
+            <translation><!-- 2X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30X</masterLabel>
+            <translation><!-- 30X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3X</masterLabel>
+            <translation><!-- 3X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4X</masterLabel>
+            <translation><!-- 4X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>52X</masterLabel>
+            <translation><!-- 52X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5X</masterLabel>
+            <translation><!-- 5X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6X</masterLabel>
+            <translation><!-- 6X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7X</masterLabel>
+            <translation><!-- 7X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8X</masterLabel>
+            <translation><!-- 8X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9X</masterLabel>
+            <translation><!-- 9X --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Gender --></label>
+        <name>Gender__c</name>
+        <picklistValues>
+            <masterLabel>Female</masterLabel>
+            <translation><!-- Female --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Male</masterLabel>
+            <translation><!-- Male --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None Specified</masterLabel>
+            <translation><!-- None Specified --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Go Live Date --></label>
+        <name>Go_Live_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- HHI --></label>
+        <name>HHI__c</name>
+        <picklistValues>
+            <masterLabel>$100+</masterLabel>
+            <translation><!-- $100+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$110+</masterLabel>
+            <translation><!-- $110+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$120+</masterLabel>
+            <translation><!-- $120+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$130+</masterLabel>
+            <translation><!-- $130+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$140+</masterLabel>
+            <translation><!-- $140+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$150+</masterLabel>
+            <translation><!-- $150+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$160+</masterLabel>
+            <translation><!-- $160+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$170+</masterLabel>
+            <translation><!-- $170+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$180+</masterLabel>
+            <translation><!-- $180+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$190+</masterLabel>
+            <translation><!-- $190+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$200+</masterLabel>
+            <translation><!-- $200+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$74 or less</masterLabel>
+            <translation><!-- $74 or less --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$75+</masterLabel>
+            <translation><!-- $75+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$80+</masterLabel>
+            <translation><!-- $80+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$95+</masterLabel>
+            <translation><!-- $95+ --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- IO Number for this Ad Campaign. This is an automatically generated number by Salesforce. --></help>
+        <label><!-- IO Number --></label>
+        <name>IO_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- IO --></label>
+        <name>IO__c</name>
+        <relationshipLabel><!-- Opportunities (IO) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Industry --></label>
+        <name>Industry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investable Assets --></label>
+        <name>Investable_Assets__c</name>
+        <picklistValues>
+            <masterLabel>$10M+</masterLabel>
+            <translation><!-- $10M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$1M+</masterLabel>
+            <translation><!-- $1M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$2.5M+</masterLabel>
+            <translation><!-- $2.5M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$20M+</masterLabel>
+            <translation><!-- $20M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$250K+</masterLabel>
+            <translation><!-- $250K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$500K+</masterLabel>
+            <translation><!-- $500K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$50M+</masterLabel>
+            <translation><!-- $50M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$5M+</masterLabel>
+            <translation><!-- $5M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$750K+</masterLabel>
+            <translation><!-- $750K+ --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <name>LeadSource</name>
+        <picklistValues>
+            <masterLabel>Coupon</masterLabel>
+            <translation><!-- Coupon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound - BPS</masterLabel>
+            <translation><!-- Outbound - BPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound - Chatham</masterLabel>
+            <translation><!-- Outbound - Chatham --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound - TELEGEN</masterLabel>
+            <translation><!-- Outbound - TELEGEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Order</masterLabel>
+            <translation><!-- Web Order --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Loss Detail --></label>
+        <name>Loss_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Main Competitor(s) --></label>
+        <name>MainCompetitors__c</name>
+    </fields>
+    <fields>
+        <label><!-- Make Good? --></label>
+        <name>Make_Good__c</name>
+    </fields>
+    <fields>
+        <label><!-- Media Mix --></label>
+        <name>Media_Mix__c</name>
+        <picklistValues>
+            <masterLabel>Broadcast</masterLabel>
+            <translation><!-- Broadcast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital</masterLabel>
+            <translation><!-- Digital --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mixed</masterLabel>
+            <translation><!-- Mixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Print</masterLabel>
+            <translation><!-- Print --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Median Home Value --></label>
+        <name>Median_Home_Value__c</name>
+        <picklistValues>
+            <masterLabel>$100K+</masterLabel>
+            <translation><!-- $100K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$1M+</masterLabel>
+            <translation><!-- $1M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$200K+</masterLabel>
+            <translation><!-- $200K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$2M+</masterLabel>
+            <translation><!-- $2M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$300K+</masterLabel>
+            <translation><!-- $300K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$3M+</masterLabel>
+            <translation><!-- $3M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$400K+</masterLabel>
+            <translation><!-- $400K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$4M+</masterLabel>
+            <translation><!-- $4M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$500K+</masterLabel>
+            <translation><!-- $500K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$5M+</masterLabel>
+            <translation><!-- $5M+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$600K+</masterLabel>
+            <translation><!-- $600K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$700K+</masterLabel>
+            <translation><!-- $700K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$800K+</masterLabel>
+            <translation><!-- $800K+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$900K+</masterLabel>
+            <translation><!-- $900K+ --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Monthly Budget --></label>
+        <name>Monthly_Budget__c</name>
+    </fields>
+    <fields>
+        <help><!-- Gross amount with appropriate discount taken off. This field is automatically calculated from the line items on the Ad Campaign. --></help>
+        <label><!-- Nett Amount --></label>
+        <name>Nett_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Non-Standard Campaign --></label>
+        <name>Non_Standard_Campaign__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open Rate --></label>
+        <name>Open_Rate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Agency&apos;s purchase order number for this campaign --></help>
+        <label><!-- PO Number --></label>
+        <name>PO_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Will this Campaign be closed next week? --></help>
+        <label><!-- Pledge --></label>
+        <name>Pledge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pod Positioning --></label>
+        <name>Pod_Positioning__c</name>
+        <picklistValues>
+            <masterLabel>First 1/2</masterLabel>
+            <translation><!-- First 1/2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Second 1/2</masterLabel>
+            <translation><!-- Second 1/2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Positioning Offered --></label>
+        <name>Positioning_Offered__c</name>
+    </fields>
+    <fields>
+        <label><!-- Positioning Type --></label>
+        <name>Positioning_Type__c</name>
+        <picklistValues>
+            <masterLabel>Guaranteed</masterLabel>
+            <translation><!-- Guaranteed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation><!-- Requested --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Agency --></label>
+        <name>Primary_Agency_Buyer__c</name>
+        <relationshipLabel><!-- Opportunities (Primary Agency (Buyer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Agency Contact for the advertiser and this ad campaign. Click the magnifying glass icon to search for a contact. If you enter a name before clicking the icon, a search for that name is performed automatically --></help>
+        <label><!-- Agency / Client Buyer --></label>
+        <name>Primary_Agency_Contact__c</name>
+        <relationshipLabel><!-- Opportunities --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Creative Contact for this ad campaign, if different from Agency Buyer contact. Click the magnifying glass icon to search for a contact. If you enter a name before clicking the icon, a search for that name is performed automatically --></help>
+        <label><!-- Creative Contact --></label>
+        <name>Primary_Client_Contact__c</name>
+        <relationshipLabel><!-- Opportunities (Primary Client Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The industry that the product being advertised falls under --></help>
+        <label><!-- Product Industry --></label>
+        <name>Product_Industry__c</name>
+        <picklistValues>
+            <masterLabel>Business &amp; industrial</masterLabel>
+            <translation><!-- Business &amp; industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clothing &amp; accessories</masterLabel>
+            <translation><!-- Clothing &amp; accessories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computers</masterLabel>
+            <translation><!-- Computers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cosmetics &amp; toiletries</masterLabel>
+            <translation><!-- Cosmetics &amp; toiletries --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drink</masterLabel>
+            <translation><!-- Drink --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entertainment &amp; the media</masterLabel>
+            <translation><!-- Entertainment &amp; the media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance</masterLabel>
+            <translation><!-- Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food</masterLabel>
+            <translation><!-- Food --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gardening &amp; agriculture</masterLabel>
+            <translation><!-- Gardening &amp; agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Govt, Social, Political Organisation</masterLabel>
+            <translation><!-- Govt, Social, Political Organisation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Household appliances</masterLabel>
+            <translation><!-- Household appliances --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Household equipment</masterLabel>
+            <translation><!-- Household equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Household stores</masterLabel>
+            <translation><!-- Household stores --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Leisure Equipment</masterLabel>
+            <translation><!-- Leisure Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mail Order</masterLabel>
+            <translation><!-- Mail Order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Miscellaneous</masterLabel>
+            <translation><!-- Miscellaneous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motors</masterLabel>
+            <translation><!-- Motors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi advertisers</masterLabel>
+            <translation><!-- Multi advertisers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Office equipment &amp; supplies</masterLabel>
+            <translation><!-- Office equipment &amp; supplies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online retail</masterLabel>
+            <translation><!-- Online retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pharmaceutical</masterLabel>
+            <translation><!-- Pharmaceutical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Property</masterLabel>
+            <translation><!-- Property --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecomms</masterLabel>
+            <translation><!-- Telecomms --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tobacco &amp; accessories</masterLabel>
+            <translation><!-- Tobacco &amp; accessories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Travel &amp; Transport</masterLabel>
+            <translation><!-- Travel &amp; Transport --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Status --></label>
+        <name>Product_Status__c</name>
+        <picklistValues>
+            <masterLabel>(1) Open</masterLabel>
+            <translation><!-- (1) Open --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(2) Booked</masterLabel>
+            <translation><!-- (2) Booked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(3) Closed</masterLabel>
+            <translation><!-- (3) Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(4) Omitted</masterLabel>
+            <translation><!-- (4) Omitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program Dependent? --></label>
+        <name>Program_Dependent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Programming Market --></label>
+        <name>Programming_Market__c</name>
+        <picklistValues>
+            <masterLabel>Cable</masterLabel>
+            <translation><!-- Cable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Internet</masterLabel>
+            <translation><!-- Digital Internet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Sports</masterLabel>
+            <translation><!-- International Sports --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Syndication</masterLabel>
+            <translation><!-- National Syndication --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Sports</masterLabel>
+            <translation><!-- Regional Sports --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Special Program</masterLabel>
+            <translation><!-- Special Program --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Proposal Due --></label>
+        <name>Proposal_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Proposal Type --></label>
+        <name>Proposal_Type__c</name>
+        <picklistValues>
+            <masterLabel>Direct</masterLabel>
+            <translation><!-- Direct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RFP</masterLabel>
+            <translation><!-- RFP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard – Agency or Client Direct</masterLabel>
+            <translation><!-- Standard – Agency or Client Direct --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The sales person that this ad campaign relates to. --></help>
+        <label><!-- Salesperson --></label>
+        <name>Raised_On_Behalf_Of__c</name>
+        <relationshipLabel><!-- Ad Campaigns --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rate Approval --></label>
+        <name>Rate_Approval__c</name>
+        <picklistValues>
+            <masterLabel>(1) Not Submitted</masterLabel>
+            <translation><!-- (1) Not Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(2) Submitted</masterLabel>
+            <translation><!-- (2) Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(3) Pending</masterLabel>
+            <translation><!-- (3) Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(4) Denied</masterLabel>
+            <translation><!-- (4) Denied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(5) Approved</masterLabel>
+            <translation><!-- (5) Approved --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reason for Loss --></label>
+        <name>Reason_for_Loss__c</name>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price</masterLabel>
+            <translation><!-- Price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Timing</masterLabel>
+            <translation><!-- Timing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Region__c</name>
+        <picklistValues>
+            <masterLabel>Canada</masterLabel>
+            <translation><!-- Canada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>France</masterLabel>
+            <translation><!-- France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Germany</masterLabel>
+            <translation><!-- Germany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Europe</masterLabel>
+            <translation><!-- Other Europe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spain</masterLabel>
+            <translation><!-- Spain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>USA</masterLabel>
+            <translation><!-- USA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Regional Buy --></label>
+        <name>Regional_Buy__c</name>
+        <picklistValues>
+            <masterLabel>Customized</masterLabel>
+            <translation><!-- Customized --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>East Coast</masterLabel>
+            <translation><!-- East Coast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West Coast</masterLabel>
+            <translation><!-- West Coast --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Remnant? --></label>
+        <name>Remnant__c</name>
+    </fields>
+    <fields>
+        <label><!-- Research Source --></label>
+        <name>Research_Source__c</name>
+        <picklistValues>
+            <masterLabel>MRI</masterLabel>
+            <translation><!-- MRI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MRR</masterLabel>
+            <translation><!-- MRR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Resolution --></label>
+        <name>Resolution__c</name>
+        <picklistValues>
+            <masterLabel>Agency happy to pay in full</masterLabel>
+            <translation><!-- Agency happy to pay in full --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Note needed - Agency Blame</masterLabel>
+            <translation><!-- Credit Note needed - Agency Blame --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Note needed - TMG Blame</masterLabel>
+            <translation><!-- Credit Note needed - TMG Blame --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extended</masterLabel>
+            <translation><!-- Extended --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value into next campaign</masterLabel>
+            <translation><!-- Value into next campaign --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Determines revenue level for this Ad Campaign. This field is automatically generated. --></help>
+        <label><!-- Revenue Level --></label>
+        <name>Revenue_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Right of Refusal Date --></label>
+        <name>Right_of_First_Refusal_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Screen Grab sent to Client --></label>
+        <name>Screen_Grab_sent_to_Client__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Set up in AdServer --></label>
+        <name>Set_up_in_AdServer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specs sent to client --></label>
+        <name>Specs_sent_to_client__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sponsorship Category --></label>
+        <name>Sponsorship_Category__c</name>
+        <picklistValues>
+            <masterLabel>Extreme Sports</masterLabel>
+            <translation><!-- Extreme Sports --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hollywood</masterLabel>
+            <translation><!-- Hollywood --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MLB</masterLabel>
+            <translation><!-- MLB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Music</masterLabel>
+            <translation><!-- Music --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NASCAR</masterLabel>
+            <translation><!-- NASCAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NBA</masterLabel>
+            <translation><!-- NBA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFL</masterLabel>
+            <translation><!-- NFL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NHL</masterLabel>
+            <translation><!-- NHL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Skiing</masterLabel>
+            <translation><!-- Skiing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surfing</masterLabel>
+            <translation><!-- Surfing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sponsorship Program --></label>
+        <name>Sponsorship_Program__c</name>
+        <picklistValues>
+            <masterLabel>Extreme Sports Battle</masterLabel>
+            <translation><!-- Extreme Sports Battle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>March Madness</masterLabel>
+            <translation><!-- March Madness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NASCAR Daytona</masterLabel>
+            <translation><!-- NASCAR Daytona --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFL Kickoff</masterLabel>
+            <translation><!-- NFL Kickoff --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFL Playoffs</masterLabel>
+            <translation><!-- NFL Playoffs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFL Super Bowl</masterLabel>
+            <translation><!-- NFL Super Bowl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Olympics</masterLabel>
+            <translation><!-- Olympics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ski Championship</masterLabel>
+            <translation><!-- Ski Championship --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surf Australia Competition</masterLabel>
+            <translation><!-- Surf Australia Competition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surf Extravaganza</masterLabel>
+            <translation><!-- Surf Extravaganza --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Spot Positioning --></label>
+        <name>Spot_Positioning__c</name>
+        <picklistValues>
+            <masterLabel>First In</masterLabel>
+            <translation><!-- First In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>First Out</masterLabel>
+            <translation><!-- First Out --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <name>StageName</name>
+        <picklistValues>
+            <masterLabel>AdOps - Approved</masterLabel>
+            <translation><!-- AdOps - Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AdOps - Complete</masterLabel>
+            <translation><!-- AdOps - Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AdOps - Creative Received in Full</masterLabel>
+            <translation><!-- AdOps - Creative Received in Full --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AdOps - IO Added - Awaiting Creative</masterLabel>
+            <translation><!-- AdOps - IO Added - Awaiting Creative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AdOps - Live</masterLabel>
+            <translation><!-- AdOps - Live --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AdOps - QA</masterLabel>
+            <translation><!-- AdOps - QA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CS - Inventory Checked/Authorised</masterLabel>
+            <translation><!-- CS - Inventory Checked/Authorised --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales - (25%) Proactively Pitching</masterLabel>
+            <translation><!-- Sales - (25%) Proactively Pitching --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales - (5%) In Conversation</masterLabel>
+            <translation><!-- Sales - (5%) In Conversation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales - (50%) Briefed, No Proposal Out</masterLabel>
+            <translation><!-- Sales - (50%) Briefed, No Proposal Out --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales - (75%) Proposal Out, Negotiation</masterLabel>
+            <translation><!-- Sales - (75%) Proposal Out, Negotiation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales - (90%) Agreed, Awaiting IO</masterLabel>
+            <translation><!-- Sales - (90%) Agreed, Awaiting IO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales - Closed Lost</masterLabel>
+            <translation><!-- Sales - Closed Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales - Closed, Won</masterLabel>
+            <translation><!-- Sales - Closed, Won --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Agree Commmercials</masterLabel>
+            <translation><!-- eCommerce - Agree Commmercials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Agree Live Date</masterLabel>
+            <translation><!-- eCommerce - Agree Live Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Closed/Lost</masterLabel>
+            <translation><!-- eCommerce - Closed/Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Establish Opportunity</masterLabel>
+            <translation><!-- eCommerce - Establish Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Go Live</masterLabel>
+            <translation><!-- eCommerce - Go Live --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Instruct Legal</masterLabel>
+            <translation><!-- eCommerce - Instruct Legal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Make Contact</masterLabel>
+            <translation><!-- eCommerce - Make Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Meeting</masterLabel>
+            <translation><!-- eCommerce - Meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Proposal</masterLabel>
+            <translation><!-- eCommerce - Proposal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eCommerce - Technical Requirements</masterLabel>
+            <translation><!-- eCommerce - Technical Requirements --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Stage changed to AdOps - Approved --></label>
+        <name>Stage_changed_to_AdOps_Approved__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage changed to AdOps - Complete --></label>
+        <name>Stage_changed_to_AdOps_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage changed to AdOps - Live --></label>
+        <name>Stage_changed_to_AdOps_Live__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sum Total List Price --></label>
+        <name>Sum_Total_List_Price_del__c</name>
+    </fields>
+    <fields>
+        <help><!-- Sum of the flights (Ad Units) against this Ad Campaign. This field is automatically generated. --></help>
+        <label><!-- Gross Amount --></label>
+        <name>Sum_Total_Price_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Description --></label>
+        <name>Target_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Third party Stats checked --></label>
+        <name>Third_party_Stats_checked__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Total Net Cost of Deliverables --></help>
+        <label><!-- Total Net Cost --></label>
+        <name>Total_Net_Cost__c</name>
+    </fields>
+    <fields>
+        <name>Type</name>
+        <picklistValues>
+            <masterLabel>Existing Business</masterLabel>
+            <translation><!-- Existing Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Business</masterLabel>
+            <translation><!-- New Business --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unit Rate --></label>
+        <name>Unit_Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unit Size --></label>
+        <name>Unit_Size__c</name>
+        <picklistValues>
+            <masterLabel>1/2 horizontal 4C</masterLabel>
+            <translation><!-- 1/2 horizontal 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1/2 horizontal BW</masterLabel>
+            <translation><!-- 1/2 horizontal BW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1/2 vertical 4C</masterLabel>
+            <translation><!-- 1/2 vertical 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1/2 vertical BW</masterLabel>
+            <translation><!-- 1/2 vertical BW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1/3 PG 4C</masterLabel>
+            <translation><!-- 1/3 PG 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1/3 PG BW</masterLabel>
+            <translation><!-- 1/3 PG BW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 Consecutive PG 4C</masterLabel>
+            <translation><!-- 2 Consecutive PG 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2/3 PG 4C</masterLabel>
+            <translation><!-- 2/3 PG 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2/3 PG BW</masterLabel>
+            <translation><!-- 2/3 PG BW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2/3 Page Bookends</masterLabel>
+            <translation><!-- 2/3 Page Bookends --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advertorial 4C</masterLabel>
+            <translation><!-- Advertorial 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gatefold 3PG</masterLabel>
+            <translation><!-- Gatefold 3PG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gatefold 4PG</masterLabel>
+            <translation><!-- Gatefold 4PG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PG 4C</masterLabel>
+            <translation><!-- PG 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PG 4C + 1/3 PG 4C</masterLabel>
+            <translation><!-- PG 4C + 1/3 PG 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PG BW</masterLabel>
+            <translation><!-- PG BW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP 4C</masterLabel>
+            <translation><!-- SP 4C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP BW</masterLabel>
+            <translation><!-- SP BW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spreadvetorial 4C</masterLabel>
+            <translation><!-- Spreadvetorial 4C --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unit Type --></label>
+        <name>Unit_Type__c</name>
+        <picklistValues>
+            <masterLabel>Advertorial</masterLabel>
+            <translation><!-- Advertorial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BRC</masterLabel>
+            <translation><!-- BRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Booklet (Catalog/Brochure)</masterLabel>
+            <translation><!-- Booklet (Catalog/Brochure) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Display Ad</masterLabel>
+            <translation><!-- Display Ad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gatefold</masterLabel>
+            <translation><!-- Gatefold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insert</masterLabel>
+            <translation><!-- Insert --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outsert</masterLabel>
+            <translation><!-- Outsert --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spread</masterLabel>
+            <translation><!-- Spread --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>We-Print Insert</masterLabel>
+            <translation><!-- We-Print Insert --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Were flights optimized/changed? --></label>
+        <name>Was_flight_optimized_changed__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Weighted Revenue --></label>
+        <name>Weighted_Revenue__c</name>
+    </fields>
+    <layouts>
+        <layout>Admin Opportunity Layout (Digital/Online)</layout>
+        <sections>
+            <label><!-- Ad Campaign Contacts Details --></label>
+            <section>Ad Campaign Contacts Details</section>
+        </sections>
+        <sections>
+            <label><!-- Ad Campaign Information --></label>
+            <section>Ad Campaign Information</section>
+        </sections>
+        <sections>
+            <label><!-- Ad Ops --></label>
+            <section>Ad Ops</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Digital/Online Ad Detail --></label>
+            <section>Digital/Online Ad Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Other Information --></label>
+            <section>Other Information</section>
+        </sections>
+        <sections>
+            <label><!-- Pipeline &amp;amp; Forecast Details --></label>
+            <section>Pipeline &amp;amp; Forecast Details</section>
+        </sections>
+        <sections>
+            <label><!-- Rates --></label>
+            <section>Rates</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- TMG Relevant --></label>
+            <section>TMG Relevant</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Opportunity Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Opportunity Layout (Ad Ops)</layout>
+        <sections>
+            <label><!-- Ad Campaign Contacts Details --></label>
+            <section>Ad Campaign Contacts Details</section>
+        </sections>
+        <sections>
+            <label><!-- Ad Campaign Information --></label>
+            <section>Ad Campaign Information</section>
+        </sections>
+        <sections>
+            <label><!-- Ad Ops --></label>
+            <section>Ad Ops</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Digital/Online Ad Detail --></label>
+            <section>Digital/Online Ad Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Other Information --></label>
+            <section>Other Information</section>
+        </sections>
+        <sections>
+            <label><!-- Pipeline &amp;amp; Forecast Details --></label>
+            <section>Pipeline &amp;amp; Forecast Details</section>
+        </sections>
+        <sections>
+            <label><!-- Rates --></label>
+            <section>Rates</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- TMG Relevant --></label>
+            <section>TMG Relevant</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Opportunity Layout (Digital/Online)</layout>
+        <sections>
+            <label><!-- Ad Campaign Contacts Details --></label>
+            <section>Ad Campaign Contacts Details</section>
+        </sections>
+        <sections>
+            <label><!-- Ad Campaign Information --></label>
+            <section>Ad Campaign Information</section>
+        </sections>
+        <sections>
+            <label><!-- Ad Ops --></label>
+            <section>Ad Ops</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Digital/Online Ad Detail --></label>
+            <section>Digital/Online Ad Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Other Information --></label>
+            <section>Other Information</section>
+        </sections>
+        <sections>
+            <label><!-- Pipeline &amp;amp; Forecast Details --></label>
+            <section>Pipeline &amp;amp; Forecast Details</section>
+        </sections>
+        <sections>
+            <label><!-- Rates --></label>
+            <section>Rates</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- TMG Relevant --></label>
+            <section>TMG Relevant</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>eCommerce</layout>
+        <sections>
+            <label><!-- Ad Campaign Contacts Details --></label>
+            <section>Ad Campaign Contacts Details</section>
+        </sections>
+        <sections>
+            <label><!-- Ad Campaign Information --></label>
+            <section>Ad Campaign Information</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Other Information --></label>
+            <section>Other Information</section>
+        </sections>
+        <sections>
+            <label><!-- Partnership Dates --></label>
+            <section>Partnership Dates</section>
+        </sections>
+        <sections>
+            <label><!-- Pipeline &amp;amp; Forecast Details --></label>
+            <section>Pipeline &amp;amp; Forecast Details</section>
+        </sections>
+        <sections>
+            <label><!-- Rates --></label>
+            <section>Rates</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- TMG Relevant --></label>
+            <section>TMG Relevant</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Ad Sales Digital --></label>
+        <name>Ad_Sales_Digital</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- eCommerce --></label>
+        <name>eCommerce</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- A Sales user can not change the stage of an Ad Campaign once the stage has been set to Closed Won. --></errorMessage>
+        <name>Adsales_Cant_Change_From_Closed_Won</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot create an Ad Campaign with a Campaign End Date in the past. --></errorMessage>
+        <name>Campaign_End_Date_Not_In_Past</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot create an Ad Campaign with a Campaign Start Date in the past. --></errorMessage>
+        <name>Campaign_Start_Not_In_Past</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit an Ad Campaign that has been cancelled. --></errorMessage>
+        <name>Cant_Change_From_Cancelled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Account is inactive --></errorMessage>
+        <name>Check_Account_Is_Active</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- DTI Number is mandatory once inventory has been checked/authorised (responsible by Sales) --></errorMessage>
+        <name>DTI_number_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Changes cannot be made once an Ad Campaign has been set to Closed Won. --></errorMessage>
+        <name>Fields_Can_Not_Be_Edited_Once_Closed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid entry. DTI reference must be an eight digit number separated by a
+comma if more than one DTI is required. --></errorMessage>
+        <name>Multiple_DTI_Numbers</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only a Client Services or Ad Ops user can select this stage --></errorMessage>
+        <name>Only_Client_Services_Or_AdOps_Can_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only a Sales user can select this stage --></errorMessage>
+        <name>Only_Sales_Can_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Closed order cannot be updated. --></errorMessage>
+        <name>Sales_cannot_update_a_closed_order</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Clone_Without_DTI --></label>
+        <name>Clone_Without_DTI</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Deliverables --></label>
+        <name>Deliverables</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Fiscal_Revenues --></label>
+        <name>Fiscal_Revenues</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- IO_Document --></label>
+        <name>IO_Document</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New --></label>
+        <name>New</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Ad_Campaign --></label>
+        <name>New_Ad_Campaign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Card_Stream --></label>
+        <name>New_Card_Stream</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Credit_Card_Payment --></label>
+        <name>PAYCP1__Credit_Card_Payment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Direct_Credit_Card_Payment --></label>
+        <name>PAYCP1__Direct_Credit_Card_Payment</name>
+    </webLinks>
+</CustomObjectTranslation>

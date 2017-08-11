@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CaseSharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <ownerRules>
+        <fullName>TMGSubsD</fullName>
+        <sharedTo>
+            <roleAndSubordinates>TMGSubs</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TMGSubs</roleAndSubordinates>
+        </sharedFrom>
+        <caseAccessLevel>Edit</caseAccessLevel>
+        <name>TMG SubsD</name>
+    </ownerRules>
+</CaseSharingRules>

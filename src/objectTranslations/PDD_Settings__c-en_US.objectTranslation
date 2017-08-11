@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PDD Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PDD Settings</value>
+    </caseValues>
+    <fields>
+        <help><!-- The PDD apex batch will get DD&apos;s which have been created the day before by default. Set this date if you&apos;d like the PDD batch to pick DD&apos;s created on a specific date. Make sure you set this date to null or empty after running the batch. --></help>
+        <label><!-- DD Created Date --></label>
+        <name>DD_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ignore Date --></label>
+        <name>Ignore_Date__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

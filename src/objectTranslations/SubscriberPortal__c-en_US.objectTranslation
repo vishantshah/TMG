@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Subscriber Portal</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Subscriber Portal</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- PcaButtonId --></label>
+        <name>PcaButtonId__c</name>
+    </fields>
+    <fields>
+        <label><!-- PcaSelectId --></label>
+        <name>PcaSelectId__c</name>
+    </fields>
+    <fields>
+        <label><!-- PcaUrl --></label>
+        <name>PcaUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sam Endpoint --></label>
+        <name>Sam_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Id --></label>
+        <name>Service_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Email Addresses --></label>
+        <name>Support_Email_Addresses__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

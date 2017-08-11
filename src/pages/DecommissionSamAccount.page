@@ -1,0 +1,81 @@
+<apex:page controller="DecommissionSamAccountController">
+	<apex:form >
+		<apex:pageblock title="Find Accounts">     
+	    	<apex:pageMessages id="errors"/>
+	        <apex:pageBlockSection columns="1" >
+	        	<apex:pageBlockSectionItem >
+	            	<apex:outputLabel >Email:*</apex:outputLabel>
+	                <apex:inputText value="{!email}"/>
+	            </apex:pageBlockSectionItem>
+	        </apex:pageBlockSection>
+	        <apex:pageBlockButtons location="bottom"> 
+	        	<apex:commandButton action="{!searchSAMandSFDC}" value="Search Existing Guid" rerender="results,samResults,mppCalloutIssuesPanel,errors" status="loading"/> 
+	       	</apex:pageBlockButtons>
+		</apex:pageblock>
+		<!-- SALESFORCE SEARCH RESULTS  -->
+		<apex:outputPanel id="results">
+		    <apex:pageBlock title="Salesforce Account Details" rendered="{!existingAccs.size>0}">
+		        <apex:pageBlockSection columns="1">
+		        	<apex:outputLabel styleclass="padboxes TextLabels BoldOutputLabels">Existing Accounts:</apex:outputLabel>
+		            <apex:pageBlockTable value="{!existingAccs}" var="acc">   
+		                <apex:column headerValue="Name" title="Name">
+		                  	<apex:outputlink value="{!URLFOR($Action.Account.View, acc.Id)}" target="_blank">{!acc.Salutation} {!acc.FirstName} {!acc.LastName}</apex:outputlink>
+		                </apex:column>
+		                <apex:column headerValue="Subscriber Status" title="Subscriber Status" value="{!acc.Subscription_Status__c}" rendered="{!acc.RecordType.Name == 'Individual Subscriber'}"/>   
+		                <apex:column headerValue="Subscriber Status" title="Subscriber Digital Status" value="{!acc.Subscriber_Digital_Status__c}" rendered="{!acc.RecordType.Name != 'Individual Subscriber'}"/>   
+		                <apex:column headerValue="TS Number" value="{!acc.Subscriber_Number_static__c}"/>
+		                <apex:column headerValue="Mailing Street" value="{!acc.PersonMailingStreet}"/>
+		                <apex:column headerValue="Mailing Postal Code" title="Mailing Postal Code" value="{!acc.PersonMailingPostalCode}"/>  
+		                <apex:column headerValue="Email" title="Email" value="{!acc.PersonEmail}"/>  
+		                <apex:column headerValue="Guid" title="Guid" value="{!acc.Guid__c}"/>  
+		                <apex:column headerValue="Account Record Type" title="Account Record Type" value="{!acc.RecordType.Name}"/> 
+					</apex:pageblockTable>
+				</apex:pageBlockSection> 
+		    </apex:pageBlock>
+		</apex:outputPanel>
+		<!-- SAM SEARCH RESULTS  -->
+		<apex:outputPanel id="samResults" >
+		    <apex:pageBlock title="SAM Account Details" rendered="{!samDetailsResponse!=null && displayDecomButton}">
+		        <apex:pageBlockTable value="{!samDetailsResponse}" var="sam" >  
+			        <apex:column headerValue="Name" value="{!sam.salutation} {!sam.FirstName} {!sam.LastName}" />   
+	                <apex:column headerValue="Email" value="{!sam.EmailAddress}" />   
+	                <apex:column headerValue="Guid" value="{!sam.Guid}"/>
+		    	</apex:pageBlockTable>
+		    	<apex:pageBlockButtons location="bottom"> 
+	        		<apex:commandButton action="{!decommissionAccounts}" value="Decommission Account" onclick="if(!confirm('{!$Label.Decommission_ConfirmDialog}')){return};" rerender="results,samResults,mppCalloutIssuesPanel,errors" status="loading" rendered="{!displayDecomButton}"/> 
+	       		</apex:pageBlockButtons>
+		    </apex:pageBlock>
+		</apex:outputPanel>
+		<apex:outputPanel id="mppCalloutIssuesPanel">
+			<apex:pageBlock title="MPP Callout Issues" id="mppCalloutIssuesBlock" rendered="{!bMPPFailure}">
+				<apex:pageBlockTable value="{!lstMPPResults}" var="mppResultRow" >
+					<apex:column headerValue="{!$ObjectType.Account.fields.Subscriber_Number__c.label}" title="{!$ObjectType.Account.fields.Subscriber_Number__c.label}">
+						<a href="/{!mppResultRow.accountId}">{!mppResultRow.sTSNumber}</a>
+					</apex:column>
+					<apex:column headerValue="Result" title="Result">
+						<apex:outputPanel rendered="{!mppResultRow.bResult}">
+							<apex:image value="/img/msg_icons/confirm32.png" /> {!$Label.Decommission_page_Confirmation_on_MPP_success_visualforce}
+						</apex:outputPanel>
+						<apex:outputPanel rendered="{!!mppResultRow.bResult}">
+							<apex:image value="/img/msg_icons/warning32.png" /> {!$Label.Decommission_page_Warning_on_MPP_issue_visualforce}
+						</apex:outputPanel>
+					</apex:column>
+				</apex:pageBlockTable>
+			</apex:pageBlock>
+		</apex:outputPanel>
+	</apex:form>
+	<!-- LOADING ANIMATION START-->
+	<apex:outputpanel >
+		<apex:actionstatus id="loading">
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height: 100%;opacity:0.65;width:100%;"> 
+                    <div class="waitingHolder" style="top: 50%; width: 70%;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please, wait..." />
+                        <span class="waitingDescription">Loading...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionstatus>
+    </apex:outputpanel>
+    <!-- LOADING ANIMATION END-->
+</apex:page>

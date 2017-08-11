@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>TCodeManagement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>TCodesManagement</value>
+    </caseValues>
+    <fields>
+        <label><!-- Allow13Week --></label>
+        <name>Allow13Week__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow26Week --></label>
+        <name>Allow26Week__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allow52Week --></label>
+        <name>Allow52Week__c</name>
+    </fields>
+    <fields>
+        <label><!-- AllowCCA --></label>
+        <name>AllowCCA__c</name>
+    </fields>
+    <fields>
+        <label><!-- AllowContinuous --></label>
+        <name>AllowContinuous__c</name>
+    </fields>
+    <fields>
+        <label><!-- AllowDD --></label>
+        <name>AllowDD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Digital Monthly Price --></label>
+        <name>Digital_Monthly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Digital Yearly Price --></label>
+        <name>Digital_Yearly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Expiry Date --></label>
+        <name>Display_Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gp Stage One Duration --></label>
+        <name>Gp_Stage_One_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gp Stage Two Duration --></label>
+        <name>Gp_Stage_Two_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incentive --></label>
+        <name>Incentive__c</name>
+        <relationshipLabel><!-- TCodesManagement --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Optional Incentive --></label>
+        <name>OptionalIncentive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Contact Center  Email --></label>
+        <name>Partner_Contact_Center_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Contact Center Tel --></label>
+        <name>Partner_Contact_Center_Tel__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Name --></label>
+        <name>Partner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premium Weekly Price --></label>
+        <name>Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reporting Type --></label>
+        <name>Reporting_Type__c</name>
+        <picklistValues>
+            <masterLabel>DM</masterLabel>
+            <translation><!-- DM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Only</masterLabel>
+            <translation><!-- Digital Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EM</masterLabel>
+            <translation><!-- EM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lapsed DM</masterLabel>
+            <translation><!-- Lapsed DM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lapsed OBTM</masterLabel>
+            <translation><!-- Lapsed OBTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Loyalty</masterLabel>
+            <translation><!-- Loyalty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MIS</masterLabel>
+            <translation><!-- MIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OBTM</masterLabel>
+            <translation><!-- OBTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open Offer</masterLabel>
+            <translation><!-- Open Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RI</masterLabel>
+            <translation><!-- RI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewal</masterLabel>
+            <translation><!-- Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SELF</masterLabel>
+            <translation><!-- SELF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UKN</masterLabel>
+            <translation><!-- UKN --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Show Cancel Button --></label>
+        <name>Show_Cancel_Button__c</name>
+    </fields>
+    <fields>
+        <label><!-- Special Data Text --></label>
+        <name>Special_Data_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Special Data --></label>
+        <name>Special_Data__c</name>
+    </fields>
+    <fields>
+        <label><!-- TCode --></label>
+        <name>TCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>MGM</masterLabel>
+            <translation><!-- MGM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MIS</masterLabel>
+            <translation><!-- MIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open Offer</masterLabel>
+            <translation><!-- Open Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC</masterLabel>
+            <translation><!-- POC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC-DM</masterLabel>
+            <translation><!-- POC-DM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC-EM</masterLabel>
+            <translation><!-- POC-EM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC-OBTM</masterLabel>
+            <translation><!-- POC-OBTM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promotional</masterLabel>
+            <translation><!-- Promotional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Registered Interest</masterLabel>
+            <translation><!-- Registered Interest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewal</masterLabel>
+            <translation><!-- Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SELF</masterLabel>
+            <translation><!-- SELF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Staff Offer</masterLabel>
+            <translation><!-- Staff Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UKN</masterLabel>
+            <translation><!-- UKN --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If checked then the t-code is available for selection --></help>
+        <label><!-- Valid --></label>
+        <name>Valid__c</name>
+    </fields>
+    <fields>
+        <label><!-- Web Pack Monthly Price --></label>
+        <name>Web_Pack_Monthly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Web Pack Yearly Price --></label>
+        <name>Web_Pack_Yearly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- imageURL --></label>
+        <name>imageURL__c</name>
+    </fields>
+    <fields>
+        <label><!-- tandcURL --></label>
+        <name>tandcURL__c</name>
+    </fields>
+    <layouts>
+        <layout>TCodeManagement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Deal Options --></label>
+            <section>Deal Options</section>
+        </sections>
+        <sections>
+            <label><!-- Pricing --></label>
+            <section>Pricing</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- TCode must be at least 4 characters long. --></errorMessage>
+        <name>TCode_Length_Rule</name>
+    </validationRules>
+</CustomObjectTranslation>

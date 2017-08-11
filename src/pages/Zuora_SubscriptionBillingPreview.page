@@ -1,0 +1,5 @@
+<apex:page standardController="Zuora__Subscription__c">
+ <apex:outputPanel style="overflow:auto;width:400px;height:300px;">
+      <c:Zuora_QuoteBillingPreview subscriptionID="{! Zuora__Subscription__c.id}"/>
+   </apex:outputPanel>
+</apex:page>

@@ -1,0 +1,570 @@
+<apex:page id="SubscriptionCallCentreInBoundTMG" controller="SubscriptionCallCentreRenewalController" tabstyle="Offline_Renewals__tab">
+    <style>
+        .emailStyle{padding-top:5px; display:block;}
+        .r10{margin-right:10px}
+    </style>
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/css/tableStyle.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/css/offlineFlowStyle.css')}"/>
+    <apex:sectionHeader title="Subscription Renewal" />
+    <apex:form id="form">
+        <apex:pageMessages id="pageMessages"/>
+        <apex:outputPanel id="step2">
+            <apex:actionFunction name="fetchAccDets" action="{!searchAccount}" status="myStatus" rerender="currentSubs,productsList,sublist,sublist1,accDet,perms,permsPb,AccDetails,AccDetailsIb,SubDetails,SubDetailsEdit,permsPb,accDetPan,accSubs,permissionsSectionMessages">
+                <apex:param name="AcctId" value="" assignTo="{!accountId}" />
+            </apex:actionFunction>
+            <apex:actionFunction name="fetchSubDets" action="{!searchSub}" status="myStatus" rerender="accSubs,currentSubs, productsList">
+                <apex:param name="SubId" value="" assignTo="{!subId}" />
+            </apex:actionFunction>
+            <apex:actionFunction name="findAccounts" action="{!globalAccountSearch}" status="dupeStatus" rerender="currentSubs,productsList,acclist,permissionsSectionMessages,sublist1,accDet,perms,permsPb,AccDetails,AccDetailsIb,SubDetails,SubDetailsEdit,everything,accDetPan,accSubs" />
+
+            <apex:outputPanel id="step2Duplicate">
+                <apex:pageblock title="Find Account" rendered="true" id="pbFindAcc">
+                    <apex:pageBlockSection columns="1">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="Surname">Surname:*</apex:outputLabel>
+                            <apex:inputText id="Surname" value="{!surname}" onkeydown="if(event.code == 'Enter') {findAccounts();return false;}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="PostCode">Post Code:*</apex:outputLabel>
+                            <apex:inputText id="PostCode" value="{!postCode}"  onkeydown="if(event.code == 'Enter') {findAccounts();return false;}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel />
+                            <apex:outputLabel value="OR" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="tsNumber">TS Number:*</apex:outputLabel>
+                            <apex:inputText id="tsNumber" value="{!tsNumber}"  onkeydown="if(event.code == 'Enter') {findAccounts();return false;}" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons location="bottom">
+                        <input type="button" class="btn"  onclick="findAccounts();return false;" value="Check Existing Accounts" />
+                        <apex:actionStatus id="dupeStatus">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image value="{!$Resource.Loading_Gif}" /> Processing...
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:pageBlockButtons>
+                </apex:pageblock>
+                <apex:pageBlock title="Accounts List" id="acclist">
+                    <apex:pageBlockSection id="result" title="Account Search Results" columns="1" rendered="true">
+                        <apex:pageBlockTable id="matchedAccounts" value="{!foundAccounts}" var="accObj" rendered="true" title="Accounts matched" onRowClick="rowOnclick(this);" styleClass="tCodeTable">
+                            <apex:column headerValue="Select">
+                                <apex:outputPanel rendered="{!foundAccounts.size!=1 && accObj.Subscriptions1__r.size == 0}">
+                                    <input type="radio" id="selectedAccObj" name="accObj" value="{!accObj.Id}" disabled="disabled"/>
+                                 </apex:outputPanel>
+                                   <apex:outputPanel rendered="{!foundAccounts.size!=1 && accObj.Subscriptions1__r.size >0}">
+                                       <input type="radio" id="selectedAccObj" name="accObj" value="{!accObj.Id}"/>
+                                   </apex:outputPanel>
+                                   <apex:outputPanel rendered="{!foundAccounts.size==1 && accObj.Subscriptions1__r.size > 0}">
+                                       <input type="radio" id="selectedAccObj" name="accObj" value="{!accObj.Id}" checked="checked"/>
+                                   </apex:outputPanel>
+                            </apex:column>
+                            <apex:column headerValue="Name">
+                                <apex:outputlink value="{!URLFOR($Action.Account.View, accObj.Id)}" target="_blank">{!accObj.Name}</apex:outputlink>
+                            </apex:column>
+                            <apex:column headerValue="TS Number" value="{!accObj.Subscriber_Number_static__c}" />
+                            <apex:column value="{!accObj.PersonEmail}" />
+                            <apex:column headerValue="Valid for Offline Renewal?" title="{!IF(accObj.Subscriptions1__r.size>0,$Label.OfflineRenewal_OfferSubWithPrevSub,$Label.OfflineRenewal_OfferSubNoPrevSub)}">
+                                <apex:image id="theImage" value="{!IF(accObj.Subscriptions1__r.size>0, '/img/msg_icons/confirm24.png','/img/msg_icons/error24.png')}" width="20" height="20"/>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons location="bottom" id="pbs_buttons">
+                        <apex:commandButton id="idSearch" value="Search" rendered="{!NOT(ISBLANK(foundAccounts)) && displaySearchButton}" onclick="getAccDetail(); return false;"/>
+                        <apex:actionStatus id="myStatus">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image value="{!$Resource.Loading_Gif}" /> Processing...
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+
+                <apex:outputpanel id="accDet">
+                    <apex:pageMessages id="accDetailsMessages"/>
+                    <!-- account details view section -->
+                    <apex:pageblock title="Account Details" rendered="{!NOT(accEditEnabled)}" id="AccDetails">
+                        <apex:pageBlockSection columns="2" id="pbs_accDetails">
+                            <apex:outputField value="{!accountDetail.Title__c}" />
+                            <apex:outputField value="{!accountDetail.Salutation}" />
+                            <apex:outputField value="{!accountDetail.FirstName}" />
+                            <apex:outputField value="{!accountDetail.LastName}" />
+                            <apex:outputField value="{!accountDetail.Guid__c}" />
+                            <apex:pageBlockSectionItem />
+                            <apex:outputField value="{!accountDetail.Preferred_Phone_Contact__pc}" rendered="false"/>
+                            <apex:outputField value="{!accountDetail.Phone}" />
+                            <apex:outputField value="{!accountDetail.PersonEmail}" />
+                            <apex:outputField value="{!accountDetail.PersonMobilePhone}" />
+                            <apex:outputField value="{!accountDetail.PersonHomePhone}" />
+                            <apex:outputField value="{!accountDetail.PersonMailingStreet}" />
+                            <apex:outputField value="{!accountDetail.PersonMailingCity}" />
+                            <apex:outputField value="{!accountDetail.PersonMailingState}" />
+                            <apex:outputField value="{!accountDetail.PersonMailingPostalCode}" />
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel for="country" value="Mailing Country" />
+                                <apex:outputText value="{!CountryName}" id="country" />
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem />
+                        </apex:pageBlockSection>
+                        <apex:pageBlockButtons location="bottom">
+                            <apex:commandButton action="{!editAccount}" value="Edit" rendered="{!NOT(accEditEnabled) && NOT(ISBLANK (accountDetail.id))}" rerender="accDet" status="status" />
+                        </apex:pageBlockButtons>
+                    </apex:pageblock>
+
+                    <!-- account details edit section -->
+                    <apex:pageblock title="Account Details" rendered="{!accEditEnabled}" id="AccDetailsIb">
+                        <apex:pageBlockSection columns="2" id="pbs_accDetailsInput">
+                            <apex:inputField value="{!accountDetail.Title__c}" />
+                            <apex:inputField value="{!accountDetail.Salutation}" />
+                            <apex:inputField value="{!accountDetail.FirstName}" />
+                            <apex:inputField value="{!accountDetail.LastName}" />
+                            <apex:inputField value="{!accountDetail.Guid__c}" />
+                            <apex:pageBlockSectionItem />
+                            <apex:inputField value="{!accountDetail.Preferred_Phone_Contact__pc}" rendered="false" />
+                            <apex:inputField value="{!accountDetail.Phone}" />
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Email:" styleClass="emailStyle" />
+                                <apex:outputPanel id="addChangeEmailPanel">
+                                    <apex:outputPanel rendered="{!NOT(ISNULL(accountDetail.Id))}">
+                                            <apex:outputText value="{!accountDetail.PersonEmail}" styleClass="r10" />
+                                            <apex:commandButton action="{!displayChangeEmailIFrame}" value="{!$Label.Add_Change_Email}" rerender="addChangeEmailPanel" />
+                                            <br/>
+                                            <apex:actionFunction action="{!hideChangeEmailIFrame}" name="hideIFrame" rerender="addChangeEmailPanel" />
+                                            <apex:actionFunction action="{!refetchSubscriberEmail}" name="refetchEmail" rerender="addChangeEmailPanel" />
+                                            <apex:outputPanel rendered="{!showEmailIFrame}">
+                                                <apex:iframe width="400" height="280" src="/apex/SubscriberEmailManagementIFrame?id={!accountDetail.Id}&isiframe=true" scrolling="true" />
+                                            </apex:outputPanel>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:inputField value="{!accountDetail.PersonMobilePhone}" />
+                            <apex:inputField value="{!accountDetail.PersonHomePhone}" />
+                            <apex:inputField value="{!accountDetail.PersonMailingStreet}" id="PersonMailingStreet" />
+                            <apex:inputField value="{!accountDetail.PersonMailingCity}" id="PersonMailingCity" />
+                            <apex:inputField value="{!accountDetail.PersonMailingState}" id="PersonMailingState" />
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel for="PersonMailingPostalCode" value="Mailing Zip/Postal Code" />
+                                <apex:outputPanel >
+                                    <apex:inputField value="{!accountDetail.PersonMailingPostalCode}" style="float: left;" id="PersonMailingPostalCode" />
+                                    <script>
+                                        var PostCode = '{!$Component.PersonMailingPostalCode}';
+                                        var Field1 = '{!$Component.PersonMailingStreet}';
+                                        var Field2 = '{!$Component.PersonMailingCity}';
+                                        var Field3 = '{!$Component.PersonMailingState}';
+                                    </script>
+                                    <c:PostCodeLookup />
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel for="countries" value="Country:" />
+                                <apex:selectList id="countries" value="{!accountDetail.PersonMailingCountry}" size="1" title="Mailing Country">
+                                    <apex:selectOptions value="{!Countries}" />
+                                </apex:selectList>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem />
+                            <apex:pageBlockSectionItem >
+                                <apex:commandButton action="{!cancelAccountEdit}" value="Cancel"
+                                    rerender="accDet" status="status" immediate="true"/>
+                                <apex:commandButton action="{!saveAccount}" value="Save"
+                                    rerender="accDet" status="status" />
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                    </apex:pageblock>
+                </apex:outputpanel>
+
+                <apex:pageMessages id="permissionsSectionMessages"/>
+                <apex:outputpanel id="perms">
+                    <apex:actionRegion >
+                        <apex:pageblock id="permsPb" title="Marketing Preferences" rendered="{!showPermissions || NOT(ISBLANK (accountDetail.id))}">
+                            <apex:pageBlockSection columns="1">
+                                <apex:outputPanel id="everything">
+                                    <table style="text-align: left; width: 100%;" border="0" cellspacing="10">
+                                        <tbody>
+                                            <tr>
+                                                <td style="font-weight: bold; width: 40%;">Permission Type</td>
+                                                <td style="font-weight: bold; width: 15%;">Email</td>
+                                                <td style="font-weight: bold; width: 15%;">Phone</td>
+                                                <td style="font-weight: bold; width: 15%;">Post</td>
+                                                <td style="font-weight: bold; width: 15%;">SMS</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="font-weight: bold;">2nd Party</span><br />Internal Telegraph offers</td>
+                                                <td><apex:inputcheckbox value="{!p2ndemail}" /></td>
+                                                <td><apex:inputcheckbox value="{!p2ndphone}" /></td>
+                                                <td><apex:inputcheckbox value="{!p2ndpost}" /></td>
+                                                <td><apex:inputcheckbox value="{!p2ndSMS}" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </apex:outputPanel>
+                            </apex:pageBlockSection>
+                            <apex:pageBlockButtons location="bottom">
+                                <apex:commandButton action="{!savePerms}" rendered="{!NOT(ISBLANK(accountDetail.id))}" rerender="everything,permissionsSectionMessages" value="Save Permissions" status="savestatus"/>
+                                <apex:actionStatus id="savestatus" startText="Saving Permissions..."  stopText="" />
+                            </apex:pageBlockButtons>
+                        </apex:pageblock>
+                    </apex:actionRegion>
+                </apex:outputpanel>
+
+                <apex:outputpanel id="currentSubs">
+                    <apex:pageblock title="Current Subscription Details" rendered="{!subDetail.Previous_Subscription__c!=null}">
+                        <apex:pageBlockSection columns="2">
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Subscription Ref: "/>
+                                <apex:outputLink value="{!URLFOR($Action.Subscription__c.View, subDetail.Previous_Subscription__c)}" target="_blank">{!subDetail.Previous_Subscription__r.Name}</apex:outputLink>
+                            </apex:pageBlockSectionItem>
+                            <apex:outputField value="{!subDetail.Previous_Subscription__r.Weekly_Price__c}" />
+                            <apex:outputField value="{!subDetail.Previous_Subscription__r.Start_Date__c}" />
+                            <apex:outputField value="{!subDetail.Previous_Subscription__r.Renewal_Price_Override__c}" />
+                            <apex:outputField value="{!subDetail.Previous_Subscription__r.End_Date__c}" />
+                            <apex:outputField value="{!subDetail.Previous_Subscription__r.Product__c}" />
+                            <apex:outputText />
+                            <apex:outputField value="{!subDetail.Previous_Subscription__r.Renewal_Product_Override__c}" />
+                        </apex:pageBlockSection>
+                    </apex:pageblock>
+                </apex:outputpanel>
+                <apex:outputpanel id="sublist">
+                    <apex:pageBlock title="Offered Subscriptions" id="sublist1">
+                        <apex:pageblockSection id="subresult" title="Subscription List" columns="1" rendered="true">
+                            <apex:pageblockTable id="matchedSubs" value="{!foundSubscriptions}" var="subObj" rendered="true" onRowClick="rowOnclick(this);" styleClass="tCodeTable">
+                                <apex:column headerValue="Select">
+                                    <apex:outputPanel rendered="{!foundSubscriptions.size!=1}">
+                                        <apex:outputPanel layout="none" rendered="{!subObj.Id != subId}">
+                                            <input type="radio" id="selectedSubObj" name="subObj" value="{!subObj.Id}"/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!subObj.Id == subId}">
+                                            <input type="radio" id="selectedSubObj" name="subObj" value="{!subObj.Id}" checked="checked"/>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!foundSubscriptions.size==1}">
+                                        <input type="radio" id="selectedSubObj" name="subObj" value="{!subObj.Id}" checked="checked"/>
+                                    </apex:outputPanel>
+                                </apex:column>
+                                <apex:column headerValue="Sub Number"><a href="/{!subObj.Id}" target="_blank">{!subObj.Name}</a> </apex:column>
+                                <apex:column value="{!subObj.Start_Date__c}" />
+                                <apex:column value="{!subObj.End_Date__c}" />
+                                <apex:column value="{!subObj.Weekly_Price__c}" />
+                                <apex:column value="{!subObj.Product__c}" />
+                                <apex:column value="{!subObj.Delivery_Type__c}" />
+                                <apex:column value="{!subObj.Payment_Type__c}" />
+                                <apex:column headerValue="Duration" value="{!subObj.Subscription_Duration_Picklist__c}" />
+                            </apex:pageblockTable>
+                        </apex:pageblockSection>
+                        <apex:pageBlockButtons location="bottom" id="sub_buttons">
+                            <apex:commandButton id="SubSearch" value="Details" rendered="{!NOT(ISBLANK(foundSubscriptions))}" onclick="getSubDetail();return false;"/>
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>
+                </apex:outputpanel>
+            </apex:outputPanel>
+            <apex:outputPanel id="productsList">
+                <c:ProductSwitch psController="{!productSwitcher}" toRerender="sublist, productsList, SubDetails, SubDetailsEdit, subscriptionDetailsMessages" showDigitalPrices="false" showLowStartPrice="false" />
+            </apex:outputPanel>
+
+            <apex:outputpanel id="accSubs">
+
+                <!-- Offered Subscription Details // READ MODE -->
+                <apex:pageMessages id="subscriptionDetailsMessages" />
+                <apex:pageblock title="Offered Subscription Details" rendered="{!NOT(subEditEnabled)}" id="SubDetails">
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:actionStatus id="mySave">
+                             <apex:facet name="start">
+                                <apex:commandbutton value="Take Payment" action="{!saveAndTakePayment}" rendered="{!NOT(subEditEnabled) && NOT(ISBLANK (subDetail.id))}" disabled="true" status="mySave"/>
+                             </apex:facet>
+                             <apex:facet name="stop">
+                                <apex:commandbutton value="Take Payment" action="{!saveAndTakePayment}" rendered="{!NOT(subEditEnabled) && NOT(ISBLANK (subDetail.id))}" disabled="false" reRender="accSubs" status="mySave"/>
+                            </apex:facet>
+                        </apex:actionStatus>
+                        &nbsp;
+                        <apex:actionStatus id="btnStatus" startText="Please wait......." />
+                    </apex:pageBlockButtons>
+
+                    <apex:pageBlockSection columns="2" id="pbs_subDetails">
+                        <apex:outputField value="{!subDetail.Start_Date__c}"  />
+                        <apex:pageBlockSectionItem>
+                            <apex:outputLabel value="{!$ObjectType.Subscription__c.fields.Delivery_Type__c.label}" />
+                            <apex:outputPanel>
+                                <apex:outputText value="{!subDetail.Delivery_Type__c}" />
+                                <apex:outputPanel layout="none" rendered="{!!bValidDeliveryType}">
+                                   <img src="/img/msg_icons/error16.png" />
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                        <apex:outputField value="{!subDetail.Retailer__c}" />
+                        <apex:outputField value="{!subDetail.isContinuous__c}" />
+                        <apex:outputField value="{!subDetail.Subscription_Duration_Picklist__c}" />
+                        <apex:outputField value="{!subDetail.Weekly_Price__c}" />
+                        <apex:outputField value="{!subDetail.PaymentDate__c}" rendered="{!subDetail.isContinuous__c}"/>
+                        <apex:outputField value="{!subDetail.Payment_Type__c}"/>
+                        <apex:outputField value="{!subDetail.MPP_DD_Frequency__c}" rendered="{!subDetail.isContinuous__c && subDetail.Payment_Type__c =='Direct Debit'}"/>
+                        <apex:outputField value="{!subDetail.MPP_CC_Frequency__c}" rendered="{!subDetail.isContinuous__c  && subDetail.Payment_Type__c !='Direct Debit'}"/>
+                        <apex:pageBlockSectionItem>
+                            <apex:outputLabel value="{!$Label.OC_Incentives}" />
+                            <apex:outputText value="{!incentiveName}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:outputField value="{!subDetail.Product__c}"/>
+                        <apex:pageBlockSectionItem>
+                            <apex:outputLabel value="{!$Label.OC_Incentive_Description}" />
+                            <apex:outputText value="{!incentiveDescription}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem />
+                        <apex:pageBlockSectionItem>
+                            <apex:outputLabel value="{!$Label.OC_Incentive_Reason}"/>
+                            <apex:outputText value="{!selectedIncentiveReason}" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1">
+                        <apex:outputPanel layout="block" style="text-align:center;">
+                            <apex:commandButton action="{!editSub}" value="Edit" rendered="{!NOT(subEditEnabled) && NOT(ISBLANK (subDetail.id))}" rerender="accSubs" status="status" />
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    <!-- Cheques -->
+                    <apex:outputPanel id="chequeDetailSectionId" style="display:{!IF(subDetail.Payment_Type__c=='Cheque' || DisplayedPaymentType=='Cheque','block','none')}">
+                        <apex:pageBlockSection columns="1" title="Cheque Payment Details" >
+                            <apex:pageBlockSectionItem >
+                                <apex:outputlabel >Batch Name</apex:outputlabel>
+                                <apex:outputText value="{!ChequeBatchSelected}"/>
+                            </apex:pageBlockSectionItem>
+                            <apex:outputField value="{!cheque.Name_on_Cheque__c}"/>
+                            <apex:outputField value="{!cheque.Account_Number__c}"/>
+                            <apex:outputField value="{!cheque.Sort_Code__c}" />
+                            <apex:outputField value="{!cheque.Ref_Number_on_Cheque__c}"  />
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                </apex:pageblock>
+
+                <!-- Offered Subscription Details // EDIT MODE -->
+                <apex:actionFunction name="toggleIsContinuous" action="{!toggleIsContinuous}" status="StatusChange" rerender="isContinuousFieldId, paymentTypeId, paymentStartDateId, paymentFrequencyId"/>
+                <apex:pageblock title="Offered Subscription Details" rendered="{!subEditEnabled}" id="SubDetailsEdit">
+                    <apex:pageBlockSection >
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="orderMethod">Order Method:</apex:outputLabel>
+                            <apex:selectRadio id="orderMethod" value="{!selectedOrderMethod}" onclick="toggleIsContinuous()" >
+                                <apex:selectOptions value="{!orderMethodValues}" />
+                            </apex:selectRadio>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="2" id="pbs_subDetails">
+                        <apex:inputField value="{!subDetail.Start_Date__c}" />
+                        <apex:pageBlockSectionItem >
+                             <apex:outputLabel value="Delivery Type" for="radioOptions"/>
+                             <apex:selectRadio id="radioOptions" value="{!selectedDelivery}" required="true" label="Delivery Type">
+                                 <apex:selectOptions value="{!lstDeliveryOptions}" />
+                                 <apex:actionsupport event="onchange" rerender="RetailerResults, ShowSelectedRetailerID, ShowSelectedRetailer, chequeSectionId" status="RefreshDelivery" />
+                             </apex:selectRadio>
+                        </apex:pageBlockSectionItem>
+                        <apex:outputField value="{!subDetail.Retailer__c}" />
+                        <apex:inputField value="{!subDetail.Subscription_Duration_Picklist__c}" />
+                        <apex:inputField value="{!subDetail.Weekly_Price__c}" />
+                        <apex:inputField value="{!subDetail.isContinuous__c}" id="isContinuousFieldId">
+                            <apex:actionSupport event="onclick" rerender="paymentTypeId,paymentStartDateId,paymentFrequencyId,chequeSectionId" status="StatusChange"/>
+                            <apex:actionStatus startText="Updating page ..." id="StatusChange"/>
+                        </apex:inputField>
+                        <apex:pageBlockSectionItem id="paymentTypeBlockId" >
+                            <apex:outputLabel value="Payment Type" />
+                            <apex:outputPanel layout="block" id="paymentTypeId" >
+                                <apex:selectList size="1" value="{!displayedPaymentType}" rendered="{!subDetail.isContinuous__c}">
+                                    <apex:selectOption itemValue="Credit Card" itemLabel="Credit/Debit Card" />
+                                    <apex:selectOption itemValue="Direct Debit" itemLabel="Direct Debit" />
+                                    <apex:actionSupport event="onclick" rerender="paymentStartDateId,paymentFrequencyId,chequeSectionId" status="StatusChange"/>
+                                </apex:selectList>
+                                <apex:selectList size="1" value="{!displayedPaymentType}" onchange="toggleChequeSection(this.value);reRenderChequeSection()" rendered="{!!subDetail.isContinuous__c}">
+                                    <apex:selectOption itemValue="Credit Card" itemLabel="Credit/Debit Card" />
+                                    <apex:selectOption itemValue="Cheque" itemLabel="Cheque" rendered="{!selectedOrderMethod=='Coupon'}" />
+                                    <apex:actionSupport event="onclick" rerender="paymentStartDateId, paymentFrequencyId, chequeSectionId" status="StatusChange"/>
+                                </apex:selectList>
+                           </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                    <script>
+                        var  chequeSection = document.getElementById('{!$Component.chequeSectionId}');
+                    </script>
+                    <apex:pageBlockSectionItem id="paymentStartDateBlockId" >
+                        <apex:outputLabel value="Select Your Payment Start Date" />
+                        <apex:outputPanel layout="block" id="paymentStartDateId" rendered="{!NOT(displayedPaymentType=='Cheque')}">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:selectList size="1" value="{!preferedStartPaymentDate}" rendered="{!subDetail.isContinuous__c }">
+                                <apex:selectOption itemValue="1" itemLabel="1" />
+                                <apex:selectOption itemValue="15" itemLabel="15" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem id="paymentFrequencyBlockId" >
+                        <apex:outputLabel value="Payment Frequency" />
+                        <apex:outputPanel layout="block" id="paymentFrequencyId" rendered="{!NOT(displayedPaymentType=='Cheque')}">
+                            <apex:selectList size="1" value="{!paymentFrequency}" rendered="{!subDetail.isContinuous__c == true && displayedPaymentType =='Direct Debit'}">
+                                <apex:selectOption itemValue="Monthly" itemLabel="Monthly" />
+                                <apex:selectOption itemValue="Quarterly" itemLabel="Quarterly" />
+                            </apex:selectList>
+                            <apex:selectList size="1" value="{!paymentFrequency}" rendered="{!subDetail.isContinuous__c == true  && displayedPaymentType !='Direct Debit'}">
+                                <apex:selectOption itemValue="Monthly" itemLabel="Monthly" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:outputField value="{!subDetail.Product__c}"/>
+
+                    <!-- Incentives -->
+                    <apex:pageBlockSectionItem>
+                        <apex:outputLabel value="{!$Label.OC_Incentives}" />
+                        <apex:outputPanel id="incentivesSelec" styleClass="requiredInput" layout="block">
+                            <apex:outputText value="{!$Label.OC_No_Incentives_available}" rendered="{!!hasIncentives}" />
+                            <apex:selectList size="1" value="{!selectedIncentive}" rendered="{!hasIncentives}">
+                                <apex:selectOptions value="{!activeIncentives}" />
+                                <apex:actionSupport event="onchange" rerender="incentiveDesc2, incentiveReasonPanel" status="myStatus"/>
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem />
+                    <apex:pageBlockSectionItem>
+                            <apex:outputLabel value="{!$Label.OC_Incentive_Description}" />
+                            <apex:outputPanel id="incentiveDesc2">
+                                <apex:outputText value="{!incentiveDescription}" />
+                            </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem />
+                    <apex:pageBlockSectionItem>
+                        <apex:outputLabel value="{!$Label.OC_Incentive_Reason}"/>
+                        <apex:outputPanel id="incentiveReasonPanel">
+                            <apex:selectList value="{!selectedIncentiveReason}" size="1" rendered="{!AND(!ISBLANK(selectedIncentive), selectedIncentive!='None')}">
+                                <apex:selectOptions value="{!incentiveReasons}" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:outputLabel />
+
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1">
+                        <apex:outputPanel layout="block" style="text-align:center;">
+                            <apex:actionStatus id="saveSubStatus">
+                                <apex:facet name="start">
+                                    <apex:outputPanel >
+                                        <apex:image value="{!$Resource.Loading_Gif}" /> Processing...
+                                    </apex:outputPanel>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:outputPanel >
+                                        <apex:commandButton action="{!saveSub}" value="Save" rerender="accSubs, productsList, sublist" status="saveSubStatus" />
+                                        <apex:commandButton action="{!cancelSubEdit}" value="Cancel" rerender="accSubs, pageMessages, accDetailsMessages, subscriptionDetailsMessages" status="saveSubStatus" immediate="true"/>
+                                    </apex:outputPanel>
+                                </apex:facet>
+                            </apex:actionStatus>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    <!-- Start HND -->
+                    <apex:outputPanel id="ShowSelectedRetailerID" >
+                        <apex:actionRegion >
+                            <apex:pageBlockSection title="Select Retailer By ID" columns="2" rendered="{!selectedDelivery == 'HND'}">
+                                <apex:pageBlockSectionItem rendered="{!$CurrentPage.parameters.OrderMethod=='Outbound'}">
+                                    <apex:outputLabel value="Retailer ID" for="RetailerID"/>
+                                    <apex:outputPanel >
+                                        <apex:inputText id="RetailerID" title="Retailer ID"  value="{!retailerID}" />
+                                        &nbsp;<apex:commandButton action="{!selectRetailerByID}"  value="Select" rerender="ShowSelectedRetailer" status="retrieveretailersById"/>
+                                        &nbsp;<apex:actionstatus id="retrieveretailersById" startText="Retrieving retailers please wait...." />
+                                    </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                            </apex:pageBlockSection>
+                        </apex:actionRegion>
+                    </apex:outputPanel>
+
+                    <apex:outputPanel id="RetailerResults">
+                        <apex:actionRegion >
+                            <apex:pageBlockSection id="RetailerTable" columns="2" rendered="{!selectedDelivery == 'HND'}">
+                                <apex:pageBlockSectionItem >
+                                     <apex:outputLabel styleclass="BoldOutputLabels" value="Search Retailer By Post Code" for="PostcodeRetailSearch"/>
+                                     <apex:outputPanel >
+                                        <apex:inputText id="PostcodeRetailSearch" value="{!postcodeRetailSearch}" />
+                                        &nbsp;<apex:commandButton action="{!retrieveAllRetailers}" value="Retrieve Retailers" rerender="OutputRetailers, OutputRetailers" status="retrieveretailers"/>
+                                        &nbsp;<apex:actionstatus id="retrieveretailers" startText="Retrieving retailers please wait...." />
+                                    </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                            </apex:pageBlockSection>
+                        </apex:actionRegion>
+                        <apex:outputPanel layout="block" id="OutputRetailers">
+                                <apex:pageBlockSection columns="1" rendered="{!displayRetailerResults}">
+                                    <apex:outputPanel layout="block" rendered="{!displayRetailers}">
+                                        <apex:pageBlockTable value="{!allActiveRetailers}" var="retailers">
+                                                <apex:column headerValue="Name" title="Name" value="{!retailers.Retailer.Name}"/>
+                                                <apex:column headerValue="Address" title="Address" value="{!retailers.Retailer.BillingStreet} {!retailers.Retailer.BillingCity} {!retailers.Retailer.BillingPostalCode}"/>
+                                                <apex:column headerValue="Ret Multi" title="Ret Multi" value="{!retailers.Retailer.Retmulti__c}"/>
+                                                <apex:column headerValue="Sub Count" title="Sub Count" value="{!retailers.ValidSubsCount}"/>
+                                                <apex:column headerValue="Select" title="Select" >
+                                                    <apex:commandLink action="{!selectRetailer}"  value="Select" immediate="true" rerender="ShowSelectedRetailer, SubDetailsEdit">
+                                                        <apex:param name="SelectedRetailer" value="{!retailers.Retailer.ID}" assignTo="{!selectedRetailer}" />
+                                                    </apex:commandLink>
+                                                </apex:column>
+                                        </apex:pageBlockTable>
+                                    </apex:outputPanel>
+                                </apex:pageBlockSection>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    <!-- Cheques -->
+                    <apex:outputPanel id="chequeSectionId" style="display:{!IF( DisplayedPaymentType =='Cheque','block','none')}">
+                        <apex:pageBlockSection columns="1" title="Cheque Payment Details" >
+                               <h3 class="formSubHead">Create a new cheque batch or select an existing batch</h3><span class="RedFont">*</span>
+                               <apex:outputPanel styleclass="labelCol" >
+                                   <apex:outputLabel style="padding: 2px 20px 20px 33px;" value="Create new batch"></apex:outputLabel>
+                                   <apex:inputcheckBox style="align: left;width: 100px;" value="{!createNewBatch}" />
+                                </apex:outputPanel>
+                                <apex:outputLabel style="padding-left: 73px;font-size: 12pt" styleclass="ORStatement" value="OR"></apex:outputLabel>
+                                <apex:outputPanel styleclass="labelCol" >
+                                    <apex:outputLabel style="padding: 2px 20px 20px 33px;" value="Select existing batch:"></apex:outputLabel>
+                                    <apex:selectList styleclass="ThisCombo" style="margin-left: 127px" size="1"  value="{!chequeBatchSelected}" styleClass="paymentOpt">
+                                        <apex:selectOptions value="{!chequeBatchOptions}" />
+                                    </apex:selectList>
+                                </apex:outputpanel>
+                                <apex:inputField value="{!cheque.Name_on_Cheque__c}"  id="ChequeNameonCheque"/>
+                                <apex:inputField value="{!cheque.Account_Number__c}" id="ChequeAccountNumber"/>
+                                <apex:inputField value="{!cheque.Sort_Code__c}"  id="ChequeSortCode" />
+                                <apex:inputField value="{!cheque.Ref_Number_on_Cheque__c}"  id="ChequeRefNumber"/>
+                        </apex:pageBlockSection>
+                        <apex:actionFunction name="reRenderChequeSection" action="{!fetchAccountDetails}" reRender="SubDetailsEdit"/>
+                    </apex:outputPanel>
+                </apex:pageblock>
+            </apex:outputpanel>
+        </apex:outputPanel>
+    </apex:form>
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <script type="text/javascript">
+        j$ = jQuery.noConflict();
+
+        function rowOnclick(row){
+            j$(row).find('input[type="radio"]').first().prop('checked', true);
+        }
+
+        function toggleChequeSection(payType){
+            try{
+                chequeSection.style.display = (payType=='Cheque')?'block':'none';
+            }catch(ex){alert(ex);}
+        }
+
+        function getAccDetail() {
+            var chk = document.getElementsByName('accObj');
+            var accountId;
+            for (var i=0; i<chk.length; i++) {
+                if(chk[i].checked){
+                    accountId = chk[i].value;
+                }
+            }
+
+            if(accountId != null){
+                fetchAccDets(accountId);
+            }
+        }
+
+        function getSubDetail() {
+            var chk = document.getElementsByName('subObj');
+            var accountId;
+            for (var i=0; i<chk.length; i++) {
+                if(chk[i].checked){
+                    subId = chk[i].value;
+                }
+            }
+            if(subId != null){
+                fetchSubDets(subId);
+            }
+        }
+    </script>
+</apex:page>

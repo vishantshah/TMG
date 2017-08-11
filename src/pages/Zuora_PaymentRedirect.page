@@ -1,0 +1,58 @@
+<apex:page showHeader="true" sidebar="true" StandardController="zqu__Quote__c" extensions="Zuora_PaymentRedirectController">
+    <!-- Render the payment page component, using the url parameters as attribute values -->
+    <apex:sectionHeader title="{!$Label.Zuora_New_Quote_Title}" subtitle="{!$Label.Zuora_Payment_Details_Title}"/>
+    <apex:pageMessages />
+    <hr/>
+    <apex:outputPanel id="pnlPaymentFrameOuter">
+        <apex:form id="theForm">
+        	<apex:outputText value="{!zqu__Quote__c.zqu__SubscriptionType__c}" rendered="false"/>
+            <apex:actionfunction name="updatePaymentFrame" action="{!updatePaymentPageFrame}"/>
+            
+            <apex:outputLabel value="{!$ObjectType.zqu__Quote__c.fields.zqu__PaymentMethod__c.Label}" style="color:#4a4a56;font-size:12px !important;font-weight:bold"/>&nbsp;&nbsp;
+            <apex:selectList value="{!zqu__Quote__c.zqu__PaymentMethod__c}" multiselect="false" size="1" onChange="updatePaymentFrame()">
+                    <apex:selectOptions value="{!PaymentMethods}"/>
+            </apex:selectList>
+            <br/>
+            <apex:outputPanel rendered="{!isDirectDebit}">
+                <br/>
+                <table cellspacing="2" cellpadding="1" border="0" width="60%">
+                    <tr>
+                        <td>
+                            <apex:inputCheckbox value="{!isDirectDebitConfirmed}">
+                                <apex:actionSupport event="onchange" reRender="pnlPaymentFrameOuter,pnlPaymentFrame" id="Us" />
+                            </apex:inputCheckbox>
+                            <apex:outputText value="{!$Label.Direct_Debit_Confirmation_Message}" styleclass="labelCol" style="color:#4a4a56;font-size:12px !important;line-height: 200%;"/>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+           </apex:outputPanel>  
+         </apex:form>
+
+         <div id="pnlPaymentFrame"  style="{!IF(isRenderPaymentIframe=true,'visibility: visible','visibility: hidden')}">
+
+            <zqu:PaymentPage id="pnlPaymentFrame" zuoraPageId="{!pageId}" submitEnabled="false" style="inline" />
+ 
+         </div>
+
+         <apex:outputPanel id="guarantee" style="{!IF(isRenderPaymentIframe=true,'visibility: visible','visibility: hidden')}" rendered="{!isDirectDebit}"> 
+                <br/><br/>
+                <apex:outputText value="{!$Label.Direct_Debit_Read_Guarantee_Statment}" styleclass="labelCol" style="color:#4a4a56;font-size:12px !important;line-height: 200%;"/>
+                <br/><br/><br/>
+                <table cellspacing="0" border="0" cellpadding="0">
+                    <tr>
+                        <td colspan="3">
+                            <b><apex:outputText value="{!$Label.Direct_Debit_Guarantee_Label}" styleclass="labelCol" style="color:#4a4a56;font-size:12px !important;line-height: 200%;"/></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="4%"></td>
+                            <td><apex:outputText value="{!$Label.Direct_Debit_Guarantee}" styleclass="labelCol" style="color:#4a4a56;font-size:12px !important;line-height: 200%;" escape="false"/>
+                            </td>
+                            <td><apex:image url="{!$Resource.DirectDebitLogo}" width="150" height="150"/>
+                            </td>
+                    </tr>
+                </table>   
+             </apex:outputPanel>
+     </apex:outputPanel>
+</apex:page>

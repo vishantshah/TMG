@@ -1,0 +1,1124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <content>TCodeSetup</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>TCodeSetup</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>TCodeSetup</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This details the t-code, description, price, if the t-code is still valid and incentive related to the t-code</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>TCodeSetup</fullName>
+        <description>TCodeSetup page used on the new and edit TCodeManagement</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Reporting_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Low_Start_Period__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Exclude_Digital_Type_For_Flow__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Description__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Valid__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>imageURL__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Order__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Payment_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Partner_Contact_Center_Email__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Partner_Contact_Center_Tel__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Partner_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>TCodeSetup</label>
+    </fieldSets>
+    <fields>
+        <fullName>Allow13Week__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if one-off payment is allowed for 13 week subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if one-off payment is allowed for 13 week subscription.</inlineHelpText>
+        <label>Allow One Off 13 Week</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allow26Week__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Defines if one-off payment is allowed for 26 week subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if one-off payment is allowed for 26 week subscription.</inlineHelpText>
+        <label>Allow One Off  26 Week</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allow52Week__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Defines if one-off payment is allowed for 52 week subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if one-off payment is allowed for 52 week subscription.</inlineHelpText>
+        <label>Allow One Off 52 Week</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>AllowCCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>AllowCCA</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>AllowContinuous__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>AllowContinuous</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>AllowDD__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>AllowDD</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allow_13_Week_CCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if Credit Card Authority payment type is allowed for 13 week subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if Credit Card Authority payment type is allowed for 13 week subscription.</inlineHelpText>
+        <label>Allow 13 Week CCA</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allow_13_Week_DD__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if Direct Debit payment type is allowed for 13 week subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if Direct Debit payment type is allowed for 13 week subscription.</inlineHelpText>
+        <label>Allow 13 Week DD</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allow_26_Week_CCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if Credit Card Authority payment type is allowed for 26 week subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if Credit Card Authority payment type is allowed for 26 week subscription.</inlineHelpText>
+        <label>Allow 26 Week CCA</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allow_26_Week_DD__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if Direct Debit payment type is allowed for 26 week subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if Direct Debit payment type is allowed for 26 week subscription.</inlineHelpText>
+        <label>Allow 26 Week DD</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allow_52_Week_CCA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if Credit Card Authority payment type is allowed for 52 week subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if Credit Card Authority payment type is allowed for 52 week subscription.</inlineHelpText>
+        <label>Allow 52 Week CCA</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allow_52_Week_DD__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if Direct Debit payment type is allowed for 52 week subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if Direct Debit payment type is allowed for 52 week subscription.</inlineHelpText>
+        <label>Allow 52 Week DD</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>150</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Digital_Monthly_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Digital Monthly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Digital_Yearly_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Digital Yearly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Display_Expiry_Date__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Display Expiry Date</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Exclude_Digital_Type_For_Flow__c</fullName>
+        <externalId>false</externalId>
+        <label>Exclude Digital Type For Flow</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+                    <label>Monthly</label>
+                </value>
+                <value>
+                <fullName>Yearly</fullName>
+                <default>false</default>
+                    <label>Yearly</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Gp_Stage_One_Duration__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Gp Stage One Duration</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gp_Stage_Two_Duration__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Gp Stage Two Duration</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Incentive__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Incentive</label>
+        <referenceTo>Incentive__c</referenceTo>
+        <relationshipLabel>TCodesManagement</relationshipLabel>
+        <relationshipName>TCodesManagement</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Is_13_Continuous__c</fullName>
+        <description>If one of the continuous payment flags is ticked for 13 weeks, then 13 week can be sold as continuous.</description>
+        <externalId>false</externalId>
+        <formula>OR(INCLUDES(Payment_Type__c , &apos;Allow 13 Week DD&apos;),INCLUDES(Payment_Type__c , &apos;Allow 13 Week CCA&apos;))</formula>
+        <inlineHelpText>If one of the continuous payment flags is ticked for 13 weeks, then 13 week can be sold as continuous.</inlineHelpText>
+        <label>Is 13 Continuous</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_26_Continuous__c</fullName>
+        <description>If one of the continuous payment flags is ticked for 26 weeks, then 26 week can be sold as continuous.</description>
+        <externalId>false</externalId>
+        <formula>OR(INCLUDES(Payment_Type__c , &apos;Allow 26 Week DD&apos;),INCLUDES(Payment_Type__c , &apos;Allow 26 Week CCA&apos;))</formula>
+        <inlineHelpText>If one of the continuous payment flags is ticked for 26 weeks, then 26 week can be sold as continuous.</inlineHelpText>
+        <label>Is 26 Continuous</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_52_Continuous__c</fullName>
+        <description>If one of the continuous payment flags is ticked for 52 weeks, then 52 week can be sold as continuous.</description>
+        <externalId>false</externalId>
+        <formula>OR(INCLUDES(Payment_Type__c , &apos;Allow 52 Week DD&apos;),INCLUDES(Payment_Type__c , &apos;Allow 52 Week CCA&apos;))</formula>
+        <inlineHelpText>If one of the continuous payment flags is ticked for 52 weeks, then 52 week can be sold as continuous.</inlineHelpText>
+        <label>Is 52 Continuous</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Low_Start_Period__c</fullName>
+        <description>Number of weeks for which low start price is applicable.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of weeks for which low start price is applicable.</inlineHelpText>
+        <label>Low Start Period</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>13</fullName>
+                <default>false</default>
+                    <label>13</label>
+                </value>
+                <value>
+                <fullName>26</fullName>
+                <default>false</default>
+                    <label>26</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Low_Start_Weekly_Price__c</fullName>
+        <description>Low start price defines the price for the initial period of subscription related to this TCode. Second subscription for low start uses Premium Weekly Price.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Low start price defines the price for the initial period of subscription related to this TCode. Second subscription for low start uses Premium Weekly Price.</inlineHelpText>
+        <label>Low Start Weekly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OptionalIncentive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Optional Incentive</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <description>Order for Campaigns</description>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Contact_Center_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Contact Center  Email</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Contact_Center_Tel__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Contact Center Tel</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Name</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Allow One Off 13 Week</fullName>
+                <default>false</default>
+                    <label>Allow One Off 13 Week</label>
+                </value>
+                <value>
+                <fullName>Allow One Off 26 Week</fullName>
+                <default>false</default>
+                    <label>Allow One Off 26 Week</label>
+                </value>
+                <value>
+                <fullName>Allow One Off 52 Week</fullName>
+                <default>false</default>
+                    <label>Allow One Off 52 Week</label>
+                </value>
+                <value>
+                <fullName>Allow 13 Week DD</fullName>
+                <default>false</default>
+                    <label>Allow 13 Week DD</label>
+                </value>
+                <value>
+                <fullName>Allow 13 Week CCA</fullName>
+                <default>false</default>
+                    <label>Allow 13 Week CCA</label>
+                </value>
+                <value>
+                <fullName>Allow 26 Week DD</fullName>
+                <default>false</default>
+                    <label>Allow 26 Week DD</label>
+                </value>
+                <value>
+                <fullName>Allow 26 Week CCA</fullName>
+                <default>false</default>
+                    <label>Allow 26 Week CCA</label>
+                </value>
+                <value>
+                <fullName>Allow 52 Week DD</fullName>
+                <default>false</default>
+                    <label>Allow 52 Week DD</label>
+                </value>
+                <value>
+                <fullName>Allow 52 Week CCA</fullName>
+                <default>false</default>
+                    <label>Allow 52 Week CCA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Premium Weekly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Reporting_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Reporting Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>DM</fullName>
+                <default>false</default>
+                    <label>DM</label>
+                </value>
+                <value>
+                <fullName>EM</fullName>
+                <default>false</default>
+                    <label>EM</label>
+                </value>
+                <value>
+                <fullName>Lapsed DM</fullName>
+                <default>false</default>
+                    <label>Lapsed DM</label>
+                </value>
+                <value>
+                <fullName>Lapsed OBTM</fullName>
+                <default>false</default>
+                    <label>Lapsed OBTM</label>
+                </value>
+                <value>
+                <fullName>Loyalty</fullName>
+                <default>false</default>
+                    <label>Loyalty</label>
+                </value>
+                <value>
+                <fullName>Low Start</fullName>
+                <default>false</default>
+                    <label>Low Start</label>
+                </value>
+                <value>
+                <fullName>MIS</fullName>
+                <default>false</default>
+                    <label>MIS</label>
+                </value>
+                <value>
+                <fullName>OBTM</fullName>
+                <default>false</default>
+                    <label>OBTM</label>
+                </value>
+                <value>
+                <fullName>Open Offer</fullName>
+                <default>false</default>
+                    <label>Open Offer</label>
+                </value>
+                <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+                    <label>Renewal</label>
+                </value>
+                <value>
+                <fullName>RI</fullName>
+                <default>false</default>
+                    <label>RI</label>
+                </value>
+                <value>
+                <fullName>SELF</fullName>
+                <default>false</default>
+                    <label>SELF</label>
+                </value>
+                <value>
+                <fullName>UKN</fullName>
+                <default>false</default>
+                    <label>UKN</label>
+                </value>
+                <value>
+                <fullName>Digital Only</fullName>
+                <default>false</default>
+                    <label>Digital Only</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Show_Cancel_Button__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Show Cancel Button</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Special_Data_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Special Data Text</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Special_Data__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Turn on or off the MGM prompt</description>
+        <externalId>false</externalId>
+        <label>Special Data</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TCode__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>TCode</label>
+        <length>6</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Tablet_International_Annual_Offer_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Tablet International Annual Offer Code</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tablet_International_Annual_Offer_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Tablet International Annual Offer Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tablet_International_Monthly_Offer_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Tablet International Monthly Offer Code</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tablet_International_Monthly_Offer_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Tablet International Monthly Offer Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tablet_UK_Annual_Offer_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Tablet UK Annual Offer Code</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tablet_UK_Annual_Offer_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Tablet UK Annual Offer Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tablet_UK_Monthly_Offer_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Tablet UK Monthly Offer Code</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tablet_UK_Monthly_Offer_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Tablet UK Monthly Offer Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>Type of Campaign</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Low Start</fullName>
+                <default>false</default>
+                    <label>Low Start</label>
+                </value>
+                <value>
+                <fullName>Open Offer</fullName>
+                <default>false</default>
+                    <label>Open Offer</label>
+                </value>
+                <value>
+                <fullName>Registered Interest</fullName>
+                <default>false</default>
+                    <label>Registered Interest</label>
+                </value>
+                <value>
+                <fullName>POC</fullName>
+                <default>false</default>
+                    <label>POC</label>
+                </value>
+                <value>
+                <fullName>MGM</fullName>
+                <default>false</default>
+                    <label>MGM</label>
+                </value>
+                <value>
+                <fullName>Staff Offer</fullName>
+                <default>false</default>
+                    <label>Staff Offer</label>
+                </value>
+                <value>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+                    <label>Renewal</label>
+                </value>
+                <value>
+                <fullName>MIS</fullName>
+                <default>false</default>
+                    <label>MIS</label>
+                </value>
+                <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                <fullName>POC-DM</fullName>
+                <default>false</default>
+                    <label>POC-DM</label>
+                </value>
+                <value>
+                <fullName>POC-EM</fullName>
+                <default>false</default>
+                    <label>POC-EM</label>
+                </value>
+                <value>
+                <fullName>POC-OBTM</fullName>
+                <default>false</default>
+                    <label>POC-OBTM</label>
+                </value>
+                <value>
+                <fullName>Promotional</fullName>
+                <default>false</default>
+                    <label>Promotional</label>
+                </value>
+                <value>
+                <fullName>SELF</fullName>
+                <default>false</default>
+                    <label>SELF</label>
+                </value>
+                <value>
+                <fullName>UKN</fullName>
+                <default>false</default>
+                    <label>UKN</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Valid__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>If checked then the t-code is available for selection</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If checked then the t-code is available for selection</inlineHelpText>
+        <label>Valid</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Web_Pack_Monthly_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Web Pack Monthly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Web_Pack_Yearly_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Web Pack Yearly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Website_Int_Monthly_Offer_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Website Int. Monthly Offer Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Website_International_Annual_Offer_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Website International Annual Offer Code</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Website_International_Annual_Offer_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Website International Annual Offer Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Website_International_Monthly_Offer_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Website International Monthly Offer Code</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Website_UK_Annual_Offer_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Website UK Annual Offer Code</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Website_UK_Annual_Offer_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Website UK Annual Offer Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Website_UK_Monthly_Offer_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Website UK Monthly Offer Code</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Website_UK_Monthly_Offer_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Website UK Monthly Offer Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X13_week_price__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Defaults to £30 if left blank</inlineHelpText>
+        <label>13 Week price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>imageURL__c</fullName>
+        <externalId>false</externalId>
+        <label>imageURL</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>tandcURL__c</fullName>
+        <externalId>false</externalId>
+        <label>tandcURL</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>TCodeManagement</label>
+    <nameField>
+        <label>TCode</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>TCodesManagement</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Reporting_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Valid__c</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Valid__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>OBJECT_ID</lookupDialogsAdditionalFields>
+        <lookupFilterFields>NAME</lookupFilterFields>
+        <lookupFilterFields>Description__c</lookupFilterFields>
+        <lookupFilterFields>Type__c</lookupFilterFields>
+        <lookupFilterFields>Valid__c</lookupFilterFields>
+        <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Reporting_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Valid__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Low_Start_Can_Only_Be_Continuous</fullName>
+        <active>true</active>
+        <description>Currently only continuous subscription is supported as Low Start offer.</description>
+        <errorConditionFormula>AND(OR(INCLUDES(Payment_Type__c , &apos;Allow One Off 13 Week&apos;), INCLUDES(Payment_Type__c , &apos;Allow One Off 26 Week&apos;), INCLUDES(Payment_Type__c , &apos;Allow One Off 52 Week&apos;)), ISPICKVAL(Type__c, &apos;Low Start&apos;))</errorConditionFormula>
+        <errorDisplayField>Type__c</errorDisplayField>
+        <errorMessage>You cannot sell Low Start subscription with one off payment.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Low_Start_Period_Minimum_Check</fullName>
+        <active>true</active>
+        <description>Low Start Period cannot be greater or equal to the minimum subscription length.</description>
+        <errorConditionFormula>AND(ISPICKVAL(Type__c, &apos;Low Start&apos;), OR(AND(ISPICKVAL(Low_Start_Period__c, &apos;26&apos;), Is_26_Continuous__c), AND(ISPICKVAL(Low_Start_Period__c, &apos;13&apos;), Is_13_Continuous__c)))</errorConditionFormula>
+        <errorDisplayField>Low_Start_Period__c</errorDisplayField>
+        <errorMessage>Low Start Period cannot be greater or equal to the minimum subscription length.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Low_Start_Period_Required</fullName>
+        <active>true</active>
+        <description>Low Start Period is required for low start TCode.</description>
+        <errorConditionFormula>AND(ISBLANK(TEXT(Low_Start_Period__c)), ISPICKVAL(Type__c, &apos;Low Start&apos;))</errorConditionFormula>
+        <errorDisplayField>Low_Start_Period__c</errorDisplayField>
+        <errorMessage>Low Start Period is required for low start TCode.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Low_Start_Price_For_Low_Start_TCode</fullName>
+        <active>false</active>
+        <description>Low Start Price has to be specified for a Low Start TCode.</description>
+        <errorConditionFormula>AND(OR(ISBLANK(Low_Start_Weekly_Price__c), Low_Start_Weekly_Price__c &lt; 0), ISPICKVAL(Type__c,&apos;Low Start&apos;))</errorConditionFormula>
+        <errorDisplayField>Low_Start_Weekly_Price__c</errorDisplayField>
+        <errorMessage>You have to specify a valid Low Start Weekly Price for Low Start TCode type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Low_Start_at_Least_26_Weeks</fullName>
+        <active>true</active>
+        <description>Low start subscription has to be at least 26 weeks long.</description>
+        <errorConditionFormula>AND(Is_13_Continuous__c, ISPICKVAL(Type__c, &apos;Low Start&apos;))</errorConditionFormula>
+        <errorMessage>Low start subscription has to be at least 26 weeks long.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>One_Off_13_Week_Price_Required</fullName>
+        <active>false</active>
+        <description>One off 13 week option requires 13 week price field to be populated.</description>
+        <errorConditionFormula>AND(Allow13Week__c, ISBLANK(X13_week_price__c))</errorConditionFormula>
+        <errorDisplayField>X13_week_price__c</errorDisplayField>
+        <errorMessage>13 Week price has to be populated when Allow One Off 13 Week is ticked.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Premium_Price_For_Low_Start_TCode</fullName>
+        <active>false</active>
+        <description>Premium Weekly Price has to be specified for a Low Start TCode.</description>
+        <errorConditionFormula>AND(OR(ISBLANK(Price__c), Price__c &lt; 0), ISPICKVAL(Type__c,&apos;Low Start&apos;))</errorConditionFormula>
+        <errorDisplayField>Price__c</errorDisplayField>
+        <errorMessage>You have to specify a valid Premium Weekly Price for Low Start TCode type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TCode_Length_Rule</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+     OR( LEN( Name ) &lt;= 0, LEN( Name ) &gt; 4)
+)</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>TCode must be 4 characters long.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>X13weeksGT1</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(NOT(ISNULL(X13_week_price__c)),X13_week_price__c &lt; 1,false)</errorConditionFormula>
+        <errorDisplayField>X13_week_price__c</errorDisplayField>
+        <errorMessage>The value must be greater than 0</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

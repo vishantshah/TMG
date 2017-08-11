@@ -1,0 +1,147 @@
+<apex:page standardController="Case" extensions="CustomCaseController" action="{!redirect}" tabStyle="Case" showHeader="true" sidebar="true">
+
+    <style>
+        textarea {
+            width: 70%;
+            height: 60px;
+        }
+    </style>
+
+    <apex:form >
+        
+        <apex:sectionHeader title="Case Edit" subtitle="{!thisCase.CaseNumber}"/>
+        
+        <apex:pageMessages showDetail="false" escape="false" />
+
+        <apex:pageBlock mode="edit" title="Case Edit" id="thisBlock" rendered="{!!hasError}">
+
+            <apex:outputPanel style="display:none">
+                <apex:inputField value="{!thisCase.Reason}"/> 
+                <apex:inputField value="{!thisCase.Type_Of_Issue__c}"/> 
+                <apex:inputField value="{!thisCase.Digital_Details__c}"/> 
+                <apex:inputField value="{!thisCase.Digital_Details_2__c}"/> 
+                <apex:inputField value="{!thisCase.Digital_Details_3__c}"/>
+            </apex:outputPanel>
+
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveCase}"/>
+                <apex:commandButton value="Save & Close" action="{!saveAndClose}"/>
+                <apex:commandButton value="Save & New" action="{!saveAndNew}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection collapsible="false" title="Case Information" columns="2">
+                <apex:outputField value="{!thisCase.OwnerId}" rendered="{!!isNewCase}"/>
+
+                <apex:pageBlockSectionItem rendered="{!isNewCase}"> 
+                    <apex:outputText value="Owner"/>
+                    <apex:outputText value="{!$User.FirstName} {!$User.LastName}" rendered="{!isNewCase}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$ObjectType.Case.Fields.Reason.Label}"/>
+                    <apex:outputPanel id="reason">
+                        <apex:actionRegion >
+                            <apex:selectList value="{!selectedReason}" onchange="caseReasonChange();" size="1">
+                                <apex:selectOptions value="{!ReasonPicklist}"/>
+                                <apex:actionFunction name="caseReasonChange" action="{!caseReasonChanged}" reRender="reason,detail1,detail2,detail3,detail4"/>
+                            </apex:selectList>
+                        </apex:actionRegion>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+                <apex:inputField value="{!thisCase.CaseNumber}" /> 
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$ObjectType.Case.Fields.Type_Of_Issue__c.Label}"/>
+                    <apex:outputPanel id="detail1">
+                        <apex:actionRegion >
+                            <apex:selectList value="{!selectedDetail1}" onchange="caseDetail1Change();" size="1">
+                                <apex:selectOptions value="{!Detail1Picklist}"/>
+                                <apex:actionFunction name="caseDetail1Change" action="{!caseDetail1Changed}" reRender="reason,detail1,detail2,detail3,detail4"/>
+                            </apex:selectList>
+                        </apex:actionRegion>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+                <apex:inputField value="{!thisCase.ContactId}" />
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$ObjectType.Case.Fields.Digital_Details__c.Label}"/>
+                    <apex:outputPanel id="detail2">
+                        <apex:actionRegion >
+                            <apex:selectList value="{!selectedDetail2}" onchange="caseDetail2Change();" size="1">
+                                <apex:selectOptions value="{!Detail2Picklist}"/>
+                                <apex:actionFunction name="caseDetail2Change" action="{!caseDetail2Changed}" reRender="reason,detail1,detail2,detail3,detail4"/>
+                            </apex:selectList>
+                        </apex:actionRegion>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+                <apex:inputField value="{!thisCase.Status}" required="true"/>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$ObjectType.Case.Fields.Digital_Details_2__c.Label}"/>
+                    <apex:outputPanel id="detail3">
+                        <apex:actionRegion >
+                            <apex:selectList value="{!selectedDetail3}" onchange="caseDetail3Change();" size="1">
+                                <apex:selectOptions value="{!Detail3Picklist}"/>
+                                <apex:actionFunction name="caseDetail3Change" action="{!caseDetail3Changed}" reRender="reason,detail1,detail2,detail3,detail4"/>
+                            </apex:selectList>
+                        </apex:actionRegion>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+                <apex:inputField value="{!thisCase.Origin}" required="true"/>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$ObjectType.Case.Fields.Digital_Details_3__c.Label}"/>
+                    <apex:outputPanel id="detail4">
+                        <apex:actionRegion >
+                            <apex:selectList value="{!selectedDetail4}" onchange="caseDetail4Change();" size="1">
+                                <apex:selectOptions value="{!Detail4Picklist}" />
+                                <apex:actionFunction name="caseDetail4Change" action="{!caseDetail4Changed}" reRender="reason,detail1,detail2,detail3,detail4"/>
+                            </apex:selectList>
+                        </apex:actionRegion>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+                <apex:inputField value="{!thisCase.Priority}" />
+                
+                <apex:inputField value="{!thisCase.ParentId}" />
+
+                <apex:inputField value="{!thisCase.Case_Tag__c}" />
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="Case Record Type"/>
+                    <apex:outputText value="{!recordtypeName}"/>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+
+            <apex:outputPanel id="commentsSection">
+                <apex:pageBlockSection showHeader="false" title="Comments" columns="1">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="Comments"/>
+                        <apex:inputTextarea title="Comments" value="{!comments}" label="Comments"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+
+            <apex:repeat value="{!sections}" var="section">
+                <apex:pageBlockSection collapsible="false" title="{!section.name}" columns="{!section.columns}">
+                    <apex:repeat value="{!section.sectionFields}" var="field"> 
+                        <apex:inputField value="{!thisCase[field.fieldName]}" required="{!field.required}" style="{!field.style}" rendered="{!!field.empty}"/>
+                        <apex:outputText rendered="{!field.empty}"/>
+                    </apex:repeat>
+                </apex:pageBlockSection>
+            </apex:repeat>
+
+            <apex:pageBlockSection title="Optional" columns="1" >
+                <apex:inputCheckbox value="{!assingmentRules}" label="Assign using active assignment rules"/>
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

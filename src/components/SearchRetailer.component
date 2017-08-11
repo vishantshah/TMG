@@ -1,0 +1,60 @@
+<apex:component id="SearchRetailer" controller="SearchRetailerController" >
+	<apex:attribute name="displaySelectDeliveryType" type="Boolean" description="displaySelectDeliveryType" assignTo="{!displaySelectDeliveryType}" required="true"/>
+	<apex:attribute name="displaySelectColumn" type="Boolean" description="displaySelectColumn" assignTo="{!displaySelectColumn}" required="true"/>
+	<apex:attribute name="defaultDelivery" type="String" description="defaultDelivery" assignTo="{!defaultDelivery}" required="true"/>
+	<apex:attribute name="agencyIdentifier" type="String" description="agencyIdentifier" assignTo="{!agencyIdentifier}" required="false"/>
+	  
+    <apex:outputPanel id="ShowSelectedRetailer">
+        <apex:outputPanel id="RetailerResults" > 
+            <apex:pageBlock rendered="{!displaySelectDeliveryType}" >
+                <apex:pageBlockSection title="Select Delivery Type" columns="1"> 
+	                <apex:outputPanel id="OuterSection" layout="block" >
+	                      <apex:outputLabel styleclass="BoldOutputLabels" value="Select Delivery Option"></apex:outputLabel>                
+	                      <apex:selectRadio value="{!SelectedDelivery}" required="true"   >
+	                          <apex:SelectOptions value="{!DeliveryOptions}"></apex:SelectOptions> 
+	                          <apex:actionsupport event="onchange" action="{!setDelivery}" rerender="RetailerResults" status="RefreshDelivery" />
+	                      </apex:selectRadio>
+	                 </apex:outputPanel>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+            <apex:pageBlock>                         
+                <apex:pageBlockSection id="RetailerTable" columns="1" >                 
+                    <!-- Start HND -->
+					<apex:pageBlockSectionItem >
+					     <apex:outputLabel styleclass="BoldOutputLabels" value="Search Retailer By Post Code"></apex:outputLabel>                
+					     <apex:inputText id="PostcodeRetailSearch" value="{!PostcodeRetailSearch}" /> 
+					</apex:pageBlockSectionItem>    
+	                                                     
+					<apex:commandButton action="{!RetrieveAllRetailers}" value="Retrieve HND Retailers" rerender="OutputRetailers" status="retrieveretailers"/>
+					<apex:commandButton action="{!RetrieveFullListRetailers}" value="Retrieve All Retailers" rerender="OutputRetailers" status="retrieveretailers"/>
+					<apex:actionstatus id="retrieveretailers" startText="Retrieving retailers please wait...." />
+                            
+                    <apex:outputPanel layout="block" id="OutputRetailers" > 
+                        <!-- Cannot use this because need to be able to search by postcode not retailer name so have moved code from DSOS OAP to here <apex:inputField value="{!subscription.Delivery_Type__c}" required="true" /> -->
+                       	<apex:outputPanel layout="block" rendered="{!DisplayRetailers}" >
+							<apex:pageBlockTable value="{!AllActiveRetailers}" var="Retailers">                                             
+								<apex:column headerValue="Retailer ID" title="Retailer ID" value="{!Retailers.Retailer.RET_ID__c}"/>
+				            	<apex:column headerValue="Shop Name" title="Shop Name" value="{!Retailers.Retailer.Shop_Name__c}"/>
+				             	<apex:column headerValue="Name" title="Name" value="{!Retailers.Retailer.Name}"/>
+				                <apex:column headerValue="Shop Manager" title="Shop Manager" value="{!Retailers.Retailer.Manager__c}"/>
+				                <apex:column headerValue="Address" title="Address" value="{!Retailers.Retailer.BillingStreet} {!Retailers.Retailer.BillingCity} {!Retailers.Retailer.BillingPostalCode}"/>
+				                <apex:column headerValue="Work Phone" title="Work Phone" value="{!Retailers.Retailer.Phone}"/>
+				                <apex:column headerValue="Ret Multi" title="Ret Multi" value="{!Retailers.Retailer.Retmulti__c}"/>
+				                <apex:column headerValue="Sub Count" title="Sub Count" value="{!Retailers.ValidSubsCount}"/>
+				                <apex:column rendered="{!displaySelectColumn}" headerValue="Select" title="Select" >
+                                	<apex:commandLink action="{!SaveRetailer}"  value="Select" immediate="true" rerender="ShowSelectedRetailer">
+                                    	<apex:param name="SelectedRetailer" value="{!Retailers.Retailer.ID}" assignTo="{!SelectedRetailer}" />
+                                   	</apex:commandLink> 
+                                </apex:column>
+							</apex:pageBlockTable>
+						</apex:outputPanel>
+                     </apex:outputPanel> 
+                </apex:pageBlockSection>    
+            </apex:pageBlock>
+			<apex:outputPanel rendered="{!displaySelectedRetailerMsg}">
+				<apex:outputLabel styleclass="BoldOutputLabels" >Selected Retailer  -  {!SelectedRetailerName}</apex:outputLabel>
+				<p class="missaline" />
+			</apex:outputPanel>
+        </apex:outputPanel>
+    </apex:outputPanel>
+</apex:component>

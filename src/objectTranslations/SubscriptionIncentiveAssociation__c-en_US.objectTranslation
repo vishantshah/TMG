@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Subscription Incentive</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Subscription Incentives</value>
+    </caseValues>
+    <fields>
+        <label><!-- Date Requested --></label>
+        <name>Date_Requested__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fulfilled Date --></label>
+        <name>Fulfilled_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incentive Returned? --></label>
+        <name>Incentive_Returned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incentive --></label>
+        <name>Incentive__c</name>
+        <relationshipLabel><!-- Subscription Incentives --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Reason --></label>
+        <name>Reason__c</name>
+        <picklistValues>
+            <masterLabel>Acquisition Incentive</masterLabel>
+            <translation><!-- Acquisition Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Goodwill</masterLabel>
+            <translation><!-- Goodwill --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MGM Scheme</masterLabel>
+            <translation><!-- MGM Scheme --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewal Incentive</masterLabel>
+            <translation><!-- Renewal Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Staff Offer</masterLabel>
+            <translation><!-- Staff Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TMG Error</masterLabel>
+            <translation><!-- TMG Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Winback Incentive</masterLabel>
+            <translation><!-- Winback Incentive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subscriber --></label>
+        <name>Subscriber__c</name>
+        <relationshipLabel><!-- Subscriber Incentives --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Subscription --></label>
+        <name>Subscription__c</name>
+        <relationshipLabel><!-- Subscription Incentives --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>SubscriptionIncentiveAssociation Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>SubscriptionIncentiveAssociation Name</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

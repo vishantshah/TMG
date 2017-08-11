@@ -1,0 +1,130 @@
+<apex:component >
+    <apex:attribute name="psController" type="ProductSwitchController" required="true" description="Controller for the component." />
+    <apex:attribute name="toRerender" type="String" required="true" description="Defines which sections of parent page should be rerendered on product selection" />
+    <apex:attribute name="showDigitalPrices" type="Boolean" required="true" default="false" description="Defines if digital pricing should be shown" />
+    <apex:attribute name="showLowStartPrice" type="Boolean" required="true" default="false" description="Defines if low start pricing should be shown" />
+
+    <div style="height:20px;">
+        <apex:actionStatus id="productSelectionStatus" onstop="addRowSupportForTables();">
+            <apex:facet name="start">
+                <apex:outputPanel >
+                    <apex:image value="{!$Resource.Loading_Gif}" /> Requesting...
+                </apex:outputPanel>
+            </apex:facet>
+            <apex:facet name="stop"></apex:facet>
+        </apex:actionStatus>
+    </div>
+    <apex:pageBlock mode="edit" id="productBlockId" title="Product Information" rendered="{!NOT(ISBLANK(psController))}">
+        <apex:pageBlockButtons location="bottom" rendered="{!AND(NOT(psController.bShowOtherProducts), NOT(psController.bHideButtonAndSection))}">
+            <apex:actionRegion >
+                <apex:commandButton action="{!psController.showOtherProducts}" value="Change Product" rerender="productBlockId" />
+            </apex:actionRegion>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection id="productInfoAndChangeId" title="Selected Product" columns="1" rendered="{!psController.bProductTCodeMatch}">
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Selected Product Name" />
+                <apex:outputText value="{!psController.selectedProduct.sProductName}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!showLowStartPrice}">
+                <apex:outputLabel value="{!$ObjectType.TCode_Product__c.fields.Low_Start_Price__c.label}" />
+                <apex:outputText value="{!psController.selectedProduct.lowStartPrice}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!!showDigitalPrices}">
+                <apex:outputLabel value="{!$ObjectType.TCode_Product__c.fields.Weekly_Price__c.label}" />
+                <apex:outputText value="{!psController.selectedProduct.premiumPrice}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!showDigitalPrices}">
+                <apex:outputLabel value="{!$ObjectType.TCode_Product__c.fields.Digital_Monthly_Price__c.label}" />
+                <apex:outputText value="{!psController.selectedProduct.digitalMonthlyPrice}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!showDigitalPrices}">
+                <apex:outputLabel value="{!$ObjectType.TCode_Product__c.fields.Digital_Yearly_Price__c.label}" />
+                <apex:outputText value="{!psController.selectedProduct.digitalYearlyPrice}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem rendered="{!!showDigitalPrices}" >
+                <apex:outputLabel value="{!$ObjectType.zqu__ZProduct__c.fields.Voucher_Delivery_Type__c.label}" />
+                <apex:outputText value="{!psController.selectedProduct.voucherDeliveryType}" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <apex:outputPanel style="width:90%;margin:0 auto;" rendered="{!AND(psController.products.size = 0, psController.bProductTCodeMatch)}">
+            <apex:pageMessage summary="{!$Label.Product_Switch_No_other_products_for_campaign}" severity="info" />
+        </apex:outputPanel>
+        <apex:actionRegion >
+            <apex:actionFunction name="selectOtherProduct" action="{!psController.changeProduct}" rerender="{!toRerender}" status="productSelectionStatus">
+                <apex:param name="productId" value="" assignTo="{!psController.productId}"/>
+            </apex:actionFunction>
+        </apex:actionRegion>
+        <apex:pageBlockSection title="{!IF(psController.bProductTCodeMatch, 'Other', '')} Products in Campaign" columns="1" rendered="{!AND(psController.bShowOtherProducts, NOT(psController.bHideButtonAndSection))}"></apex:pageBlockSection>
+        <apex:outputPanel rendered="{!AND(psController.bShowOtherProducts, NOT(psController.bHideButtonAndSection))}">
+            <table class="sfdcTable prodTable" id="productTable">
+                <thead>
+                    <tr>
+                        <th>{!$ObjectType.TCode_Product__c.fields.Product__c.label}</th>
+                        <apex:outputPanel layout="none" rendered="{!showLowStartPrice}">
+                            <th>{!$ObjectType.TCode_Product__c.fields.Low_Start_Price__c.label}</th>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!!showDigitalPrices}">
+                            <th>{!$ObjectType.TCode_Product__c.fields.Weekly_Price__c.label}</th>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!showDigitalPrices}">
+                            <th>{!$ObjectType.TCode_Product__c.fields.Digital_Monthly_Price__c.label}</th>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!showDigitalPrices}">
+                            <th>{!$ObjectType.TCode_Product__c.fields.Digital_Yearly_Price__c.label}}</th>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!!showDigitalPrices}">
+                           <th>{!$ObjectType.zqu__ZProduct__c.fields.Voucher_Delivery_Type__c.label}</th>
+                        </apex:outputPanel>
+                        <th>{!$ObjectType.Incentive__c.label}</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:repeat value="{!psController.products}" var="prod" id="prodTable">
+                        <tr onclick="selectOtherProduct('{!prod.productId}');">
+                            <td>{!prod.sProductName}</td>
+                            <apex:outputPanel layout="none" rendered="{!showLowStartPrice}">
+                                <td>{!prod.lowStartPrice}</td>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="none" rendered="{!!showDigitalPrices}">
+                                <td>{!prod.premiumPrice}</td>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="none" rendered="{!showDigitalPrices}">
+                                <td>{!prod.digitalMonthlyPrice}</td>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="none" rendered="{!showDigitalPrices}">
+                                <td>{!prod.digitalYearlyPrice}</td>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="none" rendered="{!!showDigitalPrices}">
+                                <td>{!prod.voucherDeliveryType}</td>
+                            </apex:outputPanel>
+                            <td>{!prod.incentives}</td>
+                            <td><input class="btn" type="button" name="prodSelection" value="Change" onclick="selectOtherProduct('{!prod.productId}');" /></td>
+                        </tr>
+                    </apex:repeat>
+                </tbody>
+            </table>
+        </apex:outputPanel>
+    </apex:pageBlock>
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <script type="text/javascript">
+        j$ = jQuery.noConflict();
+        j$(document).ready(function(){
+            addRowSupportForTables();
+        });
+
+        function addRowSupportForTables(){
+            if(j$('[id$="productTable"]').length > 0){
+                j$('*').unbind();
+                j$('[id$="productTable"] tbody').on('mouseover', 'tr', function(){
+                    j$(this).addClass('hoveredRow');
+                });
+
+                j$('[id$="productTable"] tbody').on('mouseout', 'tr', function(){
+                    j$(this).removeClass('hoveredRow');
+                });
+            }
+        }
+    </script>
+</apex:component>

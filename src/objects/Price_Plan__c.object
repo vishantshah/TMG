@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Defines upgrade/downgrade options for products and pricing. Used for both old print world renewals and Zuora world flexible pricing.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Email_Template__c</fullName>
+        <externalId>false</externalId>
+        <label>Email Template</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Frequency__c</fullName>
+        <externalId>false</externalId>
+        <label>Frequency</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+                    <label>Monthly</label>
+                </value>
+                <value>
+                <fullName>Annual</fullName>
+                <default>false</default>
+                    <label>Annual</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>High_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>High Price</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Incentive_Discount__c</fullName>
+        <externalId>false</externalId>
+        <label>Incentive Discount</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Low_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Low Price</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>No_Price_Change__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>No Price Change</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>Plan</label>
+        <referenceTo>Plan__c</referenceTo>
+        <relationshipLabel>Price Plans</relationshipLabel>
+        <relationshipName>Price_Plans</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Price_Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>Price Plan</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Plan 0</fullName>
+                <default>false</default>
+                    <label>Plan 0</label>
+                </value>
+                <value>
+                <fullName>Plan 1</fullName>
+                <default>false</default>
+                    <label>Plan 1</label>
+                </value>
+                <value>
+                <fullName>Plan 2</fullName>
+                <default>false</default>
+                    <label>Plan 2</label>
+                </value>
+                <value>
+                <fullName>Plan 3</fullName>
+                <default>false</default>
+                    <label>Plan 3</label>
+                </value>
+                <value>
+                <fullName>Plan 4</fullName>
+                <default>false</default>
+                    <label>Plan 4</label>
+                </value>
+                <value>
+                <fullName>Plan 5</fullName>
+                <default>false</default>
+                    <label>Plan 5</label>
+                </value>
+                <value>
+                <fullName>Plan S</fullName>
+                <default>false</default>
+                    <label>Plan S</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_From__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Product From</label>
+        <referenceTo>zqu__ZProduct__c</referenceTo>
+        <relationshipLabel>Price Plans (Product From)</relationshipLabel>
+        <relationshipName>Price_Plans1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_To__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Product To</label>
+        <referenceTo>zqu__ZProduct__c</referenceTo>
+        <relationshipLabel>Price Plans (Product To)</relationshipLabel>
+        <relationshipName>Price_Plans2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Renewal Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <label>Price Plan</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Price_Plan__c</columns>
+        <columns>Low_Price__c</columns>
+        <columns>High_Price__c</columns>
+        <columns>Renewal_Price__c</columns>
+        <columns>Incentive_Discount__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Plan1</fullName>
+        <columns>NAME</columns>
+        <columns>Low_Price__c</columns>
+        <columns>High_Price__c</columns>
+        <columns>Renewal_Price__c</columns>
+        <columns>Price_Plan__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Price_Plan__c</field>
+            <operation>equals</operation>
+            <value>Plan 1</value>
+        </filters>
+        <label>Plan1</label>
+    </listViews>
+    <listViews>
+        <fullName>Plan_0</fullName>
+        <columns>NAME</columns>
+        <columns>Low_Price__c</columns>
+        <columns>High_Price__c</columns>
+        <columns>Renewal_Price__c</columns>
+        <columns>Price_Plan__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Price_Plan__c</field>
+            <operation>equals</operation>
+            <value>Plan 0</value>
+        </filters>
+        <label>Plan 0</label>
+    </listViews>
+    <listViews>
+        <fullName>Plan_2</fullName>
+        <columns>NAME</columns>
+        <columns>Low_Price__c</columns>
+        <columns>High_Price__c</columns>
+        <columns>Renewal_Price__c</columns>
+        <columns>Price_Plan__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Price_Plan__c</field>
+            <operation>equals</operation>
+            <value>Plan 2</value>
+        </filters>
+        <label>Plan 2</label>
+    </listViews>
+    <listViews>
+        <fullName>Plan_3</fullName>
+        <columns>NAME</columns>
+        <columns>Low_Price__c</columns>
+        <columns>High_Price__c</columns>
+        <columns>Renewal_Price__c</columns>
+        <columns>Price_Plan__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Price_Plan__c</field>
+            <operation>equals</operation>
+            <value>Plan 3</value>
+        </filters>
+        <label>Plan 3</label>
+    </listViews>
+    <listViews>
+        <fullName>Plan_4</fullName>
+        <columns>NAME</columns>
+        <columns>Low_Price__c</columns>
+        <columns>High_Price__c</columns>
+        <columns>Renewal_Price__c</columns>
+        <columns>Price_Plan__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Price_Plan__c</field>
+            <operation>equals</operation>
+            <value>Plan 4</value>
+        </filters>
+        <label>Plan 4</label>
+    </listViews>
+    <listViews>
+        <fullName>Plan_5</fullName>
+        <columns>Price_Plan__c</columns>
+        <columns>Low_Price__c</columns>
+        <columns>High_Price__c</columns>
+        <columns>Renewal_Price__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Price_Plan__c</field>
+            <operation>equals</operation>
+            <value>Plan 5</value>
+        </filters>
+        <label>Plan 5</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Plan_S</fullName>
+        <columns>NAME</columns>
+        <columns>Low_Price__c</columns>
+        <columns>High_Price__c</columns>
+        <columns>Renewal_Price__c</columns>
+        <columns>Price_Plan__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Price_Plan__c</field>
+            <operation>equals</operation>
+            <value>Plan S</value>
+        </filters>
+        <label>Plan S</label>
+    </listViews>
+    <nameField>
+        <displayFormat>PP-{0000000000}</displayFormat>
+        <label>Price Plan Number</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Price Plans</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Digital</fullName>
+        <active>true</active>
+        <description>Price Plans for Digital Products</description>
+        <label>Digital</label>
+        <picklistValues>
+            <picklist>Frequency__c</picklist>
+            <values>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Price_Plan__c</picklist>
+            <values>
+                <fullName>Plan 0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan S</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Print</fullName>
+        <active>true</active>
+        <description>Price Plans for Print Products</description>
+        <label>Print</label>
+        <picklistValues>
+            <picklist>Frequency__c</picklist>
+            <values>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Price_Plan__c</picklist>
+            <values>
+                <fullName>Plan 0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan 5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan S</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>High_Price__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Low_Price__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Price_Plan__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Renewal_Price__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>High_Price__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Low_Price__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Price_Plan__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Renewal_Price__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Product_From__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Product_To__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>High_Price__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Low_Price__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Price_Plan__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Renewal_Price__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Mandatory_price_plan</fullName>
+        <active>false</active>
+        <description>This rule ensures all prie plan entries are associated to a price plan</description>
+        <errorConditionFormula>ISPICKVAL(Price_Plan__c,&quot;&quot;)</errorConditionFormula>
+        <errorDisplayField>Price_Plan__c</errorDisplayField>
+        <errorMessage>Please pick a price plan</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Product_check</fullName>
+        <active>true</active>
+        <description>Check that price plans belongs to correct plan record based on product.</description>
+        <errorConditionFormula>IF(RecordType.Name = &apos;Print&apos;,NOT(Product_To__c =  Plan__r.Product__c),false)</errorConditionFormula>
+        <errorDisplayField>Product_To__c</errorDisplayField>
+        <errorMessage>Price Plan record need to have the same product as Plan record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Required_Renewal_Price</fullName>
+        <active>true</active>
+        <description>Renewal price is required if the product to is not empty. This validation rule is added because renewal price is not required for flexible pricing.</description>
+        <errorConditionFormula>AND(ISBLANK( Renewal_Price__c ),
+NOT(ISBLANK( Product_To__c ))
+)</errorConditionFormula>
+        <errorDisplayField>Renewal_Price__c</errorDisplayField>
+        <errorMessage>Renewal Price is required when Product_To is not empty.</errorMessage>
+    </validationRules>
+</CustomObject>

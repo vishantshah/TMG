@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Voucher Activity</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Voucher Activities</value>
+    </caseValues>
+    <fields>
+        <label><!-- Voucher Activity Type --></label>
+        <name>Adjustment_Type__c</name>
+        <picklistValues>
+            <masterLabel>Holiday Return</masterLabel>
+            <translation><!-- Holiday Return --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voucher Resend - Full Pack</masterLabel>
+            <translation><!-- Voucher Resend - Full Pack --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voucher Resend - Part Pack</masterLabel>
+            <translation><!-- Voucher Resend - Part Pack --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voucher Return</masterLabel>
+            <translation><!-- Voucher Return --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voucher Return without Refund</masterLabel>
+            <translation><!-- Voucher Return without Refund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approved By --></label>
+        <name>Approved_By__c</name>
+        <relationshipLabel><!-- Voucher Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <help><!-- For vouchers received, enter the date the vouchers have actually been received (affects vouchers in hand) --></help>
+        <label><!-- Date Vouchers Received --></label>
+        <name>Date_Vouchers_Received__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deferred Asset Value --></label>
+        <name>Deferred_Asset_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fulfilled Date --></label>
+        <name>Fulfilled_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Needs Approval --></label>
+        <name>Needs_Approval__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Vouchers --></label>
+        <name>Number_of_Vouchers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outstanding Balance To/From Customer --></label>
+        <name>Outstanding_balance_to_from_customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Refund Amount --></label>
+        <name>Refund_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check if a monetary refund is due to the subscriber --></help>
+        <label><!-- Refund Due --></label>
+        <name>Refund_Due__c</name>
+    </fields>
+    <fields>
+        <label><!-- Refund Method --></label>
+        <name>Refund_Method__c</name>
+        <picklistValues>
+            <masterLabel>Cheque not created</masterLabel>
+            <translation><!-- Cheque not created --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual created cheque</masterLabel>
+            <translation><!-- Manual created cheque --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refunded to Card</masterLabel>
+            <translation><!-- Refunded to Card --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System created cheque</masterLabel>
+            <translation><!-- System created cheque --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Letter version for resends. If VA Start Date = Sub Start Date set to SS, else SD --></help>
+        <label><!-- Resend Letter Version --></label>
+        <name>Resend_Letter_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription --></label>
+        <name>Subscription__c</name>
+        <relationshipLabel><!-- Voucher Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Select the type of voucher activity action you are entering --></help>
+        <label><!-- Voucher Activity Action --></label>
+        <name>Voucher_Activity_Action__c</name>
+        <picklistValues>
+            <masterLabel>Vouchers Received</masterLabel>
+            <translation><!-- Vouchers Received --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vouchers Sent</masterLabel>
+            <translation><!-- Vouchers Sent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Currency value of voucher adjustment --></help>
+        <label><!-- Voucher Value --></label>
+        <name>Voucher_Value__c</name>
+    </fields>
+    <layouts>
+        <layout>TMG Voucher Adjustment - Agent view</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Information --></label>
+            <section>Voucher Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMG Voucher Adjustment Approval Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Information --></label>
+            <section>Voucher Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMG Voucher Adjustment Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Information --></label>
+            <section>Voucher Information</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End date must be the same as the listed voucher pack date on the sub --></errorMessage>
+        <name>End_Date_26_Week_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End date of a full pack resend should adhere to the batch end date of the subscription --></errorMessage>
+        <name>Full_Resends_end_date_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start date of a full pack resend should adhere to the batch start date of the subscription --></errorMessage>
+        <name>Full_Resends_start_date_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Start date must match the voucher pack dates on the Subscription --></errorMessage>
+        <name>Start_Date_Validation_26_week</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Vouchers can only be sent when the associated Subscription Status is Pending, Active, In Renewal or Pending Cancellation. --></errorMessage>
+        <name>Voucher_Adjustment_Creation_Sub_Status</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The voucher start date cannot be before the subscription start date. --></errorMessage>
+        <name>Voucher_Start_Date_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The End Date must be greater than the Start Date --></errorMessage>
+        <name>Voucher_end_date_check</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Approve_Refund --></label>
+        <name>Approve_Refund</name>
+    </webLinks>
+</CustomObjectTranslation>

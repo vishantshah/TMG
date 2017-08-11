@@ -1,0 +1,12 @@
+<apex:page showHeader="true" sidebar="true" controller="Zuora_AmendSubscriptionRedirectCtrl" action="{!redirectAmendSubscription}">
+	<apex:form >
+		<zqu:StatusModal />
+        <apex:actionStatus startText="" stopText="" id="action" onstart="javascript:displayStatusModal();" onstop="javascript:closeStatusModal();" />
+		<apex:actionFunction name="goToAccountPage" action="{!goToAccountPage}" immediate="true" />
+		<apex:actionFunction name="goToListAccountaPage" action="{!goToListAccountaPage}" immediate="true" />
+		<apex:actionFunction name="hardCancelActiveSubscription" action="{!hardCancelActiveSubscription}" immediate="true" status="action"/>
+		<apex:actionFunction name="createNewQuoteWithDetails" action="{!createNewQuoteWithDetails}" immediate="true" />
+		<apex:actionFunction name="goToRevokeCancellationPage" action="{!goToRevokeCancellationPage}" immediate="true" />
+		<zqu:Notification options="{!notificationOptions}"/>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Number</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Agresso_Reference__c</fullName>
+        <description>this is the number loaded on to the system once a refund cheque has been produced. It is set as an external reference ID in case of updates from Agresso</description>
+        <externalId>true</externalId>
+        <inlineHelpText>This is the number loaded on to the system once a refund cheque has been produced</inlineHelpText>
+        <label>Agresso Reference</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cheque_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Cheque Amount</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Cheque_Banking_Status__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of a sub payment cheque</inlineHelpText>
+        <label>Cheque Banking Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Banked</fullName>
+                <default>true</default>
+                    <label>Banked</label>
+                </value>
+                <value>
+                <fullName>Returned</fullName>
+                <default>false</default>
+                    <label>Returned</label>
+                </value>
+                <value>
+                <fullName>Issued</fullName>
+                <default>false</default>
+                    <label>Issued</label>
+                </value>
+                <value>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Sub Payment</controllingFieldValue>
+                <controllingFieldValue>Anomaly Cheque</controllingFieldValue>
+                <valueName>Banked</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Sub Payment</controllingFieldValue>
+                <controllingFieldValue>Anomaly Cheque</controllingFieldValue>
+                <valueName>Returned</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <controllingFieldValue>Indemnity Cheque</controllingFieldValue>
+                <valueName>Issued</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <controllingFieldValue>Indemnity Cheque</controllingFieldValue>
+                <valueName>Cancelled</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cheque_Batch_No__c</fullName>
+        <externalId>false</externalId>
+        <formula>Cheque_Batch__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Cheque Batch No</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cheque_Batch__c</fullName>
+        <externalId>false</externalId>
+        <label>Cheque Batch</label>
+        <referenceTo>Cheque_Batch__c</referenceTo>
+        <relationshipLabel>Cheques</relationshipLabel>
+        <relationshipName>Cheques</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Cheque_Refund_Reason__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Reason for a cheque refund being raised</inlineHelpText>
+        <label>Cheque Refund Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>14 Day Cancellation</fullName>
+                <default>false</default>
+                    <label>14 Day Cancellation</label>
+                </value>
+                <value>
+                <fullName>Cancelled Sub</fullName>
+                <default>false</default>
+                    <label>Cancelled Sub</label>
+                </value>
+                <value>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+                    <label>Deceased</label>
+                </value>
+                <value>
+                <fullName>DD error</fullName>
+                <default>false</default>
+                    <label>DD error</label>
+                </value>
+                <value>
+                <fullName>Emigration</fullName>
+                <default>false</default>
+                    <label>Emigration</label>
+                </value>
+                <value>
+                <fullName>Holiday Refund</fullName>
+                <default>false</default>
+                    <label>Holiday Refund</label>
+                </value>
+                <value>
+                <fullName>Serious Illness</fullName>
+                <default>false</default>
+                    <label>Serious Illness</label>
+                </value>
+                <value>
+                <fullName>Indemnity</fullName>
+                <default>false</default>
+                    <label>Indemnity</label>
+                </value>
+                <value>
+                <fullName>Newsagent problem</fullName>
+                <default>false</default>
+                    <label>Newsagent problem</label>
+                </value>
+                <value>
+                <fullName>Marketed price issue</fullName>
+                <default>false</default>
+                    <label>Marketed price issue</label>
+                </value>
+                <value>
+                <fullName>CC Error</fullName>
+                <default>false</default>
+                    <label>CC Error</label>
+                </value>
+                <value>
+                <fullName>Good will</fullName>
+                <default>false</default>
+                    <label>Good will</label>
+                </value>
+                <value>
+                <fullName>Missing/Lost Vouchers</fullName>
+                <default>false</default>
+                    <label>Missing/Lost Vouchers</label>
+                </value>
+                <value>
+                <fullName>Poor Eyesight</fullName>
+                <default>false</default>
+                    <label>Poor Eyesight</label>
+                </value>
+                <value>
+                <fullName>Review Of Personal Finances</fullName>
+                <default>false</default>
+                    <label>Review Of Personal Finances</label>
+                </value>
+                <value>
+                <fullName>Price Increase</fullName>
+                <default>false</default>
+                    <label>Price Increase</label>
+                </value>
+                <value>
+                <fullName>DM Mailing Error</fullName>
+                <default>false</default>
+                    <label>DM Mailing Error</label>
+                </value>
+                <value>
+                <fullName>Competitor Offer</fullName>
+                <default>false</default>
+                    <label>Competitor Offer</label>
+                </value>
+                <value>
+                <fullName>Too Much To Read</fullName>
+                <default>false</default>
+                    <label>Too Much To Read</label>
+                </value>
+                <value>
+                <fullName>Extended Holiday</fullName>
+                <default>false</default>
+                    <label>Extended Holiday</label>
+                </value>
+                <value>
+                <fullName>Distribution Problems</fullName>
+                <default>false</default>
+                    <label>Distribution Problems</label>
+                </value>
+                <value>
+                <fullName>Duplicate Paper</fullName>
+                <default>false</default>
+                    <label>Duplicate Paper</label>
+                </value>
+                <value>
+                <fullName>Dislikes Paper</fullName>
+                <default>false</default>
+                    <label>Dislikes Paper</label>
+                </value>
+                <value>
+                <fullName>Salesforce Error</fullName>
+                <default>false</default>
+                    <label>Salesforce Error</label>
+                </value>
+                <value>
+                <fullName>Occasional Reader</fullName>
+                <default>false</default>
+                    <label>Occasional Reader</label>
+                </value>
+                <value>
+                <fullName>Moved To a Care Home</fullName>
+                <default>false</default>
+                    <label>Moved To a Care Home</label>
+                </value>
+                <value>
+                <fullName>Voucher Style</fullName>
+                <default>false</default>
+                    <label>Voucher Style</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>14 Day Cancellation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Cancelled Sub</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Deceased</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>DD error</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Emigration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Holiday Refund</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Serious Illness</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Newsagent problem</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Marketed price issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>CC Error</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Missing/Lost Vouchers</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Poor Eyesight</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Review Of Personal Finances</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Price Increase</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>DM Mailing Error</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Competitor Offer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Too Much To Read</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Extended Holiday</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Distribution Problems</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Duplicate Paper</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Dislikes Paper</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Salesforce Error</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Occasional Reader</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Moved To a Care Home</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Refund</controllingFieldValue>
+                <controllingFieldValue>Refund - awaiting approval</controllingFieldValue>
+                <valueName>Voucher Style</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Indemnity Cheque</controllingFieldValue>
+                <valueName>Indemnity</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Name_on_Cheque__c</fullName>
+        <externalId>false</externalId>
+        <label>Name on Cheque</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Raised__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used to show that a refund cheque has been raised by the finance system</description>
+        <externalId>false</externalId>
+        <label>Raised</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ref_Number_on_Cheque__c</fullName>
+        <externalId>false</externalId>
+        <label>Ref Number on Cheque</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sort_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Sort Code</label>
+        <length>6</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subscriber__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Subscriber</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Cheques</relationshipLabel>
+        <relationshipName>Cheques</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Subscription__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Subscription</label>
+        <referenceTo>Subscription__c</referenceTo>
+        <relationshipLabel>Cheques</relationshipLabel>
+        <relationshipName>Cheques</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Sub Payment</fullName>
+                <default>false</default>
+                    <label>Sub Payment</label>
+                </value>
+                <value>
+                <fullName>Anomaly Cheque</fullName>
+                <default>false</default>
+                    <label>Anomaly Cheque</label>
+                </value>
+                <value>
+                <fullName>Refund</fullName>
+                <default>false</default>
+                    <label>Refund</label>
+                </value>
+                <value>
+                <fullName>Refund - awaiting approval</fullName>
+                <default>false</default>
+                    <label>Refund - awaiting approval</label>
+                </value>
+                <value>
+                <fullName>Indemnity Cheque</fullName>
+                <default>false</default>
+                    <label>Indemnity Cheque</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Voucher_Activity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Voucher Activity cheque created for</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Voucher Activity cheque created for</inlineHelpText>
+        <label>Voucher Activity</label>
+        <referenceTo>Voucher_Adjustment__c</referenceTo>
+        <relationshipLabel>Cheques</relationshipLabel>
+        <relationshipName>Cheques</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Cheque</label>
+    <nameField>
+        <displayFormat>{0000}</displayFormat>
+        <label>Cheque ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Cheques</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Default</fullName>
+        <active>true</active>
+        <description>Default Cheque Record Type</description>
+        <label>Default</label>
+        <picklistValues>
+            <picklist>Cheque_Banking_Status__c</picklist>
+            <values>
+                <fullName>Banked</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Issued</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returned</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cheque_Refund_Reason__c</picklist>
+            <values>
+                <fullName>14 Day Cancellation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CC Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled Sub</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competitor Offer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DD error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DM Mailing Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dislikes Paper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distribution Problems</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Duplicate Paper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Emigration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Extended Holiday</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Good will</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Holiday Refund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Indemnity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketed price issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing%2FLost Vouchers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moved To a Care Home</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newsagent problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Occasional Reader</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Poor Eyesight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Increase</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Review Of Personal Finances</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Salesforce Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Serious Illness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Too Much To Read</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Voucher Style</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Anomaly Cheque</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Indemnity Cheque</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refund - awaiting approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sub Payment</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Voucher_Refund_Cheque</fullName>
+        <active>true</active>
+        <description>Voucher Refund Cheque Record Type</description>
+        <label>Voucher Refund Cheque</label>
+        <picklistValues>
+            <picklist>Cheque_Banking_Status__c</picklist>
+            <values>
+                <fullName>Banked</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Issued</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returned</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cheque_Refund_Reason__c</picklist>
+            <values>
+                <fullName>14 Day Cancellation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CC Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled Sub</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competitor Offer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DD error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DM Mailing Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dislikes Paper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distribution Problems</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Duplicate Paper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Emigration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Extended Holiday</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Good will</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Holiday Refund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Indemnity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketed price issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing%2FLost Vouchers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moved To a Care Home</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newsagent problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Occasional Reader</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Poor Eyesight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Increase</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Review Of Personal Finances</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Salesforce Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Serious Illness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Too Much To Read</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Voucher Style</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Anomaly Cheque</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Indemnity Cheque</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refund - awaiting approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sub Payment</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Name_on_Cheque__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Account_Number__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Sort_Code__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Ref_Number_on_Cheque__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Cheque_Amount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Agresso_Reference__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Cheque_Batch__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Subscription__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Name_on_Cheque__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Account_Number__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Sort_Code__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Ref_Number_on_Cheque__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Cheque_Amount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Subscription__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Agresso_Reference__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Name_on_Cheque__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Account_Number__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Sort_Code__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Ref_Number_on_Cheque__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Cheque_Amount__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Subscription__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Agresso_Reference__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Name_on_Cheque__c</searchFilterFields>
+        <searchFilterFields>Account_Number__c</searchFilterFields>
+        <searchFilterFields>Sort_Code__c</searchFilterFields>
+        <searchFilterFields>Ref_Number_on_Cheque__c</searchFilterFields>
+        <searchFilterFields>Cheque_Amount__c</searchFilterFields>
+        <searchFilterFields>Agresso_Reference__c</searchFilterFields>
+        <searchFilterFields>Cheque_Batch__c</searchFilterFields>
+        <searchFilterFields>Subscription__c</searchFilterFields>
+        <searchFilterFields>Type__c</searchFilterFields>
+        <searchResultsAdditionalFields>Name_on_Cheque__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Sort_Code__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Cheque_Amount__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Ref_Number_on_Cheque__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Cheque_Batch__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Subscription__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Banking_status_required</fullName>
+        <active>true</active>
+        <description>Cheque banking status required for a sub payment cheque</description>
+        <errorConditionFormula>ISPICKVAL(  Cheque_Banking_Status__c , &quot;&quot;)</errorConditionFormula>
+        <errorDisplayField>Cheque_Banking_Status__c</errorDisplayField>
+        <errorMessage>Cheque Banking Status is required for a Sub Payment cheque</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PreventChequeRefundOnSubscription</fullName>
+        <active>true</active>
+        <description>Validation rule to prevent cheque refunds being allocated to subscriptions with a status of &apos;Offered&apos;, &apos;Declined&apos; or &apos;Withdrawn&apos;.</description>
+        <errorConditionFormula>IF( OR($Profile.Name = &quot;TMG System&quot;, $Profile.Name = &quot;TMG Subs Administrator&quot;), false,
+AND(
+OR(ISPICKVAL( Subscription__r.Subscription_Status__c , &apos;Offered&apos;),
+ISPICKVAL( Subscription__r.Subscription_Status__c , &apos;Withdrawn&apos;),
+ISPICKVAL( Subscription__r.Subscription_Status__c , &apos;Declined&apos;)
+) ,
+Or(
+ISPICKVAL(Type__c, &apos;Refund&apos;) ,
+ISPICKVAL(Type__c, &apos;Refund - awaiting approval&apos;)
+)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Type__c</errorDisplayField>
+        <errorMessage>A cheque refund cannot be allocated to an Offered Withdrawn or Declined subscription</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Refund_reason_required</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+OR(
+       ISPICKVAL(Type__c , &quot;Refund&quot;),
+       ISPICKVAL(Type__c, &quot;Refund - awaiting approval&quot;),
+       ISPICKVAL( Type__c, &quot;Indemnity Cheque&quot;)
+      ),
+ISPICKVAL( Cheque_Refund_Reason__c , &quot;&quot;) )</errorConditionFormula>
+        <errorDisplayField>Cheque_Refund_Reason__c</errorDisplayField>
+        <errorMessage>Refund reason is required for any cheque refund</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>New_From_Subscription</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New Cheque</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>var amt = &apos;{!Subscription__c.Total_Price__c}&apos;;
+amt = amt.replace(/£/,&quot;&quot;);
+navigateToUrl(&apos;{!URLFOR($Action.Cheque__c.New, null, [CF00N20000001NAdS = Subscription__c.Name, CF00N20000001NAdS_lkid=Subscription__c.Id ], false)}&apos; + &apos;&amp;00N20000001NAeG=&apos; + amt);</url>
+    </webLinks>
+</CustomObject>

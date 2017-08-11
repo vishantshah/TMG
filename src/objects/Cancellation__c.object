@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Cancellations</relationshipLabel>
+        <relationshipName>Cancellations</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Reason</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Price</fullName>
+                <default>false</default>
+                    <label>Price</label>
+                </value>
+                <value>
+                <fullName>Editorial</fullName>
+                <default>false</default>
+                    <label>Editorial</label>
+                </value>
+                <value>
+                <fullName>Political</fullName>
+                <default>false</default>
+                    <label>Political</label>
+                </value>
+                <value>
+                <fullName>Lack of Content</fullName>
+                <default>false</default>
+                    <label>Lack of Content</label>
+                </value>
+                <value>
+                <fullName>App performance</fullName>
+                <default>false</default>
+                    <label>App performance</label>
+                </value>
+                <value>
+                <fullName>Competitor</fullName>
+                <default>false</default>
+                    <label>Competitor</label>
+                </value>
+                <value>
+                <fullName>No compatible devices</fullName>
+                <default>false</default>
+                    <label>No compatible devices</label>
+                </value>
+                <value>
+                <fullName>Lack of Time</fullName>
+                <default>false</default>
+                    <label>Lack of Time</label>
+                </value>
+                <value>
+                <fullName>Functionality</fullName>
+                <default>false</default>
+                    <label>Functionality</label>
+                </value>
+                <value>
+                <fullName>Product switch</fullName>
+                <default>false</default>
+                    <label>Product switch</label>
+                </value>
+                <value>
+                <fullName>Not known</fullName>
+                <default>false</default>
+                    <label>Not known</label>
+                </value>
+                <value>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+                    <label>Deceased</label>
+                </value>
+                <value>
+                <fullName>Ill health</fullName>
+                <default>false</default>
+                    <label>Ill health</label>
+                </value>
+                <value>
+                <fullName>Apple News</fullName>
+                <default>false</default>
+                    <label>Apple News</label>
+                </value>
+                <value>
+                <fullName>Duplicate Subscription</fullName>
+                <default>false</default>
+                    <label>Duplicate Subscription</label>
+                </value>
+                <value>
+                <fullName>Change of Payment Schedule</fullName>
+                <default>false</default>
+                    <label>Change of Payment Schedule</label>
+                </value>
+                <value>
+                <fullName>Look and feel</fullName>
+                <default>false</default>
+                    <label>Look and feel</label>
+                </value>
+                <value>
+                <fullName>Download</fullName>
+                <default>false</default>
+                    <label>Download</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                <fullName>Pending</fullName>
+                <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                <fullName>Revoked</fullName>
+                <default>false</default>
+                    <label>Revoked</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Soft Cancellation</fullName>
+                <default>false</default>
+                    <label>Soft Cancellation</label>
+                </value>
+                <value>
+                <fullName>Hard Cancellation</fullName>
+                <default>false</default>
+                    <label>Hard Cancellation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cancelled_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Cancelled By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Cancellations</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cancelled_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancelled Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>MPP_Transaction_History__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>MPP Transaction History</label>
+        <referenceTo>MPP_Transaction_History__c</referenceTo>
+        <relationshipLabel>Cancellations</relationshipLabel>
+        <relationshipName>Cancellations</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Other_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Reason</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason Details</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Cancellation_Reason__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Free Trial</fullName>
+                <default>false</default>
+                    <label>Free Trial</label>
+                </value>
+                <value>
+                <fullName>Price Increase</fullName>
+                <default>false</default>
+                    <label>Price Increase</label>
+                </value>
+                <value>
+                <fullName>Brexit</fullName>
+                <default>false</default>
+                    <label>Brexit</label>
+                </value>
+                <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Price</controllingFieldValue>
+                <valueName>Free Trial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Price</controllingFieldValue>
+                <valueName>Price Increase</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Price</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Editorial</controllingFieldValue>
+                <valueName>Brexit</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <label>Cancellation</label>
+    <nameField>
+        <displayFormat>CAN-{0000}</displayFormat>
+        <label>Cancellation Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Cancellations</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

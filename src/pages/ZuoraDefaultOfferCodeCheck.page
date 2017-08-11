@@ -1,0 +1,7 @@
+<apex:page controller="ZuoraDefaultOfferCodeCheckController" action="{!insertDefaultOfferCode}">
+	<apex:pageBlock title="Add default offer code">
+        <apex:pageMessages />
+        <br />
+        <a href="/{!quoteId}" class="btn" style="text-decoration: none;">Continue</a>
+    </apex:pageBlock>
+</apex:page>

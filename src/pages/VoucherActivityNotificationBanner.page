@@ -1,0 +1,5 @@
+<apex:page showHeader="true" standardController="Voucher_Adjustment__c" sidebar="true">
+	<div>
+		<c:NotificationBanner recordId="{!Voucher_Adjustment__c.Id}"/>
+	</div>
+</apex:page>

@@ -1,0 +1,2 @@
+"NAME","SAM_ENDPOINT__C","ACTIVE__C","SUPPORT_EMAIL_ADDRESSES__C","SERVICE_ID__C","PCABUTTONID__C","PCASELECTID__C","PCAURL__C"
+"SAM","http://someurl.telegraph.co.uk","true","teamsalesforce@telegraph.co.uk","359dd847-757b-4795-8c8c-xxxxxxxxxxxx","","",""

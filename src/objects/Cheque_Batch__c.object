@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This is an object to which many cheques are linked</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Astra_Batch__c</fullName>
+        <externalId>true</externalId>
+        <label>Astra Batch</label>
+        <length>5</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Batch_Closed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Batch Closed Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Index__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>Unique field used to restrict having more then one open Holiday Voucher Refund Cheque Batch at the time. This field is updated by workflow rule.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Unique field used to restrict having more then one open Holiday Voucher Refund Cheque Batch at the time. This field is updated by workflow rule.</inlineHelpText>
+        <label>Index</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Slip_Ref_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Slip Ref Number</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Report_Url__c</fullName>
+        <description>Url for Holiday Voucher Cheque Refund Report</description>
+        <externalId>false</externalId>
+        <formula>IF(RecordType.DeveloperName = &apos;Voucher_Refund_Cheque_Batch&apos;, LEFT($Api.Enterprise_Server_URL_300, FIND(&apos;/services&apos;,$Api.Enterprise_Server_URL_300))+$Setup.Configuration__c.Holiday_Voucher_Cheque_Refund_Report_Id__c+&quot;?pv0=&quot;+Name, &apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Url for Holiday Voucher Cheque Refund Report</inlineHelpText>
+        <label>Report Url</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Synthesys_Batch_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Used by interface to group cheques in a batch coming from Synthesys</description>
+        <externalId>true</externalId>
+        <label>Synthesys Batch ID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Total_No_of_Cheques__c</fullName>
+        <externalId>false</externalId>
+        <label>Total No of Cheques</label>
+        <summaryForeignKey>Cheque__c.Cheque_Batch__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Value</label>
+        <summarizedField>Cheque__c.Cheque_Amount__c</summarizedField>
+        <summaryForeignKey>Cheque__c.Cheque_Batch__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <label>Cheque Batch</label>
+    <nameField>
+        <displayFormat>{0}</displayFormat>
+        <label>Cheque Batch Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Cheque Batches</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Default</fullName>
+        <active>true</active>
+        <description>Default Cheque Batch Record Type</description>
+        <label>Default</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Voucher_Refund_Cheque_Batch</fullName>
+        <active>true</active>
+        <description>Voucher Refund Cheque Batch Record Type</description>
+        <label>Voucher Refund Cheque Batch</label>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Batch_Closed_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Total_No_of_Cheques__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Total_Value__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Batch_Closed_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Total_No_of_Cheques__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Total_Value__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CREATED_DATE</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Batch_Closed_Date__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Total_No_of_Cheques__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Total_Value__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CREATED_DATE</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>OBJECT_ID</searchFilterFields>
+        <searchFilterFields>Batch_Closed_Date__c</searchFilterFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Total_No_of_Cheques__c</searchFilterFields>
+        <searchFilterFields>CREATED_DATE</searchFilterFields>
+        <searchResultsAdditionalFields>Batch_Closed_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Total_No_of_Cheques__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Total_Value__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

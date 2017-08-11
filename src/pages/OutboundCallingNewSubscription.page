@@ -1,0 +1,7 @@
+<apex:page standardController="Case" tabStyle="Case">
+	<apex:sectionHeader title="Create New Subscription" subtitle="Select Type"/>
+	<div class="bPageTitle ptBreadcrumb paddingAdjust">&nbsp;&laquo;&nbsp;<a class="bPageTitle ptBreadcrumb breadCrumb" href="/{!Case.Id}">Back to Case: {!Case.CaseNumber}</a></div>
+	<apex:form>
+		<c:LatestSubscription target="_self" />
+	</apex:form>
+</apex:page>

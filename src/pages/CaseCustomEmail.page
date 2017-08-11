@@ -1,0 +1,136 @@
+<apex:page standardController="Case" recordSetVar="cases" extensions="CaseMassAmendmentController" tabStyle="Case">
+    <style>
+        input[type="radio"]{margin:0px;}
+        fieldset{padding:0px;margin-top:-2px;margin-left:-3px;}
+        label{margin-right:15px;}
+        .w620{width:620px;}
+        .sffont{font-weight:bold;font-size:10.92px;color:#4a4a56;margin-bottom:3px;}
+    </style>
+    <apex:sectionHeader title="{!$Label.Case_Amendment}" subtitle="{!$Label.Case_Custom_Mass_Email}" />
+
+    <apex:form>
+
+    <apex:outputPanel id="emailPanel">
+        <apex:pageBlock title="{!$Label.Case_Amendment}" rendered="{!NOT(isEmailSent)}" mode="edit">
+            <apex:pageMessages id="pageMsg" escape="false"/>
+
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem>
+                    <label>From</label>
+                    <apex:selectList value="{!selectedOrgEmail}" size="1">
+                        <apex:selectOptions value="{!orgEmailOptions}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem>
+                    <label>To</label>
+                    <apex:outputText value="{!selectedCases.size} recipient(s)" />
+                </apex:pageBlockSectionItem>
+
+                <!-- email body selection -->
+                <apex:pageBlockSectionItem>
+                    <label>Body</label>
+                    <apex:selectRadio value="{!selectedEmailBodyType}" onchange="changeEmailBody();">
+                        <apex:selectOptions value="{!emailBodyOptions}" />
+                    </apex:selectRadio>
+                </apex:pageBlockSectionItem>
+                <apex:actionFunction action="{!changeEmailBody}" name="changeEmailBody" rerender="emailBodySelectionPanel, emailTemplatePanel, pageMsg" status="emailBodyStatus" />
+
+                <!-- custom body / template selection -->
+                <apex:pageBlockSectionItem>
+                    <label></label>
+                    <apex:outputPanel id="emailBodySelectionPanel">
+                        <apex:actionstatus id="emailBodyStatus">
+                            <apex:facet name="start">
+                                <apex:outputPanel>
+                                    <apex:image value="/img/loading32.gif" style="height:15px;" />
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:facet name="stop">
+                                <apex:outputPanel>
+                                    <apex:outputPanel rendered="{!showEmailCustomBody}">
+                                        <div class="sffont">Subject</div>
+                                        <apex:inputText value="{!emailCustomSubject}" styleClass="w620" /><br/><br/>
+                                        <div class="sffont">Message</div>
+                                        <apex:inputTextArea value="{!emailCustomBody}" cols="100" rows="10" />
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!showEmailTemplateSelector}">
+                                        <apex:selectList value="{!selectedTemplate}" size="1" onchange="previewEmailTemplate();">
+                                            <apex:selectOptions value="{!templateOptions}" />
+                                        </apex:selectList>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionstatus>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:actionFunction action="{!previewEmailTemplate}" name="previewEmailTemplate" rerender="emailTemplatePanel, pageMsg" status="emailTemplatePreviewStatus" />
+
+                <!-- template preview-->
+                <apex:pageBlockSectionItem>
+                    <label></label>
+                    <apex:outputPanel id="emailTemplatePanel">
+                        <apex:actionstatus id="emailTemplatePreviewStatus">
+                            <apex:facet name="start">
+                                <apex:outputPanel>
+                                    <apex:image value="/img/loading32.gif" style="height:15px;" />
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:facet name="stop">
+                                <apex:outputPanel rendered="{!showEmailTemplate}">
+                                    <div class="sffont">Example Subject for Case {!exampleCaseNumber}</div>
+                                    <apex:inputText value="{!emailMsg.Subject}" styleClass="w620" disabled="true" /><br/><br/>
+                                    <apex:outputPanel rendered="{!ISNULL(emailHTMLBody)}">
+                                        <div class="sffont">Example Plain Text Preview for Case {!exampleCaseNumber}</div>
+                                        <apex:inputTextarea value="{!emailMsg.TextBody}" cols="100" rows="20" disabled="true" /><br/><br/>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!NOT(ISNULL(emailHTMLBody))}">
+                                        <div class="w620">
+                                            <div class="sffont">Example HTML Preview for Case {!exampleCaseNumber}</div>
+                                            <apex:outputText value="{!emailHTMLBody}" escape="false" />
+                                        </div>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionstatus>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons location="bottom">
+                <apex:actionStatus id="emailButtonStatus">
+                    <apex:facet name="stop">
+                        <apex:outputPanel>
+                            <apex:commandButton action="{!sendEmails}" value="Send Email to Contacts" status="emailButtonStatus" rerender="emailPanel, resultPanel" />
+                            <apex:commandButton action="{!cancel}" value="Cancel" immediate="true" />
+                        </apex:outputPanel>
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <apex:outputPanel>
+                            <apex:commandButton value="Processing..." disabled="true" />
+                            <apex:commandButton value="Processing..." disabled="true" />
+                        </apex:outputPanel>
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:outputPanel>
+
+    <apex:outputPanel id="resultPanel">
+        <apex:pageBlock title="{!$Label.Case_Amendment}" rendered="{!isEmailSent}">
+            <apex:pageMessages />
+
+            <apex:outputPanel>
+                Emails are being added to the delivery queue.<br/>
+                You will receive a report email when this process finishes.
+            </apex:outputPanel>
+
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Back to Cases" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:outputPanel>
+
+    </apex:form>
+</apex:page>

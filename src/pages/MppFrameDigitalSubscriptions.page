@@ -1,0 +1,6 @@
+<apex:page standardController="Account" id="page1" extensions="MPPInterfaceHTTP" action="{!initMPPGuid}">
+
+<apex:iframe src="{!BASE_MPP_URL}management/embedded/Subscriptions.aspx?affiliateToken={!MPP_GUID}&parameterName=TSNumber&clientUserId={!Account.Subscriber_Number_static__c}&serverUrl={!$Api.Partner_Server_URL_210}&sessionId={!GETSESSIONID()}" 
+    scrolling="true" id="theIframe" rendered="{!RENDER_MPP_FRAMES}"/>
+
+</apex:page>

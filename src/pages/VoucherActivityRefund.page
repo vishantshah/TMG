@@ -1,0 +1,76 @@
+<apex:page standardController="Voucher_Adjustment__c" extensions="VoucherActivityRefundControllerExtension" tabStyle="Subscription__c">
+	<c:LoadingBox />
+	<apex:sectionHeader title="Refund Confirmation" />
+		<div class="bPageTitle ptBreadcrumb paddingAdjust">&nbsp;&laquo;&nbsp;<a class="bPageTitle ptBreadcrumb breadCrumb" href="/{!Voucher_Adjustment__c.Id}">Back to {!$ObjectType.Voucher_Adjustment__c.Label}: {!Voucher_Adjustment__c.Name}</a></div>
+	<apex:form id="form">
+		<apex:pageMessages escape="false"/>
+		<apex:pageBlock rendered="{!showRefundDetails}">
+			<apex:pageBlockButtons location="bottom">
+				<apex:commandButton value="Cancel" action="{!cancel}" />
+				<apex:commandButton value="Submit for Approval" action="{!submitForApproval}" rendered="{!!isRefundToProcess}" reRender="form" status="loadStatus"/>
+				<apex:commandButton value="Approve & Create Cheque" action="{!createCheque}" rendered="{!AND(isCheque,isRefundToProcess)}" reRender="form" status="loadStatus"/>
+				<apex:commandButton value="Approve & Refund" action="{!refund}" rendered="{!AND(isMPP,isRefundToProcess)}" reRender="form" status="loadStatus"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection title="Refund Details" columns="1" collapsible="false" rendered="{!!isPartialFailure}">
+				<apex:outputField value="{!Voucher_Adjustment__c.Subscription__c}"/>
+				<apex:outputField value="{!Voucher_Adjustment__c.Adjustment_Type__c}"/>
+				<apex:outputField value="{!Voucher_Adjustment__c.Start_Date__c}"/>
+				<apex:outputField value="{!Voucher_Adjustment__c.End_Date__c}"/>
+				<apex:outputField value="{!Voucher_Adjustment__c.Refund_Amount__c}"/>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection title="Partially Failed Refund Details" columns="1" collapsible="false" rendered="{!isPartialFailure}">
+				<apex:outputText label="Total Refund Amount" value="{!Voucher_Adjustment__c.Refund_Amount__c}"/>
+				<apex:outputText label="Successfully Refunded Amount" value="{!totalRefundedAmount}"/>
+				<apex:outputText label="Remaining Amount To Be Refunded" value="{!partialFailureRemainingAmount}"/>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+		<!-- CASE -->
+		<apex:pageBlock rendered="{!(futureActionCase != NULL)}">
+			<apex:pageBlockButtons location="bottom" rendered="{!(futureActionCase.Id = NULL)}">
+				<apex:commandButton value="Cancel" action="{!cancel}" />
+				<apex:commandButton value="Create Case" action="{!createCase}" />
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection title="Voucher Activity Details" columns="1" collapsible="false" rendered="{!(futureActionCase.Id = NULL)}">
+				<apex:outputField value="{!Voucher_Adjustment__c.Start_Date__c}"/>
+				<apex:outputField value="{!Voucher_Adjustment__c.End_Date__c}"/>
+				<apex:outputField value="{!Voucher_Adjustment__c.Refund_Amount__c}"/>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection title="Subscription Details" columns="1" collapsible="false" rendered="{!(futureActionCase.Id = NULL)}">
+				<apex:outputField value="{!voucherActivity.Subscription__r.Start_Date__c}"/>
+				<apex:outputField value="{!voucherActivity.Subscription__r.Payment_Type__c}"/>
+				<apex:outputField value="{!voucherActivity.Subscription__r.MPP_DD_Frequency__c}" rendered="{!voucherActivity.Subscription__r.Payment_Type__c = $Label.Offline_Acquisition_DD_payment_method}"/>
+				<apex:outputField value="{!voucherActivity.Subscription__r.Total_of_All_Payments__c}"/>
+				<apex:outputText label="{!IF(mppTransactions.size > 0, 'Last Payment Date', 'First Payment Date')}" value="{0,date,dd'/'MM'/'yyyy}">
+        			<apex:param value="{!paymentDate}"/>
+				</apex:outputText>
+				<apex:outputField value="{!voucherActivity.Subscription__r.Paid_Until__c}" rendered="{!mppTransactions.size > 0}"/>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection title="Case Details" columns="1" collapsible="false">
+			 	<apex:pageBlockSectionItem rendered="{!(futureActionCase.Id != NULL)}">
+                    <apex:outputLabel value="Case Number"/>
+                    <apex:outputLink value="/{!futureActionCase.Id}" target="_blank">{!futureActionCase.CaseNumber}</apex:outputLink>
+                </apex:pageBlockSectionItem>
+				<apex:outputField value="{!futureActionCase.Subject}"/>
+				<apex:outputField value="{!futureActionCase.Reason}"/>
+				<apex:pageBlockSectionItem helpText="{!$Label.Voucher_Activity_Refund_Future_Actiona_date_Help_Text}" rendered="{!voucherCases.size = 0}">
+					<apex:outputLabel value="Future Action Date" />
+					<apex:inputField value="{!futureActionCase.Future_Action_Date__c}"/>
+				</apex:pageBlockSectionItem>
+				<apex:outputField value="{!futureActionCase.Future_Action_Date__c}" rendered="{!voucherCases.size > 0}" />
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+
+<style type="text/css">
+	.breadCrumb {
+        color: #015ba7;
+        text-decoration: none;
+    }
+    .breadCrumb:hover { 
+        text-decoration: none;
+    }
+    .paddingAdjust {
+        padding: 0 !important;
+    }
+</style>
+</apex:page>

@@ -1,0 +1,99 @@
+<apex:page standardController="FulfillmentPlan__c" extensions="FulfillmentPlanManagerController">
+
+    <style type="text/css">
+        #wrapper{
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        #wrapper .column {
+          position: relative;
+          float: left;
+        }
+        
+        .left{
+            float: left;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .center{
+            float: left;
+            width: 20%;
+        }
+        .right{
+            float: left;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .listCenter{
+            display: block;
+            width: 250px;
+        }
+        .buttonContainer{
+            margin: 0 auto;
+        }
+        .button{
+            width: 70px;
+        }
+    </style>
+
+    <apex:form >
+        <p>
+        <apex:sectionHeader title="Fulfillment Plan" subtitle="{!FulfillmentPlan__c.Name}"/>
+        <div class="ptBreadcrumb">
+            <apex:commandLink value="« Back to List: Fulfillment Plans" action="{!Back}"/>
+        </div>
+        </p>
+                
+        <apex:pageBlock mode="edit">
+        
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!Save}"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageMessages />
+        
+            <apex:pageBlockSection columns="1" id="pageBlockSection">
+            
+                <apex:inputField value="{!FulfillmentPlan__c.ProductType__c}"/>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputText >Entitlements</apex:outputText>
+                    
+                    <apex:outputPanel >
+                        <div id="entitlementsWrapper">
+                            <div id="available" class="left">
+                                <apex:selectList styleClass="listCenter" size="10" value="{!AvailableSelected}" multiselect="true">
+                                    <apex:selectOptions value="{!AvailableEntitlementsForDisplay}"/>
+                                </apex:selectList>
+                            </div>
+    
+                            <div class="center">
+                                <div class="buttonContainer"><apex:commandButton styleClass="button" reRender="pageBlockSection" action="{!AddItems}" value="Add >"/></div>
+                                <br/>
+                                <div class="buttonContainer"><apex:commandButton styleClass="button" reRender="pageBlockSection" action="{!RemoveItems}" value="< Remove"/></div>
+                            </div>
+    
+                            <div id="current" class="right">
+                                <apex:selectList styleClass="listCenter" size="10" value="{!CurrentSelected}" multiselect="true">
+                                    <apex:selectOptions value="{!CurrentEntitlementsForDisplay}"/>
+                                </apex:selectList>
+                            </div>
+                        </div>
+                        
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+    
+        <!--This is here so that I don't have to query the record in the controller-->
+        <apex:inputHidden value="{!FulfillmentPlan__c.Entitlements__c}"/>
+
+    </apex:form>
+    
+    <!--<apex:relatedList list="Pricing_Options__r" pageSize="20"/>-->
+</apex:page>

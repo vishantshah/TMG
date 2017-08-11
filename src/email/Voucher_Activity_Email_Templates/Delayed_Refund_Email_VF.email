@@ -1,0 +1,102 @@
+<messaging:emailTemplate subject="Delayed refund" recipientType="Contact" relatedToType="Case">
+<messaging:plainTextEmailBody >
+    Subscriber Number: {!recipient.Account.Subscriber_Number__c}
+    
+    Dear {!recipient.Salutation} {!recipient.LastName},
+    
+    Thank you for your recent communication regarding your subscription to the Telegraph.
+    
+    We confirm receipt of your vouchers dated 
+    <apex:outputText value=" {0,date,dd/MM/yyyy} to {1,date,dd/MM/yyyy}">
+       <apex:param value="{!relatedTo.Voucher_Activity_Start_Date__c}" /> 
+       <apex:param value="{!relatedTo.Voucher_Activity_End_Date__c}" /> 
+    </apex:outputText>.
+    
+    We are currently unable to complete your refund as we have not yet processed a payment for these vouchers.
+    
+    A refund will be requested once we have received your next payment by
+    <apex:outputText value=" {0,date,dd/MM/yyyy}">
+       <apex:param value="{!relatedTo.Future_Action_Date__c}" />
+    </apex:outputText>.
+    
+    If you require any further information or assistance you can contact us by email at customerservice@telegraph.co.uk. Alternatively, you can call our free customer service helpline on 0800 33 20 20.  We are available to take your call Monday to Friday 9am-5pm and Saturday 9am-1pm.
+    
+    Yours sincerely,
+    
+    The Telegraph Subscriber Team
+
+</messaging:plainTextEmailBody>
+
+<messaging:htmlEmailBody >
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>The Telegraph - Subscriber</title>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#75d1f5">
+  <tr>
+    <td bgcolor="#75d1f5">
+        
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="39" bgcolor="#75d1f5"></td>
+          </tr>
+        </table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="111" bgcolor="#007ec3"><img src="http://image.email.telegraph.co.uk/lib/fe991570766c027975/m/38/140331_triggers_head_acknow.jpg" width="600" height="111" alt="The Telegraph Subscriber" style="font-family:Helvetica, Arial, sans-serif; font-size:16px; color:#FFFFFF; display:block" border="0"/></td>
+          </tr>
+        </table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="25" bgcolor="#FFFFFF"></td>
+          </tr>
+        </table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="20" height="10" bgcolor="#FFFFFF"></td>
+            <td width="560" height="10" bgcolor="#FFFFFF" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#000001; text-align:left">
+
+<p><strong>Subscriber Number: {!recipient.Account.Subscriber_Number__c}</strong></p>
+
+<strong>Dear {!recipient.Salutation} {!recipient.LastName},</strong>
+              <br/><br/>
+              <p>Thank you for your recent communication regarding your subscription to the Telegraph.</p>
+              <p>We confirm receipt of your vouchers dated&nbsp;<apex:outputField value="{!relatedTo.Voucher_Activity_Start_Date__c}"/> to&nbsp;<apex:outputField value="{!relatedTo.Voucher_Activity_End_Date__c}"/>.</p>
+              <p>We are currently unable to complete your refund as we have not yet processed a payment for these vouchers.</p>
+              <p>A refund will be requested once we have received your next payment by&nbsp;<apex:outputField value="{!relatedTo.Future_Action_Date__c}"/>.</p>
+              <p>If you require any further information or assistance you can contact us by email at customerservice@telegraph.co.uk. Alternatively, you can call our free customer service helpline on 0800 33 20 20.  We are available to take your call Monday to Friday 9am-5pm and Saturday 9am-1pm.</p>
+              Yours sincerely,
+              <br/><br/><strong>The Telegraph Subscriber Team</strong>
+              </td>
+            <td width="20" height="10" bgcolor="#FFFFFF"></td>
+          </tr>
+        </table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="40" bgcolor="#FFFFFF"></td>
+          </tr>
+        </table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="23" bgcolor="#75d1f5"><img src="http://image.email.telegraph.co.uk/lib/fe991570766c027975/m/38/12098EMR_footerv2.png" width="600" height="23" style="display:block" border="0"/></td>
+          </tr>
+        </table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="39" bgcolor="#75d1f5"></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+</table>
+<input type="hidden" value="V8 - RefundConfirmation.htm"/>
+</body>
+</html>
+
+</messaging:htmlEmailBody>
+
+</messaging:emailTemplate>

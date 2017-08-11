@@ -1,0 +1,48 @@
+<apex:component controller="Zuora_QuoteBillingPreviewController">
+    <apex:attribute name="quoteId" type="ID" assignTo="{!quoteIDValue}" description="The quoteId" />
+    <apex:attribute name="subscriptionID" type="ID" assignTo="{!subscriptionIDValue}" description="The subscription Id" />
+    <apex:attribute name="accountID" type="ID" assignTo="{!accountIDValue}" description="The account Id" />
+    
+    <apex:attribute name="zuoraSubscriptionID" type="string" assignTo="{!zuoraSubscriptionIDValue}" description="The zuora subscription ID" />
+    <apex:attribute name="productRatePlanID" type="string" assignTo="{!productRatePlanIDValue}" description="The subscription product rate plan ID" />
+    <apex:attribute name="subscriptionStartDate" type="Date" assignTo="{!subscriptionStartDateValue}" description="The subscription Start Date" />
+    <apex:attribute name="showMsgs" type="Boolean" assignTo="{!isShowMessages}" description="Show error messages attribute" required="false"/>
+    <apex:attribute name="subTermTypeName" type="string" assignTo="{!subTermType}" description="" required="false"/>
+    
+    <apex:form >
+        <apex:pageBlock >
+            <center>
+                <apex:pagemessages rendered="{!isShowMessages}"/>
+                <apex:pageBlockTable value="{!lstInvoiceItems}" var="invoiceItem" columnsWidth="10%,45%,45%" style="width:70%;" rendered="{!lstInvoiceItems.size>0}">
+                    <apex:column headerValue="#" value="{!invoiceItem.InvoiceItemIndex}"/>
+                    <apex:column headerValue="Date">
+                        <apex:outputText value="{0, date, dd/MM/YYYY}">
+                            <apex:param value="{!invoiceItem.invoiceItemDate}" /> 
+                        </apex:outputText>
+                        <apex:facet name="footer">
+                            <apex:outputText value="{!$Label.Offer_Search_Total_Label}" style="float: right;"/>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column headerValue="Amount">
+                        <apex:outputText value="{0, number, £ #,###,###,###,###,###.##}"  id="TotalServiceId">
+                            <apex:param value="{!invoiceItem.invoiceItemAmount}"/>
+                        </apex:outputText>
+                        
+                        <apex:facet name="footer">
+                               <apex:outputLabel value="{!$Label.Offer_Search_Grand_Total_Label}"/>
+                               <apex:outputText value="{0, number, £ #,###,###,###,###,##0.00}"  id="GrandTotalService">
+                                   <apex:param value="{!totalInvoices}"/>
+                               </apex:outputText>
+                        </apex:facet>
+                    </apex:column>
+                    
+                </apex:pageBlockTable>
+                  
+                <apex:outputLabel value="{!$Label.Billing_Preview_No_Available_Data_Message}" rendered="{!AND(NOT(isShowPendingCancellationMsg),NOT(isShowPendingActivationMsg),NOT(lstInvoiceItems.size>0))}"/>
+                <apex:outputLabel value="{!$Label.Billing_Preview_Pending_Cancellation_Message}" rendered="{!AND(isShowPendingCancellationMsg,NOT(lstInvoiceItems.size>0),NOT(isShowPendingActivationMsg))}"/>
+                <apex:outputLabel value="{!$Label.Billing_Preview_Pending_Activation_Message}" rendered="{!AND(isShowPendingActivationMsg,NOT(lstInvoiceItems.size>0))}"/>
+                <apex:outputLink value="{!URLFOR($Action.Zuora__Subscription__c.View,pendingSub.id)}" rendered="{!AND(isShowPendingActivationMsg,NOT(lstInvoiceItems.size>0))}" target="_blank">{!pendingSub.Name}</apex:outputLink>
+            </center>
+        </apex:pageBlock>
+    </apex:form>
+</apex:component>

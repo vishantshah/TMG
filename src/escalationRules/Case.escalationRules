@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EscalationRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <escalationRule>
+        <fullName>TM Default Escalation Rule</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <businessHoursSource>None</businessHoursSource>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>New</value>
+            </criteriaItems>
+            <escalationAction>
+                <minutesToEscalation>1440</minutesToEscalation>
+                <notifyCaseOwner>false</notifyCaseOwner>
+            </escalationAction>
+            <escalationStartTime>CaseCreation</escalationStartTime>
+        </ruleEntry>
+    </escalationRule>
+</EscalationRules>

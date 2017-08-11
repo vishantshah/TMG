@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>subscriberValidationRuleInfo</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>subscriberValidationRuleInfo</value>
+    </caseValues>
+    <fields>
+        <label><!-- ruleCode --></label>
+        <name>ruleCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ruleGroup --></label>
+        <name>ruleGroup__c</name>
+    </fields>
+    <fields>
+        <label><!-- ruleName --></label>
+        <name>ruleName__c</name>
+    </fields>
+    <fields>
+        <label><!-- ruleResultCode --></label>
+        <name>ruleResultCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ruleUserMessage --></label>
+        <name>ruleUserMessage__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,125 @@
+<apex:page showHeader="true" sidebar="true" standardController="Account" extensions="MyNewsletters">
+    <style>
+        .w3-container{padding:3px 3px 3px 3px !important}
+        
+        .pClass{
+            margin-top: 0.4em; margin-bottom: 0em;
+        }
+        
+        .btnClsRemove{
+        -webkit-border-radius: 5;
+        -moz-border-radius: 5;
+        border-radius: 5px  !important;
+        font-family: Arial  !important;
+        color: #ffffff  !important;
+        font-size: 14px  !important;
+        background: #cc0415 !important; 
+        padding: 6px 6px 6px 6px  !important;
+        text-decoration: none  !important;
+        }
+        
+        .btnClsAdd{
+        -webkit-border-radius: 5;
+        -moz-border-radius: 5;
+        border-radius: 5px  !important;
+        font-family: Arial  !important;
+        color: #ffffff  !important;
+        font-size: 14px  !important;
+        background: #698f00 !important; 
+        padding: 6px 6px 6px 6px  !important;
+        text-decoration: none  !important;
+        }
+        
+        .newsletterImage {
+        width:218px;
+        height:131px;
+        }
+    </style>
+
+    <apex:form >
+
+        <c:LoadingBox />
+        <apex:sectionHeader title="Subscriber" subtitle="{!Account.Name}"/>
+        <apex:outputPanel id="myNewsletters"> 
+            
+            <apex:pageMessages />
+            
+            <apex:outputPanel rendered="{!hasEmail}">
+               
+                <apex:repeat value="{!categoryNewsletterMap}" var="category">
+                    <apex:variable value="{!categoryNewsletterMap[category]}"  var="myMap"/>
+                    <apex:variable value="{!myMap.size}"  var="categoryCount"/>
+                    <apex:variable value="{!0}"  var="nlCount"/>
+                    <table width="100%">
+                        <tr width="100%" style="height:20px">
+                            <td>
+                                <font size="5">
+                                    <h3>{!category} ({!categoryCount})
+                                    </h3>
+                                </font>
+                            </td>
+                        </tr>
+                        
+                        <tr width="100%">
+                            <td>        
+                                <table width="{!if ( categoryCount < 4, categoryCount * 25, 100)}%">
+
+                                    <apex:outputText value="{!startTableRow}" escape="false"></apex:outputText>
+                                    
+                                    <apex:repeat value="{!categoryNewsletterMap[category]}" var="nl">
+                                        <apex:variable var="nlCount" value="{!nlCount + 1}"/>
+                                        <td width="25%">
+                                            <div style="width:80%">
+                                                
+                                                <div class="w3-container"> 
+                                                    <p class="pClass"> <apex:image styleClass="newsletterImage" value="{!nl.imageUrl}"/> </p>
+                                                    <p class="pClass"> {!nl.frequency} </p>
+                                                    <p class="pClass"> {!nl.name} </p>
+                                                    <p class="pClass">
+                                                        <apex:outputPanel rendered="{!nl.customerStatus = 'Active'}">
+                                                            <apex:commandButton styleClass="btnClsRemove" value="Remove" action="{!newsletterAction}" reRender="myNewsletters" status="loadStatus" >
+                                                                <apex:param name="nlid"
+                                                                            value="{!nl.id}"
+                                                                            assignTo="{!newsletterId}"/>
+                                                                <apex:param name="action"
+                                                                            value="Remove"
+                                                                            assignTo="{!newsletterIdAction}"/>
+                                                            </apex:commandButton>
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!nl.customerStatus != 'Active'}">
+                                                            <apex:commandButton styleClass="btnClsAdd" value="Add" action="{!newsletterAction}" reRender="myNewsletters" status="loadStatus" >
+                                                                <apex:param name="nlid"
+                                                                            value="{!nl.id}"
+                                                                            assignTo="{!newsletterId}"/>
+                                                                <apex:param name="action"
+                                                                            value="Add"
+                                                                            assignTo="{!newsletterIdAction}"/>
+                                                            </apex:commandButton>
+                                                        </apex:outputPanel>
+                                                    </p>
+                                                    <p class="pClass"> {!nl.description} </p>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <apex:outputText rendered="{!MOD(nlCount,4) = 0}" value="{!endTableRow}" escape="false"/> 
+                                        <apex:outputText rendered="{!AND(MOD(nlCount,4) != 0, categoryCount = nlCount)}" value="{!endTableRow}" escape="false"/> 
+                                        
+                                    </apex:repeat>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr/>
+                </apex:repeat>
+                
+            </apex:outputPanel>
+        </apex:outputPanel>
+
+        <apex:outputField value="{!Account.Subscriber_Number__c}" rendered="false"/>
+        <apex:outputField value="{!Account.PersonMailingPostalCode}" rendered="false"/>
+        <apex:outputField value="{!Account.Guid__c}" rendered="false"/>
+        <apex:outputField value="{!Account.Email__c}" rendered="false"/>
+
+    </apex:form>
+</apex:page>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Simple list of ALL entitlements held in SAM (not to be confused with Entitlements__c which is a limited list with richer information)</description>
+    <enableFeeds>false</enableFeeds>
+    <label>SAM Entitlements</label>
+</CustomObject>

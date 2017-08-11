@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Cheque</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cheques</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Number --></label>
+        <name>Account_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the number loaded on to the system once a refund cheque has been produced --></help>
+        <label><!-- Agresso Reference --></label>
+        <name>Agresso_Reference__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cheque Amount --></label>
+        <name>Cheque_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Status of a sub payment cheque --></help>
+        <label><!-- Cheque Banking Status --></label>
+        <name>Cheque_Banking_Status__c</name>
+        <picklistValues>
+            <masterLabel>Banked</masterLabel>
+            <translation><!-- Banked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Issued</masterLabel>
+            <translation><!-- Issued --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Returned</masterLabel>
+            <translation><!-- Returned --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Cheque Batch No --></label>
+        <name>Cheque_Batch_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cheque Batch --></label>
+        <name>Cheque_Batch__c</name>
+        <relationshipLabel><!-- Cheques --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Reason for a cheque refund being raised --></help>
+        <label><!-- Cheque Refund Reason --></label>
+        <name>Cheque_Refund_Reason__c</name>
+        <picklistValues>
+            <masterLabel>14 Day Cancellation</masterLabel>
+            <translation><!-- 14 Day Cancellation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC Error</masterLabel>
+            <translation><!-- CC Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled Sub</masterLabel>
+            <translation><!-- Cancelled Sub --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor Offer</masterLabel>
+            <translation><!-- Competitor Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD error</masterLabel>
+            <translation><!-- DD error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DM Mailing Error</masterLabel>
+            <translation><!-- DM Mailing Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deceased</masterLabel>
+            <translation><!-- Deceased --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dislikes Paper</masterLabel>
+            <translation><!-- Dislikes Paper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Problems</masterLabel>
+            <translation><!-- Distribution Problems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate Paper</masterLabel>
+            <translation><!-- Duplicate Paper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emigration</masterLabel>
+            <translation><!-- Emigration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extended Holiday</masterLabel>
+            <translation><!-- Extended Holiday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Good will</masterLabel>
+            <translation><!-- Good will --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Holiday Refund</masterLabel>
+            <translation><!-- Holiday Refund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indemnity</masterLabel>
+            <translation><!-- Indemnity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketed price issue</masterLabel>
+            <translation><!-- Marketed price issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missing/Lost Vouchers</masterLabel>
+            <translation><!-- Missing/Lost Vouchers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moved To a Care Home</masterLabel>
+            <translation><!-- Moved To a Care Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newsagent problem</masterLabel>
+            <translation><!-- Newsagent problem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Occasional Reader</masterLabel>
+            <translation><!-- Occasional Reader --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poor Eyesight</masterLabel>
+            <translation><!-- Poor Eyesight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Increase</masterLabel>
+            <translation><!-- Price Increase --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review Of Personal Finances</masterLabel>
+            <translation><!-- Review Of Personal Finances --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Error</masterLabel>
+            <translation><!-- Salesforce Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serious Illness</masterLabel>
+            <translation><!-- Serious Illness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Too Much To Read</masterLabel>
+            <translation><!-- Too Much To Read --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voucher Style</masterLabel>
+            <translation><!-- Voucher Style --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Name on Cheque --></label>
+        <name>Name_on_Cheque__c</name>
+    </fields>
+    <fields>
+        <label><!-- Raised --></label>
+        <name>Raised__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ref Number on Cheque --></label>
+        <name>Ref_Number_on_Cheque__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sort Code --></label>
+        <name>Sort_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscriber --></label>
+        <name>Subscriber__c</name>
+        <relationshipLabel><!-- Cheques --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Subscription --></label>
+        <name>Subscription__c</name>
+        <relationshipLabel><!-- Cheques --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Anomaly Cheque</masterLabel>
+            <translation><!-- Anomaly Cheque --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indemnity Cheque</masterLabel>
+            <translation><!-- Indemnity Cheque --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refund</masterLabel>
+            <translation><!-- Refund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refund - awaiting approval</masterLabel>
+            <translation><!-- Refund - awaiting approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sub Payment</masterLabel>
+            <translation><!-- Sub Payment --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Cheque Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Cheque Banking Status is required for a Sub Payment cheque --></errorMessage>
+        <name>Banking_status_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A cheque refund cannot be allocated to an Offered Withdrawn or Declined subscription --></errorMessage>
+        <name>PreventChequeRefundOnSubscription</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Refund reason is required for any cheque refund --></errorMessage>
+        <name>Refund_reason_required</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- New_From_Subscription --></label>
+        <name>New_From_Subscription</name>
+    </webLinks>
+</CustomObjectTranslation>

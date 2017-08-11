@@ -1,0 +1,24 @@
+<apex:page id="SubscriptionCallCentreInBoundTMG" controller="SubscriptionCallCentreInBoundTMG" tabstyle="Inbound_And_Coupons__tab">
+    <apex:sectionHeader title="Inbound Subscription Acquisition" rendered="{!NOT(bProductSelected)}"/>
+    <apex:sectionHeader title="{!offerSelection.sSelectedProductType} Inbound Subscription Acquisition" rendered="{!bProductSelected}"/>
+    <apex:form id="form" >
+        <apex:pageBlock title="Terms and Conditions"> 
+            <apex:outputLink styleClass="popupLink underline" value="http://www.telegraph.co.uk/substandc" target="_blank">Telegraph Media Group Terms and Conditions</apex:outputLink>
+            <br /><br />
+        </apex:pageBlock>          
+
+        <apex:pageblock title="Product Selection" rendered="{!NOT(bProductSelected)}">   
+            <apex:selectRadio styleClass="radioCursor" value="{!offerSelection.sSelectedProductType}" >
+                <apex:selectOptions value="{!lstProductTypes}"/>
+            </apex:selectRadio>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandbutton value="Select" action="{!selectProduct}" status="selectStatus"/>
+            </apex:pageBlockButtons>
+        </apex:pageblock>
+        
+        <!-- OFFER SELECTION COMPONENT -->
+        <apex:outputPanel id="offerSelectionSection">
+            <c:OfferSelection rendered="{!bProductSelected}" offerSelectorInstance="{!self}"  id="offerSelection"/>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

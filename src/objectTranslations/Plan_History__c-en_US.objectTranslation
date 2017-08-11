@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Plan History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Plan Histories</value>
+    </caseValues>
+    <fields>
+        <label><!-- AUDDIS Ref --></label>
+        <name>AUDDIS_Ref__c</name>
+        <relationshipLabel><!-- Plan Histories --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date --></label>
+        <name>Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Failed Reason --></label>
+        <name>Failed_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription --></label>
+        <name>Subscription__c</name>
+    </fields>
+    <fields>
+        <label><!-- Successful DD --></label>
+        <name>Successful_DD__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Successful</masterLabel>
+            <translation><!-- Successful --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Txn Code --></label>
+        <name>Txn_Code__c</name>
+    </fields>
+    <layouts>
+        <layout>Plan History 1 Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

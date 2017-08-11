@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing Options</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing Options</value>
+    </caseValues>
+    <fields>
+        <label><!-- Display Expiry Date --></label>
+        <name>Display_Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Price is calculated in Pence --></help>
+        <label><!-- Dynamic Price --></label>
+        <name>Dynamic_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flow Type --></label>
+        <name>Flow_Type__c</name>
+        <picklistValues>
+            <masterLabel>bulkfixed</masterLabel>
+            <translation><!-- bulkfixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>bulkflow</masterLabel>
+            <translation><!-- bulkflow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>openofferflow</masterLabel>
+            <translation><!-- openofferflow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>pocflow</masterLabel>
+            <translation><!-- pocflow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>promotionflow</masterLabel>
+            <translation><!-- promotionflow --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Grace Period Duration 1 --></label>
+        <name>GracePeriodDuration1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Grace Period Duration 2 --></label>
+        <name>Grace_Period_Duration_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Multi User Discount Voucher --></label>
+        <name>Multi_User_Discount_Voucher__c</name>
+    </fields>
+    <fields>
+        <label><!-- Package Name --></label>
+        <name>Package_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Unique ID --></label>
+        <name>Partner_Unique_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Required --></label>
+        <name>Payment_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Poll for Partner Updates --></label>
+        <name>Poll_for_Partner_Updates__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Product_Type__c</name>
+        <picklistValues>
+            <masterLabel>digital</masterLabel>
+            <translation><!-- digital --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>mobile</masterLabel>
+            <translation><!-- mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>premium</masterLabel>
+            <translation><!-- premium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>web</masterLabel>
+            <translation><!-- web --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>webpack</masterLabel>
+            <translation><!-- webpack --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ServiceId --></label>
+        <name>ServiceId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ServicePriceId --></label>
+        <name>ServicePriceId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Show Cancel Button --></label>
+        <name>Show_Cancel_Button__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscriber Check Interval --></label>
+        <name>Subscriber_Check_Interval__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Type --></label>
+        <name>Subscription_Type__c</name>
+        <picklistValues>
+            <masterLabel>26weeks</masterLabel>
+            <translation><!-- 26weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>52weeks</masterLabel>
+            <translation><!-- 52weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>continuous</masterLabel>
+            <translation><!-- continuous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>monthly</masterLabel>
+            <translation><!-- monthly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>yearly</masterLabel>
+            <translation><!-- yearly --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- TCode --></label>
+        <name>TCodeManagement__c</name>
+        <relationshipLabel><!-- Pricing Options --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- imageURL --></label>
+        <name>imageURL__c</name>
+    </fields>
+    <fields>
+        <label><!-- tandcURL --></label>
+        <name>tandcURL__c</name>
+    </fields>
+    <layouts>
+        <layout>Pricing Options Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Deal Options --></label>
+            <section>Deal Options</section>
+        </sections>
+        <sections>
+            <label><!-- Online Display Options --></label>
+            <section>Online Display Options</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Close Outbound Renewal Cases when Subscription status is updated</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Auto_Close_Cases__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Auto close Cases</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>OC Case Autoclose</label>
+</CustomObject>

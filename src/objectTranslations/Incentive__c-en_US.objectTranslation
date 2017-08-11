@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Incentive</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Incentives</value>
+    </caseValues>
+    <fields>
+        <label><!-- Image Url --></label>
+        <name>Image_Url__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incentive Value --></label>
+        <name>IncentiveValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incentive Description --></label>
+        <name>Incentive_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Valid For Renewal --></label>
+        <name>Is_Valid_For_Renewal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier --></label>
+        <name>Supplier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Valid From --></label>
+        <name>Valid_From__c</name>
+    </fields>
+    <fields>
+        <label><!-- Valid To --></label>
+        <name>Valid_To__c</name>
+    </fields>
+    <layouts>
+        <layout>TMG Incentive Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

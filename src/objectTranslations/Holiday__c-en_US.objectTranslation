@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Holiday</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Holiday</value>
+    </caseValues>
+    <fields>
+        <label><!-- Holiday Country --></label>
+        <name>Holiday_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Holiday Date --></label>
+        <name>Holiday_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Holiday Description --></label>
+        <name>Holiday_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Holiday Type --></label>
+        <name>Holiday_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Holiday Year --></label>
+        <name>Holiday_Year__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

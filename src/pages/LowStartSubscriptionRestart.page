@@ -1,0 +1,48 @@
+<apex:page standardController="Subscription__c" tabStyle="Subscription__c" extensions="LowStartSubscriptionRestartController">
+	<apex:sectionHeader title="{!Subscription__c.Subscriber__r.Name & ' ' & Subscription__c.Name}" subtitle="{!$Label.Low_Start_Restart_feature_title}"  />
+	
+	<apex:form id="restartForm">
+		<apex:pageBlock >
+			<apex:pageMessage id="extractionDateWarning" rendered="{!bPastSubscriptionWarning}" severity="warning" strength="2" summary="{!$Label.Low_Start_Restart_feature_extraction_date_warning}" />
+			<apex:pageMessage id="allOtherErrors" rendered="{!NOT(ISBLANK(sError))}" severity="error" strength="2" title="Error" summary="{!sError}" />
+			
+			<apex:pageBlockSection columns="2" id="formSection"  rendered="{!bShowFeature}">
+				<apex:outputText escape="false" value="{!$Label.Low_Start_Restart_feature_description}"/>
+				<apex:outputText />
+				<apex:pageBlockSectionItem helpText="{!$Label.Low_Start_Restart_feature_tcode_change_help_text}">
+					<apex:outputLabel value="{!$Label.Low_Start_Restart_feature_offer_change_question}" />
+					<apex:inputCheckbox value="{!bChangeOffer}" >
+						<apex:actionSupport event="onchange" rerender="formSection" />
+					</apex:inputCheckbox>
+				</apex:pageBlockSectionItem>
+				<apex:outputText />
+				<apex:pageBlockSectionItem rendered="{!bChangeOffer}">
+					<apex:outputLabel value="{!$Label.Low_Start_Restart_feature_tcode_field_label}" />
+					<apex:inputField value="{!subscriptionTemp.Low_Start_Amendment_TCode_Helper__c}" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem rendered="{!bChangeOffer}">
+					<apex:outputLabel value="{!$Label.Low_Start_Restart_feature_curret_tcode}" />
+					<apex:outputField value="{!Subscription__c.TCode__c}" />
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			<apex:pageBlockButtons location="bottom">
+				<apex:actionStatus id="mystatus">
+					<apex:facet name="stop">
+						<apex:outputPanel >
+							<apex:commandButton id="executeButton" value="{!$Label.Execute}" action="{!processRestart}" rendered="{!bShowFeature}" status="mystatus" rerender="dummy"/>
+							<apex:commandButton id="backButton" value="{!$Label.Back}" action="{!cancel}" status="mystatus" rerender="dummy"  />
+						</apex:outputPanel>
+					</apex:facet>
+					<apex:facet name="start">
+						<apex:outputPanel >
+							<apex:commandButton value="{!$Label.Execute}" action="{!processRestart}" disabled="true" rendered="{!bShowFeature}" />
+							<apex:commandButton value="{!$Label.Back}" action="{!cancel}" disabled="true"/>
+						</apex:outputPanel>
+					</apex:facet>
+				</apex:actionStatus>
+			
+			</apex:pageBlockButtons>
+			<apex:outputText id="dummy" />
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,30 @@
+<apex:page standardController="Account" extensions="HomeDeliveryServiceController" showHeader="true" sidebar="true" tabStyle="Home_Delivery_Service_Account__tab">
+    <apex:sectionHeader subtitle="{!$Label.Home_Delivery_Service_Page_subtitle}" title="{!$Label.Home_Delivery_Service_Page_title}" />
+    <apex:form>
+        <apex:pageMessages id="errorMessages" />
+        <c:AccountCreateEditComponent cntrl="{!accEditController}">&nbsp;</c:AccountCreateEditComponent>
+        <apex:pageBlock title="{!$Label.Home_Delivery_Service_Page_block_title}">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!saveDetails}" value="{!$Label.Save}" />
+                <apex:commandButton action="{!saveDetailsAndNew}" value="{!$Label.Save_and_New}" />
+                <apex:commandButton action="{!cancel}" value="{!$Label.Cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputField value="{!homeDeliveryItem.Retailer__c}" required="true" />
+                <apex:inputField value="{!homeDeliveryItem.Status__c}" />
+                <apex:pageBlockSectionItem id="mySection">
+                    <apex:outputLabel value="{!$ObjectType.Home_Delivery_Voucher__c.fields.Delivery_Days__c.label}" />
+                    <apex:inputField id="deliveryDays" value="{!homeDeliveryItem.Delivery_Days__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <script type="text/javascript">
+        j$ = jQuery.noConflict();
+        j$(document).ready(function(){
+            j$('select[id*=mySection]').attr('size',8);
+        });
+    </script>
+</apex:page>

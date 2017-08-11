@@ -1,0 +1,197 @@
+<apex:page showHeader="true" sidebar="true" controller="OutboundDigitalAcquisitionCtrl" tabStyle="Account">
+    <script type="text/javascript">
+        function closeWindow(){
+            if(confirm('{!$Label.Go_Back_Button_Leave_SF_JS_Prompt}')){
+                closeTab();  
+            }  
+        }
+    </script>
+	 <apex:form id="frmAccountWizard">
+        <apex:actionFunction action="{!closeTab}" name="closeTab" id="closeTab" oncomplete="alert('Leaving');"/>
+        <apex:pagemessages id="pgmsg" escape="false"/>	
+		<apex:sectionHeader title="{!$Label.Outbound_Digital_Acquisition_Page_Name}"/>
+		<apex:pageBlock id="pgBlockNewAccount" title="{!$Label.Outbound_Digital_Acquisition_Page_Name}" >
+                <apex:pageBlockSection columns="1" id="pgBlockSectionNewAccount" rendered="{!showNewAccoountForm}">
+                    <apex:pageBlockSectionItem HelpText="{!if(isTitleRequired,$Label.Title_Help_Text,'')}">
+                        {!$Label.Title}
+                        <apex:outputpanel >
+                            <apex:outputpanel rendered="{!isTitleRequired}">
+                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                    <apex:inputfield value="{!newContactObj.Salutation}"/>
+                                    &nbsp;&nbsp;<apex:outputlabel value="{!$ObjectType.account.fields.Title__c.Label}" styleClass="labelCol"/>
+                                    &nbsp;&nbsp;<apex:inputfield value="{!newAccountObj.Title__c}"/>
+                                </div>
+                            </apex:outputpanel>
+                            <apex:outputpanel rendered="{!Not(isTitleRequired)}">
+                            <apex:inputfield value="{!newContactObj.Salutation}"/>
+                            &nbsp;&nbsp;<apex:outputlabel value="{!$ObjectType.account.fields.Title__c.Label}" styleClass="labelCol"/>
+                            &nbsp;&nbsp;<apex:inputfield value="{!newAccountObj.Title__c}"/>
+                        </apex:outputpanel>
+                        </apex:outputpanel>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        {!$ObjectType.Account.fields.FirstName.Label} 
+                        <apex:outputpanel >
+                        <apex:outputField rendered="false"/>
+                            <div class="requiredInput">
+                                <div class="requiredBlock"></div>
+                                <apex:inputField value="{!newContactObj.firstName}"/>
+                             </div>
+                       </apex:outputpanel>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        {!$ObjectType.Account.fields.LastName.Label}
+                        <apex:outputpanel >
+                        <apex:outputField rendered="false"/>
+                            <div class="requiredInput">
+                                <div class="requiredBlock"></div>
+                                <apex:inputtext value="{!newAccountObj.LastName}"/>
+                            </div>
+                       </apex:outputpanel>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        {!$ObjectType.Account.fields.DateofBirth__c.Label}
+                        <apex:outputpanel >
+                        <apex:outputField rendered="false"/>
+                                <apex:inputField value="{!newAccountObj.DateofBirth__c}"/>
+                       </apex:outputpanel>
+                    </apex:pageBlockSectionItem>
+                    
+                    <!--- Old Email From POC -->
+                   <apex:pageBlockSectionItem rendered="{!isEmailChanged}">
+                        {!$Label.Outbound_Digital_Acquisition_Page_Old_Email}
+                        <apex:outputpanel >
+                            <apex:outputLabel value="{!oldAccountEmail}"/>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>  
+                   
+                    <apex:pageBlockSectionItem >
+                        {!$ObjectType.Account.fields.PersonEmail.Label} 
+                        <apex:outputpanel >
+                            <div class="requiredInput">
+                                <div class="requiredBlock"></div>
+                                <apex:inputfield value="{!newAccountObj.PersonEmail}"/>
+                            </div>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem> 
+                     
+                    <apex:pageBlockSectionItem >
+                        {!$ObjectType.Account.fields.PersonMailingPostalCode.Label} 
+                        <apex:outputpanel >
+                        	<apex:outputPanel rendered="{!isPostalCodeRequired}">
+	                        	<div class="requiredInput">
+	                              <div class="requiredBlock"></div>
+	                              <apex:inputfield id="PostCodeMan" value="{!newAccountObj.PersonMailingPostalCode}" onblur="this.value=this.value.toUpperCase()" style="float: left;"/>
+	                           	  <script>
+		                                 var PostCode = '{!$Component.PostCodeMan}';
+		                           </script>
+		                           <c:PostCodeLookup findAddressButtonTextValue="{!$Label.Find_UK_Address_Label}"/>
+	                           </div>
+                           </apex:outputPanel>
+                           <apex:outputPanel rendered="{!Not(isPostalCodeRequired)}">
+                                 <apex:inputfield id="PostCode" value="{!newAccountObj.PersonMailingPostalCode}" onblur="this.value=this.value.toUpperCase()" style="float: left;"/>
+                                 <script>
+                                      var PostCode = '{!$Component.PostCode}';
+                                 </script>
+                                 <c:PostCodeLookup findAddressButtonTextValue="{!$Label.Find_UK_Address_Label}"/> 
+                             </apex:outputPanel>
+                        </apex:outputpanel> 
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageblocksectionItem >
+                        {!$ObjectType.Account.fields.PersonMailingStreet.Label} 
+                        <apex:outputpanel >
+                            <div class="requiredInput">
+                                <div class="requiredBlock"></div>
+                                    <apex:inputfield id="Addrline1" value="{!newAccountObj.PersonMailingStreet}"/>
+                                </div>
+                                <script>
+                                    var Field1 = '{!$Component.Addrline1}';               
+                               </script>
+                       </apex:outputpanel>
+                    </apex:pageblocksectionItem>
+                    
+                    <apex:pageblockSectionItem >
+                        {!$ObjectType.Account.fields.PersonMailingCity.Label}
+                        <apex:outputpanel >
+                            <div class="requiredInput">
+                                <div class="requiredBlock"></div>
+                                <apex:inputfield id="City" value="{!newAccountObj.PersonMailingCity}"/>
+                                <script>
+                                    var Field2 = '{!$Component.City}';
+                                </script>
+                            </div>
+                       </apex:outputpanel>
+                    </apex:pageblockSectionItem>
+                    
+                    <apex:pageblockSectionItem >
+                        {!$ObjectType.Account.fields.PersonMailingState.Label} 
+                        <apex:outputPanel >
+                            <apex:outputPanel rendered="{!isStateRequired}">
+                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                    <apex:selectList id="CountyMan" value="{!newAccountObj.PersonMailingState}" size="1" title="State" required="false">
+	                                    <apex:selectOptions value="{!States}" />
+	                                </apex:selectList>
+                                </div>
+                                <script>
+                                 var Field3 = '{!$Component.CountyMan}';
+                             </script>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!Not(isStateRequired)}">
+                            <apex:inputfield id="County" value="{!newAccountObj.PersonMailingState}"/>
+                            <script>
+                             var Field3 = '{!$Component.County}';
+                         </script>
+                        </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+                    
+                    <apex:pageblockSectionItem >
+                        {!$ObjectType.Account.fields.PersonMailingCountry.Label} 
+                        <apex:outputpanel >
+                            <div class="requiredInput">
+                                <div class="requiredBlock"></div>
+                                <apex:selectList id="countries" value="{!newAccountObj.PersonMailingCountry}" size="1" title="Country" required="true">
+                                	<apex:actionSupport event="onchange" action="{!RefreshUI}" reRender="pgBlockNewAccount"/>
+                                    <apex:selectOptions value="{!Countries}" />
+                                </apex:selectList>
+                            </div>
+                            <script>
+                             var Field4 = '{!$Component.countries}';
+                         </script>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                    	{!$ObjectType.Account.fields.PersonMobilePhone.Label} 
+                    	<apex:outputPanel>
+                    		<apex:inputfield id="mobile" value="{!newAccountObj.PersonMobilePhone}"/>
+                    	</apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                    	{!$ObjectType.Account.fields.PersonHomePhone.Label}
+                    	<apex:outputPanel >
+                    		<apex:inputfield id="homePhone" value="{!newAccountObj.PersonHomePhone}"/>
+                    	</apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:inputcheckBox value="{!isAccountOptIn}"/>
+                        <apex:outputText value="{!$Label.Account_Creation_Opt_in_Statement_Confirmation}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons id="pgButtons" location="bottom"> 
+                   <apex:commandButton id="btnGoBack" value="{!$Label.Go_Back_Button_Leave_SF}" onclick="closeWindow();" />
+                   <apex:commandButton id="btnSaveNewAccount" value="{!$Label.Convert_Account}" action="{!updateOrConvertAccount}" rendered="{!isConvertOption}"/> 
+                   <apex:commandButton id="btnSaveNewAccount2" value="{!$Label.Create_New_Account}" action="{!saveNewAccount}" rendered="{!isNewAccountOption}"/>
+                   <apex:commandButton id="btnSaveNewAccount3" value="{!$Label.UpdateAccount}" action="{!updateOrConvertAccount}" rendered="{!isUpdateOption}"/>
+                </apex:pageBlockButtons> 
+            </apex:pageBlock>
+	</apex:form>
+</apex:page>

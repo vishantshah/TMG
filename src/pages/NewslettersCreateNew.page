@@ -1,0 +1,161 @@
+<apex:page controller="NewslettersCreateNewController"  action="{!validateParameters}" sidebar="false" tabStyle="Newsletters__tab">
+
+	<apex:variable var="charsLimit" value="255"/>
+	<apex:variable var="mandatoryField" value="true" />
+	<apex:sectionHeader title="{!IF(isEditMode, 'Edit', 'Create New')}" 
+						subtitle="{!IF(isEditMode, nw.name, 'Newsletter')}" 
+	/>
+	<apex:form >
+		<apex:pageBlock mode="edit">
+			<apex:pageMessages />
+			<apex:pageBlockButtons >
+				<apex:commandButton action="{!saveRecord}" value="Save" rendered="{!!isEditMode}"/>
+				<apex:commandButton action="{!updateRecord}" value="Update" rendered="{!isEditMode}"/>
+				<apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+			</apex:pageBlockButtons>
+
+			<apex:pageBlockSection title="Newsletter Details" columns="2">
+
+				<apex:pageBlockSectionItem rendered="{!!isEditMode}">
+					<apex:outputLabel value="{!$Label.Newsletter_Id}" />
+					<apex:outputPanel layout="block" style="float:left">
+                      <apex:outputPanel >
+                            <div class="requiredInput"><div class="requiredBlock"/>
+                                <apex:inputText value="{!nw.id}" required="{!mandatoryField}" label="{!$Label.Newsletter_Id}"/>     
+                            </div>
+                      	</apex:outputPanel>                               
+               		</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem rendered="{!isEditMode}">
+					<apex:outputLabel value="{!$Label.Newsletter_Id}" />
+					<apex:outputText value="{!nw.id}"/>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Name}" />
+					<apex:outputPanel layout="block" style="float:left">
+                      <apex:outputPanel >
+                            <div class="requiredInput"><div class="requiredBlock"/>
+                                <apex:inputText value="{!nw.name}" required="{!mandatoryField}" label="{!$Label.Newsletter_Name}"/> 
+                            </div>
+                      	</apex:outputPanel>                               
+               		</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Category}" />
+					<apex:outputPanel layout="block" style="float:left">
+                      <apex:outputPanel >
+                            <div class="requiredInput"><div class="requiredBlock"/>
+                                <apex:selectList value="{!nw.category}" size="1" required="{!mandatoryField}" label="{!$Label.Newsletter_Category}">
+									<apex:selectOptions value="{!CategoryOptions}"/>
+								</apex:selectList>
+                            </div>
+                      	</apex:outputPanel>                               
+               		</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Frequency}" />
+					<apex:outputPanel layout="block" style="float:left">
+                      <apex:outputPanel >
+                            <div class="requiredInput"><div class="requiredBlock"/>
+                                <apex:selectList value="{!nw.frequency}" size="1" required="{!mandatoryField}" label="{!$Label.Newsletter_Frequency}">
+									<apex:selectOptions value="{!FrequencyOptions}"/>
+								</apex:selectList>  
+                            </div>
+                      	</apex:outputPanel>                               
+               		</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Image_Url}" />
+					<apex:outputPanel layout="block" style="float:left">
+                      <apex:outputPanel >
+                            <div class="requiredInput"><div class="requiredBlock"/>
+                                <apex:inputText value="{!nw.imageUrl}" size="60" required="{!mandatoryField}" label="{!$Label.Newsletter_Image_Url}"/>   
+                            </div>
+                      	</apex:outputPanel>                               
+               		</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Retired}" />
+					<apex:outputPanel layout="block" style="float:left">
+                      <apex:outputPanel >
+                            <div class="requiredInput"><div class="requiredBlock"/>
+                                <apex:selectList value="{!retiredAsString}" size="1" required="{!mandatoryField}">
+									<apex:selectOptions value="{!YesNoOptions}"/>
+								</apex:selectList> 
+                            </div>
+                      	</apex:outputPanel>                               
+               		</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Description}" />
+					<apex:outputPanel layout="block" style="float:left">
+                      <apex:outputPanel >
+                            <div class="requiredInput"><div class="requiredBlock"/>
+								<apex:inputTextarea value="{!nw.description}" rows="4" cols="60" required="{!mandatoryField}" label="{!$Label.Newsletter_Description}" onkeydown="checkLimit(this,this.form.countdown,{!charsLimit});" onkeyup="checkLimit(this,this.form.countdown,{!charsLimit});" onchange="checkLimit(this,this.form.countdown,{!charsLimit});"/>  
+                            </div>
+                      	</apex:outputPanel>  
+                      	<font size="1">(Maximum characters: {!charsLimit})<br/>
+						You have <input readonly="true" type="text" name="countdown" size="3" value="{!charsLimit}"/> characters left 
+						</font>                             
+               		</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Public_Facing_Url}" />
+					<apex:inputText value="{!nw.publicFacingUrl}" size="60" label="{!$Label.Newsletter_Public_Facing_Url}"/>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Hide_Sample}" />
+					<apex:outputPanel layout="block" style="float:left">
+	                  <apex:outputPanel >
+	                        <div class="requiredInput"><div class="requiredBlock"/>
+								<apex:selectList value="{!hideSampleAsString}" size="1" required="{!mandatoryField}">
+									<apex:selectOptions value="{!YesNoOptions}"/>
+								</apex:selectList>
+	                        </div>
+	                  	</apex:outputPanel>                               
+	           		</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Sample_Url}" />
+					<apex:inputText value="{!nw.sampleUrl}" size="60" label="{!$Label.Newsletter_Sample_Url}"/>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem rendered="{! CONTAINS($Profile.Name, allowChangeToDefaultAccess)}">
+					<apex:outputLabel value="{!$Label.Newsletter_Default_Access}" />
+					<apex:outputPanel layout="block" style="float:left">
+	                  <apex:outputPanel >
+	                        <div class="requiredInput"><div class="requiredBlock"/>
+								<apex:selectList value="{!defaultAccessAsString}" size="1" required="{!mandatoryField}">
+									<apex:selectOptions value="{!YesNoOptions}"/>
+								</apex:selectList>
+	                        </div>
+	                  	</apex:outputPanel>                               
+	           		</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+			</apex:pageBlockSection>
+
+		</apex:pageBlock>
+	</apex:form>
+	<script>
+		function checkLimit(limitField, limitCount, limitNum)
+		{
+	    	if (limitField.value.length > limitNum) {
+	        	limitField.value = limitField.value.substring(0, limitNum);
+	   		 } else {
+	        	limitCount.value = limitNum - limitField.value.length;
+	    	}
+		}
+</script>
+	
+</apex:page>

@@ -1,0 +1,134 @@
+<apex:page controller="MppUtil" showHeader="false" tabStyle="Task" standardStylesheets="true">
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockSection title="Results" columns="1"> 
+            <apex:outputPanel id="Mpp" layout="block" rendered="{!$CurrentPage.parameters.PaymentStatus != 'Success' && $CurrentPage.parameters.PaymentStatus != 'SuccessWithoutPayment'}">
+                The payment has failed: {!$CurrentPage.parameters.PaymentStatus} {!$CurrentPage.parameters.ErrorMessage} {!$CurrentPage.parameters.msg}
+            </apex:outputPanel>
+            <apex:outputPanel id="SF" layout="block" rendered="{!$CurrentPage.parameters.PaymentStatus == 'Success' || $CurrentPage.parameters.PaymentStatus == 'SuccessWithoutPayment'}">
+                <apex:outputText value="Payment successful, client subscriber number is: {!tsNumberDisplay}" rendered="{!$CurrentPage.parameters.action == 'OFFLINE_MPP' || subscriberProductType == 'Digital' || confirmationDetails.paymentType == 'Cheque'}" />
+                <apex:outputText value="{!incentiveMsg}" rendered="{!NOT(ISBLANK(incentiveMsg))}" escape="false"/>
+                <apex:outputText value="Your account has been linked with SAM" rendered="{!$CurrentPage.parameters.action == 'UPDATE_SAM'}" />
+                <apex:outputText value="SAM Account successfully created and linked" rendered="{!$CurrentPage.parameters.action == 'CREATE_SAM'}" />
+                <apex:outputText value="An error happened:" rendered="{!$CurrentPage.parameters.action == 'ERROR'}" />
+                <apex:outputText value="{!$CurrentPage.parameters.msg}" rendered="{!$CurrentPage.parameters.action == 'ERROR'}" />
+                <apex:outputText value="{!$CurrentPage.parameters.offeredMsg}" rendered="{!NOT(ISBLANK($CurrentPage.parameters.offeredMsg))}" escape="false"/>
+                
+                <apex:outputText escape="false" rendered="{!AND(NOT(ISBLANK(confirmationDetails)),NOT(confirmationDetails.isContinuous),NOT(isOneOffPayment),NOT(subscriberProductType == 'Digital'))}">
+                    <br/><br/>
+                    I can confirm that your subscription order has been set up. Total price of the subscription is {!confirmationDetails.price} for the duration of {!confirmationDetails.duration} Weeks
+                    <br/><br/>
+                    Subscription Start Date will be {!confirmationDetails.startDate}, Subscription End Date will be {!confirmationDetails.endDate} and payment method will be {!confirmationDetails.paymentType}                  
+                </apex:outputText>                              
+                              
+                <apex:outputPanel layout="none" rendered="{!AND(NOT(ISBLANK(paymentDetails)), NOT(ISBLANK(paymentDetails.firstCollectionAmount)), NOT(isOneOffPayment),NOT(subscriberProductType == 'Digital'), 
+                            NOT(OR($CurrentPage.parameters.action = 'CREATE_SAM', $CurrentPage.parameters.action = 'UPDATE_SAM')),NOT(ISBLANK(confirmationDetails)),confirmationDetails.isContinuous)}">
+                    
+                    <apex:outputPanel rendered="{!ISNULL(paymentSetup)}">
+                        <br/><br/>I can confirm that your subscription order has been set up using payment method {!confirmationDetails.paymentType}.
+                        <br/> Subscription Start Date will be {!confirmationDetails.startDate}.<br/><br/>
+                        <apex:outputPanel rendered="{!NOT(ISBLANK(paymentDetails.ongoingCollectionAmount))}">
+                            <apex:outputText escape="false" rendered="{!paymentDetails.ongoingCollectionAmount == paymentDetails.firstCollectionAmount}">
+                                Your payment will be {!paymentDetails.firstCollectionAmount} on {!paymentDetails.firstCollectionDate}.<br/> 
+                                All following payments will be on or around the {!BLANKVALUE(paymentDateText, paymentDetails.collectionDate)} of every {!LOWER(SUBSTITUTE(paymentDetails.collectionFreq,'ly',''))}.
+                            </apex:outputText>
+                            <apex:outputText escape="false" rendered="{!paymentDetails.ongoingCollectionAmount != paymentDetails.firstCollectionAmount}">
+                                Your first payment will be {!paymentDetails.firstCollectionAmount} on {!paymentDetails.firstCollectionDate}.<br/>   
+                                All following payments will be for {!paymentDetails.ongoingCollectionAmount} on or around the {!BLANKVALUE(paymentDateText, paymentDetails.collectionDate)} of every {!LOWER(SUBSTITUTE(paymentDetails.collectionFreq,'ly',''))}.
+                            </apex:outputText>
+                        </apex:outputPanel>
+                        <apex:outputText escape="false" rendered="{!ISBLANK(paymentDetails.ongoingCollectionAmount)}">
+                            Your payment will be {!paymentDetails.firstCollectionAmount} on {!paymentDetails.firstCollectionDate}.<br/>
+                        </apex:outputText>
+                    </apex:outputPanel>
+                        
+                    <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(paymentSetup))}">
+                        <br/><br/>I can confirm that your Low Start subscription order has been set up using payment method {!confirmationDetails.paymentType}.
+                        <br/>Subscription Start Date will be {!confirmationDetails.startDate}.<br/><br/>
+                        <apex:outputPanel layout="none" rendered="{!paymentSetup.iNumberOfPaymentsLowStart > 1}">
+                            <apex:outputText escape="false" rendered="{!paymentDetails.lowStartFirstCollectionAmount != paymentDetails.lowStartOngoingCollectionAmount}">
+                                Your first payment in low start period will be {!paymentDetails.lowStartFirstCollectionAmount} on {!paymentDetails.lowStartFirstCollectionDate}. <br />
+                                All {!paymentSetup.iNumberOfPaymentsLowStart-1} following payments in low start period will be for {!paymentDetails.lowStartOngoingCollectionAmount} on or around the {!BLANKVALUE(paymentDateText, paymentDetails.collectionDate)} of every {!LOWER(SUBSTITUTE(paymentDetails.collectionFreq,'ly',''))}.
+                            </apex:outputText>
+                            <apex:outputText escape="false" rendered="{!paymentDetails.lowStartFirstCollectionAmount == paymentDetails.lowStartOngoingCollectionAmount}">
+                                Your payment in low start period will be {!paymentDetails.lowStartFirstCollectionAmount} starting on {!paymentDetails.lowStartFirstCollectionDate}. <br />
+                                All {!paymentSetup.iNumberOfPaymentsLowStart-1} following payments in low start period will be on or around the {!BLANKVALUE(paymentDateText, paymentDetails.collectionDate)} of every {!LOWER(SUBSTITUTE(paymentDetails.collectionFreq,'ly',''))}.
+                            </apex:outputText>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!paymentSetup.iNumberOfPaymentsLowStart = 1}">
+                             Your payment in low start period will be {!paymentDetails.lowStartFirstCollectionAmount} on {!paymentDetails.lowStartFirstCollectionDate}. <br />
+                        </apex:outputPanel>
+                        <br/><br/>
+                        <apex:outputPanel layout="none" rendered="{!paymentSetup.iNumberOfPaymentsStandard  > 1}">
+                            <apex:outputText escape="false" rendered="{!paymentDetails.firstCollectionAmount != paymentDetails.ongoingCollectionAmount}">
+                                Your first payment outside low start period will be {!paymentDetails.firstCollectionAmount} on {!paymentDetails.firstCollectionDate}.<br/> 
+                                All {!paymentSetup.iNumberOfPaymentsStandard-1} following payments will be for {!paymentDetails.ongoingCollectionAmount} on or around the {!BLANKVALUE(paymentDateText, paymentDetails.collectionDate)} of every {!LOWER(SUBSTITUTE(paymentDetails.collectionFreq,'ly',''))}.
+                            </apex:outputText>
+                            <apex:outputText escape="false" rendered="{!paymentDetails.firstCollectionAmount == paymentDetails.ongoingCollectionAmount}">
+                                Your payment outside low start period will be {!paymentDetails.firstCollectionAmount} starting on {!paymentDetails.firstCollectionDate}.<br/> 
+                                All {!paymentSetup.iNumberOfPaymentsStandard-1} following payments will be on or around the {!BLANKVALUE(paymentDateText, paymentDetails.collectionDate)} of every {!LOWER(SUBSTITUTE(paymentDetails.collectionFreq,'ly',''))}.
+                            </apex:outputText>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!paymentSetup.iNumberOfPaymentsStandard = 1}">
+                            Your payment outside low start period will be {!paymentDetails.firstCollectionAmount} on {!paymentDetails.firstCollectionDate}. <br />
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                <apex:outputText escape="false" rendered="{!isOneOffPayment}">
+                    <br/><br/>One-off payment amount: {!$CurrentPage.parameters.oneOffAmount}
+                </apex:outputText>
+
+                <apex:outputPanel rendered="{!NOT( AND (ISBLANK($CurrentPage.parameters.subId),ISBLANK(subscriptionName) ) )}">
+                    <br/><br/>
+                    Subscription Number : {!subscriptionName}
+                </apex:outputPanel>
+
+                <apex:outputPanel rendered="{!NOT(ISBLANK(tcodeName))}">
+                    <br/><br/>
+                    Tcode: {!tcodeName}
+                </apex:outputPanel>
+
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons location="bottom">
+            <apex:outputPanel rendered="{!NOT(ISBLANK($CurrentPage.parameters.accId))}">
+                <apex:outputLink value="/{!$CurrentPage.parameters.accId}" target="_top">Go to account</apex:outputLink>&nbsp;
+            </apex:outputPanel>
+            
+            <apex:outputPanel rendered="{!NOT(ISBLANK($CurrentPage.parameters.subId))}">
+                |&nbsp;&nbsp;<apex:outputLink value="/{!$CurrentPage.parameters.subId}" target="_top" >Go to subscription</apex:outputLink>&nbsp;
+            </apex:outputPanel>
+            
+            <apex:outputPanel rendered="{!AND(NOT(isOneOffPayment), NOT(isOCDDCX))}">
+                |&nbsp;&nbsp;<apex:outputLink value="/apex/{!IF(
+                                    $CurrentPage.parameters.isRenew='true',
+                                    'SubscriptionCallCentreRenewal',
+                                    IF( 
+                                        $CurrentPage.parameters.isOutbound='true',
+                                        'outboundcalling',
+                                        IF(
+                                            $CurrentPage.parameters.isOCRS='true',
+                                            'OutboundCallingSales',
+                                            'SubscriptionCallCentreInBoundTMG'
+                                        )
+                                    )
+                                )}" 
+                    target="_top">{!IF($CurrentPage.parameters.isOCRS=='true','Go to Outbound Calling Renewal Sales page','Go to next record')}
+                </apex:outputLink>&nbsp;
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!AND(
+                                            NOT(isOneOffPayment),
+                                            $CurrentPage.parameters.PaymentStatus!='Success',
+                                            $CurrentPage.parameters.PaymentStatus!='SuccessWithoutPayment',
+                                            $CurrentPage.parameters.isOCRS='true',
+                                            NOT(ISBLANK($CurrentPage.parameters.ocrsCase))
+                                        )}">
+                |&nbsp;&nbsp;<apex:outputLink value="/apex/OutboundCallingSales?id={!$CurrentPage.parameters.ocrsCase}" target="_top">Go back to current Outbound Calling Case</apex:outputLink>
+            </apex:outputPanel>
+
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+    
+</apex:form>
+</apex:page>

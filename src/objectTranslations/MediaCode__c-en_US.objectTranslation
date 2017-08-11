@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MediaCode</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MediaCodes</value>
+    </caseValues>
+    <fields>
+        <label><!-- MediaCodeDiscount --></label>
+        <name>MediaCodeDiscount__c</name>
+    </fields>
+    <fields>
+        <label><!-- MediaCode --></label>
+        <name>MediaCode__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,4 @@
+"baseURL__c","Digital_Annually_ID__c","Digital_Monthly_ID__c","Disable_Frames__c","Login__c","Name","Password__c","Premium_Continuous_ID__c","URL__c"
+"","","","false","marketing@telegraph.co.uk","ExactTarget","a654321!","","https://api.s4.exacttarget.com/integrate.aspx"
+"https://auth-uat.telegraph.co.uk/","","","false","359dd847-757b-4795-8c8c-cf895c25e032","SAM","","","http://auth-uat.telegraph.co.uk/eventBroker/services/SalesforceService"
+"https://payments-uat.telegraph.co.uk/","11565","11247","false","435","MPP","6Jz$*t9Q","11249","https://payments-uat.telegraph.co.uk/interface/mpp/iPayPaymentPages/iPayPaymentPages.asmx"

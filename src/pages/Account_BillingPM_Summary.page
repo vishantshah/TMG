@@ -1,0 +1,78 @@
+<apex:page showHeader="true" tabStyle="Account" controller="Account_BillingPM_SummaryExtCt">
+    <style type="text/css">
+        .paymentHeaderStyle{height: 30px;}
+    </style>
+    
+    <apex:form id="formBillingPMSummary">
+        <apex:sectionHeader title="{!$Label.BillingAccount_ManagePaymentMethods}" subtitle="{!billingAccount.Name}"/>
+        <apex:outputPanel id="error">
+            <zqu:Notification options="{!notificationOptions}" />
+            <apex:actionFunction name="continueToNextPage" action="{!confirmError}" immediate="true" rerender="error" />
+        </apex:outputPanel>
+        <zqu:StatusModal />
+        <apex:actionStatus startText="" stopText="" id="action" onstart="javascript:displayStatusModal()" onstop="javascript:closeStatusModal(); " />
+        <apex:actionFunction name="changeSelection" action="{!changeSelection}" rerender="error, buttonsSectionWrapper, paymentMethodsTable" status="action"> 
+            <apex:param name="conid" value="" assignTo="{!index}" /> 
+        </apex:actionFunction>
+        <apex:pageMessages />
+        <apex:pageBlock title="{!$Label.BillingAccount_ManagePaymentMethods}">
+            <apex:pageBlockButtons location="bottom" id="buttonsSection"> 
+                <apex:outputPanel id="buttonsSectionWrapper">
+                    <apex:commandButton value="{!$Label.Back}" action="{!GoBack}"/>
+                    <apex:commandButton value="{!$Label.BillingAccount_SetAsDefault}" action="{!SetAsDefault}" status="action" rerender="error, paymentMethodsTable" rendered="{!hasAccountActiveSubscription}"/> 
+                    <apex:commandButton value="{!$Label.BillingAccount_AddPaymentMethod}" action="{!AddNewPaymentMethod}" rendered="{!hasAccountActiveSubscription}"/> 
+                    <apex:commandButton value="{!$Label.Manage_Subscription_Remove_payment_method_button}" rendered="{!bIsRemovePaymentAvailable}" action="{!removePaymentMethod}" rerender="error, paymentMethodsTable" status="action"/>
+                </apex:outputPanel>
+            </apex:pageBlockButtons>
+            <apex:outputPanel id="paymentMethodsTable" rendered="{!bShowPage}">
+                <apex:pageBlockTable value="{!paymentMap}" var="idx" columnClasses="paymentHeaderStyle" rendered="{!paymentMapSize > 0}">
+                    <apex:column headerValue="Select" width="2%">
+                        <apex:outputText rendered="{!idx == index}">
+                            <input type="radio" name="paymentMethods" id="{!idx}" value="{!idx}" checked="checked" />
+                        </apex:outputText>
+                        <apex:outputText rendered="{!idx != index}">
+                            <input type="radio" onclick="changeSelection('{!idx}');" name="paymentMethods" id="{!idx
+                            }" value="{!idx}" />
+                        </apex:outputText>
+                    </apex:column>
+                    <apex:column headerValue="{!$Label.BillingAccount_Header_TypeOfPayment}" width="10%">
+                        <apex:outputText value="{!paymentMap[idx].paymentMethod.Zuora__Type__c}" /></apex:column>
+                    <apex:column headerValue="{!$Label.BillingAccount_Header_CardHolderAccountName}" width="20%">
+                        <apex:outputText value="{!paymentMap[idx].paymentMethod.Zuora__CreditCardHolderName__c}" /></apex:column>
+                     <apex:column headerValue="{!$Label.BillingAccount_Header_AddressDetails}" width="25%">
+                        <apex:outputText value="{!paymentMap[idx].address}" /></apex:column>
+                    <apex:column headerValue="{!$Label.BillingAccount_Header_CardOrAccountNumber}" width="25%" >
+                        <apex:outputText value="{!paymentMap[idx].paymentMethod.Zuora__CreditCardMaskNumber__c}" /></apex:column>
+                    <apex:column headerValue="{!$Label.BillingAccount_Header_CardType}" width="15%">
+                        <apex:outputText value="{!paymentMap[idx].paymentMethod.Zuora__CreditCardType__c}" /></apex:column>
+                    <apex:column headerValue="{!$Label.BillingAccount_Header_ExpDate}" width="20%">
+                        <apex:outputText value="{!paymentMap[idx].expirationDate}" /></apex:column>
+                    <apex:column headerValue="{!$Label.BillingAccount_Header_Default}" width="10%">
+                        <apex:outputField value="{!paymentMap[idx].paymentMethod.Zuora__DefaultPaymentMethod__c}"/></apex:column>
+                </apex:pageBlockTable>
+
+                <apex:pageBlockTable value="{!paypalPaymentMap}" var="pidx" columnClasses="paymentHeaderStyle" rendered="{!paypalPaymentMapSize > 0}">
+                    <apex:column headerValue="" width="2%">
+                        <apex:outputText rendered="{!pidx == index}">
+                            <input type="radio" name="paypalPaymentMethods" id="{!pidx}" value="{!pidx}" checked="checked" />
+                        </apex:outputText>
+                        <apex:outputText rendered="{!pidx != index}">
+                            <input type="radio" onclick="changeSelection('{!pidx}');" name="paypalPaymentMethods" id="{!pidx
+                            }" value="{!pidx}" />
+                        </apex:outputText>
+                    </apex:column>
+                    <apex:column headerValue="{!$Label.BillingAccount_Header_TypeOfPayment}" width="10%">
+                        <apex:outputText value="{!paypalPaymentMap[pidx].paymentMethod.Zuora__Type__c}" /></apex:column>
+                    <apex:column headerValue="PayPal Email" width="25%">
+                        <apex:outputText value="{!paypalPaymentMap[pidx].paymentMethod.Zuora__PaypalEmail__c}" /></apex:column>
+                    <apex:column headerValue="Paypal Baid" width="20%">
+                        <apex:outputText value="{!paypalPaymentMap[pidx].paymentMethod.Zuora__PaypalBaid__c}" /></apex:column>
+                    <apex:column headerValue="Paypal Type" width="25%" >
+                        <apex:outputText value="{!paypalPaymentMap[pidx].paymentMethod.Zuora__PaypalType__c}" /></apex:column>
+                    <apex:column headerValue="{!$Label.BillingAccount_Header_Default}" width="10%">
+                        <apex:outputField value="{!paypalPaymentMap[pidx].paymentMethod.Zuora__DefaultPaymentMethod__c}"/></apex:column>
+                </apex:pageBlockTable>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

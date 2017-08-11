@@ -1,0 +1,1 @@
+EU_Standard_VAT_Rate__c,Name,Premium_Mobile_Cost__c,Premium_Tablet_Cost__c,Premium_Website_Cost__c,UK_Exempt_VAT_Rate__c,UK_Export_VAT_Rate__c,UK_Standard_VAT_Rate__c,Vat_Rate__c20,VAT,0.2,0.1,0.5,0,0,20,0

@@ -1,0 +1,45 @@
+<apex:page controller="TSSearchController">
+	<apex:form >
+		<apex:outputPanel layout="block" id="pageBlock">
+			<!-- SEARCH SUBSCRIBER START-->
+			<div id="messageID" style="color: red;font-size: initial;"/>
+			<apex:outputPanel layout="block">
+				<apex:pageBlock title="{!$Label.Custom_Search_Subscriber_search}">
+					<input name="searchTxt" type="text" maxlength="512" id="tsNo"/>
+					<apex:commandButton onclick="redirectToSubscriber();return false;" value="Search" rerender="pageBlock"/>
+				</apex:pageBlock>
+			</apex:outputPanel>
+			<!-- SEARCH SUBSCRIBER ENDS-->
+			<!-- SEARCH SUBSCRIBTION START-->
+			<apex:outputPanel layout="block">
+				<apex:pageBlock title="{!$Label.Custom_Search_Subscription_search}">
+					<input name="searchTxt" type="text" maxlength="512" id="subNo"/>
+					<apex:commandButton onclick="redirectToSubscription();return false;" value="Search" rerender="pageBlock"/>
+				</apex:pageBlock>
+			</apex:outputPanel>
+			<!-- SEARCH SUBSCRIBTION ENDS-->
+		</apex:outputPanel>
+	</apex:form>
+	<script type="text/javascript">
+        function redirectToSubscriber() {
+            var tsNumber = document.getElementById("tsNo").value;
+            TSSearchController.doSubscriberSearch(tsNumber, function(result, event){
+                if(result!=null) {
+                    window.open(result, "_blank");
+                }else if (event.type === 'exception') {
+                   document.getElementById("messageID").innerHTML = event.message;
+                }             
+            });
+        }
+        function redirectToSubscription() {
+            var subNumber = document.getElementById("subNo").value;
+            TSSearchController.doSubscriptionSearch(subNumber, function(result, event){
+                if(result!=null) {
+                    window.open(result, "_blank");
+                }else if (event.type === 'exception') {
+                   document.getElementById("messageID").innerHTML = event.message;
+                }             
+            });
+        }
+    </script>
+</apex:page>

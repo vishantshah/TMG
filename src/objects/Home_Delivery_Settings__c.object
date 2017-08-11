@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Settings supporting Home Delivery Vouchers object related functionality.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Offer_Description__c</fullName>
+        <description>Defines Offer Description that should be auto assigned based on the record type.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines Offer Description that should be auto assigned based on the record type.</inlineHelpText>
+        <label>Offer Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Offer_Name__c</fullName>
+        <description>Defines Offer Name that should be auto assigned based on the record type.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines Offer Name that should be auto assigned based on the record type.</inlineHelpText>
+        <label>Offer Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Supported_Product_Ids__c</fullName>
+        <description>Defines list of product Ids that are supported for the delivery. Semicolon separated. Basic lookup is based on delivery days which is ambiguous factor. Extra limitation is required.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines list of product Ids that are supported for the delivery. Semicolon separated. Basic lookup is based on delivery days which is ambiguous factor. Extra limitation is required.</inlineHelpText>
+        <label>Supported Product Ids</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Home Delivery Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

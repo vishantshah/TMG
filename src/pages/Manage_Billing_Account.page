@@ -1,0 +1,211 @@
+<apex:page title="Manage Billing Account" showHeader="true" sidebar="false" tabStyle="Account" standardController="Zuora__CustomerAccount__c" extensions="BillingAccountManager">
+    <script>
+        function setFocusOnLoad() {
+            var zId= "{!index}";
+            radio = document.getElementsByTagName('input');
+            for (var i = 0, n = radio.length; i < n; i++) {
+                if (radio[i].id == zId)
+                    radio[i].checked = true;
+                else
+                    radio[i].checked = false;
+            }
+        }
+        function updateSelection(zId){
+            radio = document.getElementsByTagName('input');
+            for (var i = 0, n = radio.length; i < n; i++) {
+                if (radio[i].id == zId)
+                    radio[i].checked = true;
+                else
+                    radio[i].checked = false;
+            }
+        }
+        
+        function isNumber(evt) {
+            var charCode = (event.which) ? event.which : event.keyCode;
+             if (charCode != 46 && charCode > 31 
+               && (charCode < 48 || charCode > 57))
+                return false;
+        
+             if(event.target.value.indexOf('.') >=0 && charCode == 46)
+                return false;
+        
+             return true;
+        }
+
+
+        function dummyFunction(){}
+    </script>
+    <style>
+        .headerRow .headerStyle {
+            background-color: #E5FFD5 !important;
+            color: #000000 !important;  
+            font-size: 90%;
+        }
+        .headerRow .paymentHeader {
+            background-color: #ffffbb !important;
+            color: #000000 !important;  
+            font-size: 90%;
+            text-align: center;
+        }
+        .headerRow .paymentHeaderStyle {
+            background-color: #FFFDD7 !important;
+            color: #000000 !important;
+            position:fixed;   
+            top:-20px;
+            height:0px;
+        }
+        .headerRow .invoiceHeaderStyle {
+            background-color: #DEF8FF !important;
+            color: #000000 !important
+        }
+        .line1 {    
+        }
+        .line2 {
+            background-color: #f8f8f8 !important;
+            color: #000000 !important
+        }
+        table .roundedEdges {
+            border-bottom-left-radius: 20px !important;
+            border-bottom-right-radius: 20px !important
+        }
+        table .roundedEdge {
+            border-top-left-radius: 20px !important;
+            border-bottom-right-radius: 20px !important;
+        }
+        #table-header {
+            position:fixed;   
+            top:-20px;
+            height:20px;
+        }
+        #table-scroll {
+            height: 150px;
+            width: 100%;
+            overflow: auto;  
+        }
+        .header-table {
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            border-left-style: none;
+            border-color: #F0F8FF;
+        }
+        .bordered {
+            border-top-style: solid;
+            border-right-style: solid;
+            border-bottom-style: solid;
+            border-left-style: solid;
+            border-color: #ededed;
+        }
+        .not-white {
+            border-style: none;
+            border-color: #ededed;
+            background-color: #f8f8f8 !important
+        }
+        .page-block {
+            background-color: #ffffff !important;
+            border-color: #F0F8FF;
+        }
+    </style>
+    <apex:form >
+        <apex:pageBlock id="hiddenBlock" rendered="false"></apex:pageBlock>
+        <apex:sectionHeader title="Billing Account Manager" subtitle="for {!billingAccount.Name}"/>
+        <apex:outputPanel id="error">
+            <zqu:Notification options="{!notificationOptions}" />
+            <apex:actionFunction name="continueToNextPage" action="{!confirmError}" immediate="true" rerender="error" />
+        </apex:outputPanel>
+        <zqu:StatusModal />
+        <apex:actionStatus startText="" stopText="" id="action" onstart="javascript:displayStatusModal()" onstop="javascript:closeStatusModal()" />
+        <apex:pageBlock id="mainBlock">
+            <apex:commandButton value="Return to Account" action="{!cancel}" rerender="error, paymentMethodsTable"/>
+            <apex:commandButton value="Apply Credit Balance" action="{!creditToInvoice}" reRender="error, paymentMethodsTable,invoicesTable" style="float:right" rendered="{!IF(((zAccount.Zuora__Credit_Balance__c >0) && ((zAccount.Zuora__Credit_Balance__c + zAccount.Zuora__Balance__c) >0)),true,false)}"/>
+            <br/>
+            <apex:dataTable id="balanceTable" value="{!zAccount}" var="zA" rowClasses="line1, line2" width="50%" align="center" >
+                <apex:column headerValue="Account Balance" headerClass="invoiceHeaderStyle">
+                    <apex:outputText value="£{!zA.Zuora__Balance__c}" /></apex:column>
+                <apex:column headerValue="Total Invoice Balance" headerClass="invoiceHeaderStyle" >
+                    <apex:outputText value="£{!zA.Zuora__Credit_Balance__c + zA.Zuora__Balance__c}" /></apex:column>
+                <apex:column headerValue="Credit Balance" headerClass="invoiceHeaderStyle">
+                    <apex:outputText value="£{!zA.Zuora__Credit_Balance__c}" /></apex:column>
+            </apex:dataTable>
+            <br/>
+            <b>{!$Label.Negative_Invoices_Title}</b><br/>
+            <apex:outputText id="TxBalPrompt" rendered="false" value="Credit balance transferred.." style="color:red;"></apex:outputText>
+            <apex:pageBlockTable value="{!lstViewsNegativeInvoices}" var="invoiceObj" rowclasses="line1,line2" id="invoicesTable">
+                <apex:column headerValue="Invoice Number" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="{!invoiceObj.Name}" /></apex:Column>
+                <apex:column headerValue="Balance" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="£{!invoiceObj.Zuora__Balance2__c}" /></apex:Column>
+                <apex:column headerValue="Payment Amount" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="£{!invoiceObj.Zuora__PaymentAmount__c}" /></apex:Column>
+                <apex:column headerValue="Total Amount" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="£{!invoiceObj.Zuora__TotalAmount__c}" /></apex:Column>
+                <apex:column headerValue="Refunded Amount" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="£{!invoiceObj.Zuora__RefundedAmount__c}" /></apex:Column>
+                <apex:column headerValue="Status" headerClass="headerStyle" width="10%">
+                    <apex:outputText value="{!invoiceObj.Zuora__Status__c}" /></apex:Column>
+                <apex:column headerValue="Amount to transfer" headerClass="headerStyle" width="10%">
+                    <apex:outputText value="{0}" id="amountToTransfer">
+                        <apex:param name="amnttrf" value="{!IF(invoiceObj.Zuora__Balance2__c > 0, 0, -invoiceObj.Zuora__Balance2__c)}" id="amnttrf" />
+                    </apex:outputText>
+                </apex:Column>
+                <apex:column headerValue="" headerClass="headerStyle" width="3%">
+                    <apex:commandButton value="Transfer To Credit Balance" onclick="JavaScript:var amt;" action="{!transferToCreditBalance}" style="color:blue" rendered="{!invoiceObj.Zuora__Balance2__c < 0}" rerender="mainBlock,invoicesTable,balanceTable, error" status="action">
+                        <apex:param name="negInvId" value="{!invoiceObj.Zuora__Zuora_Id__c}" assignTo="{!invoiceToTransferId}" />
+                        <apex:param name="negInvAmount" value="{!IF(invoiceObj.Zuora__Balance2__c > 0, 0, -invoiceObj.Zuora__Balance2__c)}" assignTo="{!amountInvoiceTransfer}" />
+                    </apex:commandButton>
+                </apex:column>
+            </apex:pageBlockTable>
+            <center><apex:outputText value="No Records To Display." rendered="{!OR(ISBLANK(lstViewsNegativeInvoices),lstViewsNegativeInvoices.size<1)}"/></center>
+            <br/><br/>
+            <b>{!$Label.Payments_Title}</b><br/>
+            <br/>
+            <apex:outputLabel value="Change Payment Method: " />
+            <apex:selectList id="pmethods" size="1" value="{!actualPaymentMethodZuoraId}" multiselect="false">
+                <apex:actionSupport event="onchange" action="{!invokeActionsToShowPayments}" reRender="paymentsTable, paymentNoResultText, error" />
+                <apex:selectOptions value="{!lAllPaymentMethods}"/>
+            </apex:selectList>
+            <br/>
+            <apex:pageBlockTable id="paymentsTable" value="{!viewedPayments}" var="q" rowclasses="line1,line2">
+                <apex:column headerValue="Payment Amount" headerClass="paymentHeader" width="10%">
+                    <apex:outputText value="£{!q.paymentObj.Zuora__Amount__c}" /></apex:Column>
+                <apex:column headerValue="Refunded Amount" headerClass="paymentHeader" width="10%">
+                    <apex:outputText value="£{!q.paymentObj.Zuora__AppliedCreditBalanceAmount__c}" /></apex:Column>
+                <apex:column headerValue="Payment Number" headerClass="paymentHeader" width="15%">
+                    <apex:outputText value="{!q.paymentObj.Zuora__PaymentNumber__c}" /></apex:Column>
+                <apex:column headerValue="Invoice Number" headerClass="paymentHeader" width="15%">
+                    <apex:outputText value="{!q.paymentObj.Zuora__InvoiceNumber__c}" /></apex:Column>
+                <apex:column headerValue="Created Date" headerClass="paymentHeader" width="20%">
+                    <apex:outputText value="{!q.paymentObj.Zuora__CreatedDate__c}" /></apex:Column>
+                <apex:column headerValue="Effective Date" headerClass="paymentHeader" width="20%">
+                    <apex:outputText value="{!q.paymentObj.Zuora__EffectiveDate__c}" /></apex:Column>
+                <apex:column headerValue="Refund Amount" headerClass="paymentHeader" width="20%">
+                    <apex:inputtext value="{!q.refundAmount}" onkeypress="return isNumber(event)">
+                        <apex:actionSupport event="onchange" action="{!RefreshUI}" rerender="paymentsTable, error"/>
+                    </apex:inputtext>
+                </apex:Column>
+                <apex:column headerValue="" headerClass="paymentHeader" width="10%">
+                    <apex:commandButton value="Refund Payment" action="{!makeRefund}" rerender="none" style="color:blue" rendered="{!q.isRefundAllowed}">
+                        <apex:param name="pId" value="{!q.paymentObj.Zuora__External_Id__c}" assignTo="{!paymentRefundId}" />
+                    </apex:commandButton>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:outputpanel id="paymentNoResultText">
+                <center><apex:outputText value="No Records To Display." rendered="{!OR(ISBLANK(viewedPayments),viewedPayments.size<1)}"/></center>
+            </apex:outputpanel>
+            <br/><br/>
+            <table width="100%" cellspacing="0" border="0" cellpadding="0">
+                <tr>
+                    <td width="33.25%"></td>
+                    <td width="10px"></td>
+                    <td valign="top">
+                        &nbsp;View Payments from &nbsp; 
+                        <apex:inputText value="{!paymentFrom}" size="10" id="demo1" onfocus="DatePicker.pickDate(false, this , false);" /> 
+                        &nbsp; to &nbsp; 
+                        <apex:inputText value="{!paymentTo}" size="10" id="demo2" onfocus="DatePicker.pickDate(false, this , false);" /> 
+                        <apex:commandButton value="Refresh" action="{!selectIndex}" rerender="paymentsTable,paymentNoResultText,error" status="action" />
+                    </td>
+                </tr>
+            </table>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

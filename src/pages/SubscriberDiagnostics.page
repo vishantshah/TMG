@@ -1,0 +1,301 @@
+<apex:page standardController="Account" extensions="SubscriberConsoleController" tabStyle="Account" id="SubscriberDiagnostics" sidebar="false" showHeader="false">
+    <style type="text/css">
+        .title {display:block;text-align:left;font-size:large;font-weight:bold;}
+        .subtitle {display:block;text-align:left;font-weight:bold;}    
+        .center {text-align:center;}
+        #wrapper{width:100%; margin:0 auto;}
+        #available{float: left; width: 45%; padding: 10px; margin-left: auto; margin-right: auto;}
+        #current{float: right; width: 45%; padding: 10px;  margin-left: auto; margin-right: auto; }
+        .listCenter{display: block; width: 250px; margin-left: auto; margin-right: auto;}
+    </style>
+    <apex:form id="SubscriberConsoleForm">
+        <apex:pageMessages id="errorMsg" />
+        <apex:tabPanel switchType="client" selectedTab="2" id="theTabPanel">
+            <apex:tab label="{!$Label.DiagnosticsTab}" name="DiagnosticsTab" id="DiagnosticsTab">
+                <apex:pageBlock id="SubscriberConsoleBlock" rendered="{!showConsole}"  mode="maindetail">
+                    
+                    <apex:actionStatus id="fixActionStatus"> 
+                        <apex:facet name="stop">
+                            <apex:pageBlockSection columns="1" id="diagnosticsSection">
+                                <apex:pageBlockTable value="{!resultWrappers}" var="item">
+                                                
+                                    <apex:column width="2%" headerValue="Status" title="Rule Result Code" styleClass="center">
+                                        <apex:image url="{!URLFOR($Resource.famfamfam_silk_icons_v013, 'icons/tick.png')}" title="{!item.subscriberRuleLog.ruleResultCode}" rendered="{!item.isError==false}"/>
+                                        <apex:image url="{!URLFOR($Resource.famfamfam_silk_icons_v013, 'icons/cross.png')}" title="{!item.subscriberRuleLog.ruleResultCode}" rendered="{!item.isError==true && item.isReported==false}"/>
+                                        <apex:image url="{!URLFOR($Resource.famfamfam_silk_icons_v013, 'icons/bell_error.png')}" title="{!item.subscriberRuleLog.ruleResultCode}" rendered="{!item.isReported==true}"/>
+                                    </apex:column>
+                                    <apex:column width="78%" headerValue="Diagnostic" value="{!item.subscriberRuleLog.ruleName} : {!item.subscriberRuleLog.ruleUserMessage}"/>          
+                                    <apex:column width="20%" headerValue="Action" styleClass="center">
+                                        <apex:outputPanel rendered="{!item.isError}">
+                                            <a href="#" onclick="viewIssue('{!item.subscriberRuleLog.ruleCode}', '{!item.subscriberRuleLog.ruleData}', '{!item.subscriberRuleLog.ruleResultCode}', '{!item.subscriberRuleLog.ruleName}', '{!item.subscriberRuleLog.ruleUserMessage}'); return false;">View</a> | 
+                                        </apex:outputPanel>                
+                                        <apex:outputPanel rendered="{!(item.isError && item.subscriberRuleLog.ruleCode !='sfAccountGuidValidation' && item.subscriberRuleLog.ruleCode != 'mppGuidCheck')}"> 
+                                            <a href="#" onclick="fixIssue('{!item.subscriberRuleLog.ruleCode}', '{!item.subscriberRuleLog.ruleData}', '{!item.subscriberRuleLog.ruleResultCode}'); return false;">{!$Label.Diagnostic_Console_Fix}</a>
+                                        </apex:outputPanel>    
+                                        <apex:outputPanel rendered="{!(item.isError && (item.subscriberRuleLog.ruleCode =='sfAccountGuidValidation' || item.subscriberRuleLog.ruleCode == 'mppGuidCheck'))}">&nbsp;
+                                            <apex:commandLink action="{!fixGUID}" value="{!$Label.Diagnostic_Console_Fix}" rerender="SubscriberConsoleForm"/>
+                                        </apex:outputPanel>
+                                    </apex:column>            
+                                </apex:pageBlockTable>     
+                            </apex:pageBlockSection>
+                        </apex:facet>
+                        <apex:facet name="start">
+                            {!$Label.Diagnostic_Console_Processing_string}
+                        </apex:facet>
+                    </apex:actionStatus>
+                </apex:pageBlock>
+                
+                <apex:pageBlock id="FixProblem" title="GUID Update Fix" rendered="{!(!showConsole)}"  mode="maindetail">
+                    {!fixRuleLabel}
+                    <br /><br />
+                    <apex:pageBlockSection title="Access and Entitlements (SAM)" columns="1">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="GUID" />
+                            <apex:outputText value="{!SAMGuid}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Entitlements" />
+                            <apex:outputText value="{!samUserWrapper.samAccountResult.entitlements}" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection title="Financial System Setup (MPP)" columns="1">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Email Address" />
+                            <apex:outputText value="{!mppUserWrapper.userInfoResult.EmailAddress}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="First Name" />
+                            <apex:outputText value="{!mppUserWrapper.userInfoResult.FirstName}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Surname" />
+                            <apex:outputText value="{!mppUserWrapper.userInfoResult.Surname}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!mppUserWrapper.userInfoResult.AccountDetailParameters[0].ParameterName}" />
+                            <apex:outputText value="{!mppUserWrapper.userInfoResult.AccountDetailParameters[0].ParameterValue}" style="{!MPPTSNumberStyle}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="MPP SAM GUID:" />
+                            <apex:outputText value="{!IF(ISNULL(mppSAMGuid), 'Not Found', mppSAMGuid)}" style="{!MPPSAMGUIDstyle}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection title="Salesforce" columns="1">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Salesforce GUID:" />
+                            <apex:outputText value="{!IF(ISNULL(subscriberAccount.Guid__c), 'Not Found', subscriberAccount.Guid__c)}" style="{!salesforceGUIDstyle}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Salesforce TSNumber:" />
+                            <apex:outputText value="{!subscriberAccount.Subscriber_Number_static__c}" style="{!salesforceTSNumberStyle}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <br />
+                    {!alternateFixLabel}
+                    <div style="height:20px;">
+                        <apex:actionStatus id="fixProblemStatus">  
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image value="{!$Resource.Loading_Gif}" /> Fixing...
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:facet name="stop"></apex:facet>
+                        </apex:actionStatus>
+                    </div>
+                    
+                    <apex:outputPanel rendered="{!!problemFixed}">
+                        <button class="btn" onclick="fixGuidFunction(); this.style.display='none'; return false;" >{!fixProblemReloaded}</button>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!problemFixed}">
+                        Problem fixed. Refreshing page...
+                    </apex:outputPanel>
+                    <div style="color: red;font-weight: bold;">{!ErrorLabel}</div>
+                    <br />
+                    <apex:commandLink value="Back to console" action="{!goBackToConsole}" rerender="SubscriberConsoleForm" />
+                </apex:pageBlock>
+
+                <apex:actionFunction name="fixGuidFunction" id="fixGuidFunction" action="{!doFix}" oncomplete="refreshPrimaryTab({!problemFixed});"  status="fixProblemStatus" rerender="FixProblem, errorMsg" />
+                <apex:actionFunction action="{!fixOrderHistoryDataInSFDCFromMPP}" name="replicateOrderDataInSFDCFromMPP" rerender="diagnosticsSection, errorMsg">
+                    <apex:param name="firstParam" assignTo="{!ruleName}" value="" />
+                    <apex:param name="secondParam" assignTo="{!orderIdToFix}" value="" />
+                    <apex:param name="thirdParam" assignTo="{!paymentDateToFix}" value="" />
+                    <apex:param name="fourthParam" assignTo="{!netAmount}" value="" />            
+                </apex:actionFunction>
+                <apex:actionFunction action="{!fixTSNumberInMPP}" name="pushTSNumberToMPP" rerender="diagnosticsSection, errorMsg" status="fixActionStatus" />
+                <apex:actionFunction action="{!fixGuidInMPP}" name="pushGuidToMPP" rerender="diagnosticsSection, errorMsg" status="fixActionStatus" />
+            </apex:tab>
+
+            <apex:tab label="{!$Label.EntitlementsTab}" name="EntitlementsTab" id="EntitlementsTab">
+                <apex:pageMessages />
+                <apex:outputPanel rendered="{!subscriberAccount.PersonEmail=null}"> 
+                    <apex:outputText value="{!$Label.SubscriberDiagnostic_NoEmailMsg}" style="color:red"/>
+                </apex:outputPanel>
+                <div id="entitlementsWrapper">
+                    <div id="available">
+                        <apex:outputText >Available</apex:outputText>
+                        <apex:selectList styleClass="listCenter" size="10" value="{!AvailableSelected}" multiselect="true">
+                            <apex:selectOptions value="{!AvailableEntitlementsForDisplay}"/>
+                        </apex:selectList>
+                        <p><apex:commandbutton value="Add" action="{!AddEntitlements}" disabled="{!subscriberAccount.PersonEmail=null}"/></p>
+                    </div>
+                    
+                    <div id="current">
+                        <apex:outputText >Current</apex:outputText>
+                        <apex:selectList styleClass="listCenter" size="10" value="{!CurrentSelected}" multiselect="true">
+                            <apex:selectOptions value="{!CurrentEntitlementsForDisplay}"/>
+                        </apex:selectList>
+                        <p><apex:commandbutton value="Remove" action="{!RemoveEntitlements}" disabled="{!subscriberAccount.PersonEmail=null}"/></p>
+                    </div>
+                </div>
+             </apex:tab>
+
+            <apex:tab label="{!$Label.InfoTab}" name="InfoTab" id="InfoTab">
+                <apex:pageBlock id="InfoBlock" mode="maindetail">
+                    <apex:pageBlockButtons >
+                            <apex:commandButton action="{!refreshAll}" value="Refresh"/>                 
+                    </apex:pageBlockButtons> 
+                    <apex:pageBlockSection columns="1" title="Overview">      
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Data in SF" />
+                            <apex:image url="{!IF(dataInSF, (URLFOR($Resource.famfamfam_silk_icons_v013, 'icons/tick.png')),(URLFOR($Resource.famfamfam_silk_icons_v013, 'icons/cross.png')))}" title="Data in Salesforce?"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Data in MPP" />
+                            <apex:image url="{!IF(dataInMPP, (URLFOR($Resource.famfamfam_silk_icons_v013, 'icons/tick.png')),(URLFOR($Resource.famfamfam_silk_icons_v013, 'icons/cross.png')))}" title="Data in MPP?"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Data in SAM" />
+                            <apex:image url="{!IF(dataInSAM, (URLFOR($Resource.famfamfam_silk_icons_v013, 'icons/tick.png')),(URLFOR($Resource.famfamfam_silk_icons_v013, 'icons/cross.png')))}" title="Data in SAM?"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                 
+                    <apex:pageBlockSection title="Data" columns="1" id="informationSection">
+                        <apex:outputText value="The below sections contain data returned from SAM, MPP and Salesforce for this Subscriber."/>   
+                        
+                        <!-- SAM -->
+                        <apex:pageBlockSection title="Access and Entitlements (SAM)" columns="1" id="informationSection1">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="GUID" />
+                            <apex:outputText value="{!samUserWrapper.samAccountResult.guid}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Entitlements" />
+                            <apex:outputText value="{!samUserWrapper.samAccountResult.entitlements}" />
+                        </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                        
+                        <!-- MPP User -->
+                        <apex:pageBlockSection title="Financial System Setup (MPP)" columns="1" id="informationSection2">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Email Address" />
+                            <apex:outputText value="{!mppUserWrapper.userInfoResult.EmailAddress}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="First Name" />
+                            <apex:outputText value="{!mppUserWrapper.userInfoResult.FirstName}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Surname" />
+                            <apex:outputText value="{!mppUserWrapper.userInfoResult.Surname}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!mppUserWrapper.userInfoResult.AccountDetailParameters[0].ParameterName}" />
+                            <apex:outputText value="{!mppUserWrapper.userInfoResult.AccountDetailParameters[0].ParameterValue}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!mppUserWrapper.userInfoResult.AccountDetailParameters[1].ParameterName}" />
+                            <apex:outputText value="{!mppUserWrapper.userInfoResult.AccountDetailParameters[1].ParameterValue}" />
+                        </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                        
+                        <!-- MPP Order -->
+                        <apex:pageBlockSection title="Financial Orders (MPP and Salesforce)" columns="1" id="informationSection3">
+                        <apex:outputText value="Orders in MPP" styleClass="subtitle"/>  
+                        <apex:outputText value="Below is the list of Orders and Payments setup for this Subscriber in MPP, which is the master system that controls payments."/>                
+                        <apex:pageBlockTable value="{!orderHistoryItemWrappers}" var="mppOrder">
+                            <apex:column headerValue="Order Date" value="{!mppOrder.orderHistoryItem.OrderDate}"/>
+                            <apex:column headerValue="Order Id" value="{!mppOrder.orderHistoryItem.OrderId}"/>
+                            <apex:column headerValue="Amount" value="{!mppOrder.orderHistoryItem.GrossAmount}"/>
+                        </apex:pageBlockTable>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Total in MPP" />
+                            <apex:outputText value="{!mppTotalNumberOfOrders}" />
+                        </apex:pageBlockSectionItem>
+
+                        <p></p>
+                        <apex:outputText value="Orders in Salesforce" styleClass="subtitle"/>   
+                        <apex:outputText value="All orders in MPP should be reflected in Salesforce to enable accurate reporting and a complete view of the customer."/>            
+                        <apex:pageBlockTable value="{!mppTransactionHistory}" var="sfOrder">
+                            <apex:column width="15%" headerValue="MPP Tx Hist Name">
+                                <apex:outputLink value="/{!sfOrder.Id}" id="theLink">{!sfOrder.Name}</apex:outputLink>
+                            </apex:column>
+                            <apex:column headerValue="Total Price" value="{!sfOrder.Total_Price__c}"/>
+                            <apex:column headerValue="Payment Date" value="{!sfOrder.Payment_Date__c}"/>
+                            <apex:column headerValue="Sale Type" value="{!sfOrder.Sale_Type__c}"/>                       
+                            <apex:column headerValue="Order Id" value="{!sfOrder.Order_ID__c}"/>                                    
+                        </apex:pageBlockTable>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Total in Salesforce" />
+                            <apex:outputText value="{!sfTotalNumberOfOrders}" />
+                        </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                    
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+            </apex:tab>
+        </apex:tabPanel>
+    </apex:form>
+
+    <script language="javascript">
+        function refreshPrimaryTab(fixed) {
+            if(fixed) {
+                window.top.location.href = '/{!Account.Id}';
+            }
+        }
+        function fixIssue(ruleCode, ruleData, ruleResultCode) {
+            var isError = false;
+            if (ruleCode!='' && ruleData!='') {
+                var json = JSON.parse(ruleData);
+                
+                if (ruleCode == 'mppOrderIdsInSfdcCheck' && json.OrderId != '' && json.OrderDate != '') {
+                
+                    var res = json.OrderDate.split("T");
+                    var datePart = res[0];
+                    var timePart = res[1];
+                    
+                    var dateParts = datePart.split("-");
+                    var timeParts = timePart.split(":");
+                    var seconds = timeParts[2].split(".");
+                    
+                    var parsedDate = dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0] + " " + timeParts[0] + ":" + timeParts[1];
+                
+                    replicateOrderDataInSFDCFromMPP(ruleCode, json.OrderId, parsedDate, json.GrossAmount, json.NetAmount);
+                } else if((ruleCode == 'mppKeyFieldCheck' && ruleResultCode == '500')|| (ruleCode=='mppKeyFieldValuesCheck' && ruleResultCode=='500')){
+                    if(confirm('{!$Label.Diagnostic_Console_TSNumber_fix_confirm_message}')) pushTSNumberToMPP();
+                } else if((ruleCode == 'mppKeyFieldCheck' && ruleResultCode == '600' ) || (ruleCode=='mppKeyFieldValuesCheck' && ruleResultCode=='600')){
+                    if(confirm('{!$Label.Diagnostic_Console_Guid_fix_confirm_message}')) pushGuidToMPP();
+                } else {(ruleCode)
+                    isError = true;
+                }
+            } else {
+                isError = true;
+            }
+            
+            if (isError) alert("Sorry, a fix has not been developed for this issue yet.");
+        }
+
+        //Method executed on View link click to show information related to diagnostic row
+        function viewIssue(ruleCode, ruleData, ruleResultCode, ruleName, ruleUserMessage) {
+            var x = alert(  "**** Rule Information ****"
+                            +"\n\nRule: "+ruleName
+                            +"\n\nMessage: "+ruleUserMessage                    
+                            +"\n\nRule Code: "+ruleCode
+                            +"\n\nRule Result Code: "+ruleResultCode
+                            +"\n\nRule Data: "+ruleData
+            ); 
+        }
+        
+    </script>
+</apex:page>

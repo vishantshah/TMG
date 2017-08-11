@@ -1,0 +1,87 @@
+<apex:page standardController="Business_Transaction__c" extensions="BusinessTransactionDPCExtension">
+
+    <apex:outputPanel id="errorMessage">
+        <apex:pageMessages escape="false"/>
+    </apex:outputPanel>
+
+    <apex:form>
+    	<apex:outputPanel id="offersPanel">
+	        <apex:outputPanel rendered="{!AND(hasEligibleSubscription,OR(isStatusComplete,isStatusPaymentFailure))}">
+	            <apex:pageBlock>
+	                <apex:pageBlockSection columns="1">
+
+	                	<apex:outputPanel rendered="{!showDiscPriceChangeButton}">
+	                		<apex:actionStatus id="fetchDPC">
+	                			<apex:facet name="start">
+                                    <apex:outputPanel >
+                                    	<apex:image value="/img/loading32.gif" style="height:15px;" />
+                                        <apex:commandButton value="Processing..." disabled="true" />
+                                    </apex:outputPanel>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                	<apex:commandButton action="{!showDiscPriceChangeOffers}" value="Discretionary Price Change" rerender="errorMessage, offersPanel" immediate="true" status="fetchDPC" />
+                                </apex:facet>
+	                		</apex:actionStatus>
+	                	</apex:outputPanel>
+
+	                    <apex:outputPanel rendered="{!showDiscPriceChangeOfferList}">
+                            <apex:pageBlockTable value="{!lstDiscPriceChangeOffers}" var="offer">
+                                <apex:column headerValue="Offer" value="{!offer[1]}"/>
+                                <apex:column >
+                                    <apex:outputPanel onclick="selectDiscPriceChangeOfferAction('{!offer[0]}');" styleClass="btn" style="padding:3px;">
+                                        Discretionary Price Change
+                                    </apex:outputPanel>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                            <apex:actionFunction action="{!selectDiscPriceChangeOffer}" name="selectDiscPriceChangeOfferAction" rerender="errorMessage, offersPanel">
+                                <apex:param name="firstParam" assignTo="{!selectedDiscPriceChangeOffer}" value="" />
+                            </apex:actionFunction>
+	                    </apex:outputPanel>
+
+	                    <apex:outputPanel rendered="{!showDiscPriceChangeSelectedOffer}">
+                            <br/><b>Selected Offer: {!lstDiscPriceChangeOffers[VALUE(selectedDiscPriceChangeOffer)][1]}</b>
+                            <br/>Note: Discretionary Price Change will happen at the end of the current Subscription's term.<br/><br/>
+                            <apex:actionStatus id="processDPC">
+                                <apex:facet name="start">
+                                    <apex:outputPanel >
+                                    	<apex:image value="/img/loading32.gif" style="height:15px;" />
+                                        <apex:commandButton value="Processing..." disabled="true" />
+                                        <apex:commandButton value="Processing..." disabled="true" />
+                                    </apex:outputPanel>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:outputPanel>
+                                        <apex:commandButton action="{!discPriceChange}" value="Discretionary Price Change" rerender="errorMessage, offersPanel" status="processDPC" />
+                                        <apex:commandButton action="{!cancelDiscPriceChangeOffer}" value="Cancel" rerender="errorMessage, offersPanel" immediate="true" />
+                                    </apex:outputPanel>
+                                </apex:facet>
+                            </apex:actionStatus>
+	                    </apex:outputPanel>
+
+	                    <apex:outputPanel rendered="{!showDiscPriceChangeResult}">
+	                        <br/>Discretionary Price Change Result<br/><br/>
+	                        <apex:outputText value="{!resultMessage}" escape="false"/>
+	                        <br/><br/>
+	                        <apex:commandButton value="Refresh Business Transaction" immediate="true" onComplete="refreshPage('{!bt.Id}');" />
+	                    </apex:outputPanel>
+
+	                </apex:pageBlockSection>
+	            </apex:pageBlock>
+	        </apex:outputPanel>
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!NOT(hasEligibleSubscription)}">
+            Business Transaction has no valid Subscription.
+        </apex:outputPanel>
+
+        <apex:outputPanel rendered="{!AND(hasEligibleSubscription,NOT(isStatusComplete),NOT(isStatusPaymentFailure))}">
+            Discretionary Price Change is available only if Status is 'Complete' OR 'Payment Failure'.
+        </apex:outputPanel>        
+    </apex:form>
+
+    <script>
+    	function refreshPage(id){
+    		window.top.location.href = '/' + id;
+    	}
+    </script>
+</apex:page>

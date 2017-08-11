@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Continuous_13_Week_Applicable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if incentive is applicable for 13 week continuous subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if incentive is applicable for 13 week continuous subscription.</inlineHelpText>
+        <label>Continuous 13 Week Applicable</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Continuous_26_Week_Applicable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if incentive is applicable for 26 week continuous subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if incentive is applicable for 26 week continuous subscription.</inlineHelpText>
+        <label>Continuous 26 Week Applicable</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Continuous_52_Week_Applicable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if incentive is applicable for 52 week continuous subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if incentive is applicable for 52 week continuous subscription.</inlineHelpText>
+        <label>Continuous 52 Week Applicable</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Incentive_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Incentive__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Incentive Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Incentive__c</fullName>
+        <externalId>false</externalId>
+        <label>Incentive</label>
+        <referenceTo>Incentive__c</referenceTo>
+        <relationshipName>TCode_Incentive_Junctions</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>One_Off_13_Week_Applicable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if incentive is applicable for 13 week one off subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if incentive is applicable for 13 week one off subscription.</inlineHelpText>
+        <label>One Off 13 Week Applicable</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>One_Off_26_Week_Applicable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if incentive is applicable for 26 week one off subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if incentive is applicable for 26 week one off subscription.</inlineHelpText>
+        <label>One Off 26 Week Applicable</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>One_Off_52_Week_Applicable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if incentive is applicable for 52 week one off subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if incentive is applicable for 52 week one off subscription.</inlineHelpText>
+        <label>One Off 52 Week Applicable</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Digital</fullName>
+                <default>true</default>
+                    <label>Digital</label>
+                </value>
+                <value>
+                <fullName>Premium</fullName>
+                <default>false</default>
+                    <label>Premium</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Selected__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This checkbox is used the VF page to select incentive due to apex:column</description>
+        <externalId>false</externalId>
+        <label>Selected</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Product__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+                    <label>Monthly</label>
+                </value>
+                <value>
+                <fullName>Yearly</fullName>
+                <default>false</default>
+                    <label>Yearly</label>
+                </value>
+                <value>
+                <fullName>Continuous</fullName>
+                <default>false</default>
+                    <label>Continuous</label>
+                </value>
+                <value>
+                <fullName>26Weeks</fullName>
+                <default>false</default>
+                    <label>26Weeks</label>
+                </value>
+                <value>
+                <fullName>52Weeks</fullName>
+                <default>false</default>
+                    <label>52Weeks</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Digital</controllingFieldValue>
+                <valueName>Monthly</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Digital</controllingFieldValue>
+                <valueName>Yearly</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>TCodeName__c</fullName>
+        <externalId>false</externalId>
+        <formula>TCode__r.Name</formula>
+        <label>TCode</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TCode__c</fullName>
+        <externalId>false</externalId>
+        <label>TCode</label>
+        <referenceTo>TCodeManagement__c</referenceTo>
+        <relationshipName>TCode_Incentive_Junctions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>TCode Incentive</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>TCodeName__c</columns>
+        <columns>Incentive__c</columns>
+        <columns>Product__c</columns>
+        <columns>Subscription_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>TJ-{0000}</displayFormat>
+        <label>TCodeIncentive Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>TCode Incentives</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Premium_applicability_flags_validation</fullName>
+        <active>true</active>
+        <description>None of the applicability flags should be ticked when product is Digital.</description>
+        <errorConditionFormula>AND(ISPICKVAL(Product__c, &apos;Digital&apos;), OR( Continuous_13_Week_Applicable__c, Continuous_26_Week_Applicable__c, Continuous_52_Week_Applicable__c, One_Off_13_Week_Applicable__c, One_Off_26_Week_Applicable__c, One_Off_52_Week_Applicable__c))</errorConditionFormula>
+        <errorDisplayField>Product__c</errorDisplayField>
+        <errorMessage>None of the flags should be ticked when product is Digital.</errorMessage>
+    </validationRules>
+</CustomObject>

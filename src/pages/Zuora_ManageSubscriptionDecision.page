@@ -1,0 +1,21 @@
+<apex:page showHeader="true" sidebar="true" tabStyle="Account" controller="Zuora_ManageSubscriptionDecisionCtrl" action="{!checkLiteAccount}">
+	<apex:form id="form">
+		<apex:pagemessages id="pgmsg"/>
+		<apex:sectionHeader title="{!$Label.Manage_Subscription_Title}"/>
+		<apex:pageBlock title="{!titleOfPageBlock}">
+			<apex:pageBlockSection  columns="1">
+                <apex:outputLabel value="{!$Label.Manage_Subscription_Decision_Active_Sub}" rendered="{!activeSubExists}"/>
+                <apex:outputLabel value="{!$Label.Manage_Subscription_Decision_Revoke_Sub}" rendered="{!pendingCancelSubExists}"/>
+                <apex:outputLabel value="{!$Label.Manage_Subscription_Decision_New_Sub}" rendered="{!AND(NOT(activeSubExists),NOT(pendingCancelSubExists))}"/>
+            </apex:pageBlockSection>
+			<apex:pageBlockButtons id="btns" location="bottom">
+				<apex:commandButton id="btnGoBack" value="{!$Label.Go_Back_Button_Label}" action="{!backToRecord}" />
+				<apex:commandButton value="{!$Label.Manage_Subscription_Buttons_Active_Quote}" action="{!goToQuote}" rendered="{!activeQuoteExists}"/>
+				<apex:commandButton value="{!$Label.Manage_Subscription_Buttons_Active_Sub}" action="{!goToSubscription}" rendered="{!IF(ISNULL(activeSub),false, true)}"/>
+				<apex:commandButton value="{!$Label.Manage_Subscription_Buttons_Amend_Sub}" action="{!redirectActiveSubscription}" rendered="{!activeSubExists}" onclick="if(!confirm('{!$Label.Confirmation_Message_Switch_Products}')){return false;}"/>
+				<apex:commandButton value="{!$Label.Manage_Subscription_Buttons_Revoke}" action="{!revokeCancellation}" rendered="{!pendingCancelSubExists}"/>
+				<apex:commandButton value="{!$Label.Manage_Subscription_Buttons_New_Sub}" action="{!redirectNewSubscription}" rendered="{!AND(NOT(activeSubExists),NOT(pendingCancelSubExists))}"/>
+			</apex:pageBlockButtons>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

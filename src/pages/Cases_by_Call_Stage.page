@@ -1,0 +1,10 @@
+<apex:page standardController="Outbound_Call_Setting__c" extensions="CasesByCallStageReport" readOnly="true">
+    <style>
+        .blockOutputPanel {display:inline-block;position:relative;width:510px;height:470px;}
+    </style>
+    
+    <div>
+        <apex:dynamicComponent componentValue="{!outputPanel}"/>
+    </div>
+
+</apex:page>

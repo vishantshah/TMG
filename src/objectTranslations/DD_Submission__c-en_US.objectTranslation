@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DD Submission</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DD Submission</value>
+    </caseValues>
+    <fields>
+        <label><!-- AUDDIS DELAY --></label>
+        <name>AUDDIS_DELAY__c</name>
+    </fields>
+    <fields>
+        <label><!-- DAILY CUTOFF TIME --></label>
+        <name>DAILY_CUTOFF_TIME__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

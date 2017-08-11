@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Activate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ChangeStatus</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Terminate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Activate_By_Email__c</fullName>
+        <description>Email address of the user who activated the IO. We need a text field for the Mail Merge.</description>
+        <externalId>false</externalId>
+        <label>Activate By Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ActivatedById</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ActivatedDate</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Activated_By_Name__c</fullName>
+        <description>Person who activated the IO. We need a text field for the Mail Merge.</description>
+        <externalId>false</externalId>
+        <label>Activated By Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Activated_By_Phone__c</fullName>
+        <description>Phone number of the user who activated the IO. We need a text field for the Mail Merge.</description>
+        <externalId>false</externalId>
+        <label>Activated By Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Ad_Campaign__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Ad Campaign</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Contracts</relationshipLabel>
+        <relationshipName>IOs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Advertiser__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Advertiser on the IO</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Advertiser on the IO</inlineHelpText>
+        <label>Advertiser</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>IOs</relationshipLabel>
+        <relationshipName>IOs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Agency_Discount__c</fullName>
+        <externalId>false</externalId>
+        <label>Agency Commission</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Agency_Email__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Email address of the agency contact for this IO.</inlineHelpText>
+        <label>Agency Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Agency_Phone__c</fullName>
+        <description>Field to hold the phone number of the agency contact listed on the Ad Campaign.</description>
+        <externalId>false</externalId>
+        <label>Agency Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Agency_Reference__c</fullName>
+        <description>Enter Agency Reference/PO Number here, is applicable.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter Agency Reference/PO Number here, is applicable.</inlineHelpText>
+        <label>Agency Reference</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BillingAddress</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Booking_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Booking Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Briefing_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Briefing Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Business_Unit__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Unit</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Campaign_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Campaign_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Checking_Copy_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary Checking Copy Contact.</description>
+        <externalId>false</externalId>
+        <label>Checking Copy Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>IO&apos;s (Checking Copy Contact)</relationshipLabel>
+        <relationshipName>R00N30000002NOaEEAW</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Client_Services_Email__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Email address of the Client Services agent associated with the IO</inlineHelpText>
+        <label>Client Services Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Services_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Holds the name of the Client Services agent associated with the IO.</inlineHelpText>
+        <label>Client Services Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Services_Phone__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Phone number of the Client Services agent associated with the IO</inlineHelpText>
+        <label>Client Services Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>CompanySignedDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>CompanySignedId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Competitive_Separation_Instructions__c</fullName>
+        <description>Competitive separation instructions as supplied by the client/agency.</description>
+        <externalId>false</externalId>
+        <label>Competitive Separation Instructions</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>ContractTerm</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>CustomerSignedDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>CustomerSignedId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CustomerSignedTitle</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>EndDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerExpirationNotice</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PO_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>PO Number</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Positioning_Offered__c</fullName>
+        <description>Detailed description of positioning offered to client/agency.</description>
+        <externalId>false</externalId>
+        <label>Positioning Offered</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Primary_Agency_Buyer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary buyer agency for the Account.</description>
+        <externalId>false</externalId>
+        <label>Agency (Buyer)</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Contracts</relationshipLabel>
+        <relationshipName>R00N30000002NOa6EAG</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Agency_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary Contact from Buyer Agency.</description>
+        <externalId>false</externalId>
+        <label>Agency Contact (Buyer)</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Contracts</relationshipLabel>
+        <relationshipName>R00N30000002NOa7EAG</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Client_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary client Contact.</description>
+        <externalId>false</externalId>
+        <label>Primary Client Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Contracts (Primary Client Contact)</relationshipLabel>
+        <relationshipName>R00N30000002NOa8EAG</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_Industry__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Industry</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Production_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary production contact.</description>
+        <externalId>false</externalId>
+        <label>Production Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>IO&apos;s (Production Contact)</relationshipLabel>
+        <relationshipName>R00N30000002NOaDEAW</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Received_Date__c</fullName>
+        <defaultValue>Today()</defaultValue>
+        <description>Date Contract received.</description>
+        <externalId>false</externalId>
+        <label>Received Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Email__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Email address of the Sales Rep associated with the IO</inlineHelpText>
+        <label>Sales Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Phone__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Phone number of the Sales Rep associated with IO.</inlineHelpText>
+        <label>Sales Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>ShippingAddress</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>SpecialTerms</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>StartDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Unit_Rate__c</fullName>
+        <description>Calculated unit rate.</description>
+        <externalId>false</externalId>
+        <label>Unit Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Unit_Size__c</fullName>
+        <description>Size of unit for advertiser campaign.  Used in conjunction with Rate.</description>
+        <externalId>false</externalId>
+        <label>Unit Size</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>PG 4C</fullName>
+                    <default>false</default>
+                    <label>PG 4C</label>
+                </value>
+                <value>
+                    <fullName>SP 4C</fullName>
+                    <default>false</default>
+                    <label>SP 4C</label>
+                </value>
+                <value>
+                    <fullName>PG BW</fullName>
+                    <default>false</default>
+                    <label>PG BW</label>
+                </value>
+                <value>
+                    <fullName>SP BW</fullName>
+                    <default>false</default>
+                    <label>SP BW</label>
+                </value>
+                <value>
+                    <fullName>2 Consecutive PG 4C</fullName>
+                    <default>false</default>
+                    <label>2 Consecutive PG 4C</label>
+                </value>
+                <value>
+                    <fullName>1/3 PG 4C</fullName>
+                    <default>false</default>
+                    <label>1/3 PG 4C</label>
+                </value>
+                <value>
+                    <fullName>1/3 PG BW</fullName>
+                    <default>false</default>
+                    <label>1/3 PG BW</label>
+                </value>
+                <value>
+                    <fullName>1/2 vertical 4C</fullName>
+                    <default>false</default>
+                    <label>1/2 vertical 4C</label>
+                </value>
+                <value>
+                    <fullName>1/2 horizontal 4C</fullName>
+                    <default>false</default>
+                    <label>1/2 horizontal 4C</label>
+                </value>
+                <value>
+                    <fullName>1/2 vertical BW</fullName>
+                    <default>false</default>
+                    <label>1/2 vertical BW</label>
+                </value>
+                <value>
+                    <fullName>1/2 horizontal BW</fullName>
+                    <default>false</default>
+                    <label>1/2 horizontal BW</label>
+                </value>
+                <value>
+                    <fullName>2/3 PG 4C</fullName>
+                    <default>false</default>
+                    <label>2/3 PG 4C</label>
+                </value>
+                <value>
+                    <fullName>2/3 PG BW</fullName>
+                    <default>false</default>
+                    <label>2/3 PG BW</label>
+                </value>
+                <value>
+                    <fullName>2/3 Page Bookends</fullName>
+                    <default>false</default>
+                    <label>2/3 Page Bookends</label>
+                </value>
+                <value>
+                    <fullName>Gatefold 4PG</fullName>
+                    <default>false</default>
+                    <label>Gatefold 4PG</label>
+                </value>
+                <value>
+                    <fullName>Gatefold 3PG</fullName>
+                    <default>false</default>
+                    <label>Gatefold 3PG</label>
+                </value>
+                <value>
+                    <fullName>Advertorial 4C</fullName>
+                    <default>false</default>
+                    <label>Advertorial 4C</label>
+                </value>
+                <value>
+                    <fullName>Spreadvetorial 4C</fullName>
+                    <default>false</default>
+                    <label>Spreadvetorial 4C</label>
+                </value>
+                <value>
+                    <fullName>PG 4C + 1/3 PG 4C</fullName>
+                    <default>false</default>
+                    <label>PG 4C + 1/3 PG 4C</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <listViews>
+        <fullName>AllActivatedContracts</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>A</value>
+        </filters>
+        <label>All Activated Contracts</label>
+    </listViews>
+    <listViews>
+        <fullName>AllContracts</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All Contracts</label>
+    </listViews>
+    <listViews>
+        <fullName>AllDraftContracts</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>D</value>
+        </filters>
+        <label>All Draft Contracts</label>
+    </listViews>
+    <listViews>
+        <fullName>AllInApprovalContracts</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>P</value>
+        </filters>
+        <label>All In Approval Contracts</label>
+    </listViews>
+    <listViews>
+        <fullName>MyActivatedContracts</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>A</value>
+        </filters>
+        <label>My Activated Contracts</label>
+    </listViews>
+    <listViews>
+        <fullName>MyDraftContracts</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>D</value>
+        </filters>
+        <label>My Draft Contracts</label>
+    </listViews>
+    <listViews>
+        <fullName>MyInApprovalContracts</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>P</value>
+        </filters>
+        <label>My In Approval Contracts</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>CONTRACT.CONTRACT_NUMBER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CONTRACT.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SALES.ACCOUNT.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CONTRACT.STATUS</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>CONTRACT.CONTRACT_NUMBER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CONTRACT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CORE.USERS.ALIAS</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTRACT.CONTRACT_NUMBER</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTRACT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USERS.ALIAS</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Activated_By_Phone__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Agency_Phone__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Client_Services_Phone__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Sales_Phone__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>CONTRACT.CONTRACT_NUMBER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTRACT.NAME</searchResultsAdditionalFields>
+    </searchLayouts>
+    <webLinks>
+        <fullName>IO_Document</fullName>
+        <availability>online</availability>
+        <description>Displays the information on the Ad Campaign in a document.</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>IO Document</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>{!URLFOR(&quot;/apex/IODocument&quot;, Contract.Id,[id=Contract.Id])}</url>
+    </webLinks>
+</CustomObject>

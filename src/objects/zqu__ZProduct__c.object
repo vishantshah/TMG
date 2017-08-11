@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <fields>
+        <fullName>Default_Plan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Defines plan assigned to a subscription when it is created without any specified.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines plan assigned to a subscription when it is created without any specified.</inlineHelpText>
+        <label>Default Plan</label>
+        <referenceTo>Plan__c</referenceTo>
+        <relationshipLabel>ZProducts</relationshipLabel>
+        <relationshipName>ZProducts</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LeadDays__c</fullName>
+        <description>Number of days from the Closest Saturday when the subscription starts</description>
+        <externalId>false</externalId>
+        <label>Lead Days</label>
+        <length>2</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MaxCoverPriceAnnual__c</fullName>
+        <description>Max annual cover price for product. Updated from Zuora.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Max annual cover price for product. Updated from Zuora.</inlineHelpText>
+        <label>Max Cover Price Annual</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MaxCoverPriceDay__c</fullName>
+        <description>Max daypass cover price for product. Updated from Zuora.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Max daypass cover price for product. Updated from Zuora.</inlineHelpText>
+        <label>Max Cover Price Day</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MaxCoverPriceMonth__c</fullName>
+        <description>Max monthly cover price for product. Updated from Zuora.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Max monthly cover price for product. Updated from Zuora.</inlineHelpText>
+        <label>Max Cover Price Month</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Print_Product__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Determines whether Product contains print type of feature.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Determines whether Product contains print type of feature.</inlineHelpText>
+        <label>Print Product</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ProductCountry__c</fullName>
+        <externalId>false</externalId>
+        <label>ProductCountry</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>UK</fullName>
+                    <default>false</default>
+                    <label>UK</label>
+                </value>
+                <value>
+                    <fullName>International</fullName>
+                    <default>false</default>
+                    <label>International</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ProductFriendlyName__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Friendly Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Image_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Image 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Image__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Image</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RefundsAllowed__c</fullName>
+        <description>This setting is used to prevent/allow refunds for subscriptions with specific products.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This setting is used to prevent/allow refunds for subscriptions with specific products.</inlineHelpText>
+        <label>Refunds Allowed</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>true</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Voucher_Delivery_Type__c</fullName>
+        <description>It defines how  vouchers for this product can be delivered to the customer.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>It defines how  vouchers for this product can be delivered to the customer.</inlineHelpText>
+        <label>Voucher Delivery Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>OTC</fullName>
+                    <default>false</default>
+                    <label>OTC</label>
+                </value>
+                <value>
+                    <fullName>HND</fullName>
+                    <default>false</default>
+                    <label>HND</label>
+                </value>
+                <value>
+                    <fullName>OTC &amp; HND</fullName>
+                    <default>false</default>
+                    <label>OTC &amp; HND</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Rank__c</fullName>
+        <description>Product rank.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Product rank.</inlineHelpText>
+        <label>Rank</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RestrictedOfferLockinPeriod__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Period of time (in months) for which a Subscriber should be locked if this Product was sold with a Restricted Offer.</inlineHelpText>
+        <label>Restricted Offer Lock-in Period</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <pluralLabel>Products</pluralLabel>    
+</CustomObject>

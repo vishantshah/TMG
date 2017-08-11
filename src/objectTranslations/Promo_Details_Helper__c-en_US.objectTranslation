@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Promo Details Helper</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Promo Details Helper</value>
+    </caseValues>
+    <fields>
+        <label><!-- Duration --></label>
+        <name>Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExactTarget templateId --></label>
+        <name>ExactTarget_templateId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProductType --></label>
+        <name>ProductType__c</name>
+    </fields>
+    <fields>
+        <label><!-- PromoName --></label>
+        <name>PromoName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Frequency --></label>
+        <name>Subscription_Frequency__c</name>
+        <picklistValues>
+            <masterLabel>13 weeks</masterLabel>
+            <translation><!-- 13 weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>26 weeks</masterLabel>
+            <translation><!-- 26 weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>52 weeks</masterLabel>
+            <translation><!-- 52 weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>continuous</masterLabel>
+            <translation><!-- continuous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>monthly</masterLabel>
+            <translation><!-- monthly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>yearly</masterLabel>
+            <translation><!-- yearly --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subscription Product Name --></label>
+        <name>Subscription_Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- isPromo --></label>
+        <name>isPromo__c</name>
+    </fields>
+    <layouts>
+        <layout>Promo Details Helper Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

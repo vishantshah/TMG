@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Cheque Batch</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cheque Batches</value>
+    </caseValues>
+    <fields>
+        <label><!-- Astra Batch --></label>
+        <name>Astra_Batch__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch Closed Date --></label>
+        <name>Batch_Closed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Slip Ref Number --></label>
+        <name>Payment_Slip_Ref_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Synthesys Batch ID --></label>
+        <name>Synthesys_Batch_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total No of Cheques --></label>
+        <name>Total_No_of_Cheques__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Value --></label>
+        <name>Total_Value__c</name>
+    </fields>
+    <layouts>
+        <layout>Cheque Batch Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

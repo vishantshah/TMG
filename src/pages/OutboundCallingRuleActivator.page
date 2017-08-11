@@ -1,0 +1,49 @@
+<apex:page standardController="Outbound_Call_Rule__c" extensions="OutboundCallingActivator">
+
+    <apex:form>
+        <apex:pageMessages id="pageMsg" />
+
+        <apex:outputPanel id="panel">
+            <apex:actionStatus id="activateStatus">
+                <apex:facet name="start">
+                    <apex:commandButton value="Processing..." disabled="true" />
+                </apex:facet>
+                <apex:facet name="stop">
+                    <apex:commandButton onclick="activate('{!ocId}');" value="Activate this Rule" rerender="pageMsg, panel" disabled="{!disableButton}" status="activateStatus" />
+                </apex:facet>
+            </apex:actionStatus>
+            <br/><br/>
+            
+            <apex:outputPanel rendered="{!NOT(disableButton)}">
+                Only one Rule can be active at a time.<br/>
+                Activating this Rule will de-activate all other Rules for this Outbound Calling Setting.
+            </apex:outputPanel>
+
+            <apex:actionFunction name="showErrorMessage" action="{!showErrorMessage}" rerender="pageMsg, panel">
+                <apex:param name="errorMessage" assignTo="{!errorMessage}" value="" />
+            </apex:actionFunction>
+        </apex:outputPanel>
+    </apex:form>
+
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <script>
+        var j = jQuery.noConflict();
+        function activate(id){
+            OutboundCallingActivator.activate(
+                id,
+                function(result, event){
+                    if(event.status){
+                        if(result == 'success'){
+                            window.top.location.href = '/' + id;
+                        }else{
+                            showErrorMessage(result);
+                        }
+                    }else{
+                        alert('VFRemoting error - request failed.');
+                    }
+                },
+                {escape:true}
+            );
+        }
+    </script>
+</apex:page>

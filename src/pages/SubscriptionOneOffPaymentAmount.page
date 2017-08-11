@@ -1,0 +1,40 @@
+<apex:page standardController="Subscription__c" extensions="MppUtil">
+	<apex:outputText value="{!Subscription__c.Total_Price__c}" rendered="false"/>
+	<apex:form id="myfrm">
+		<apex:pageMessages />
+		<apex:pageBlock >
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Cancel" action="{!cancel}"/>
+				<apex:actionStatus id="mySave">
+				 <apex:facet name="start">
+						<apex:commandButton value="Submit" action="{!submitOneOffPaymentAmount}" status="mySave" disabled="true"  />
+				 </apex:facet>
+				 <apex:facet name="stop">
+						<apex:commandButton value="Submit" action="{!submitOneOffPaymentAmount}" status="mySave" disabled="false" reRender="myfrm"/>
+				</apex:facet>
+				</apex:actionStatus>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection columns="2" >
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Amount" />
+					<apex:outputPanel styleClass="requiredInput" layout="block">  
+					   <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+					      <apex:inputText value="{!oneOffAmount}" size="10" maxlength="8"/>
+					</apex:outputPanel>              
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="One Time Payment Reason" />
+					<apex:outputPanel styleClass="requiredInput" layout="block">  
+					   <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+				              <apex:selectList value="{!oneOffPaymentReason}" multiselect="false" size="1">
+					            <apex:selectOptions value="{!PaymentReasons}"/>
+					        </apex:selectList>
+					</apex:outputPanel>              
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+		<input type="hidden" name="currentPageName" value="{!$CurrentPage.Name}"/>
+	</apex:form>
+</apex:page>

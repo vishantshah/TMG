@@ -1,0 +1,18 @@
+<apex:component controller="PostcodeLookupController">
+<apex:attribute name="findAddressButtonTextValue" description="This is the text Value to use for the find address button." type="String" required="false" default="Find Address"/>
+    <apex:includescript value="{!$Resource.PostCodeLookup}"/>
+    <apex:outputPanel layout="none" rendered="{!isOn}">
+        <apex:commandButton id="btnFind" onclick="BeginPostCodeLookup(); return false;" value="{!findAddressButtonTextValue}" />
+         
+        <apex:outputPanel id="selectaddressblock" layout="block"  styleClass="bottomButtons" style="display:none">
+            <apex:outputlabel id="SelectAddressLabel" style="margin-left: 0px">Please Select Your Address</apex:outputlabel><br />
+            <select name="selectaddress" id="selectaddress" ></select>
+            <apex:commandButton value="Select" onclick="PostCodeLookupFetchBegin(); return false;" id="btnFetch" />             
+        </apex:outputPanel>
+    </apex:outputPanel>
+    <script>
+        var btnFetch   = '{!$Component.btnFetch}';
+        var selectaddressblock = '{!$Component.selectaddressblock}';          
+        var SelectAddressLabel = '{!$Component.SelectAddressLabel}';          
+    </script>
+</apex:component>

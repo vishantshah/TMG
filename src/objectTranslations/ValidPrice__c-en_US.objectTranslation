@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ValidPrice</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ValidPrices</value>
+    </caseValues>
+    <fields>
+        <label><!-- CC 26 Weeks --></label>
+        <name>CC_26_Weeks__c</name>
+    </fields>
+    <fields>
+        <label><!-- CC 52 Weeks --></label>
+        <name>CC_52_Weeks__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Monthly Price --></label>
+        <name>First_Monthly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ongoing Monthly Price --></label>
+        <name>Ongoing_Monthly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price --></label>
+        <name>Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarterly Price --></label>
+        <name>Quarterly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source --></label>
+        <name>Source__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

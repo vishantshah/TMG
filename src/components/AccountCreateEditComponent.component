@@ -1,0 +1,117 @@
+<apex:component>
+    <apex:attribute name="cntrl" type="AccountCreateEditComponentController" description="Injected controller instance." />
+    <apex:attribute name="rerenderItems" type="String" description="pageElementsToRerender" />
+    <apex:attribute name="propertyChangeMethod" type="String" description="Javascript method called on field change. Nothing called if empty."/>
+    <style>
+        .MarketingPos { float:left;padding-top: 4px }
+        .SpaceChkBox{margin-left: 20px }
+    </style>
+    <script>
+        var MkTMGEmail;
+        var MkTMGPhone;
+        var MkTMGPost;
+        var MkTMGSMS;
+        function selectAllTMG(setting){
+            if(setting == true){
+                document.getElementById(MkTMGEmail).checked = true;
+                document.getElementById(MkTMGPhone).checked = true;
+                document.getElementById(MkTMGPost).checked = true;
+                document.getElementById(MkTMGSMS).checked = true;
+            }else{
+                document.getElementById(MkTMGEmail).checked = false;
+                document.getElementById(MkTMGPhone).checked = false;
+                document.getElementById(MkTMGPost).checked = false;
+                document.getElementById(MkTMGSMS).checked = false;
+            }
+        }
+    </script>
+
+    <apex:pageBlock title="Personal details of the subscriber" mode="edit">
+        <apex:pageBlockSection columns="1">
+            <apex:pageBlockSectionItem helpText="{!$ObjectType.Account.Fields.Salutation.inlineHelpText}">
+                <apex:outputLabel value="{!$Label.Title}" />
+                <apex:outputPanel>
+                    <div class="requiredInput">
+                        <div class="requiredBlock"></div>
+                        <apex:inputField value="{!cntrl.contact.Salutation}" onchange="if(this.value) {document.getElementById('{!$Component.givenTitle}').value = '';}"/>
+                        &nbsp;&nbsp;<apex:outputlabel value="{!$ObjectType.Account.fields.Title__c.Label}" styleClass="labelCol"/>
+                        &nbsp;&nbsp;<apex:inputfield id="givenTitle" value="{!cntrl.acc.Title__c}"/>
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:inputField value="{!cntrl.contact.FirstName}" required="true"/>
+            <apex:inputField value="{!cntrl.contact.LastName}" id="lastName"/>
+            
+
+            <apex:pageBlockSectionItem >
+                {!$ObjectType.Account.fields.PersonMailingPostalCode.Label} 
+                <apex:outputPanel>
+                    <apex:inputfield id="postCode" value="{!cntrl.acc.PersonMailingPostalCode}" onblur="this.value=this.value.toUpperCase()" style="float: left;"/>
+                    <script>
+                        var PostCode = '{!$Component.postCode}';
+                    </script>
+                    <c:PostCodeLookup findAddressButtonTextValue="{!$Label.Find_UK_Address_Label}"/> 
+                 </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:inputField id="addressline1" required="true" value="{!cntrl.acc.PersonMailingStreet}" />
+            <apex:inputField id="city" required="true" value="{!cntrl.acc.PersonMailingCity}" />
+            <apex:inputField id="county" value="{!cntrl.acc.PersonMailingState}" />
+            <script>
+                Field1 = '{!$Component.addressline1}';
+                Field2 = '{!$Component.city}';
+                Field3 = '{!$Component.county}';
+            </script>
+            <apex:pageBlockSectionItem>
+                <apex:outputLabel value="{!$ObjectType.Account.fields.PersonMailingCountry.Label}" />
+                <apex:outputPanel layout="block">
+                    <apex:selectList id="countries" value="{!cntrl.acc.PersonMailingCountry}" size="1" disabled="true">
+                        <apex:selectOptions value="{!cntrl.countries}" />
+                    </apex:selectList>
+               </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:inputField id="email" value="{!cntrl.acc.PersonEmail}" />
+            <apex:inputfield id="homePhone" value="{!cntrl.acc.PersonHomePhone}"/>
+            <apex:inputfield id="mobile" value="{!cntrl.acc.PersonMobilePhone}"/>
+
+            <apex:outputPanel>
+                <h3 style="margin-left: 0px" class="formSubHead">Marketing Preferences</h3>
+                <p><i>{!$Label.Marketing_Preference_Group_Companies}</i></p>
+                <p><i>
+                <apex:outputPanel layout="block" style="overflow:auto">
+                    <apex:outputLabel styleClass="checkbox">
+                        <apex:inputCheckBox onchange="selectAllTMG(this.checked)" styleClass="checkbox" style="float:left"/>
+                        <apex:outputText value="Select All/None" styleclass="MarketingPos" />
+                    </apex:outputLabel>
+                    <apex:outputLabel>
+                        <apex:inputCheckBox id="TMG_Promo_Email" value="{!cntrl.tmgPromoEmail}" styleClass="SpaceChkBox" style="float:left"/>
+                        <apex:outputText value="{!$Label.OC_Email}" styleclass="MarketingPos" />
+                    </apex:outputLabel>
+                    <apex:outputLabel >
+                        <apex:inputCheckBox id="TMG_Promo_Phone" value="{!cntrl.tmgPromoPhone}" styleClass="SpaceChkBox" style="float:left"/>
+                        <apex:outputText value="{!$Label.OC_Phone}" styleclass="MarketingPos" />
+                    </apex:outputLabel>
+                    <apex:outputLabel>
+                        <apex:inputCheckBox id="TMG_Promo_Post" value="{!cntrl.tmgPromoPost}" styleClass="SpaceChkBox" style="float:left"/>
+                        <apex:outputText value="{!$Label.OC_Post}" styleclass="MarketingPos" />
+                    </apex:outputLabel>
+                    <apex:outputLabel>
+                        <apex:inputCheckBox id="TMG_Promo_Sms" value="{!cntrl.tmgPromoSms}" styleClass="SpaceChkBox" style="float:left"/>
+                        <apex:outputText value="{!$Label.OC_SMS}" styleclass="MarketingPos" />
+                    </apex:outputLabel>
+                </apex:outputPanel>
+                </i></p>
+                <p style="display:block">Our <a target="_blank" href="{!$Setup.Configuration__c.Privacy_Policy_URL__c}"><u>Privacy Policy</u></a> on our website will give you more information on how we handle data.</p>
+                <br/>
+                <script type="text/javascript">
+                    MkTMGEmail = '{!$Component.TMG_Promo_Email}';
+                    MkTMGPhone = '{!$Component.TMG_Promo_Phone}';
+                    MkTMGPost = '{!$Component.TMG_Promo_Post}';
+                    MkTMGSMS = '{!$Component.TMG_Promo_Sms}';
+                </script>
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:componentBody>
+        <apex:commandButton value="Save" action="{!saveAccount}" />
+    </apex:componentBody>
+</apex:component>

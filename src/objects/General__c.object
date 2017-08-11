@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Odd settings that don&apos;t fit into any of the existing objects.  Kept as generic as possible by using name value pair pattern.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Value_Boolean__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Boolean value for the setting so that it is easier to use for true/false settings.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Boolean value for the setting so that it is easier to use for true/false settings.</inlineHelpText>
+        <label>Value Boolean</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>General</label>
+    <visibility>Protected</visibility>
+</CustomObject>

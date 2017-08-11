@@ -1,0 +1,31 @@
+<apex:page controller="MppUtil" showHeader="true" action="{!PaymentPage}">
+    <apex:form id="myForm">
+        <apex:commandButton id="backButton" value="< Back" action="{!back}" rendered="{!NOT(ISBLANK($CurrentPage.parameters.bbtn))}"/>
+    </apex:form>
+    <iframe src="{!prMpp}" scrolling="false" id="theIframe" height="1200px" onload="checkIfPaymentProcessing();" onunload="checkIfPaymentProcessing();" style="border:0px; width:99%;"/>
+    <script type="text/javascript">
+        var buttonId = '{!$Component.myForm.backButton}';
+        var iFrameId = 'theIframe';
+        var initialPage = '';
+        var boolCheck = true;
+        
+        function checkIfPaymentProcessing(){
+            if(initialPage.length > 0){
+                document.getElementById(buttonId).style.display = 'none';
+                boolCheck = false;
+            }
+
+            if(initialPage.length == 0){
+                initialPage = document.getElementById(iFrameId).src;
+            }
+        }
+
+        window.onbeforeunload = function() {
+            if(boolCheck){
+                return '{!$Label.Payment_Page_browser_back_button_popup}';
+            }else{
+                return;
+            }
+        }
+    </script>
+</apex:page>

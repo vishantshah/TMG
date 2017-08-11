@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Date_Requested__c</fullName>
+        <defaultValue>Today()</defaultValue>
+        <externalId>false</externalId>
+        <label>Date Requested</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Fulfilled_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Fulfilled Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Incentive_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>Incentive__r.Incentive_Description__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Incentive Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Incentive_Returned__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Incentive Returned?</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Incentive__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Incentive</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>Please select only valid incentives.</errorMessage>
+            <filterItems>
+                <field>Incentive__c.Validity_Status__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Incentive__c</referenceTo>
+        <relationshipLabel>Subscription Incentives</relationshipLabel>
+        <relationshipName>SubscriptionIncentiveAssociations</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>MGM Scheme</fullName>
+                    <default>false</default>
+                    <label>MGM Scheme</label>
+                </value>
+                <value>
+                    <fullName>Staff Offer</fullName>
+                    <default>false</default>
+                    <label>Staff Offer</label>
+                </value>
+                <value>
+                    <fullName>Renewal Incentive</fullName>
+                    <default>false</default>
+                    <label>Renewal Incentive</label>
+                </value>
+                <value>
+                    <fullName>Acquisition Incentive</fullName>
+                    <default>false</default>
+                    <label>Acquisition Incentive</label>
+                </value>
+                <value>
+                    <fullName>Goodwill</fullName>
+                    <default>false</default>
+                    <label>Goodwill</label>
+                </value>
+                <value>
+                    <fullName>TMG Error</fullName>
+                    <default>false</default>
+                    <label>TMG Error</label>
+                </value>
+                <value>
+                    <fullName>Winback Incentive</fullName>
+                    <default>false</default>
+                    <label>Winback Incentive</label>
+                </value>
+                <value>
+                    <fullName>Renewal for TL1</fullName>
+                    <default>false</default>
+                    <label>Renewal for TL1</label>
+                </value>
+                <value>
+                    <fullName>Renewal for TL2</fullName>
+                    <default>false</default>
+                    <label>Renewal for TL2</label>
+                </value>
+                <value>
+                    <fullName>Renewal for T2</fullName>
+                    <default>false</default>
+                    <label>Renewal for T2</label>
+                </value>
+                <value>
+                    <fullName>Renewal for T2 Catch Up</fullName>
+                    <default>false</default>
+                    <label>Renewal for T2 Catch Up</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subscriber__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Subscriber</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Subscriber Incentives</relationshipLabel>
+        <relationshipName>Subscription_Incentives</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Subscription__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Subscription</label>
+        <referenceTo>Subscription__c</referenceTo>
+        <relationshipName>SubscriptionIncentiveAssociations</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Zuora_Subscription__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Z subscription.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lookup to Z subscription.</inlineHelpText>
+        <label>Zuora Subscription</label>
+        <referenceTo>Zuora__Subscription__c</referenceTo>
+        <relationshipLabel>Subscription Incentives</relationshipLabel>
+        <relationshipName>Subscription_Incentives</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Subscription Incentive</label>
+    <nameField>
+        <displayFormat>SIA-{0000000000}</displayFormat>
+        <label>SubscriptionIncentiveAssociation Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Subscription Incentives</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

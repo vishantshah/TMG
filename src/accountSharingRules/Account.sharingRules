@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AccountSharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <ownerRules>
+        <fullName>TMGAdSalesD</fullName>
+        <sharedTo>
+            <roleAndSubordinates>TMGAdSales</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TMGAdSales</roleAndSubordinates>
+        </sharedFrom>
+        <accountAccessLevel>Edit</accountAccessLevel>
+        <caseAccessLevel>Edit</caseAccessLevel>
+        <contactAccessLevel>Edit</contactAccessLevel>
+        <name>TMG AdSalesD</name>
+        <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    </ownerRules>
+    <ownerRules>
+        <fullName>TMGSubsD</fullName>
+        <sharedTo>
+            <roleAndSubordinates>TMGSubs</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TMGSubs</roleAndSubordinates>
+        </sharedFrom>
+        <accountAccessLevel>Edit</accountAccessLevel>
+        <caseAccessLevel>Edit</caseAccessLevel>
+        <contactAccessLevel>Edit</contactAccessLevel>
+        <name>TMG SubsD</name>
+        <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    </ownerRules>
+    <ownerRules>
+        <fullName>WACData</fullName>
+        <sharedTo>
+            <group>WACData</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>WACData</group>
+        </sharedFrom>
+        <accountAccessLevel>Edit</accountAccessLevel>
+        <caseAccessLevel>None</caseAccessLevel>
+        <contactAccessLevel>Edit</contactAccessLevel>
+        <name>WAC Data</name>
+        <opportunityAccessLevel>None</opportunityAccessLevel>
+    </ownerRules>
+    <ownerRules>
+        <fullName>WACData250461</fullName>
+        <sharedTo>
+            <group>WACData</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+        <accountAccessLevel>Edit</accountAccessLevel>
+        <caseAccessLevel>None</caseAccessLevel>
+        <contactAccessLevel>Edit</contactAccessLevel>
+        <name>WAC Data</name>
+        <opportunityAccessLevel>None</opportunityAccessLevel>
+    </ownerRules>
+</AccountSharingRules>

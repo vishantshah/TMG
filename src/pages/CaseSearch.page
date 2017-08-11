@@ -1,0 +1,400 @@
+<apex:page standardController="Case" recordSetVar="cases" extensions="CaseMassAmendmentController" tabStyle="Case">
+
+    <style type="text/css">
+        .r10{margin-right:10px;}
+        .r20{margin-right:20px;}
+        .r40{margin-right:40px;}
+        .l10{margin-left:10px;}
+        .l20{margin-left:20px;}
+        .t5{margin-top:3px;}
+        .w21{width:21px !important;}
+        .thin{font-weight:normal;}
+
+        .tableStyle{width:100%; background-color:#fff; border:1px solid #e0e3e5; display: table;}
+        .tableStyle thead tr, .tableStyle thead th{background: #f2f3f3; color:#333333; border-bottom:1px solid #e0e3e5 !important; border-right:1px solid #e0e3e5 !important; font-weight:bold; padding:5px 2px 5px 5px; text-align:left; vertical-align:middle; white-space:nowrap; font-family:Arial, Helvetica, sans-serif; font-size:10.92px;}
+        .tableStyle thead th:hover{background-color:#e0e3e6;}
+        .tableStyle tbody td{color:#333333; margin:0; padding:4px 2px 4px 5px; vertical-align:middle !important; border-bottom:1px solid #e0e3e5 !important; display:table-cell; }
+        .tableStyle tbody tr:hover{background-color:#e3f3ff;}
+        .columnName{color:#333333; text-decoration:none !important; }
+        .sortIcon{padding:0px 5px 5px 5px;}
+        .jsrem_dialog_description{font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#333333; padding-bottom:20px; overflow:auto; }
+
+        .ui-dialog .ui-dialog-titlebar button.ui-button:focus,
+        .ui-dialog .ui-dialog-titlebar button.ui-button.ui-state-focus,
+        .ui-dialog .ui-dialog-titlebar button.ui-button.ui-state-active,
+        .ui-dialog .ui-dialog-titlebar button.ui-button.ui-state-hover {
+            outline:none;
+        }
+    </style>
+
+    <apex:sectionHeader title="Case" subtitle="Custom Case Search" />
+
+    <apex:form >
+        <apex:pageBlock title="Case search" mode="edit">
+            <apex:pageMessages id="errorMsgs" />
+
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.CreatedDate.label}</label>
+                    <apex:outputPanel >
+                        <font style="color:#4a4a56;font-size:10.92px;font-weight:bold;margin-right:8px;">From</font> <apex:inputField value="{!dummyCaseSearch.Search_Date_Selector__c}" /> 
+                        <font style="color:#4a4a56;font-size:10.92px;font-weight:bold;margin-right:8px;margin-left:25px;">To</font> <apex:inputField value="{!dummyCaseSearch2.Search_Date_Selector__c}" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.RecordTypeId.label}</label>
+                    <apex:selectList value="{!selectedRecordType}" size="1">
+                        <apex:selectOptions value="{!lstCaseRecordTypes}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.Status.label}</label>
+                    <apex:selectList value="{!selectedStatus}" size="1">
+                        <apex:selectOptions value="{!lstCaseStatus}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.Reason.label}</label>
+                    <apex:selectList value="{!selectedReason}" size="1">
+                        <apex:selectOptions value="{!lstCaseReason}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.Type_Of_Issue__c.label}</label>
+                    <apex:selectList value="{!selectedDetail1}" size="1">
+                        <apex:selectOptions value="{!lstCaseDetail1}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.Digital_Details__c.label}</label>
+                    <apex:selectList value="{!selectedDetail2}" size="1">
+                        <apex:selectOptions value="{!lstCaseDetail2}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.Digital_Details_2__c.label}</label>
+                    <apex:selectList value="{!selectedDetail3}" size="1">
+                        <apex:selectOptions value="{!lstCaseDetail3}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.Digital_Details_3__c.label}</label>
+                    <apex:selectList value="{!selectedDetail4}" size="1">
+                        <apex:selectOptions value="{!lstCaseDetail4}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.Operation_System__c.label}</label>
+                    <apex:selectList value="{!selectedOperatingSystem}" size="1">
+                        <apex:selectOptions value="{!lstCaseOperatingSystem}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <label>{!$ObjectType.Case.fields.Browser__c.label}</label>
+                    <apex:selectList value="{!selectedBrowser}" size="1">
+                        <apex:selectOptions value="{!lstCaseBrowser}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:inputField value="{!dummyCaseSearch.App_Version__c}" style="width:200px;"/>
+                <apex:inputField value="{!dummyCaseSearch.OS_Version__c}" style="width:200px;"/>
+                <apex:inputField value="{!dummyCaseSearch.Subject}" style="width:460px;" />
+                <apex:pageBlockSectionItem>
+                    <div>
+                        Advanced search by all Case text fields<br/>
+                        <div class="thin t5">
+                            accepted operators: *, ?, " ", AND, OR, AND NOT, ( )<br/>
+                            see <a href="https://developer.salesforce.com/docs/atlas.en-us.198.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl_find.htm" target="_blank">full list and usage</a>
+                        </div>
+                    </div>
+                    <apex:inputTextArea id="searchText" value="{!searchText}" cols="80" rows="3" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons location="bottom">
+                <apex:actionStatus id="SaveButtonStatus">
+                    <apex:facet name="stop">
+                        <apex:outputPanel >
+                            <apex:commandButton action="{!search}" value="Search" status="SaveButtonStatus" rerender="resultsPanel, errorMsgs" />
+                            <apex:commandButton action="{!cancel}" value="Cancel" immediate="true" />
+                        </apex:outputPanel>
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <apex:outputPanel>
+                            <apex:image value="/img/loading32.gif" style="height:15px;" />
+                            <apex:commandButton value="Searching..." disabled="true" />
+                            <apex:commandButton value="Cancel" disabled="true" />
+                        </apex:outputPanel>
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+        <apex:outputPanel id="resultsPanel">
+            <apex:pageBlock title="Search returned {!lstCsh.size} results ({!queryLimit} max)" mode="edit" rendered="{!isSearched}" >
+
+                <!-- selection buttons -->
+                <apex:pageBlockSection columns="1" rendered="{!lstCsh.size>0}">
+                    <apex:outputPanel>
+                        <apex:commandLink action="{!selectAll}" value="Select All" rerender="resultsPanel" status="listChange"/>
+                        <apex:outputText value="•" styleClass="r10 l10" />
+                        <apex:commandLink action="{!selectNone}" value="Select None" rerender="resultsPanel" status="listChange"/>
+                        <apex:outputText value="•" styleClass="r10 l10" />
+                        <apex:commandLink action="{!invertSelection}" value="Invert Selection" rerender="resultsPanel" status="listChange"/>
+                        <apex:outputText value="/" styleClass="r10 l10" />
+                        <apex:commandButton action="{!sendSelectedCasesToAmendmentPage}" value="Amend selected Cases" styleClass="l20" />
+                        <apex:actionStatus id="listChange">
+                            <apex:facet name="start">
+                                <apex:outputPanel styleClass="l20">
+                                    <apex:image value="/img/loading32.gif" style="height:15px;" /> 
+                                    Processing...
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+
+                <!-- found Cases -->
+                <apex:pageBlockSection columns="1" rendered="{!lstCsh.size>0}">
+                    <apex:outputPanel>
+                        <table class="tableStyle" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="w21">
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.CaseNumber.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='caseNumber'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="caseNumber" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Contact.fields.Name.Name}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='contactName'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="contactName" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.Status.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='status'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="status" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.CreatedDate.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='createdDate'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="createdDate" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.Reason.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='reason'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="reason" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.Type_Of_Issue__c.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='typeOfIssue'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="typeOfIssue" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.Digital_Details__c.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='digitalDetails'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="digitalDetails" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.Digital_Details_2__c.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='digitalDetails2'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="digitalDetails2" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.Digital_Details_3__c.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='digitalDetails3'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="digitalDetails3" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.Subject.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='subject'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="subject" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>  
+                                    <th>
+                                        <apex:commandLink action="{!sortPage}" value="{!$ObjectType.Case.fields.Description.label}" styleClass="columnName" rerender="resultsPanel" status="listChange">
+                                            <apex:outputPanel rendered="{!sortBy='description'}">
+                                                <apex:outputPanel rendered="{!sortAscending}">
+                                                    <img src="/img/colTitle_uparrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!NOT(sortAscending)}">
+                                                    <img src="/img/colTitle_downarrow.gif" class="sortIcon" />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:param value="description" assignTo="{!sortBy}" />
+                                        </apex:commandLink>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!displayedCsh}" var="c">
+                                    <tr>
+                                        <td>
+                                            <apex:inputCheckbox value="{!c.isChecked}"/>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.caseNumber}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.contactName}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.status}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.createdDateFormatted}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.reason}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.typeOfIssue}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.digitalDetails}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.digitalDetails2}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.digitalDetails3}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.subject}" />
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!c.description}" />
+                                            <apex:outputPanel rendered="{!len(c.description)>=descriptionLimit}">
+                                                ... <a href="#" id="{!c.id}" onclick="show_description_dialog('{!c.id}','{!c.caseNumber}');">read more</a>
+                                            </apex:outputPanel>
+                                        </td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+
+                <!-- pagination -->
+                <apex:pageBlockSection columns="1" rendered="{!lstCsh.size>0}">
+                    <apex:outputPanel >
+                        <apex:outputText value="Page {!currentPage} of {!CEILING(lstCsh.size/PageSize)}" styleClass="r20" />
+                        <apex:commandButton action="{!previousPage}" value="Previous Page" rendered="{!hasPrevPage}" rerender="resultsPanel" />
+                        <apex:commandButton action="{!nextPage}" value="Next Page" rendered="{!hasNextPage}" rerender="resultsPanel" />
+                        <apex:outputText value="Records per page: " styleClass="l20" />
+                        <apex:selectList value="{!PageSize}" size="1">
+                            <apex:selectOptions value="{!sizeOptions}"/>
+                            <apex:actionSupport action="{!refreshPage}" event="onchange" rerender="resultsPanel"/>
+                        </apex:selectList>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+    
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <apex:stylesheet value="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        function setFocusOnLoad(){}
+        
+        var j = jQuery.noConflict();
+        function show_description_dialog(id,cnumber){
+            if(j("#jsrem_dialog_description_" + id).length == 0){
+                CaseMassAmendmentController.getCaseDescription(
+                    id,
+                    function(result, event){
+                        if(event.status){
+                            j("#" + id).parent().append("<div class='jsrem_dialog_description' id='jsrem_dialog_description_" + id + "' title='Case " + cnumber + " Description'></div>");
+                            j("#jsrem_dialog_description_" + id).html(result);
+                            j("#jsrem_dialog_description_" + id).dialog({width:400,position:{my:"center+"+Math.floor((Math.random()*40))},show:{effect:"blind",duration:200},hide:{effect:"blind",duration:200}});
+                        }
+                    },
+                    {escape:true}
+                );
+            } else {
+                j("#jsrem_dialog_description_" + id).dialog("open");
+            }
+        }
+    </script>
+</apex:page>

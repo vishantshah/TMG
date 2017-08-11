@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>Zuora_TcodeUtility</members>
+		<members>Zuora_TcodeUtilityTest</members>
+        <members>SoqlUtility</members>
+        <members>Campaign_ManageOfferCodesControllerTest</members>
+        <members>Campaign_ManageOfferCodesController</members>
+        <members>TCodeSetupExtension</members>
+        <members>TCodeSetupExtensionTest</members>
+		<name>ApexClass</name>
+	</types>
+    <types>
+        <members>Campaign_ManageOfferCodes</members>
+        <members>Zuora_Offer_Code_Step</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>TCodeManagement__c.Manage_Offer_Codes</members>
+        <name>Weblink</name>
+    </types>
+    <version>39.0</version>
+</Package>

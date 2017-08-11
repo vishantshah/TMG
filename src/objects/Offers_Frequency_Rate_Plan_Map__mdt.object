@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Defines mapping between ZOffer frequency and respective product rate plan.</description>
+    <fields>
+        <fullName>API_Frequency__c</fullName>
+        <description>Defines what should be the frequency value when it is passed to API.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Defines what should be the frequency value when it is passed to API.</inlineHelpText>
+        <label>API Frequency</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Defines if mapping is active. Making mapping inactive will disable the specific offer frequency results for Offer Handler.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Defines if mapping is active. Making mapping inactive will disable the specific offer frequency results for Offer Handler.</inlineHelpText>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Target_Rate_Plan_Name__c</fullName>
+        <description>Defines target rate plan name for the frequency.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Defines target rate plan name for the frequency.</inlineHelpText>
+        <label>Target Rate Plan Name</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Offers Frequency Rate Plan Map</label>
+    <pluralLabel>Offers Frequency Rate Plan Map</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

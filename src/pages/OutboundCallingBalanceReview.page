@@ -1,0 +1,127 @@
+<apex:page controller="OutboundCallingBalanceReviewCtrl" tabStyle="Outbound_Calling_New__tab">
+
+    <apex:form id="form">
+    <c:OutboundCallMenu />
+        <apex:outputPanel id="errorPanel">
+            <apex:pageMessages />
+        </apex:outputPanel>
+
+        <apex:outputPanel id="customerPanel">
+            <apex:pageBlock title="Customers available: {!casesTotal}">
+
+                <apex:pageBlockButtons location="top">
+                    <apex:actionstatus id="getCustomerStatus">
+                        <apex:facet name="start">
+                            <apex:outputPanel>
+                                <apex:image value="/img/loading32.gif" style="height:15px;" />
+                                <apex:commandButton value="Processing..." disabled="true" />
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:facet name="stop">
+                            <apex:outputPanel>
+                                <apex:commandButton action="{!getCustomer}" value="Get Customer" rendered="{!NOT(hasCustomer)}" rerender="customerPanel, errorPanel" 
+                                    disabled="{!casesTotalCount=0}" status="getCustomerStatus" />
+
+                                <apex:commandButton action="{!saveSelectedCustomer}" value="Save Changes to Selected Customer" rendered="{!hasCustomer}" rerender="customerPanel, errorPanel" 
+                                    disabled="{!NOT(isSaveButtonEnabled)}" status="getCustomerStatus" />
+                                <apex:commandButton action="{!getCustomer}" value="Get Next Customer" rendered="{!hasCustomer}" rerender="customerPanel, errorPanel" 
+                                    status="getCustomerStatus" />
+                            </apex:outputPanel>
+                        </apex:facet>
+                    </apex:actionstatus>
+                </apex:pageBlockButtons>
+
+                <apex:outputPanel rendered="{!casesTotalCount=0}">
+                There are no Cases eligible for Balance Review.
+                </apex:outputPanel>
+
+                <apex:outputPanel rendered="{!AND(casesTotalCount>0,NOT(hasCustomer))}">
+                No customer selected. Click the Get Customer button.
+                </apex:outputPanel>
+
+                <apex:outputPanel rendered="{!hasCustomer}">
+                    <apex:pageBlockSection columns="2" title="Case details">
+                        <apex:pageBlockSectionItem>
+                            <apex:outputLabel value="{!$ObjectType.Case.fields.CaseNumber.label}"/>
+                            <apex:outputLink value="{!URLFOR($Action.Case.View, selectedCase.Id)}">{!selectedCase.CaseNumber}</apex:outputLink>
+                        </apex:pageBlockSectionItem>
+                        <apex:outputField value="{!selectedCase.OC_Call_Stage__c}" />
+                        <apex:outputField value="{!selectedCase.Status}" />
+                        <apex:inputField value="{!selectedCase.Print_Subscription__r.Revenue_Write_off_Amount__c}" onchange="enableSaveButton();" />
+                        <apex:inputField value="{!selectedCase.OC_Outcome__c}" onchange="enableSaveButton();" />
+                        <apex:inputField value="{!selectedCase.Print_Subscription__r.Revenue_Write_off_Reason__c}" onchange="enableSaveButton();" />
+                    </apex:pageBlockSection>
+                    <apex:actionFunction action="{!enableSaveButton}" name="enableSaveButton" rerender="customerPanel, errorPanel"/>
+
+                    <c:CaseComments caseId="{!selectedCase.Id}" />
+                    
+                    <apex:pageBlockSection columns="2" title="Account details">
+                        <apex:outputField value="{!selectedCase.AccountId}" />
+                        <apex:outputField value="{!selectedCase.Account.Subscriber_Number_static__c}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonEmail}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMobilePhone}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonHomePhone}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingCountry}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingPostalCode}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingState}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingStreet}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingCity}" />
+                    </apex:pageBlockSection>
+                    <br/>
+
+                    <apex:outputPanel rendered="{!NOT(hasPayments)}">
+                        Related Account has no Payments.
+                    </apex:outputPanel>
+
+                    <apex:pageBlockTable var="payment" value="{!customerMPPOrderHistory}" rendered="{!hasPayments}">
+                        <apex:column headerValue="Order ID" value="{!payment.OrderId}" />
+                        <apex:column headerValue="Order Date" value="{!payment.OrderDate}" />
+                        <apex:column headerValue="Gross Amount" value="{!payment.GrossAmount}" />
+                        <apex:column headerValue="Net Amount" value="{!payment.NetAmount}" />
+                        <apex:column headerValue="Currency" value="{!payment.OrderCurrency}" />
+                        <apex:column headerValue="Payment Type" value="{!payment.PaymentType}" />
+                        <apex:column headerValue="Raw Order Description" value="{!payment.RawOrderDescription}" />
+                    </apex:pageBlockTable>
+
+                    <apex:pageBlockSection columns="2" title="Subscription details">
+                        <apex:outputField value="{!selectedCase.Print_Subscription__c}" />
+                        <apex:outputField value="{!selectedCase.Print_Subscription__r.Product__c}" />
+                        <apex:pageBlockSectionItem>
+                            <apex:outputLabel value="{!$ObjectType.Subscription__c.fields.Outstanding_Balance_to_from_Customer__c.label}" />
+                            <apex:outputText value="{!outstandingBalance}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:outputField value="{!selectedCase.Print_Subscription__r.Weekly_Price__c}" />
+                        <apex:outputField value="{!selectedCase.Print_Subscription__r.TCode__c}" />
+                        <apex:outputField value="{!selectedCase.Print_Subscription__r.Start_Date__c}" />
+                        <apex:outputField value="{!selectedCase.Print_Subscription__r.End_Date__c}" />
+                    </apex:pageBlockSection>
+                    <br/>
+
+                    <apex:outputPanel rendered="{!NOT(hasVoucherActivities)}">
+                        Related Subscription has no Voucher Activities.
+                    </apex:outputPanel>
+
+                    <apex:pageBlockTable var="voucherActivity" value="{!customerSubscription.Voucher_Activities__r}" rendered="{!hasVoucherActivities}">
+                        <apex:column headerValue="{!$ObjectType.Voucher_Adjustment__c.fields.Name.label}">
+                            <apex:outputLink value="{!URLFOR($Action.Voucher_Adjustment__c.View, voucherActivity.Id)}">{!voucherActivity.Name}</apex:outputLink>
+                        </apex:column>
+                        <apex:column value="{!voucherActivity.Voucher_Value__c}" />
+                        <apex:column value="{!voucherActivity.Voucher_Activity_Action__c}" />
+                        <apex:column value="{!voucherActivity.Adjustment_Type__c}" />
+                        <apex:column value="{!voucherActivity.Start_Date__c}" />
+                        <apex:column value="{!voucherActivity.End_Date__c}" />
+                        <apex:column value="{!voucherActivity.Fulfilled_Date__c}" />
+                        <apex:column value="{!voucherActivity.Refund_Status__c}" />
+                    </apex:pageBlockTable>
+
+                    <apex:pageBlockSection columns="1" title="Take One Off Payment">
+                        <apex:commandButton action="{!takeOneOffPayment}" value="Take One Off Payment" immediate="true" />
+                    </apex:pageBlockSection>
+
+                </apex:outputPanel>
+
+            </apex:pageBlock>
+        </apex:outputPanel>
+
+    </apex:form>
+</apex:page>

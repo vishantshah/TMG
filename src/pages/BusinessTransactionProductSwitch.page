@@ -1,0 +1,78 @@
+<apex:page standardController="Business_Transaction__c" extensions="BusinessTransactionPSExtension">
+
+    <apex:outputPanel id="errorMessage">
+        <apex:pageMessages escape="false"/>
+    </apex:outputPanel>
+
+    <apex:form>
+        <apex:outputPanel id="offersPanel">
+            <apex:outputPanel rendered="{!hasAlternativeOffers}">
+                <apex:pageBlock>
+                    <apex:pageBlockSection columns="1">
+
+                        <apex:outputPanel rendered="{!showOfferList}">
+                            <apex:pageBlockTable value="{!lstAlternativeOffers}" var="offer">
+                                <apex:column headerValue="Offer Name" value="{!offer[2]}"/>
+                                <apex:column headerValue="Offer Id" value="{!offer[1]}"/>
+                                <apex:column >
+                                    <apex:outputPanel onclick="selectOfferAction('{!offer[0]}');" rendered="{!OR(isStatusComplete,isStatusPaymentFailure)}" styleClass="btn" style="padding:3px;">
+                                        Product Switch
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!AND(NOT(isStatusComplete),NOT(isStatusPaymentFailure))}">
+                                        Product Switch is available only if Status is 'Complete' OR 'Payment Failure'.
+                                    </apex:outputPanel>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                            <apex:actionFunction action="{!selectOffer}" name="selectOfferAction" rerender="errorMessage, offersPanel">
+                                <apex:param name="firstParam" assignTo="{!selectedOffer}" value="" />
+                            </apex:actionFunction>
+                        </apex:outputPanel>
+
+                        <apex:outputPanel rendered="{!showProductSwitchDate}">
+                            <b>Selected Offer: {!lstAlternativeOffers[VALUE(selectedOffer)][2]} &#40;{!lstAlternativeOffers[VALUE(selectedOffer)][1]}&#41; </b>
+                            <br/><br/>
+                            Please select date for Product switch:
+                            <apex:selectRadio value="{!selectedDate}" layout="pageDirection">
+                                <apex:selectOptions value="{!lstDateOptions}"/>
+                                <apex:actionSupport action="{!selectDate}" event="onchange" rerender="errorMessage, offersPanel" />
+                            </apex:selectRadio>
+                            <apex:actionStatus id="processSwitch">
+                                <apex:facet name="start">
+                                    <apex:outputPanel>
+                                    	<apex:image value="/img/loading32.gif" style="height:15px;" />
+                                        <apex:commandButton value="Processing..." disabled="true" />
+                                        <apex:commandButton value="Processing..." disabled="true" />
+                                    </apex:outputPanel>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:outputPanel >
+                                        <apex:commandButton action="{!productSwitch}" value="Product Switch" rerender="errorMessage, offersPanel" disabled="{!switchBtnDisabled}" status="processSwitch" />
+                                        <apex:commandButton action="{!cancelOffer}" value="Cancel" rerender="errorMessage, offersPanel" immediate="true" />
+                                    </apex:outputPanel>
+                                </apex:facet>
+                            </apex:actionStatus>
+                        </apex:outputPanel>
+
+                        <apex:outputPanel rendered="{!showProductSwitchResult}">
+                            Product Switch Result<br/><br/>
+                            <apex:outputText value="{!resultMessage}" escape="false"/>
+                            <br/><br/>
+                            <apex:commandButton value="Refresh Business Transaction" immediate="true" onComplete="refreshPage('{!bt.Id}');" />
+                        </apex:outputPanel>
+
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+            </apex:outputPanel> 
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!NOT(hasAlternativeOffers)}">
+            There are no valid Alternative Offers.
+        </apex:outputPanel>
+    </apex:form>
+
+    <script>
+    	function refreshPage(id){
+    		window.top.location.href = '/' + id;
+    	}
+    </script>
+</apex:page>

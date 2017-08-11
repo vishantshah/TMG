@@ -1,0 +1,9 @@
+<apex:page standardController="Subscription__c" extensions="MPPInterfaceHTTP" action="{!initMPPGuid}">
+
+<apex:outputText value="{!Subscription__c.Subscriber__r.Subscriber_Number_static__c}" rendered="false"/>
+<apex:outputText value="No Related Data Available MPP" rendered="{!ISNULL(Subscription__c.MPP_Premium_Subscription_ID__c)}"/>
+
+<apex:iframe src="{!BASE_MPP_URL}management/embedded/ewalletdetailsnoaddress.aspx?affiliateToken={!MPP_GUID}&parameterName=TSNumber&clientUserId={!Subscription__c.Subscriber__r.Subscriber_Number_static__c}&serverUrl={!$Api.Partner_Server_URL_210}&sessionId={!GETSESSIONID()}" 
+    scrolling="true" id="theIframe" rendered="{!RENDER_MPP_FRAMES && NOT(ISNULL(Subscription__c.MPP_Premium_Subscription_ID__c))}"/>
+
+</apex:page>

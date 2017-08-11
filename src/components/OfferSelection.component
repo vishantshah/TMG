@@ -1,0 +1,607 @@
+<apex:component controller="OfferSelectionController" id="offerSelectionComponent">
+    <apex:attribute name="offerSelectorInstance" type="OfferSelector" assignTo="{!offerSelector}" required="true" description="Implementation of OfferSelector class."/>
+    <apex:attribute name="offersFilter" type="String[]" assignTo="{!lstFilterOffers}" required="false" description="If populated only selected offers will be presented." />
+
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/css/tableStyle.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/css/offlineFlowStyle.css')}"/>
+
+    <apex:pageMessages id="errorsTop" />
+
+    <apex:variable var="tick" value="{!URLFOR($Resource.Resources,'images/tick.gif')}" />
+    <apex:variable var="cross" value="{!URLFOR($Resource.Resources,'images/cross.gif')}" />
+    <apex:variable var="isPrint" value="{!isPremium}" />
+
+    <apex:pageblock title="Offer Selection">
+        <apex:outputLabel styleClass="customLabel" for="selectOffer" value="Select Offer" />&nbsp;&nbsp;
+        <apex:actionStatus startText="Requesting offer details..." id="duplicateStatus" onstop="addRowSupportForTables(); expandAll();" />
+        <br />
+        <apex:selectRadio styleClass="offerSelectionRadio radioCursor" id="selectOffer" value="{!selectionData.sSelectedOffer}" >
+            <apex:selectOptions value="{!lstOfferTypes}" />
+            <apex:actionSupport event="onclick" rerender="scriptVar, step2, errorsTop, step2Duplicate, lProducts" status="duplicateStatus" action="{!initTcodes}" />
+        </apex:selectRadio>
+    </apex:pageblock>
+    <apex:outputPanel id="scriptVar">
+        <script>
+            var lowStart = {!bIsLowStart};
+        </script>
+    </apex:outputPanel>
+    <apex:outputPanel id="step2">
+        <apex:pageBlock title="Order Details" rendered="{!showOrderDetails}">
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel for="orderMethod" value="Order Method:" />
+                    <apex:selectRadio styleClass="radioCursor" id="orderMethod" value="{!selectionData.sOrderMethod}">
+                        <apex:selectOptions value="{!lstOrderMethodValues}"/>
+                    </apex:selectRadio>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <div style="height:20px;">
+            <apex:actionStatus id="regStatus" onstop="addRowSupportForTables();goToAccountForm();">
+                <apex:facet name="start">
+                    <apex:outputPanel >
+                        <apex:image value="{!$Resource.Loading_Gif}" />Requesting...
+                    </apex:outputPanel>
+                </apex:facet>
+                <apex:facet name="stop"></apex:facet>
+            </apex:actionStatus>
+        </div>
+        <apex:pageMessages id="errorsMiddle" />
+
+        <!-- PROMOTION OFFERS -->
+        <apex:actionFunction name="selectProductRow" action="{!selectProductInfo}" rerender="step2Duplicate, pocPanel,  errorsMiddle" status="regStatus">
+            <apex:param id="selectedProd" name="selectedProd" value="" assignTo="{!selectionData.productId}"/>
+            <apex:param id="selectedTCode" name="selectedTCode" value="" assignTo="{!selectionData.sTcodeId}"/>
+        </apex:actionFunction>
+
+        <div id="promotionDiv">
+            <apex:pageBlock id="promotions" title="{!offerLabel&' Offer'}" rendered="{!showPromotions}" mode="edit">
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlocksectionItem rendered="{!!bIsLowStart}" >
+                        <label>Premium/Digital filter:</label>
+                        <apex:selectRadio value="{!selectedFilter}" >
+                            <apex:selectOptions value="{!lstFilterOptions}"/>
+                            <apex:actionSupport event="onclick" rerender="out, step2Duplicate, errorsMiddle" status="regStatus" action="{!selectFilter}" oncomplete="expandAll()"/>
+                        </apex:selectRadio>
+                    </apex:pageBlocksectionItem>
+                    <apex:pageBlocksectionItem >
+                        <apex:outputLabel value="Filter by Products: " for="productFilter"/>
+                        <apex:outputPanel >
+                            <apex:selectList value="{!selectedProductId}" id="productFilter" multiselect="false" size="1" >
+                                <apex:selectOptions value="{!productNames}"/>
+                                <apex:actionSupport event="onchange" rerender="out, step2Duplicate, errorsMiddle, promotions" action="{!selectWithProductFilter}" status="filterStatus" oncomplete="expandAll()"/>
+                            </apex:selectList>
+                            <apex:actionStatus id="filterStatus">
+                                <apex:facet name="start">
+                                    <apex:outputPanel style="vertical-align:middle">
+                                        <apex:image value="{!$Resource.Loading_Gif}"  /> Filtering...
+                                    </apex:outputPanel>
+                                </apex:facet>
+                                <apex:facet name="stop"></apex:facet>
+                            </apex:actionStatus>
+                        </apex:outputPanel>
+                    </apex:pageBlocksectionItem>
+                </apex:pageBlockSection>
+                <apex:outputLabel styleclass="padboxes TextLabels" style="float: none; font-weight:bold;">Select a TCode:</apex:outputLabel>
+                <apex:outputPanel id="out">
+                    <apex:outputPanel rendered="{!lstPromotionIncentives.size>0}">
+                        <table class="sfdcTable tCodeTable"  id="tCodeProductTable">
+                            <thead>
+                                <tr>
+                                    <th>T Code</th>
+                                    <th>Description</th>
+                                    <apex:outputPanel layout="none" rendered="{!bIsLowStart}"><th>Low Start Period</th></apex:outputPanel>
+                                    <th>52 One Off</th>
+                                    <th>26 One Off</th>
+                                    <th>13 One Off</th>
+                                    <th>52 Continuous</th>
+                                    <th>26 Continuous</th>
+                                    <th>13 Continuous</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!lstPromotionIncentives}" var="promo">
+                                    <tr class="masterRow" onclick="loadProductsSelection('{!promo.tCodeId}', {!bIsLowStart}, {!isPrint});" id="promorow_{!promo.tCodeId}">
+                                        <td>{!promo.tCode}
+                                            <input class="hiddenTCodeId" type="hidden" value="{!promo.tCodeId}" />
+                                        </td>
+                                        <td>{!promo.description}</td>
+                                        <apex:outputPanel layout="none" rendered="{!bIsLowStart}"><td>{!promo.lowStartPeriod}</td></apex:outputPanel>
+                                        <td><img src="{!IF(promo.allow52weeks, tick, cross)}" /></td>
+                                        <td><img src="{!IF(promo.allow26weeks, tick, cross)}" /></td>
+                                        <td><img src="{!IF(promo.allow13weeks, tick, cross)}" /></td>
+                                        <td>{!promo.allow52Continuous}</td>
+                                        <td>{!promo.allow26Continuous}</td>
+                                        <td>{!promo.allow13Continuous}</td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>
+                    </apex:outputPanel>
+                    <apex:pageMessage summary="No offer codes available" severity="3" rendered="{!lstPromotionIncentives.size=0}" />
+                </apex:outputPanel>
+            </apex:pageblock>
+        </div>
+
+        <!--  POC -->
+        <apex:outputPanel id="pocPanel" rendered="{!OR(selectionData.sSelectedOffer == 'POC', selectionData.sSelectedOffer == 'DirectMail')}">
+            <apex:pageblock title="POC" rendered="{!selectionData.sSelectedOffer == 'POC'}" >
+                <apex:pageBlockSection columns="1" >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel styleclass="fixedpricelabels">Direct Mail POC Search:</apex:outputLabel>
+                        <apex:inputText value="{!inputPOC}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandbutton action="{!findCustomerPOC}" value="Find POC Customer Record" rerender="pocRes, errorsMiddle, lProducts, pocButton" status="regStatus"/>
+                </apex:pageBlockButtons>
+            </apex:pageblock>
+
+            <apex:pageblock title="Direct Mail Search" rendered="{!selectionData.sSelectedOffer == 'DirectMail'}">
+                <apex:pageBlockSection columns="1" >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel styleclass="fixedpricelabels">Surname:</apex:outputLabel>
+                        <apex:inputText value="{!selectionData.sSurname}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel styleclass="fixedpricelabels">Post Code:</apex:outputLabel>
+                        <apex:inputText value="{!selectionData.sPostCode}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandbutton action="{!findCustomerDirectMail}" value="Find POC Customer Record" rerender="pocRes, errorsMiddle, lProducts, pocButton" status="regStatus"/>
+                </apex:pageBlockButtons>
+            </apex:pageblock>
+
+            <apex:actionFunction name="selectPocRow" action="{!selectPOC}" rerender="pocPanel, pocRes, lProducts, pocButton, errorsMiddle" status="regStatus">
+                <apex:param id="selectedPocSfdcId" name="selectedPocSfdcId" value="" assignTo="{!selectionData.pocSfdcId}"/>
+            </apex:actionFunction>
+            <apex:outputPanel id="pocRes">
+                <apex:pageBlock title="Results" rendered="{!returnedPOCsList.size>0}">
+                    <apex:pageBlockSection columns="1" id="ResultsPageBlock" title="Prospect Details:">
+                        <apex:pageBlockSectionItem rendered="{!isPrint}">
+                            <apex:outputLabel for="orderMethod">Order Method:</apex:outputLabel>
+                            <apex:selectRadio id="orderMethod" value="{!selectionData.sOrderMethod}" >
+                                <apex:selectOptions value="{!lstOrderMethodValues}" />
+                            </apex:selectRadio>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:outputPanel >
+                            <table class="sfdcTable prodTable" id="pocTable">
+                                <thead>
+                                    <tr>
+                                        <th>POC</th>
+                                        <th>Subscriber Number</th>
+                                        <th>Title</th>
+                                        <th>Name</th>
+                                        <th>Street</th>
+                                        <th>City</th>
+                                        <th>Postal Code</th>
+                                        <th>TCode</th>
+                                        <th>Expiry Date</th>
+                                        <th>Select</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!returnedPOCsList}" var="record">
+                                        <tr class="{!IF(selectionData.pocSfdcId == record.Id, 'selected', '')}">
+                                            <td><a href="/{!record.Id}" target="_blank">{!record.POC_ID__c}</a></td>
+                                            <td>{!record.Subscriber_Number__c}</td>
+                                            <td>{!record.title__c}</td>
+                                            <td>{!record.FirstName__c} {!record.LastName__c}</td>
+                                            <td>{!record.Street__c}</td>
+                                            <td>{!record.City__c}</td>
+                                            <td>{!record.PostalCode__c}</td>
+                                            <td><a href="/{!record.TCodeManagement__c}" target="_blank">{!record.TCodeManagement__r.Name}</a></td>
+                                            <td>
+                                                <apex:outputText value="{0,date,MM'/'dd'/'yyyy}" >
+                                                    <apex:param value="{!record.ExpiryDate__c}" />
+                                                </apex:outputText>
+                                            </td>
+                                            <td><input id="pocRadio_{!record.Id}" type="radio" name="pocSelection" value="{!record.Id}" onclick="selectPocRow('{!record.Id}');"  /></td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                        </apex:outputPanel>
+
+                </apex:pageBlock>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        <!-- END OF POC -->
+
+        <!-- MGM  -->
+        <apex:outputPanel id="mgmpanel">
+            <apex:pageblock title="MGM" rendered="{!selectionData.sSelectedOffer == 'MGM'}">
+                <apex:pageBlockSection columns="1" >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="mgmcode" value="MGM code: " />
+                        <apex:inputText value="{!selectionData.sMgmGiverCode}" id="mgmcode"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandbutton action="{!searchMGM}" value="Find MGM Giver Informations" rerender="mgmRes, step2Duplicate, errorsMiddle, lProducts" status="regStatus"/>
+                </apex:pageBlockButtons>
+            </apex:pageblock>
+            <apex:outputPanel id="mgmRes" >
+                <apex:pageBlock title="MGM Informations" rendered="{!NOT(ISNULL(mgmGiverInfo))}">
+                    <apex:pageBlockSection columns="1" id="ResultsPageBlock" title="MGM Details:"  >
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="poc">MGM Giver Ids:</apex:outputLabel>
+                            <apex:outputText id="poc" value="{!mgmGiverInfo.giver.PersonEmail} {!mgmGiverInfo.giver.Subscriber_Number_static__c}" />
+                        </apex:pageBlockSectionItem>
+                       <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="subid">MGM Giver Info:</apex:outputLabel>
+                            <apex:outputText id="subid" value="{!mgmGiverInfo.giver.Salutation} {!mgmGiverInfo.giver.FirstName} {!mgmGiverInfo.giver.LastName}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="subNumber">MGM Giver Adress:</apex:outputLabel>
+                            <apex:outputText id="subNumber" value="{!mgmGiverInfo.giver.PersonMailingPostalCode} {!mgmGiverInfo.giver.PersonMailingCity}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="weekPrice">Weekly Price:</apex:outputLabel>
+                            <apex:outputText id="weekPrice">&pound; {!mgmGiverInfo.Price}</apex:outputText>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="mgmProductName">Product</apex:outputLabel>
+                            <apex:outputText id="mgmProductName" value="{!mgmGiverInfo.productName}" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+            </apex:outputPanel>
+        </apex:outputPanel>
+
+        <!--  Staff Offer  -->
+        <apex:outputPanel id="pbStaff">
+            <apex:pageblock title="Staff Offer"  rendered="{!selectionData.sSelectedOffer=='Staff'}">
+                <apex:pageBlockSection columns="1" >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="staffname" value="Staff name: " />
+                        <apex:inputText value="{!selectionData.sStaffName}" id="staffname"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem rendered="{!selectionData.sSelectedOffer == 'Staff' && NOT(ISBLANK(selectionData.sStaffName))}">
+                        <apex:outputLabel for="selecstaffname" value="Selected Staff name: " />
+                        <apex:outputText value="{!selectionData.sStaffName}" id="selecstaffname"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandbutton action="{!enterStaffName}" value="Enter the name of the Staff" rerender="pbStaff, lProducts, step2Duplicate, errorsMiddle" status="regStatus" />
+                </apex:pageBlockButtons>
+            </apex:pageblock>
+        </apex:outputPanel>
+    </apex:outputPanel>
+
+    <!-- OPEN OFFERS AND OTHER PRODUCTS LIST-->
+    <apex:actionFunction name="selectTCodeProductRow" action="{!selectTcodeInfo}" rerender="step2Duplicate, pocPanel, mgmpanel, pbStaff,  errorsMiddle, pocButton" status="regStatus">
+        <apex:param id="selectedProductId" name="selectedProductId" value="" assignTo="{!selectionData.productId}"/>
+    </apex:actionFunction>
+    <div id="productList">
+        <apex:outputPanel layout="none" id="lProducts">
+            <apex:pageBlock title="Available Products" rendered="{!NOT(showPromotions) && NOT(ISBLANK(selectionData.sSelectedOffer)) && bProductsSearched}">
+                <apex:outputPanel id="prodPanel" rendered="{!lstAvailableProducts.size>0}">
+                    <table class="sfdcTable prodTable" id="productTable">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>{!$ObjectType.TCode_Product__c.fields.Weekly_Price__c.Label}</th>
+                                <apex:outputPanel layout="none" rendered="{!bIsLowStart}">
+                                    <th>{!$ObjectType.TCode_Product__c.fields.Low_Start_Price__c.label}</th>
+                                </apex:outputPanel>
+                                <apex:outputPanel layout="none" rendered="{!!isPrint}">
+                                    <th>{!$ObjectType.TCode_Product__c.fields.Digital_Monthly_Price__c.Label}</th>
+                                    <th>{!$ObjectType.TCode_Product__c.fields.Digital_Yearly_Price__c.Label}</th>
+                                </apex:outputPanel>
+                                <th>Incentive</th>
+                                <th>{!$ObjectType.zqu__ZProduct__c.fields.Print_Product__c.Label}</th>
+                                <apex:outputPanel layout="none" rendered="{!isPrint}">
+                                    <th>{!$ObjectType.zqu__ZProduct__c.fields.Voucher_Delivery_Type__c.Label}</th>
+                                </apex:outputPanel>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <apex:repeat value="{!lstAvailableProducts}" var="prod">
+                                <tr class="{!IF(prod.selected, 'selected', '')}">
+                                    <td>{!prod.sProductName}</td>
+                                    <td>{!prod.premiumPrice}</td>
+                                    <apex:outputPanel layout="none" rendered="{!bIsLowStart}">
+                                        <th>{!prod.lowStartPrice}</th>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel layout="none" rendered="{!!isPrint}">
+                                        <td>{!prod.digitalMonthlyPrice}</td>
+                                        <td>{!prod.digitalYearlyPrice}</td>
+                                    </apex:outputPanel>
+                                    <td>{!prod.incentives}</td>
+                                    <td><img src="{!IF(prod.isPrint, tick, cross)}" /></td>
+                                    <apex:outputPanel layout="none" rendered="{!isPrint}">
+                                        <td>{!prod.voucherDeliveryType}</td>
+                                    </apex:outputPanel>
+                                    <td><input id="prodRadio_{!prod.productId}" type="radio" name="prodSelection" value="{!prod.productId}" onclick="selectTCodeProductRow('{!prod.productId}');" /></td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!lstAvailableProducts.size==0}">
+                    No products found.
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </div>
+    <apex:outputPanel layout="block" id="pocButton" style="margin:10px auto 0px;">
+        <apex:pageBlock rendered="{!AND(OR(selectionData.sSelectedOffer == 'POC', selectionData.sSelectedOffer == 'DirectMail'), returnedPOCsList.size>0, NOT(ISBLANK(selectionData.sPocId)))}" >
+            <apex:pageBlockButtons location="top">
+                <apex:commandbutton action="{!offerSelector.processOfferSelection}" value="Process POC Payment" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:outputPanel>
+    <!-- FIND ACCOUNT -->
+    <div id="accountDiv">
+        <apex:outputPanel id="step2Duplicate">
+            <apex:pageblock title="Find Account" rendered="{!isFindAccountShowed}" id="pbFindAcc">
+                <apex:pageMessages id="searchErrors" />
+                <apex:pageBlockSection columns="1" >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="DuplicateSurnameOO">Surname:*</apex:outputLabel>
+                        <apex:inputText id="DuplicateSurnameOO" value="{!selectionData.sSurname}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="DuplicatePostCodeOO">Post Code:*</apex:outputLabel>
+                        <apex:inputText id="DuplicatePostCodeOO" value="{!selectionData.sPostCode}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem rendered="{!selectionData.sSelectedOffer == 'AdHocPrice'}">
+                        <apex:outputLabel for="discountPrice">Discount Price:*</apex:outputLabel>
+                        <apex:inputText id="discountPrice" value="{!selectionData.sDiscountPrice}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputPanel />
+                        <apex:outputLabel ><b>OR</b></apex:outputLabel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="tsNumber">TS Number:*</apex:outputLabel>
+                        <apex:inputText id="tsNumber" value="{!inputTsNumber}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem>
+                        <apex:outputPanel />
+                        <apex:outputLabel ><b>OR</b></apex:outputLabel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="email">Email:*</apex:outputLabel>
+                        <apex:inputText id="email" value="{!inputEmail}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton action="{!CheckDuplicates}" value="Check Existing Accounts" rerender="step2Results, pbFindAcc" status="searchStatus"/>
+                    &nbsp;
+                     <apex:actionStatus id="searchStatus">
+                        <apex:facet name="start">
+                            <apex:outputPanel >
+                                <apex:image value="{!$Resource.Loading_Gif}" /> Searching...
+                            </apex:outputPanel>
+                        </apex:facet>displayDupAccount
+                        <apex:facet name="stop"></apex:facet>
+                    </apex:actionStatus>
+                </apex:pageBlockButtons>
+            </apex:pageblock>
+
+            <apex:outputPanel id="step2Results">
+                <apex:pageBlock title="Existing Accounts" rendered="{!(NOT(ISNULL(lstFoundAccounts)) && NOT(lstFoundAccounts.size == 0))}">
+                    <apex:pageBlockSection columns="1">
+                        <apex:pageBlockTable value="{!lstFoundAccounts}" var="Dups">
+                            <apex:column headerValue="Product Type" title="Product Type" value="{!Dups.productType}"/>
+                            <apex:column headerValue="Name" title="Name" value="{!Dups.subscriber.Salutation} {!Dups.subscriber.Name}"/>
+                            <apex:column headerValue="{!$ObjectType.Account.Fields.Deceased__pc.Label}" value="{!Dups.subscriber.Deceased__pc}"/>
+                            <apex:column headerValue="{!$ObjectType.Account.Fields.Digital_Low_Start_Used__c.Label}" value="{!Dups.subscriber.Digital_Low_Start_Used__c}"/>
+                            <apex:column headerValue="{!$ObjectType.Account.fields.Mobile_Free_Trial_Used__c.Label}" value="{!Dups.subscriber.Mobile_Free_Trial_Used__c}"/>
+                            <apex:column value="{!Dups.subscriber.PersonEmail}"/>
+                            <apex:column headerValue="Address" title="Address" value="{!Dups.subscriber.PersonMailingStreet} {!Dups.subscriber.PersonMailingCity} {!Dups.subscriber.PersonMailingState} {!Dups.subscriber.PersonMailingPostalCode}"/>
+                            <apex:column headerValue="TS Number" title="TS Number" >
+                                <apex:outputlink value="{!URLFOR($Action.Account.View, Dups.subscriber.id)}" target="_blank">{!Dups.subscriber.Subscriber_Number_static__c}</apex:outputlink>
+                            </apex:column>
+                            <apex:column headerValue="Status" title="Status" value="{!Dups.subscriber.Subscription_Status__c}"/>
+                            <apex:column headerValue="Linked" title="Linked" rendered="{!selectionData.sSelectedProductType == 'Digital'}">
+                                {!IF(ISBLANK(Dups.subscriber.Guid__c), 'No', 'Yes')}
+                            </apex:column>
+                            <apex:column rendered="{!OR(selectionData.sSelectedProductType != 'Digital', OR(Dups.subscriber.Subscription_Status__c=='Inactive', ISNULL(Dups.subscriber.Guid__c)))}">
+                                <apex:commandLink value="Select" action="{!DisplayDupAccount}" >
+                                    <apex:param name="Dupsaccount" assignTo="{!selectionData.selectedAccountId}" value="{!Dups.subscriber.id}" />
+                                </apex:commandLink>
+                            </apex:column>
+                        </apex:pageblockTable>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton action="{!offerSelector.processOfferSelection}" value="Create New Customer" rendered="{!renderCreateExistingAccountBtn}"/>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </div>
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <script type="text/javascript">
+        j$ = jQuery.noConflict();
+
+        //add onload call to addRowSupportForTables
+        j$(document).ready(function(){
+            addRowSupportForTables();
+        });
+
+        //method that expands all tcode rows to show their respective products
+        function expandAll(){
+            var arrTCodeIds = [];
+            var isPrint = {!isPrint};
+            j$('#tCodeProductTable').find('tr').each(function(){
+                var tCodeId = j$(this).find('.hiddenTCodeId').val();
+                if(!!tCodeId ){
+                    arrTCodeIds.push(tCodeId);
+                }
+            });
+            openProducts(arrTCodeIds, lowStart, isPrint);
+        }
+
+        function addRowSupportForTables(){
+            if(j$('[id$="productTable"]').length > 0 || j$('[id$="tCodeTable"]').length > 0 || j$('[id$="pocTable"]').length > 0){
+                j$('*').unbind();
+            }
+
+            if(j$('[id$="productTable"]').length > 0){
+                j$('[id$="productTable"] tr.selected input[type="radio"]').attr('checked', 'checked');
+
+                j$('[id$="productTable"] tbody').on('click', 'tr', function(){
+                    var radio = j$(this).find('input[type="radio"]').first();
+                    radio.prop('checked', true);
+                    selectTCodeProductRow(radio.val());
+                    j$('[id$="productTable"] tr').removeClass('selected').removeClass('hoveredRow');
+                    j$(this).addClass('selected');
+                });
+
+                j$('[id$="productTable"] tbody').on('mouseover', 'tr', function(){
+                    if(!j$(this).hasClass('hoveredRow')){
+                        j$(this).addClass('hoveredRow');
+                    }
+                });
+
+                j$('[id$="productTable"] tbody').on('mouseout', 'tr', function(){
+                    if(!j$(this).find('input[type="radio"]').prop('checked')){
+                        j$(this).removeClass('hoveredRow');
+                    }
+                });
+            }
+
+            if(j$('[id$="tCodeProductTable"]').length > 0){
+                j$('[id$="tCodeProductTable"] tbody').on('mouseover', 'tr', function(){
+                    if(!j$(this).hasClass('hoveredRow')){
+                        j$(this).addClass('hoveredRow');
+                    }
+                });
+
+                j$('[id$="tCodeProductTable"] tbody').on('mouseout', 'tr', function(){
+                    j$(this).removeClass('hoveredRow');
+                });
+            }
+
+            if(j$('[id$="pocTable"]').length > 0){
+                j$('[id$="pocTable"] tr.selected input[type="radio"]').attr('checked', 'checked');
+
+                j$('[id$="pocTable"] tbody').on('click', 'tr', function(){
+                    var radio = j$(this).find('input[type="radio"]').first();
+                    radio.prop('checked', true);
+                    selectPocRow(radio.val());
+                    j$('[id$="pocTable"] tr').removeClass('selected').removeClass('hoveredRow');
+                    j$(this).addClass('selected');
+                });
+
+                j$('[id$="pocTable"] tbody').on('mouseover', 'tr', function(){
+                    if(!j$(this).hasClass('hoveredRow')){
+                        j$(this).addClass('hoveredRow');
+                    }
+                });
+
+                j$('[id$="pocTable"] tbody').on('mouseout', 'tr', function(){
+                    j$(this).removeClass('hoveredRow');
+                });
+            }
+        }
+
+        function markAsSelected(element, productId, tCodeId){
+            var jElement = j$(element);
+            jElement.find('input[type="radio"]').prop('checked', true);
+            selectProductRow(productId, tCodeId);
+            j$('tr').removeClass('selected')
+            j$('tr.childRow').removeClass('hoveredRow');
+            j$('#productInfo_'+tCodeId).prev().addClass('selected');
+            jElement.addClass('selected');
+        }
+
+        function goToAccountForm(){
+            if(j$('#accountDiv').length>0){
+                j$(document).scrollTop(j$('#accountDiv').offset().top);
+                j$('#accountDiv input[id$="DuplicateSurnameOO"]').focus();
+            }
+        }
+
+        function openProducts(tCodeIds, isLowStart, isPrint){
+            if(tCodeIds.length > 0){
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.OfferSelectionController.getTCodesDetails}',
+                    tCodeIds, getSelectedProductId(),
+                    function(result, event){
+                        j$.each(result, function(key, value){
+                            callbackHandler(value, event, key, isLowStart, !isPrint);
+                        });
+                    }
+                );
+            }
+        }
+
+        function loadProductsSelection(tCodeId, isLowStart, isPrint){
+            if(!!tCodeId){
+                var next = j$('#promorow_'+tCodeId).next();
+                if(next.attr('id') == ('productInfo_'+tCodeId)){
+                    if(next.find('input[type="radio"]:checked').length === 0){
+                        j$('#productInfo_'+tCodeId).remove();
+                    }
+                }else{
+                    Visualforce.remoting.Manager.invokeAction(
+                        '{!$RemoteAction.OfferSelectionController.getTCodeDetails}',
+                        tCodeId, getSelectedProductId(),
+                        function(result, event){
+                             callbackHandler(result, event, tCodeId, isLowStart, !isPrint);
+                        }
+                    );
+                }
+            }else{
+                throw 'Error: tCodeId not passed correctly.';
+            }
+        }
+
+        function callbackHandler(result, event, tCodeId, isLowStart, generateDigitalPrices){
+            if(result == null || result.length == 0) return false;
+            var row = j$('#promorow_'+tCodeId);
+            //console.log(row);
+            var tdCount = row.children().length;
+            var tickPath = '{!tick}';
+            var crossPath = '{!cross}';
+            var lowStartHeader = '';
+            var lowStartContent = '';
+            if(isLowStart){
+                lowStartHeader = '<th>Low Start Price</th>';
+            }
+
+            var digitalHeader = '';
+            var digitalContent = '';
+            var voucherHeader = '';
+            var voucherContent = '';
+            if(generateDigitalPrices){
+                var digitalMonthlyLabel = '{!$ObjectType.TCode_Product__c.fields.Digital_Monthly_Price__c.Label}';
+                var digitalYearlyLabel = '{!$ObjectType.TCode_Product__c.fields.Digital_Yearly_Price__c.Label}';
+                digitalHeader = '<th>'+digitalMonthlyLabel+'</th><th>'+digitalYearlyLabel+'</th>';
+            }else{
+                voucherHeader = '<th>Voucher Delivery Type</th>';
+            }
+
+            var htmlRowStart = '<tr id="productInfo_'+tCodeId+'"><td colspan="'+tdCount+'" class="offerSubrow"><table class="sfdcTable offerSubrow"><tr><th>Product Name</th>'+lowStartHeader+'<th width="10%">Weekly Price</th>'+digitalHeader+'<th width="35%">Incentive</th><th>Print Product</th>'+voucherHeader+'<th width="5%">Select</th>';
+            var hmltRowEnd = '</table></td></tr>';
+            for(var i = 0; i<result.length; i++){
+                lowStartContent = '';
+                if(isLowStart){
+                    lowStartContent = '<td>'+result[i].lowStartPrice+'</td>';
+                }
+                if(generateDigitalPrices){
+                    digitalContent = '<td>'+result[i].digitalMonthlyPrice+'</td><td>'+result[i].digitalYearlyPrice+'</td>';
+                }else{
+                    voucherContent = '<td>'+result[i].voucherDeliveryType+'</td>';
+                }
+                var printProductValue = '<img src="'+(result[i].isPrint?tickPath:crossPath)+'" />';
+
+                htmlRowStart += '<tr class="childRow" onclick="markAsSelected(this, \'' + result[i].productId + '\', \'' + tCodeId + '\');" ><td>'+result[i].sProductName+'</td>'+lowStartContent+'<td>'+result[i].premiumPrice+'</td>'+digitalContent+'<td>'+result[i].incentives+'</td><td>'+printProductValue+'</td>'+voucherContent+'<td><input type="radio" name="offerSelection" value="'+result[i].productId+'" onclick="markAsSelected(this.parentElement.parentElement, \'' + result[i].productId + '\', \'' + tCodeId + '\');" /></td></tr>'
+            }
+            row.after(htmlRowStart + hmltRowEnd);
+        }
+
+        function getSelectedProductId() {
+            var element = j$("select[id$='productFilter']");
+            return element.val();
+        }
+    </script>
+</apex:component>

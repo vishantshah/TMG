@@ -1,0 +1,5 @@
+<apex:page >
+<script>
+window.location.href='http://s.telegraph.co.uk/maintenance/';
+</script>
+</apex:page>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MPP Transaction History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MPP Transaction Histories</value>
+    </caseValues>
+    <fields>
+        <label><!-- AUDDIS Ref --></label>
+        <name>AUDDIS_Ref__c</name>
+    </fields>
+    <fields>
+        <label><!-- Access Level --></label>
+        <name>Access_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Card Type --></label>
+        <name>Card_Type__c</name>
+        <picklistValues>
+            <masterLabel>American Express</masterLabel>
+            <translation><!-- American Express --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mastercard</masterLabel>
+            <translation><!-- Mastercard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visa</masterLabel>
+            <translation><!-- Visa --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Currency --></label>
+        <name>Currency__c</name>
+    </fields>
+    <fields>
+        <label><!-- DD Account Name --></label>
+        <name>DD_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- DD Account Number --></label>
+        <name>DD_Account_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- DD Sort Code --></label>
+        <name>DD_Sort_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- DD Transaction Type --></label>
+        <name>DD_Transaction_Type__c</name>
+        <picklistValues>
+            <masterLabel>AUDDIS</masterLabel>
+            <translation><!-- AUDDIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment</masterLabel>
+            <translation><!-- Payment --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MPP Digital Subscription ID --></label>
+        <name>Digital_Subscription_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected Amount --></label>
+        <name>Expected_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Failure Code --></label>
+        <name>Failure_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Failure Reason --></label>
+        <name>Failure_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Net Amount --></label>
+        <name>Net_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order ID --></label>
+        <name>Order_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Date --></label>
+        <name>Payment_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Submission Date --></label>
+        <name>Payment_Submission_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Type --></label>
+        <name>Payment_Type__c</name>
+        <picklistValues>
+            <masterLabel>CreditDebitCard</masterLabel>
+            <translation><!-- CreditDebitCard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DirectDebit</masterLabel>
+            <translation><!-- DirectDebit --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Payment status --></label>
+        <name>Payment_status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refund</masterLabel>
+            <translation><!-- Refund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MPP Premium Subscription ID --></label>
+        <name>Premium_Subscription_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premium Subscription ID from Sub --></label>
+        <name>Premium_Subscription_ID_from_Sub__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Product_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Refunded Amount --></label>
+        <name>Refunded_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Refunded Order --></label>
+        <name>Refunded_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sale Type --></label>
+        <name>Sale_Type__c</name>
+        <picklistValues>
+            <masterLabel>Refund</masterLabel>
+            <translation><!-- Refund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sale</masterLabel>
+            <translation><!-- Sale --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subscriber --></label>
+        <name>Subscriber__c</name>
+        <relationshipLabel><!-- MPP Transaction Histories --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Subscription Start Date --></label>
+        <name>Subscription_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Type --></label>
+        <name>Subscription_Type__c</name>
+        <picklistValues>
+            <masterLabel>Continuous</masterLabel>
+            <translation><!-- Continuous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>One off</masterLabel>
+            <translation><!-- One off --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subscription --></label>
+        <name>Subscription__c</name>
+        <relationshipLabel><!-- MPP Transaction Histories --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Total Price --></label>
+        <name>Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Amount --></label>
+        <name>VAT_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Country --></label>
+        <name>VAT_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Rate --></label>
+        <name>VAT_Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Name --></label>
+        <name>VAT_Type__c</name>
+        <picklistValues>
+            <masterLabel>EU Standard</masterLabel>
+            <translation><!-- EU Standard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non EU Exempt</masterLabel>
+            <translation><!-- Non EU Exempt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UK Standard</masterLabel>
+            <translation><!-- UK Standard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UK Zero</masterLabel>
+            <translation><!-- UK Zero --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>MPP Transaction History Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Direct Debit Info --></label>
+            <section>Direct Debit Info</section>
+        </sections>
+        <sections>
+            <label><!-- Payment Info --></label>
+            <section>Payment Info</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

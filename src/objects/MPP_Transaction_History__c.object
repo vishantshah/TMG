@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AUDDIS_Ref__c</fullName>
+        <externalId>true</externalId>
+        <label>AUDDIS Ref</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Access_Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Access Level</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Card_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Card Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>American Express</fullName>
+                <default>false</default>
+                    <label>American Express</label>
+                </value>
+                <value>
+                <fullName>Mastercard</fullName>
+                <default>false</default>
+                    <label>Mastercard</label>
+                </value>
+                <value>
+                <fullName>Visa</fullName>
+                <default>false</default>
+                    <label>Visa</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Currency__c</fullName>
+        <defaultValue>&apos;GBP&apos;</defaultValue>
+        <externalId>false</externalId>
+        <label>Currency</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_Account_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>DD Account Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>DD Account Number</label>
+        <length>8</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_Payment_Completion_Date__c</fullName>
+        <description>The date when DD payment is completed within business. Currently it is 5 days after payment date.</description>
+        <externalId>false</externalId>
+        <formula>IF(AND(ISPICKVAL(Payment_Type__c,&apos;DirectDebit&apos;), ISPICKVAL(Sale_Type__c, &apos;Sale&apos;), ISPICKVAL(Payment_status__c, &apos;Success&apos;)), DATEVALUE(Payment_Date__c) + 5, NULL)</formula>
+        <inlineHelpText>The date when DD payment is completed within business. Currently it is 5 days after payment date.</inlineHelpText>
+        <label>DD Payment Completion Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DD_Sort_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>DD Sort Code</label>
+        <length>8</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_Transaction_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>DD Transaction Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>AUDDIS</fullName>
+                <default>false</default>
+                    <label>AUDDIS</label>
+                </value>
+                <value>
+                <fullName>Payment</fullName>
+                <default>false</default>
+                    <label>Payment</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Digital_Subscription_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>MPP Digital Subscription ID</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Failure_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Failure Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Failure_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Failure Reason</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Net_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Net Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>One_Time_Payment_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>One Time Payment Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Tablet Access</fullName>
+                <default>false</default>
+                    <label>Tablet Access</label>
+                </value>
+                <value>
+                <fullName>Undated Vouchers</fullName>
+                <default>false</default>
+                    <label>Undated Vouchers</label>
+                </value>
+                <value>
+                <fullName>Missed payment</fullName>
+                <default>false</default>
+                    <label>Missed payment</label>
+                </value>
+                <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Order_ID__c</fullName>
+        <externalId>true</externalId>
+        <label>Order ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Submission_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Submission Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>DirectDebit</fullName>
+                <default>false</default>
+                    <label>DirectDebit</label>
+                </value>
+                <value>
+                <fullName>CreditDebitCard</fullName>
+                <default>false</default>
+                    <label>CreditDebitCard</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_status__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Failed</fullName>
+                <default>false</default>
+                    <label>Failed</label>
+                </value>
+                <value>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                <fullName>Refund</fullName>
+                <default>false</default>
+                    <label>Refund</label>
+                </value>
+                <value>
+                <fullName>Success</fullName>
+                <default>false</default>
+                    <label>Success</label>
+                </value>
+                <value>
+                <fullName>Pending</fullName>
+                <default>false</default>
+                    <label>Pending</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Premium_Subscription_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>MPP Premium Subscription ID</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Premium_Subscription_ID_from_Sub__c</fullName>
+        <externalId>false</externalId>
+        <formula>Subscription__r.MPP_Premium_Subscription_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Premium Subscription ID from Sub</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_name__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Name</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Refunded_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Refunded Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Refunded_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Refunded Order</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sale_Order_ID__c</fullName>
+        <description>Sale Order Id refund is done for</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sale Order Id refund is done for</inlineHelpText>
+        <label>Sale Order ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sale_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Sale Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Sale</fullName>
+                <default>false</default>
+                    <label>Sale</label>
+                </value>
+                <value>
+                <fullName>Refund</fullName>
+                <default>false</default>
+                    <label>Refund</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subscriber__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Subscriber Account</description>
+        <externalId>false</externalId>
+        <label>Subscriber</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>MPP Transaction Histories</relationshipLabel>
+        <relationshipName>MPP_Transaction_Histories</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Subscription__r.Start_Date__c</formula>
+        <label>Subscription Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Continuous</fullName>
+                <default>false</default>
+                    <label>Continuous</label>
+                </value>
+                <value>
+                <fullName>One off</fullName>
+                <default>false</default>
+                    <label>One off</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subscription__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Subscription</label>
+        <referenceTo>Subscription__c</referenceTo>
+        <relationshipLabel>MPP Transaction Histories</relationshipLabel>
+        <relationshipName>MPP_Transaction_Histories</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Total_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>VAT_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>VAT Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>VAT_Country__c</fullName>
+        <externalId>false</externalId>
+        <label>VAT Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VAT_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>VAT Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>VAT_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>VAT Name</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>UK Standard</fullName>
+                <default>true</default>
+                    <label>UK Standard</label>
+                </value>
+                <value>
+                <fullName>EU Standard</fullName>
+                <default>false</default>
+                    <label>EU Standard</label>
+                </value>
+                <value>
+                <fullName>UK Zero</fullName>
+                <default>false</default>
+                    <label>UK Zero</label>
+                </value>
+                <value>
+                <fullName>Non EU Exempt</fullName>
+                <default>false</default>
+                    <label>Non EU Exempt</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>MPP Transaction History</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>MPP-{0000}</displayFormat>
+        <label>MPP Transaction History Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>MPP Transaction Histories</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Sale_Order_Id_Required_For_Refunds</fullName>
+        <active>true</active>
+        <description>Manually created MPP Transaction History record for refund must contain original sale order id.</description>
+        <errorConditionFormula>AND(ISPICKVAL( Payment_status__c, &apos;Refund&apos; ), ISPICKVAL( Sale_Type__c, &apos;Refund&apos;), ISBLANK(Sale_Order_ID__c), $Profile.Name != &apos;TMG System&apos;)</errorConditionFormula>
+        <errorDisplayField>Sale_Order_ID__c</errorDisplayField>
+        <errorMessage>Sale Order Id is required for refund</errorMessage>
+    </validationRules>
+</CustomObject>

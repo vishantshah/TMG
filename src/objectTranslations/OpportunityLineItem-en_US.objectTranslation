@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Ad Unit Line Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Ad Unit Line Items</value>
+    </caseValues>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other Info</value>
+        </caseValues>
+        <name>line_description_opportunitylineitem</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Unit Line Item Description</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Unit Line Item Description</value>
+        </caseValues>
+        <name>opportunity_product_description</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Unit Line Item Information</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Unit Line Item Information</value>
+        </caseValues>
+        <name>opportunity_product_information</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ad Unit Line Item Report</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Ad Unit Line Item Report</value>
+        </caseValues>
+        <name>opportunity_product_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Quantity (CPM or Days)</value>
+        </caseValues>
+        <name>quantity_opportunitylineitem</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <label><!-- AOV --></label>
+        <name>AOV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Above floor --></label>
+        <name>AboveFloor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual --></label>
+        <name>Actual__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount Delivered --></label>
+        <name>Amount_Delivered__c</name>
+    </fields>
+    <fields>
+        <help><!-- Any information about behavioural targeting, if appicabe. --></help>
+        <label><!-- Behavioural information --></label>
+        <name>Behavioural_information__c</name>
+    </fields>
+    <fields>
+        <label><!-- Booked Amount --></label>
+        <name>Booked_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget --></label>
+        <name>Budget__c</name>
+    </fields>
+    <fields>
+        <label><!-- CTR --></label>
+        <name>CTR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Calculated Average --></label>
+        <name>Calculated_Average__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bus Opp.</masterLabel>
+            <translation><!-- Bus Opp. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Garage Sale</masterLabel>
+            <translation><!-- Garage Sale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Merchandise</masterLabel>
+            <translation><!-- Merchandise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate</masterLabel>
+            <translation><!-- Real Estate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recruitment</masterLabel>
+            <translation><!-- Recruitment --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Creative Chased --></label>
+        <name>Creative_Chased__c</name>
+    </fields>
+    <fields>
+        <label><!-- Creative Status --></label>
+        <name>Creative_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Discount --></label>
+        <name>Discount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Flight number from Doubleclick --></help>
+        <label><!-- Doubleclick Flight Number --></label>
+        <name>Doubleclick_Flight_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flight End --></label>
+        <name>Flight_End__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flight Optimization --></label>
+        <name>Flight_Optimization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flight completed --></label>
+        <name>Flight_completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flight completion status --></label>
+        <name>Flight_completion_status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Force Update --></label>
+        <name>Force_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Amount --></label>
+        <name>Forecast_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast --></label>
+        <name>Forecast__c</name>
+    </fields>
+    <fields>
+        <help><!-- Geography data, if applicable --></help>
+        <label><!-- Geo Data --></label>
+        <name>Geo_Data__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gross Commission --></label>
+        <name>Gross_Commission__c</name>
+    </fields>
+    <fields>
+        <label><!-- IO --></label>
+        <name>IO__c</name>
+        <relationshipLabel><!-- Ad Campaign / Ad Units --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- IdForReports --></label>
+        <name>IdForReports__c</name>
+    </fields>
+    <fields>
+        <label><!-- Net Unit Price --></label>
+        <name>Net_Unit_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Page Impressions --></label>
+        <name>Page_Impressions__c</name>
+    </fields>
+    <fields>
+        <help><!-- Captures the floor price for the product, depending on the pricebook on the Ad Campaign --></help>
+        <label><!-- Product/Pricebook Floor --></label>
+        <name>Product_Pricebook_Floor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Property --></label>
+        <name>Property__c</name>
+        <picklistValues>
+            <masterLabel>MyMagazine</masterLabel>
+            <translation><!-- MyMagazine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MyMagazine.com</masterLabel>
+            <translation><!-- MyMagazine.com --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MyNewspaper</masterLabel>
+            <translation><!-- MyNewspaper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MyNewspaper.com</masterLabel>
+            <translation><!-- MyNewspaper.com --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ready to Be Invoiced --></label>
+        <name>Ready_to_Be_Invoiced__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resolution --></label>
+        <name>Resolution__c</name>
+        <picklistValues>
+            <masterLabel>Agency happy to pay in full</masterLabel>
+            <translation><!-- Agency happy to pay in full --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Note needed - Agency Blame</masterLabel>
+            <translation><!-- Credit Note needed - Agency Blame --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Note needed - TMG Blame</masterLabel>
+            <translation><!-- Credit Note needed - TMG Blame --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extended</masterLabel>
+            <translation><!-- Extended --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value into next campaign</masterLabel>
+            <translation><!-- Value into next campaign --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Flight Begin --></label>
+        <name>Schedule_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Screen Grab sent to Client --></label>
+        <name>Screen_Grab_sent_to_Client__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>(1) Open</masterLabel>
+            <translation><!-- (1) Open --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(2) Booked</masterLabel>
+            <translation><!-- (2) Booked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(3) Closed</masterLabel>
+            <translation><!-- (3) Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(4) Omitted</masterLabel>
+            <translation><!-- (4) Omitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Sub channels where the advert should be placed, if applicable. --></help>
+        <label><!-- Sub Channel Details --></label>
+        <name>Sub_Channel_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Third party Stats checked --></label>
+        <name>Third_party_Stats_checked__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Enter details about time-specific details of this flight --></help>
+        <label><!-- Timing Information --></label>
+        <name>Timing_Information__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total List Price --></label>
+        <name>Total_List_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total Price of this flight - quantity multiplied by sold price --></help>
+        <label><!-- Total Price --></label>
+        <name>Total_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Transactional Value --></label>
+        <name>Total_Transactional_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Users --></label>
+        <name>Unique_Users__c</name>
+    </fields>
+    <fields>
+        <label><!-- Volume of Acquisition --></label>
+        <name>Volume_of_Acquisition__c</name>
+    </fields>
+    <fields>
+        <label><!-- Volume of Clicks --></label>
+        <name>Volume_of_Clicks__c</name>
+    </fields>
+    <fields>
+        <label><!-- Was flight optimized/changed? --></label>
+        <name>Was_flight_optimized_changed__c</name>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- test_date --></label>
+        <name>test_date__c</name>
+    </fields>
+    <layouts>
+        <layout>Admin Opportunity Product Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Pricing Information --></label>
+            <section>Pricing Information</section>
+        </sections>
+        <sections>
+            <label><!-- Product Information --></label>
+            <section>Product Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Opportunity Product Layout</layout>
+        <sections>
+            <label><!-- Ad Ops --></label>
+            <section>Ad Ops</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Pricing Information --></label>
+            <section>Pricing Information</section>
+        </sections>
+        <sections>
+            <label><!-- Product Information --></label>
+            <section>Product Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>eCommerce</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- KPI Information --></label>
+            <section>KPI Information</section>
+        </sections>
+        <sections>
+            <label><!-- Pricing Information --></label>
+            <section>Pricing Information</section>
+        </sections>
+        <sections>
+            <label><!-- Product Information --></label>
+            <section>Product Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- Flight end date must be the same as or after the Flight start date --></errorMessage>
+        <name>Flight_end_date_after_flight_start_date</name>
+    </validationRules>
+</CustomObjectTranslation>

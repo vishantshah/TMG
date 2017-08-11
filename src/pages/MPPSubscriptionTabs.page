@@ -1,0 +1,23 @@
+<apex:page id="mppSubscriptionTabs" standardController="Subscription__c" extensions="MPPInterfaceHTTP" action="{!initMPPGuid}">
+
+    <apex:outputText value="{!Subscription__c.Subscriber__r.Subscriber_Number_static__c}" rendered="false"/>
+    
+    <apex:tabPanel switchType="ajax" selectedTab="Information" id="mppSwitchTab">
+        <apex:tab label="Information" name="Information">
+            <apex:outputLabel >Click on Tab to view transactional data.</apex:outputLabel>
+        </apex:tab>
+    
+        <apex:tab label="Orders" name="Orders" id="orders" >
+            <apex:iframe src="{!BASE_MPP_URL}management/embedded/Subscriptions.aspx?affiliateToken={!MPP_GUID}&parameterName=TSNumber&clientUserId={!Subscription__c.Subscriber__r.Subscriber_Number_static__c}&paymentScheduleId={!Subscription__c.MPP_Premium_Subscription_ID__c}&serverUrl={!$Api.Partner_Server_URL_210}&sessionId={!$Api.Session_ID}" scrolling="true" rendered="{!RENDER_MPP_FRAMES}"/>
+        </apex:tab>
+    
+        <apex:tab label="Active Direct Debits" name="Active Direct Debits" id="activeDirectDebits">
+            <apex:iframe src="{!BASE_MPP_URL}management/embedded/DirectDebitWalletDetails.aspx?affiliateToken={!MPP_GUID}&parameterName=TSNumber&clientUserId={!Subscription__c.Subscriber__r.Subscriber_Number_static__c}&serverUrl={!$Api.Partner_Server_URL_210}&sessionId={!$Api.Session_ID}" scrolling="true" rendered="{!RENDER_MPP_FRAMES}"/>
+        </apex:tab>
+        
+        <apex:tab label="Credit Card Details" name="Credit Card Details" id="creditCardDetails">
+          <apex:iframe src="{!BASE_MPP_URL}management/embedded/ewalletdetailsnoaddress.aspx?affiliateToken={!MPP_GUID}&parameterName=TSNumber&clientUserId={!Subscription__c.Subscriber__r.Subscriber_Number_static__c}&serverUrl={!$Api.Partner_Server_URL_210}&sessionId={!$Api.Session_ID}" scrolling="true" rendered="{!RENDER_MPP_FRAMES}"/>
+        </apex:tab>
+    </apex:tabPanel>
+    
+</apex:page>

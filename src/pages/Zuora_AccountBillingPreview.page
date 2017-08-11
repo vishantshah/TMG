@@ -1,0 +1,5 @@
+<apex:page standardController="Account">
+      <apex:outputPanel style="overflow:auto;width:400px;height:300px;">
+      <c:Zuora_QuoteBillingPreview accountID="{! Account.id}"/>
+   </apex:outputPanel>
+</apex:page>

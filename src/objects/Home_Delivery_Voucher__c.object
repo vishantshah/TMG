@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>HomeDeliveryVoucherOverride</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object that holds information about Deliver My Newspaper 3rd party platform usage or manual, call center defined home deliveries.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>API_Data__c</fullName>
+        <description>In case of API created record, specifies full payload of the transactiion.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>In case of API created record, specifies full payload of the transactiion.</inlineHelpText>
+        <label>API Data</label>
+        <length>131072</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <description>Link to account record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Link to account record.</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Home Delivery Vouchers</relationshipLabel>
+        <relationshipName>Home_Delivery_Vouchers</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Delivery_Address__c</fullName>
+        <description>Concatenation of customer address fields.</description>
+        <externalId>false</externalId>
+        <formula>Mailing_Postal_Code__c &amp;
+IF(NOT(ISBLANK(Mailing_Postal_Code__c )), BR(), &apos;&apos;) &amp;
+Mailing_Address__c &amp;
+IF(OR(NOT(ISBLANK(Mailing_Postal_Code__c)), NOT(ISBLANK(Mailing_Address__c))), BR(), &apos;&apos;) &amp;
+Mailing_Town__c &amp;
+IF(OR(NOT(ISBLANK(Mailing_County__c)),NOT(ISBLANK(Mailing_Address__c)),NOT(ISBLANK(Mailing_Town__c))), BR(),&apos;&apos;) &amp; 
+Mailing_County__c</formula>
+        <inlineHelpText>Concatenation of customer address fields.</inlineHelpText>
+        <label>Delivery Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_Days__c</fullName>
+        <description>Defines days at which the newspaper should be delivered.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines days at which the newspaper should be delivered.</inlineHelpText>
+        <label>Delivery Days</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Mon</fullName>
+                    <default>false</default>
+                    <label>Mon</label>
+                </value>
+                <value>
+                    <fullName>Tue</fullName>
+                    <default>false</default>
+                    <label>Tue</label>
+                </value>
+                <value>
+                    <fullName>Wed</fullName>
+                    <default>false</default>
+                    <label>Wed</label>
+                </value>
+                <value>
+                    <fullName>Thu</fullName>
+                    <default>false</default>
+                    <label>Thu</label>
+                </value>
+                <value>
+                    <fullName>Fri</fullName>
+                    <default>false</default>
+                    <label>Fri</label>
+                </value>
+                <value>
+                    <fullName>Sat</fullName>
+                    <default>false</default>
+                    <label>Sat</label>
+                </value>
+                <value>
+                    <fullName>Sun</fullName>
+                    <default>false</default>
+                    <label>Sun</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Defines offer description. It is auto-populated based on the source of the record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines offer description. It is auto-populated based on the source of the record.</inlineHelpText>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Duplicate_Flag__c</fullName>
+        <description>Flag showing if record was added after the first one (if red). First record in type is green.</description>
+        <externalId>false</externalId>
+        <formula>IMAGE( 
+IF(Is_Duplicate__c, &quot;/img/samples/flag_red.gif&quot;,
+&quot;/img/samples/flag_green.gif&quot;), &apos;flag&apos;
+)</formula>
+        <inlineHelpText>Flag showing if record was added after the first one (if red). First record in type is green.</inlineHelpText>
+        <label>Duplicate Flag</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <description>Email - in some cases might be different to the email on the related account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Email - in some cases might be different to the email on the related account.</inlineHelpText>
+        <label>Email</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Name__c</fullName>
+        <description>First name of the subscriber using home delivery voucher.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>First name of the subscriber using home delivery voucher.</inlineHelpText>
+        <label>First Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Duplicate__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if this is record is second or later for the specific record type.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if this is record is second or later for the specific record type.</inlineHelpText>
+        <label>Is Duplicate</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Last_Name__c</fullName>
+        <description>Last name of the subscriber using home delivery voucher.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Last name of the subscriber using home delivery voucher.</inlineHelpText>
+        <label>Last Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_Address__c</fullName>
+        <description>Address information - in some cases might be different to the address on the related account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Address information - in some cases might be different to the address on the related account.</inlineHelpText>
+        <label>Mailing Address</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Mailing_County__c</fullName>
+        <description>County - in some cases might be different to the address on the related account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>County - in some cases might be different to the address on the related account.</inlineHelpText>
+        <label>Mailing County</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_Postal_Code__c</fullName>
+        <description>Post Code - in some cases might be different to the address on the related account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Post Code - in some cases might be different to the address on the related account.</inlineHelpText>
+        <label>Mailing Postal Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_Town__c</fullName>
+        <description>Town - in some edge cases might be different to the address field on the related account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Town - in some edge cases might be different to the address field on the related account.</inlineHelpText>
+        <label>Mailing Town</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Marketing_Preference_Email__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if subscriber agreed to being contacted by email.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if subscriber agreed to being contacted by email.</inlineHelpText>
+        <label>Marketing Preference Email</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Marketing_Preference_Phone__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if subscriber agreed to being contacted by phone.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if subscriber agreed to being contacted by phone.</inlineHelpText>
+        <label>Marketing Preference Phone</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Marketing_Preference_Post__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if subscriber agreed to being contacted by post.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if subscriber agreed to being contacted by post.</inlineHelpText>
+        <label>Marketing Preference Post</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Marketing_Preference_SMS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Defines if subscriber agreed to being contacted by texts.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines if subscriber agreed to being contacted by texts.</inlineHelpText>
+        <label>Marketing Preference SMS</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Offer_Name__c</fullName>
+        <description>Defines offer name. It is auto-populated based on the source of the record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines offer name. It is auto-populated based on the source of the record.</inlineHelpText>
+        <label>Offer Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone__c</fullName>
+        <description>Phone number of the subscriber.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Phone number of the subscriber.</inlineHelpText>
+        <label>Phone</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Product determined by the number of delivery days.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Product determined by the number of delivery days.</inlineHelpText>
+        <label>Product</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>You can only select Print products for home delivery.</errorMessage>
+            <filterItems>
+                <field>zqu__ZProduct__c.Print_Product__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>zqu__ZProduct__c</referenceTo>
+        <relationshipLabel>Home Delivery Vouchers</relationshipLabel>
+        <relationshipName>Home_Delivery_Vouchers</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Retailer_Address__c</fullName>
+        <description>Retailer Address. Stored in case retailer lookup cannot be found.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Retailer Address. Stored in case retailer lookup cannot be found.</inlineHelpText>
+        <label>Retailer Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Retailer_Id__c</fullName>
+        <description>Retailer identifier.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Retailer identifier.</inlineHelpText>
+        <label>Retailer Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Retailer_Name__c</fullName>
+        <description>Name of the retailer. Stored in case retailer lookup cannot be found.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the retailer. Stored in case retailer lookup cannot be found.</inlineHelpText>
+        <label>Retailer Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Retailer_Phone__c</fullName>
+        <description>Phone number of the retailer. Stored in case retailer lookup cannot be found.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Phone number of the retailer. Stored in case retailer lookup cannot be found.</inlineHelpText>
+        <label>Retailer Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Retailer_Post_Code__c</fullName>
+        <description>Retailer Post Code. Stored in case retailer lookup cannot be found.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Retailer Post Code. Stored in case retailer lookup cannot be found.</inlineHelpText>
+        <label>Retailer Post Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Retailer_Town__c</fullName>
+        <description>Retailer Town. Stored in case retailer lookup cannot be found.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Retailer Town. Stored in case retailer lookup cannot be found.</inlineHelpText>
+        <label>Retailer Town</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Retailer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Link to Retailer (Account)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Link to Retailer (Account)</inlineHelpText>
+        <label>Retailer</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <errorMessage>Not a valid Retailer.</errorMessage>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Retailer Account</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Closed__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
+            <filterItems>
+                <field>$Profile.Name</field>
+                <operation>equals</operation>
+                <value>System Administrator, TMG System, Clock</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Home Delivery Vouchers (Retailer)</relationshipLabel>
+        <relationshipName>Home_Delivery_Vouchers1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status of the delivery fulfillment. to completed once the voucher sending process has been manually fulfilled</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>true</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subscriber_Number__c</fullName>
+        <description>Subscriber number specified by customer on the registration form. Might not match the related account record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Subscriber number specified by customer on the registration form. Might not match the related account record.</inlineHelpText>
+        <label>Subscriber Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Home Delivery Voucher</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>X-{000000}</displayFormat>
+        <label>Home Delivery Voucher Id</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Home Delivery Vouchers</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Deliver_My_Newspaper</fullName>
+        <active>true</active>
+        <description>Supports Deliver My Newspaper (3rd party) type of records.</description>
+        <label>Deliver My Newspaper</label>
+        <picklistValues>
+            <picklist>Delivery_Days__c</picklist>
+            <values>
+                <fullName>Fri</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mon</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sun</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thu</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Home_Delivery_Service</fullName>
+        <active>true</active>
+        <description>Supports manually created home delivery records.</description>
+        <label>Home Delivery Service</label>
+        <picklistValues>
+            <picklist>Delivery_Days__c</picklist>
+            <values>
+                <fullName>Fri</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mon</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sun</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thu</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>First_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Last_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Email__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Delivery_Days__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Product__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>RECORDTYPE</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <searchFilterFields>First_Name__c</searchFilterFields>
+        <searchFilterFields>Last_Name__c</searchFilterFields>
+        <searchFilterFields>Email__c</searchFilterFields>
+        <searchFilterFields>Subscriber_Number__c</searchFilterFields>
+        <searchFilterFields>RECORDTYPE</searchFilterFields>
+        <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>First_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Last_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Email__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Delivery_Days__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Product__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>RECORDTYPE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

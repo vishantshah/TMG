@@ -1,0 +1,137 @@
+<apex:page standardController="Account" extensions="AccountAddressManagementExtension" sidebar="false" showHeader="false" tabstyle="Account">
+ 
+   <apex:form id="formId">
+   
+   <apex:outputPanel id="addressPanel">
+       
+       <apex:pagemessages id="messages"/>
+       
+       <apex:pageBlock mode="maindetail" id="pbView" rendered="{!editMode == false}">
+           <apex:pageBlockSection columns="1">
+                
+                    <apex:outputField value="{!acc.PersonMailingPostalCode}" />
+                    <apex:outputField id="Addrline1"  value="{!acc.PersonMailingStreet}" />
+                    <apex:outputField id="City"  value="{!acc.PersonMailingCity}" />
+                    <!--<apex:outputField id="county" value="{!acc.PersonMailingState}"/>-->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="Statedisp" value="Mailing State/Province."/>
+                        <apex:outputText value="{!StateName}" id="Statedisp"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="country" value="Country:" />
+                        <apex:outputText value="{!CountryName}" id="country"/>
+                    </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                <apex:outputPanel onclick="switchToEdit();" styleClass="btn">Edit</apex:outputPanel>&nbsp;<apex:actionStatus id="btnStatus1" startText="Please wait..."/>
+            </apex:pageBlockButtons>
+            <apex:actionFunction action="{!switchToEdit}" name="switchToEdit" rerender="addressPanel" status="btnStatus1"/>
+        </apex:pageBlock>
+    
+       <!-- Modal Edit Window -->
+       <apex:pageBlock mode="maindetail" id="pbEdit" rendered="{!editMode == true}">
+           <apex:pageBlockSection columns="1">
+                  <apex:pageBlockSectionItem >
+                    <apex:outputLabel for="AdrType" value="Address Type:" rendered="{!isRegistrantAccount}"/>
+                    <apex:outputPanel >
+                          <apex:selectRadio value="{!AddrType}" id="AdrType" rendered="{!isRegistrantAccount}">
+                              <apex:actionSupport event="onchange" action="{!RenderAddressType}" reRender="pbEdit" status="btnStatus2"/>
+                              <apex:selectOption itemValue="UK" itemLabel="UK Address"/>
+                              <apex:selectOption itemValue="NONUK" itemLabel="Non UK Address"/>
+                          </apex:selectRadio>
+                        </apex:outputPanel>
+                  </apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="PostCode" value="PostCode:" />
+                        <apex:outputpanel >
+                            <apex:outputpanel rendered="{!OR(Not(isRegistrantAccount),NOt(isPostalCodeRequired))}">
+                                <apex:inputText id="PostCode" value="{!acc.PersonMailingPostalCode}" onblur="this.value=this.value.toUpperCase()" style="float: left;"/>
+                                <script>
+                                    var PostCode = '{!$Component.PostCode}';
+                                </script>
+                                <apex:outputPanel rendered="{!AND(isRegistrantAccount,isUKSearch)}">
+                                    <c:PostCodeLookup findAddressButtonTextValue="{!$Label.Find_UK_Address_Label}"/>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(isRegistrantAccount)}">
+                                    <c:PostCodeLookup /> 
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                            <apex:outputpanel rendered="{!AND(isRegistrantAccount,isPostalCodeRequired)}">
+                                <div class="requiredInput">
+                                     <div class="requiredBlock"></div>
+                                     <apex:inputText id="PostCodeMan" value="{!acc.PersonMailingPostalCode}" onblur="this.value=this.value.toUpperCase()" style="float: left;"/>
+                                     <script>
+                                            var PostCode = '{!$Component.PostCodeMan}';
+                                     </script>
+                                     <c:PostCodeLookup findAddressButtonTextValue="{!$Label.Find_UK_Address_Label}"/> 
+                                </div>
+                           </apex:outputpanel>
+                        </apex:outputpanel>
+                    </apex:pageBlockSectionItem>
+                
+                   <apex:inputField id="Addrline1" required="true" value="{!acc.PersonMailingStreet}" />
+                   <apex:inputField id="City" required="true" value="{!acc.PersonMailingCity}" />
+                   <apex:pageBlockSectionItem >
+                       {!$ObjectType.Account.fields.PersonMailingState.Label}
+                       <apex:outputPanel >
+                           <apex:outputpanel rendered="{!AND(isRegistrantAccount,isStateRequired)}">
+                                <div class="requiredInput">
+                                     <div class="requiredBlock"></div>
+                                     <apex:selectList id="CountyMan" value="{!acc.PersonMailingState}" size="1" title="State" required="false">
+                                      <apex:selectOptions value="{!States}" />
+                                  </apex:selectList>
+                                 </div>
+                                  <script>
+                                      var Field1 = '{!$Component.Addrline1}';
+                                      var Field2 = '{!$Component.City}';
+                                      var Field3 = '{!$Component.CountyMan}';
+                                 </script>
+                           </apex:outputpanel>
+                           <apex:outputpanel rendered="{!OR(Not(isRegistrantAccount),AND(Not(isStateRequired),isRegistrantAccount))}">
+                            <apex:inputField id="County" value="{!acc.PersonMailingState}" />
+                            <script>
+                                  var Field1 = '{!$Component.Addrline1}';
+                                  var Field2 = '{!$Component.City}';
+                                  var Field3 = '{!$Component.County}';
+                             </script>
+                       </apex:outputpanel>
+                       </apex:outputPanel>
+                   </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="countries" value="Country:" />
+                        <apex:outputPanel styleClass="requiredInput" layout="block" >
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:selectList id="countries" value="{!acc.PersonMailingCountry}" size="1" title="Country" required="true">
+                                <apex:actionSupport event="onchange" action="{!RefreshUI}" reRender="pbEdit"/>
+                                <apex:selectOptions value="{!Countries}" />
+                            </apex:selectList>
+                             <script>
+                                var Field4 = '{!$Component.countries}';
+                            </script>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+  
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+              <apex:actionStatus id="btnStatus2">
+                  <apex:facet name="start">
+                      <apex:outputPanel>
+                        <apex:image value="/img/loading32.gif" style="height:15px;" />
+                        <apex:commandButton value="Processing..." disabled="true" />
+                        <apex:commandButton value="Processing..." disabled="true" />
+                      </apex:outputPanel>
+                  </apex:facet>
+                  <apex:facet name="stop">
+                      <apex:outputPanel>
+                        <apex:commandButton action="{!saveAddress}" value="Save" rerender="addressPanel" status="btnStatus2" />
+                        <apex:commandButton action="{!switchToEditAgain}" value="Cancel" immediate="true" />
+                      </apex:outputPanel>
+                  </apex:facet>
+              </apex:actionStatus>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:outputPanel>
+    
+    </apex:form>
+
+</apex:page>

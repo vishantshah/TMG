@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>API_Block_Behaviour__c</fullName>
+        <externalId>false</externalId>
+        <label>API Block Behaviour</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Block CC</fullName>
+                <default>false</default>
+                    <label>Block CC</label>
+                </value>
+                <value>
+                <fullName>Block DD</fullName>
+                <default>false</default>
+                    <label>Block DD</label>
+                </value>
+                <value>
+                <fullName>Block All</fullName>
+                <default>false</default>
+                    <label>Block All</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ExactTarget_Template_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>ExactTarget Template Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>From_Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Pricing_Option_From__r.Product_Type__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>From Product Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricing_Option_From__c</fullName>
+        <externalId>false</externalId>
+        <label>Pricing Option From</label>
+        <referenceTo>Pricing_Options__c</referenceTo>
+        <relationshipLabel>Upgrade Options</relationshipLabel>
+        <relationshipName>Upgrade_Options</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Pricing_Option_To__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Pricing Option To</label>
+        <referenceTo>Pricing_Options__c</referenceTo>
+        <relationshipLabel>Upgrade Options (Pricing Options To)</relationshipLabel>
+        <relationshipName>Upgrade_Options1</relationshipName>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>To_Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Pricing_Option_To__r.Product_Type__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>To Product Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Upgrade_Confirmation_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Upgrade Confirmation Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Upgrade_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Upgrade Description</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Upgrade_Page_Filter__c</fullName>
+        <description>Value selected here will be used as a query filter on respective upgrade page.</description>
+        <externalId>false</externalId>
+        <label>Upgrade Page Filter</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>TABLET</fullName>
+                <default>false</default>
+                    <label>TABLET</label>
+                </value>
+                <value>
+                <fullName>WEBPACK</fullName>
+                <default>false</default>
+                    <label>WEBPACK</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Upgrade_Sub_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Upgrade Sub Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Upgrade Option</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Pricing_Option_From__c</columns>
+        <columns>Pricing_Option_To__c</columns>
+        <columns>Upgrade_Confirmation_Text__c</columns>
+        <columns>Upgrade_Description__c</columns>
+        <columns>Upgrade_Sub_Text__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>{0000000000}</displayFormat>
+        <label>UpgradeOptions Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Upgrade Options</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>ServicePriceToNotNull</fullName>
+        <active>true</active>
+        <errorConditionFormula>IsNull(Pricing_Option_To__r.ServicePriceId__c)</errorConditionFormula>
+        <errorDisplayField>Pricing_Option_To__c</errorDisplayField>
+        <errorMessage>The target pricing option must have both ServiceId and ServicePriceId</errorMessage>
+    </validationRules>
+</CustomObject>

@@ -1,0 +1,67 @@
+<apex:page showHeader="true" sidebar="false" tabStyle="zqu__Quote__c" controller="Zuora_SubscriptionSummaryCtrl">
+	<apex:pageMessages />
+	<apex:form >
+		<apex:sectionHeader title="{!$Label.Subscription_Summary_Header}" />
+		<!--Previous subscription section -->	
+		<apex:pageBlock title="{!$Label.Subscription_Summary_SubscriptionType_Previous}" rendered="{!AND(isAmendment, showFullPage)}" tabStyle="Zuora__PaymentMethod__c">
+			<apex:panelGrid columns="2" width="60%">
+				<apex:outputLabel value="{!$ObjectType.Account.fields.Subscriber_Number__c.Label}"/>
+				<apex:outputText value="{!tsNumber}" />
+				<apex:outputLabel value="{!$ObjectType.Account.fields.Name.Label}"/>
+				<apex:outputText value="{!accountName}" />
+				<apex:outputLabel value="{!$ObjectType.Case.fields.Status.Label}"/>
+				<apex:outputText value="{!oldStatus}" />
+				<apex:outputLabel value="{!$ObjectType.Zuora__PaymentMethod__c.Label}" />
+				<apex:outputText value="{!oldPaymentMethod}"/>
+				<apex:outputLabel value="{!$ObjectType.zqu__ProductRatePlan__c.Label}"/>
+				<apex:outputText value="{!sfOldSub.Subscription_Product__c}"/>
+				<apex:outputLabel value="{!$Label.Subscription_Summary_ServiceActivationDate}" />
+				<apex:outputText value="{!oldServiceActivationDate}"/>
+			</apex:panelGrid>
+			<apex:pageBlockButtons location="top">
+				<apex:commandButton action="{!goToAccountPage}" value="{!$Label.Subscription_Summary_Button_Account}"/>
+			</apex:pageBlockButtons>
+		</apex:pageBlock>
+		<!--New subscription section -->	
+		<apex:pageBlock title="{!$Label.Subscription_Summary_SubscriptionType_New}" rendered="{!showFullPage}">
+			<apex:panelGrid columns="2" width="60%">
+				<apex:outputLabel value="{!$ObjectType.Account.fields.Subscriber_Number__c.Label}"/>
+				<apex:outputText value="{!tsNumber}" />
+				<apex:outputLabel value="{!$ObjectType.Account.fields.Name.Label}"/>
+				<apex:outputText value="{!accountName}" />
+				<apex:outputLabel value="{!$ObjectType.Case.fields.Status.Label}"/>
+				<apex:outputText value="{!newStatus}" />
+				<apex:outputLabel value="{!$ObjectType.Zuora__PaymentMethod__c.Label}" />
+				<apex:outputText value="{!newPaymentMethod}"/>
+				<apex:outputLabel value="{!$ObjectType.zqu__ProductRatePlan__c.Label}"/>
+				<apex:outputText value="{!newProductName}" rendered="{!NOT(isMidTermAmendment)}"/>
+				<apex:outputText value="{!sfMidSub.Subscription_Product__c}" rendered="{!isMidTermAmendment}"/>
+				<apex:outputLabel value="{!$Label.Subscription_Summary_Campaign_Info}" rendered="{!NOT(isMidTermAmendment)}"/>
+				<apex:outputText value="{!campaignInfo}" rendered="{!NOT(isMidTermAmendment)}"/>
+				<apex:outputLabel value="{!$Label.Subscription_Summary_ServiceActivationDate}" rendered="{!NOT(isMidTermAmendment)}"/>
+				<apex:outputText value="{!newServiceActivationDate}" rendered="{!NOT(isMidTermAmendment)}" />
+			</apex:panelGrid>
+			<apex:pageBlockButtons location="top" rendered="{!NOT(isAmendment)}">
+				<apex:commandButton action="{!goToAccountPage}" value="{!$Label.Subscription_Summary_Button_Account}"/>
+			</apex:pageBlockButtons>
+		</apex:pageBlock>
+		<!-- Error section -->
+		<apex:pageBlock rendered="{!NOT(showFullPage)}">
+			<apex:pageBlockButtons location="top">
+				<apex:commandButton action="{!goToQuotePage}" value="{!$Label.Subscription_Summary_Button_Quote}"/>
+			</apex:pageBlockButtons>
+		</apex:pageBlock>
+	</apex:form>
+	<!-- Billing Preview section -->
+	<apex:pageBlock title="{!$Label.Offer_Search_Billing_Preview_Section_Label}" rendered="{!showFullPage}">
+		<apex:outputPanel rendered="{!AND (showBillingPreview, NOT(isMidTermAmendment))}">
+			<c:Zuora_QuoteBillingPreview zuoraSubscriptionID="{!zuoraSubId}" productRatePlanID="{!zuoraDiscountRatePlanId}" subscriptionStartDate="{!newServiceActivationDate}" subTermTypeName="{!subTermType}" showMsgs="false" accountID="{!accountId}"/>
+		</apex:outputPanel>
+		<apex:outputPanel rendered="{!AND (showBillingPreview, isMidTermAmendment)}">
+			 <c:Zuora_QuoteBillingPreview subscriptionID="{!sfMidSub.Id}"/>
+		</apex:outputPanel>
+		<apex:outputPanel rendered="{!NOT(showBillingPreview)}">
+			<apex:outputText value="{!$Label.Billing_Preview_No_Available_Data_Message}" />
+		</apex:outputPanel>
+	</apex:pageBlock>
+</apex:page>

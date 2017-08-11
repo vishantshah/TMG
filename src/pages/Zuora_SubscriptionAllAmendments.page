@@ -1,0 +1,29 @@
+<apex:page standardController="Zuora__Subscription__c" extensions="Zuora_SubscriptionAllAmendmentsCtrl" action="{!fetchAllAmendments}">
+<apex:outputText rendered="false" value="{!Zuora__Subscription__c.Original_Zuora_Subscription_ID__c}"/>
+<apex:pageblock >
+	<apex:pageMessages />
+    <apex:pageBlockTable value="{!lstZuoraAmendments}" var="amendmentObj">
+        <apex:column >
+        	<apex:facet name="header">{!$Label.Amendment_Effective_Date_Header}</apex:facet>
+        	<apex:outputText value="{0,date,dd/MM/yyyy}"> 
+        		<apex:param value="{!amendmentObj.EffectiveDate}" /> 
+        	</apex:outputText>
+        </apex:column>
+        <apex:column value="{!amendmentObj.Description}">
+       		<apex:facet name="header">{!$Label.Amendment_Description_Header}</apex:facet>
+        </apex:column>
+        <apex:column value="{!amendmentObj.AmendmentName}">
+        	<apex:facet name="header">{!$Label.Amendment_Name_Header}</apex:facet>
+        </apex:column>
+        <apex:column value="{!amendmentObj.midTermDiscountReason}">
+        	<apex:facet name="header">{!$Label.Amendment_Mid_Term_Discount_Reason_Header}</apex:facet>
+        </apex:column>
+        <apex:column value="{!amendmentObj.Type}">
+        	<apex:facet name="header">{!$Label.Amendment_Type_Header}</apex:facet>
+        </apex:column>
+        <apex:column value="{!amendmentObj.Status}">
+        	<apex:facet name="header">{!$Label.Amendment_Status_Header}</apex:facet>
+        </apex:column>
+    </apex:pageBlockTable>
+</apex:pageblock>
+</apex:page>

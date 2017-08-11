@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <fieldSets>
+        <fullName>zqu__Amend_Quote_Detail_Metrics</fullName>
+        <availableFields>
+            <field>zqu__Calculate_Quote_Metrics_Through__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_Delta_MRR__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_Delta_TCV__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_Discount__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_SubTotal__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_Tax__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_Total__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Amend/Renewal/Cancel Quote: Quote Metrics section on Quote detail page</description>
+        <displayedFields>
+            <field>Subscription_Rate_Plan_Term_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Quote Metrics</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>zqu__CustomQuoteFields</fullName>
+        <description>Fields in this field set will be included in the subscription data when quotes are sent to z-billing.</description>
+        <displayedFields>
+            <field>Acquisition_Channel__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Subscription_Origin__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Subscription_Rate_Plan_Term_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>PromoCode__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Extend_Quote_14_days__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CampaignCode__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Campaign_Description__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Custom Quote Fields</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>zqu__Quote_Detail_Metrics</fullName>
+        <availableFields>
+            <field>zqu__Calculate_Quote_Metrics_Through__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_Discount__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_MRR__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_SubTotal__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_TCV__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_Tax__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Previewed_Total__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>New Subscription Quote: Quote Metrics section on Quote detail page</description>
+        <displayedFields>
+            <field>Subscription_Rate_Plan_Term_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Quote Metrics</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>zqu__Quote_Information</fullName>
+        <availableFields>
+            <field>zqu__Opportunity__r.AccountId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Is_Parent_Quote__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Opportunity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__ParentQuote__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__QuoteTemplate__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__ZuoraAccountID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__ZuoraSubscriptionID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>zqu__Zuora_Account_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>New Subscription Quote: Quote Details Section</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>zqu__ValidUntil__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>zqu__Account__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>zqu__QuoteBusinessType__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Quote Details</label>
+    </fieldSets>
+    <fields>
+        <fullName>Acquisition_Channel__c</fullName>
+        <externalId>false</externalId>
+        <label>Acquisition Channel</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Call Centre</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>TCUK</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CampaignCode__c</fullName>
+        <externalId>false</externalId>
+        <formula>Tcode__r.Name</formula>
+        <label>Campaign Code</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Campaign_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>Tcode__r.Description__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Campaign Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_Payment_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Default Payment Details</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_Payment_Method_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Default Payment Method Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expiration_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Expiration Date Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Extend_Quote_14_days__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>When checked - Quote is extended for another 14 days</description>
+        <externalId>false</externalId>
+        <inlineHelpText>When checked - Quote is extended for another 14 days</inlineHelpText>
+        <label>Extend Quote (14 days)</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Master_Quote__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Master Quote</label>
+        <referenceTo>zqu__Quote__c</referenceTo>
+        <relationshipLabel>Quote Amendments</relationshipLabel>
+        <relationshipName>Quotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Mid_term_Discount_Reason__c</fullName>
+        <description>This field is used in the manage mid term discounts visual force page &quot;Zuora_ManageMidTermDiscounts&quot;. The decision was taken to have it on quote as a picklist field will be user for future maintenance than custom settings.</description>
+        <externalId>false</externalId>
+        <label>Mid-term Discount Reason</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Price</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Editorial</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lack of content</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>App performance</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Competitor</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No compatible devices</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lack of time</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Functionality</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Product switch</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not known</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Political</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Ill health</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>New_Subscription_Offer_Codes_Count__c</fullName>
+        <description>This count will be only the count Quote Offer Code record with type acquisition offer and Default offer. We will exclude mid term discounts from this roll up field.</description>
+        <externalId>false</externalId>
+        <label>New Subscription Offer Codes Count</label>
+        <summaryFilterItems>
+            <field>Quote_Offer_Code__c.Type__c</field>
+            <operation>notEqual</operation>
+            <value>Mid Term Discount</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Quote_Offer_Code__c.Quote__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Outbound_Customer_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Outbound Customer Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Outbound_POC__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Outbound POC</label>
+        <referenceTo>POC__c</referenceTo>
+        <relationshipLabel>Quotes</relationshipLabel>
+        <relationshipName>Quotes</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Outbound_Payment_Frequency__c</fullName>
+        <externalId>false</externalId>
+        <label>Outbound Payment Frequency</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Outbound_Selected_Product__c</fullName>
+        <externalId>false</externalId>
+        <label>Outbound Selected Product</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Outbound_Start_Periods__c</fullName>
+        <description>Number of periods to be apply start price. In case of Annual subscription StartPeriod will not be passed</description>
+        <externalId>false</externalId>
+        <label>Outbound Start Periods</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Outbound_Start_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Outbound Start Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Outbound_Subsequent_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Outbound Subsequent Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Previous_Quote__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Previous Quote</label>
+        <referenceTo>zqu__Quote__c</referenceTo>
+        <relationshipLabel>Related Quotes</relationshipLabel>
+        <relationshipName>PreviousQuotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Previous_Subscription_RatePlan_Term_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Previous Subscription RatePlan Term Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Previous_Subscription__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Previous Subscription</label>
+        <referenceTo>Zuora__Subscription__c</referenceTo>
+        <relationshipLabel>Quotes</relationshipLabel>
+        <relationshipName>Quotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PromoCode__c</fullName>
+        <externalId>false</externalId>
+        <label>Promo Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quote_Country__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( zqu__BillToContact__r.MailingCountry=&apos;GB&apos; ,&apos;UK&apos; , &apos;International&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Quote Country</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subscription_Next_Charge_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription Next Charge Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_Origin__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription Origin</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Inbound</fullName>
+                    <default>true</default>
+                    <label>Inbound</label>
+                </value>
+                <value>
+                    <fullName>Outbound</fullName>
+                    <default>false</default>
+                    <label>Outbound</label>
+                </value>
+                <value>
+                    <fullName>Coupon</fullName>
+                    <default>false</default>
+                    <label>Coupon</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subscription_Rate_Plan_Term_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription Rate Plan Term Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tcode__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Tcode</label>
+        <referenceTo>TCodeManagement__c</referenceTo>
+        <relationshipLabel>Quotes</relationshipLabel>
+        <relationshipName>Quotes</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>arePaymentDetailsEntered__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>arePaymentDetailsEntered</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <webLinks>
+        <fullName>Add_Default_Offer_Code</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Default Offer Code</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var confirmValue = confirm(&apos;{!$Label.Default_Offer_Code_Addition_Warning_Message}&apos;);
+if (confirmValue == true) {
+var url=&apos;/apex/ZuoraDefaultOfferCodeCheck?Id={!zqu__Quote__c.Id}&apos;;
+window.open(url,&apos;_self&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Payment_Method</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Payment Method</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var newSubscriptionOfferCount=&apos;{!zqu__Quote__c.New_Subscription_Offer_Codes_Count__c}&apos;;
+var quoteSubscriptionType=&apos;{!zqu__Quote__c.zqu__SubscriptionType__c}&apos;;
+
+if(quoteSubscriptionType!=&apos;New Subscription&apos; || (quoteSubscriptionType==&apos;New Subscription&apos; &amp;&amp; newSubscriptionOfferCount &gt; 0)){
+window.open(&apos;{!$Setup.Configuration__c.Visualforce_Base_Url__c}&apos; + &apos;Zuora_PaymentStep?id={!zqu__Quote__c.Id}&amp;action=add&apos;,&apos;_self&apos;);
+}else{
+  alert(&apos;{!$Label.Default_Offer_Code_or_Campaign_Offer_Required_Error_Message}&apos;);
+}</url>
+    </webLinks>
+     <webLinks>
+        <fullName>Submit_Finalised_Details</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Submit Finalised Details</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var newSubscriptionOfferCount=&apos;{!zqu__Quote__c.New_Subscription_Offer_Codes_Count__c}&apos;;
+var quoteSubscriptionType=&apos;{!zqu__Quote__c.zqu__SubscriptionType__c}&apos;;
+
+if(quoteSubscriptionType!=&apos;New Subscription&apos; || (quoteSubscriptionType==&apos;New Subscription&apos; &amp;&amp; newSubscriptionOfferCount&gt;0))
+{
+
+if({!zqu__Quote__c.arePaymentDetailsEntered__c}){
+
+if(&apos;{!zqu__Quote__c.zqu__SubscriptionType__c}&apos;==&apos;Amend Subscription&apos; &amp;&amp; &apos;{!zqu__Quote__c.Mid_term_Discount_Reason__c}&apos;==&apos;&apos;){
+  alert(&apos;{!$Label.Mid_term_Discount_Reason_Error_Message}&apos;);
+}else{
+window.open(&apos;{!$Setup.Configuration__c.Visualforce_Base_Url__c}&apos; + &apos;Zuora_sendToZBilling?quoteId={!zqu__Quote__c.Id}&amp;PayMethodId={!zqu__Quote__c.zqu__ElectronicPaymentMethodId__c}&amp;sfAccountId={!CASESAFEID(zqu__Quote__c.zqu__AccountId__c)}&apos;,&apos;_self&apos;);
+}
+}
+else{
+   window.open(&apos;{!$Setup.Configuration__c.Visualforce_Base_Url__c}&apos; + &apos;Zuora_PaymentStep?id={!zqu__Quote__c.Id}&amp;action=send&apos;,&apos;_self&apos;);
+}
+}else{
+  alert(&apos;{!$Label.Default_Offer_Code_or_Campaign_Offer_Required_Error_Message}&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Select_Offer_Code</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Select Campaign</masterLabel>
+        <openType>sidebar</openType>
+        <page>ZuoraQuoteOfferSelection</page>
+        <protected>false</protected>
+    </webLinks>
+    <pluralLabel>Quotes</pluralLabel>
+</CustomObject>

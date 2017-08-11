@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPageWebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availability>online</availability>
+    <description>Custom Case Search page to search for the cases</description>
+    <displayType>link</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Custom Case Search</masterLabel>
+    <openType>sidebar</openType>
+    <page>CaseSearch</page>
+    <protected>false</protected>
+</CustomPageWebLink>

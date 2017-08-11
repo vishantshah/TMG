@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email template to send a notification to managment about Cheque Batch closure with report url attachment</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Holiday Voucher Refund Cheque Batch Closure Notification</name>
+    <style>none</style>
+    <subject>Holiday Refund Cheque Batch {!Cheque_Batch__c.Name} Closed</subject>
+    <textOnly>Cheque Batch {!Cheque_Batch__c.Name} is closed now.  Please click the link to view Holiday Voucher Refund Cheques report.
+{!Cheque_Batch__c.Report_Url__c}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

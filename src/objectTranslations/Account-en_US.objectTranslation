@@ -1,0 +1,2692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Access</value>
+        </caseValues>
+        <name>account_access</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Access Level</value>
+        </caseValues>
+        <name>account_access_level</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Contact Role</value>
+        </caseValues>
+        <name>account_contact_role</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Creator</value>
+        </caseValues>
+        <name>account_creator</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Currency</value>
+        </caseValues>
+        <name>account_currency</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Detail Page</value>
+        </caseValues>
+        <name>account_detail_page</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Fax</value>
+        </caseValues>
+        <name>account_fax</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Field</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Fields</value>
+        </caseValues>
+        <name>account_field</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  General</value>
+        </caseValues>
+        <name>account_general</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Hierarchy</value>
+        </caseValues>
+        <name>account_hierarchy</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  History</value>
+        </caseValues>
+        <name>account_history</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  History Report</value>
+        </caseValues>
+        <name>account_history_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  ID</value>
+        </caseValues>
+        <name>account_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Information</value>
+        </caseValues>
+        <name>account_information</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Number</value>
+        </caseValues>
+        <name>account_number</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Owner</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Owners</value>
+        </caseValues>
+        <name>account_owner</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Owner Alias</value>
+        </caseValues>
+        <name>account_owner_alias</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Owner Report</value>
+        </caseValues>
+        <name>account_owner_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Owner Role</value>
+        </caseValues>
+        <name>account_owner_role</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Ownership</value>
+        </caseValues>
+        <name>account_ownership</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Phone</value>
+        </caseValues>
+        <name>account_phone</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Rating</value>
+        </caseValues>
+        <name>account_rating</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Record Type</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Record Types</value>
+        </caseValues>
+        <name>account_record_type</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Report</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Reports</value>
+        </caseValues>
+        <name>account_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Sharing</value>
+        </caseValues>
+        <name>account_sharing</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Site</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Sites</value>
+        </caseValues>
+        <name>account_site</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Stage ID</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Stage ID</value>
+        </caseValues>
+        <name>account_stage_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Team</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Teams</value>
+        </caseValues>
+        <name>account_team</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Team Member</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Team Members</value>
+        </caseValues>
+        <name>account_team_member</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Team Member ID</value>
+        </caseValues>
+        <name>account_team_member_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Team Report</value>
+        </caseValues>
+        <name>account_team_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Territory</value>
+        </caseValues>
+        <name>account_territory</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Tool</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Tools</value>
+        </caseValues>
+        <name>account_tool</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  Type</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Types</value>
+        </caseValues>
+        <name>account_type</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account  View</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Accounts Views</value>
+        </caseValues>
+        <name>account_view</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Shop Address</value>
+        </caseValues>
+        <name>billing_address_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Shop City</value>
+        </caseValues>
+        <name>billing_city_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Shop Country</value>
+        </caseValues>
+        <name>billing_country_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Shop Region</value>
+        </caseValues>
+        <name>billing_state_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Shop Street</value>
+        </caseValues>
+        <name>billing_street_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Shop Postal Code</value>
+        </caseValues>
+        <name>billing_zip_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Retailer</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Retailers</value>
+        </caseValues>
+        <name>business_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Parent Accounts Division</value>
+        </caseValues>
+        <name>parent_account_division</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Parent Accounts ID</value>
+        </caseValues>
+        <name>parent_account_id</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Parent Accounts Site</value>
+        </caseValues>
+        <name>parent_account_site</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Subscriber</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Subscriber</value>
+        </caseValues>
+        <name>person_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Work Phone</value>
+        </caseValues>
+        <name>phone_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Active</value>
+        </caseValues>
+        <name>rating_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Voucher Address</value>
+        </caseValues>
+        <name>shipping_address_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Voucher City</value>
+        </caseValues>
+        <name>shipping_city_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Voucher Country</value>
+        </caseValues>
+        <name>shipping_country_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Voucher Region</value>
+        </caseValues>
+        <name>shipping_state_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Voucher Street</value>
+        </caseValues>
+        <name>shipping_street_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Voucher Postal Code</value>
+        </caseValues>
+        <name>shipping_zip_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <label><!-- ABC Country --></label>
+        <name>ABC_Country__c</name>
+    </fields>
+    <fields>
+        <name>AccountSource</name>
+        <picklistValues>
+            <masterLabel>Coupon</masterLabel>
+            <translation><!-- Coupon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound - BPS</masterLabel>
+            <translation><!-- Outbound - BPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound - Chatham</masterLabel>
+            <translation><!-- Outbound - Chatham --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound - TELEGEN</masterLabel>
+            <translation><!-- Outbound - TELEGEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Order</masterLabel>
+            <translation><!-- Web Order --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Billing City --></label>
+        <name>Account_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Country --></label>
+        <name>Account_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Postal Code --></label>
+        <name>Account_Postal_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Region --></label>
+        <name>Account_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Street --></label>
+        <name>Account_Street__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Type --></label>
+        <name>Account_Type__c</name>
+        <picklistValues>
+            <masterLabel>Newsagent</masterLabel>
+            <translation><!-- Newsagent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Unique Ref --></label>
+        <name>Account_Unique_Ref__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Address Updated --></label>
+        <name>Address_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commission --></label>
+        <name>Agency_Commission__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agency Contact --></label>
+        <name>Agency_Contact__c</name>
+        <relationshipLabel><!-- Accounts (Agency Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Agency Focus --></label>
+        <name>Agency_Focus__c</name>
+        <picklistValues>
+            <masterLabel>Creative</masterLabel>
+            <translation><!-- Creative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Shows whether thi Agency belong to an Agency Group --></help>
+        <label><!-- Agency Group --></label>
+        <name>Agency_Group__c</name>
+        <picklistValues>
+            <masterLabel>Aegis</masterLabel>
+            <translation><!-- Aegis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GroupM</masterLabel>
+            <translation><!-- GroupM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opera - General Agency</masterLabel>
+            <translation><!-- Opera - General Agency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opera - Key Clients</masterLabel>
+            <translation><!-- Opera - Key Clients --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vivaki</masterLabel>
+            <translation><!-- Vivaki --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Agency Contact (AOR) --></label>
+        <name>Agency_of_Record_Contact__c</name>
+        <relationshipLabel><!-- Accounts (Agency of Record Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Advertiser&apos;s Primary Agency of Record. --></help>
+        <label><!-- Agency of Record --></label>
+        <name>Agency_of_Record__c</name>
+        <relationshipLabel><!-- Advertisers (Agency of Record) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Agent Code --></label>
+        <name>Agent_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Account&apos;s reference number in the Aggresso system --></help>
+        <label><!-- Agresso Refence Number --></label>
+        <name>Agresso_Refence_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Account&apos;s annual spend on advertising with TMG --></help>
+        <label><!-- Annual Spend --></label>
+        <name>Annual_Spend__c</name>
+    </fields>
+    <fields>
+        <help><!-- Agency&apos;s contact for billing enquiries --></help>
+        <label><!-- Billing Contact --></label>
+        <name>Billing_Contact__c</name>
+        <relationshipLabel><!-- Accounts (Billing Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Box Number --></label>
+        <name>Box_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Code --></label>
+        <name>Campaign_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancellation Type --></label>
+        <name>Cancellation_Type__c</name>
+        <picklistValues>
+            <masterLabel>Hard Cancel</masterLabel>
+            <translation><!-- Hard Cancel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Soft Cancel</masterLabel>
+            <translation><!-- Soft Cancel --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Cancelled By --></label>
+        <name>Cancelled_By__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cancelled Date --></label>
+        <name>Cancelled_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Contact --></label>
+        <name>Client_Contact__c</name>
+        <relationshipLabel><!-- Accounts (Client Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Closed Date --></label>
+        <name>Closed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closed --></label>
+        <name>Closed__c</name>
+    </fields>
+    <fields>
+        <help><!-- Company registration number --></help>
+        <label><!-- Company Registration Number --></label>
+        <name>Company_Registration_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Count Cancellation Date Reached --></label>
+        <name>Count_Cancellation_Date_Reached__c</name>
+    </fields>
+    <fields>
+        <label><!-- Count Pending Cancel Still Active --></label>
+        <name>Count_Pending_Cancel_Still_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Name --></label>
+        <name>Country_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cover Price --></label>
+        <name>Cover_Price__c</name>
+        <picklistValues>
+            <masterLabel>10.00</masterLabel>
+            <translation><!-- 10.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8.70</masterLabel>
+            <translation><!-- 8.70 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8.90</masterLabel>
+            <translation><!-- 8.90 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Creative Agency --></label>
+        <name>Creative_Agency__c</name>
+        <relationshipLabel><!-- Accounts (Creative Agency) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Creative Code --></label>
+        <name>Creative_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Credit insurance amount for this account --></help>
+        <label><!-- Credit Insurace --></label>
+        <name>Credit_Insurace__c</name>
+    </fields>
+    <fields>
+        <help><!-- Represents the account&apos;s credit status in DTI --></help>
+        <label><!-- Credit Status --></label>
+        <name>Credit_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denied</masterLabel>
+            <translation><!-- Denied --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Priority --></label>
+        <name>CustomerPriority_del_del__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- DD Double Debit --></label>
+        <name>DD_Double_Debit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date of Birth --></label>
+        <name>DateofBirth__c</name>
+    </fields>
+    <fields>
+        <label><!-- Digital Low Start Used --></label>
+        <name>Digital_Low_Start_Used__c</name>
+    </fields>
+    <fields>
+        <label><!-- Digital Product Type --></label>
+        <name>Digital_Product_Type__c</name>
+        <picklistValues>
+            <masterLabel>Digital</masterLabel>
+            <translation><!-- Digital --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web pack</masterLabel>
+            <translation><!-- Web pack --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>iPad</masterLabel>
+            <translation><!-- iPad --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The Doubleclick reference number for the account. --></help>
+        <label><!-- Doubleclick Reference --></label>
+        <name>Doubleclick_Reference__c</name>
+    </fields>
+    <fields>
+        <label><!-- DuplicateAccount --></label>
+        <name>DuplicateAccount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Earliest Subscription Start Calc --></label>
+        <name>Earliest_Subscription_Start_Calc__c</name>
+    </fields>
+    <fields>
+        <help><!-- PP-1893 dianostics --></help>
+        <label><!-- Email Retry --></label>
+        <name>Email_Retry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Sent --></label>
+        <name>Email_Sent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email to be Send --></label>
+        <name>Email_to_be_Send__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Identifier --></label>
+        <name>Entitlement_Identifier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Type --></label>
+        <name>Entitlement_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- FORCE_UPDATE --></label>
+        <name>FORCE_UPDATE__c</name>
+    </fields>
+    <fields>
+        <help><!-- Balance of the Flex card for the Trial offer. --></help>
+        <label><!-- Flex Card Balance --></label>
+        <name>Flex_Card_Balance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flex Card Number --></label>
+        <name>Flex_Card_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flex Expiry Date --></label>
+        <name>Flex_Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flex Payment Ref --></label>
+        <name>Flex_Payment_Ref__c</name>
+    </fields>
+    <fields>
+        <label><!-- Flex Scheme User --></label>
+        <name>Flex_Scheme_User__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Flex Taken Date --></label>
+        <name>Flex_Taken_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Donor of a Subscription Gift --></help>
+        <label><!-- Gift Donor --></label>
+        <name>Gift_Donor__c</name>
+        <relationshipLabel><!-- Gift Recipients --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Grace Period Duration 1 --></label>
+        <name>Grace_Period_Duration_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Grace Period Duration 2 --></label>
+        <name>Grace_Period_Duration_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Grace Period Duration Total --></label>
+        <name>Grace_Period_Duration_Total__c</name>
+    </fields>
+    <fields>
+        <label><!-- Grace Period End Date --></label>
+        <name>Grace_Period_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Grace Period Start Date --></label>
+        <name>Grace_Period_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Grace Status --></label>
+        <name>Grace_Status__c</name>
+        <picklistValues>
+            <masterLabel>GraceExpired</masterLabel>
+            <translation><!-- GraceExpired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>InGrace</masterLabel>
+            <translation><!-- InGrace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NotInGrace</masterLabel>
+            <translation><!-- NotInGrace --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Guid --></label>
+        <name>Guid__c</name>
+    </fields>
+    <fields>
+        <label><!-- Home Delivery Accepted --></label>
+        <name>Home_Delivery_Accepted__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW ADDR1 --></label>
+        <name>IF_NEW_ADDR1__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW ADDR2 --></label>
+        <name>IF_NEW_ADDR2__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW ADDR3 --></label>
+        <name>IF_NEW_ADDR3__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW ADDR4 --></label>
+        <name>IF_NEW_ADDR4__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW ADDR5 --></label>
+        <name>IF_NEW_ADDR5__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW COUNTER HOME --></label>
+        <name>IF_NEW_COUNTER_HOME__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW DIRECT MAIL PERM --></label>
+        <name>IF_NEW_DIRECT_MAIL_PERM__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW EMAIL PERM SUB --></label>
+        <name>IF_NEW_EMAIL_PERM_SUB__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW EMAIL PERM TDT --></label>
+        <name>IF_NEW_EMAIL_PERM_TDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW EMAIL PREM THIRD --></label>
+        <name>IF_NEW_EMAIL_PREM_THIRD__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW HOME EMAIL PERM --></label>
+        <name>IF_NEW_HOME_EMAIL_PERM__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW HOME PHONE --></label>
+        <name>IF_NEW_HOME_PHONE__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW INITIALS --></label>
+        <name>IF_NEW_INITIALS__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW MAIL ADDR --></label>
+        <name>IF_NEW_MAIL_ADDR__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW MOBILE PHONE PREF --></label>
+        <name>IF_NEW_MOBILE_PHONE_PREF__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW MOBILE PHONE --></label>
+        <name>IF_NEW_MOBILE_PHONE__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW NEWSAGENT --></label>
+        <name>IF_NEW_NEWSAGENT__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW PHONE 2 PERM --></label>
+        <name>IF_NEW_PHONE_2_PERM__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW PHONE 2 --></label>
+        <name>IF_NEW_PHONE_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW POSTCODE --></label>
+        <name>IF_NEW_POSTCODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW SURNAME --></label>
+        <name>IF_NEW_SURNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW TITLE --></label>
+        <name>IF_NEW_TITLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF NEW TPS FLAG --></label>
+        <name>IF_NEW_TPS_FLAG__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD ADDR1 --></label>
+        <name>IF_OLD_ADDR1__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD ADDR2 --></label>
+        <name>IF_OLD_ADDR2__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD ADDR3 --></label>
+        <name>IF_OLD_ADDR3__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD ADDR4 --></label>
+        <name>IF_OLD_ADDR4__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD ADDR5 --></label>
+        <name>IF_OLD_ADDR5__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD COUNTER HOME --></label>
+        <name>IF_OLD_COUNTER_HOME__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD DIRECT MAIL PERMISSION --></label>
+        <name>IF_OLD_DIRECT_MAIL_PERMISSION__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD EMAIL ADDRESS --></label>
+        <name>IF_OLD_EMAIL_ADDRESS__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD EMAIL PERM SUB --></label>
+        <name>IF_OLD_EMAIL_PERM_SUB__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD EMAIL PERM TDT --></label>
+        <name>IF_OLD_EMAIL_PERM_TDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD EMAIL PERM THIRD --></label>
+        <name>IF_OLD_EMAIL_PERM_THIRD__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD HOME EMAIL PERM --></label>
+        <name>IF_OLD_HOME_EMAIL_PERM__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD HOME PHONE --></label>
+        <name>IF_OLD_HOME_PHONE__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD INITIALS --></label>
+        <name>IF_OLD_INITIALS__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD MOBILE NO --></label>
+        <name>IF_OLD_MOBILE_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD NEWSAGENT --></label>
+        <name>IF_OLD_NEWSAGENT__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD PHONE 2 PERM --></label>
+        <name>IF_OLD_PHONE_2_PERM__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD PHONE 2 --></label>
+        <name>IF_OLD_PHONE_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD POSTCODE --></label>
+        <name>IF_OLD_POSTCODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD SURNAME --></label>
+        <name>IF_OLD_SURNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD TITLE --></label>
+        <name>IF_OLD_TITLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF OLD TPS FLAG --></label>
+        <name>IF_OLD_TPS_FLAG__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Old TDT Code --></label>
+        <name>IF_Old_TDT_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Retailer_Addr1 --></label>
+        <name>IF_Retailer_Addr1__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Retailer_City --></label>
+        <name>IF_Retailer_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Retailer_Country --></label>
+        <name>IF_Retailer_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Retailer_Post_Code --></label>
+        <name>IF_Retailer_Post_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Retailer_State --></label>
+        <name>IF_Retailer_State__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Bill_First_Addr --></label>
+        <name>IF_WAC_Bill_First_Addr__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Sub_Stop_Code --></label>
+        <name>IF_WAC_Sub_Stop_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Include with Artesian --></label>
+        <name>Include_with_Artesian__c</name>
+    </fields>
+    <fields>
+        <name>Industry</name>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apparel</masterLabel>
+            <translation><!-- Apparel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banking</masterLabel>
+            <translation><!-- Banking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Betting</masterLabel>
+            <translation><!-- Betting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Biotechnology</masterLabel>
+            <translation><!-- Biotechnology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business &amp; Industrial</masterLabel>
+            <translation><!-- Business &amp; Industrial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chemicals</masterLabel>
+            <translation><!-- Chemicals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Communications</masterLabel>
+            <translation><!-- Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computers</masterLabel>
+            <translation><!-- Computers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction</masterLabel>
+            <translation><!-- Construction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consulting</masterLabel>
+            <translation><!-- Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dating</masterLabel>
+            <translation><!-- Dating --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronics</masterLabel>
+            <translation><!-- Electronics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation><!-- Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering</masterLabel>
+            <translation><!-- Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entertainment</masterLabel>
+            <translation><!-- Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environmental</masterLabel>
+            <translation><!-- Environmental --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fashion</masterLabel>
+            <translation><!-- Fashion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance</masterLabel>
+            <translation><!-- Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food &amp; Beverage</masterLabel>
+            <translation><!-- Food &amp; Beverage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming</masterLabel>
+            <translation><!-- Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gardening</masterLabel>
+            <translation><!-- Gardening --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Geneology</masterLabel>
+            <translation><!-- Geneology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health</masterLabel>
+            <translation><!-- Health --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare</masterLabel>
+            <translation><!-- Healthcare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Horoscopes</masterLabel>
+            <translation><!-- Horoscopes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality</masterLabel>
+            <translation><!-- Hospitality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Household Appliances</masterLabel>
+            <translation><!-- Household Appliances --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Household Equipment</masterLabel>
+            <translation><!-- Household Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Household Stores</masterLabel>
+            <translation><!-- Household Stores --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance</masterLabel>
+            <translation><!-- Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machinery</masterLabel>
+            <translation><!-- Machinery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Miscellaneous</masterLabel>
+            <translation><!-- Miscellaneous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motors</masterLabel>
+            <translation><!-- Motors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not For Profit</masterLabel>
+            <translation><!-- Not For Profit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Office Equipment &amp; Supplies</masterLabel>
+            <translation><!-- Office Equipment &amp; Supplies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Personal Finance</masterLabel>
+            <translation><!-- Personal Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pharmaceutical</masterLabel>
+            <translation><!-- Pharmaceutical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Property</masterLabel>
+            <translation><!-- Property --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recreation</masterLabel>
+            <translation><!-- Recreation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shipping</masterLabel>
+            <translation><!-- Shipping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sport</masterLabel>
+            <translation><!-- Sport --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology</masterLabel>
+            <translation><!-- Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecommunications</masterLabel>
+            <translation><!-- Telecommunications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Travel</masterLabel>
+            <translation><!-- Travel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Utilities</masterLabel>
+            <translation><!-- Utilities --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is the account endemic or non-endemic to your business? --></help>
+        <label><!-- Industry Category --></label>
+        <name>Industry_Category__c</name>
+        <picklistValues>
+            <masterLabel>Endemic</masterLabel>
+            <translation><!-- Endemic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Endemic</masterLabel>
+            <translation><!-- Non-Endemic --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is this Accout using MPP as Payment Provider? --></help>
+        <label><!-- Is Using MPP --></label>
+        <name>IsUsingMPP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Digital Letter Extracted --></label>
+        <name>Is_Digital_Letter_Extracted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location Type Code --></label>
+        <name>Location_Type_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location Type --></label>
+        <name>Location_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- MGM code --></label>
+        <name>MGMcode__c</name>
+    </fields>
+    <fields>
+        <label><!-- MGM giver --></label>
+        <name>MGMgiver__c</name>
+        <relationshipLabel><!-- MGMgiver --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MPP Current Pay Schedule End Date --></label>
+        <name>MPP_Current_Pay_Schedule_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP Digital Payment Id --></label>
+        <name>MPP_Digital_Payment_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP End Day --></label>
+        <name>MPP_End_Day__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP Renewal Pay Schedule End Date --></label>
+        <name>MPP_Renewal_Pay_Schedule_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP Renewal Pay Schedule Start Date --></label>
+        <name>MPP_Renewal_Pay_Schedule_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP Service Id --></label>
+        <name>MPP_Service_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP Start Day --></label>
+        <name>MPP_Start_Day__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shop Manager --></label>
+        <name>Manager__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max (Subs End Date) --></label>
+        <name>Max_Subs_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Smartphone First Accessed --></label>
+        <name>Mobile_First_Accessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mobile Free Trial Used --></label>
+        <name>Mobile_Free_Trial_Used__c</name>
+    </fields>
+    <fields>
+        <label><!-- Smartphone Last Accessed --></label>
+        <name>Mobile_Last_Accessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mobile app first accessed datetime --></label>
+        <name>Mobile_app_first_accessed_datetime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mon-Fri Net --></label>
+        <name>Mon_Fri_Net__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mon-Fri Supply --></label>
+        <name>Mon_Fri_Supply__c</name>
+    </fields>
+    <fields>
+        <label><!-- Multicode --></label>
+        <name>Multicode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name Change Count --></label>
+        <name>Name_Change_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the promo code the ACQ has been provided with here. --></help>
+        <label><!-- New ACQ Promo code --></label>
+        <name>New_ACQ_Promo_code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Pending Cancellation subs --></label>
+        <name>Number_Pending_Cancellation_subs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number_of_Active_Subscriptions --></label>
+        <name>Number_of_Active_Subscriptions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Declined Subscriptions --></label>
+        <name>Number_of_Declined_Subscriptions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number_of_In_Renewal_Subscription --></label>
+        <name>Number_of_In_Renewal_Subscription__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Offered Subscriptions --></label>
+        <name>Number_of_Offered_Subscriptions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Pending Subscriptions --></label>
+        <name>Number_of_Pending_Subscriptions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Subscriptions --></label>
+        <name>Number_of_Subscriptions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opposition Sunday Title --></label>
+        <name>OppositionSundayTitle__c</name>
+        <picklistValues>
+            <masterLabel>Don&apos;t Read</masterLabel>
+            <translation><!-- Don&apos;t Read --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent on Sunday</masterLabel>
+            <translation><!-- Independent on Sunday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Local Paper</masterLabel>
+            <translation><!-- Local Paper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mail on Sunday</masterLabel>
+            <translation><!-- Mail on Sunday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>News of the World</masterLabel>
+            <translation><!-- News of the World --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Observer</masterLabel>
+            <translation><!-- Observer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>People</masterLabel>
+            <translation><!-- People --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Star on Sunday</masterLabel>
+            <translation><!-- Star on Sunday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sunday Express</masterLabel>
+            <translation><!-- Sunday Express --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sunday Mirror</masterLabel>
+            <translation><!-- Sunday Mirror --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sunday Times</masterLabel>
+            <translation><!-- Sunday Times --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opposition Title --></label>
+        <name>OppositionTitle__c</name>
+        <picklistValues>
+            <masterLabel>Don&apos;t Read</masterLabel>
+            <translation><!-- Don&apos;t Read --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Express</masterLabel>
+            <translation><!-- Express --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Times</masterLabel>
+            <translation><!-- Financial Times --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guardian</masterLabel>
+            <translation><!-- Guardian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I (Mini Independent)</masterLabel>
+            <translation><!-- I (Mini Independent) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent</masterLabel>
+            <translation><!-- Independent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Local Paper</masterLabel>
+            <translation><!-- Local Paper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mail</masterLabel>
+            <translation><!-- Mail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mirror</masterLabel>
+            <translation><!-- Mirror --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Star</masterLabel>
+            <translation><!-- Star --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sun</masterLabel>
+            <translation><!-- Sun --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Times</masterLabel>
+            <translation><!-- Times --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opposition Sunday Title Frequency --></label>
+        <name>Opposition_Sunday_Title_Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opposition Title Frequency --></label>
+        <name>Opposition_Title_Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Taken By (Company) --></label>
+        <name>Order_Taken_By_Company__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Taken By (User/Department) --></label>
+        <name>Order_Taken_By_User_Department__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Taken Date --></label>
+        <name>Order_Taken_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Taken Method --></label>
+        <name>Order_Taken_Method__c</name>
+    </fields>
+    <fields>
+        <label><!-- Origin --></label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation><!-- Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offline</masterLabel>
+            <translation><!-- Offline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online</masterLabel>
+            <translation><!-- Online --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <name>Ownership</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private</masterLabel>
+            <translation><!-- Private --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public</masterLabel>
+            <translation><!-- Public --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subsidiary</masterLabel>
+            <translation><!-- Subsidiary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Country Code --></label>
+        <name>PAYCP1__Country_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- POC --></label>
+        <name>POC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Buyer Agency --></label>
+        <name>Parent_Account__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Token --></label>
+        <name>Partner_Token__c</name>
+    </fields>
+    <fields>
+        <label><!-- Permissions Last Change Date --></label>
+        <name>Permissions_Last_Change_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Vendor ID --></label>
+        <name>Platform_Vendor_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Promo Code Expiry Date --></label>
+        <name>Previous_Promo_Code_Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Promo Code --></label>
+        <name>Previous_Promo_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Promotion Name --></label>
+        <name>Previous_Promotion_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Plan --></label>
+        <name>Price_Plan__c</name>
+        <picklistValues>
+            <masterLabel>Plan 0</masterLabel>
+            <translation><!-- Plan 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plan 1</masterLabel>
+            <translation><!-- Plan 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plan 2</masterLabel>
+            <translation><!-- Plan 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plan S</masterLabel>
+            <translation><!-- Plan S --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- PricingOptionId --></label>
+        <name>PricingOptionId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Option --></label>
+        <name>Pricing_Option__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary Agency (Buyer) --></label>
+        <name>Primary_Agency_Buyer__c</name>
+        <relationshipLabel><!-- Advertisers (Buyer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary Agency Contact --></label>
+        <name>Primary_Agency_Contact__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Flag to decide if the cust name is printed on the vouchers, True = yes, this is the default --></help>
+        <label><!-- Print Name --></label>
+        <name>Print_Name__c</name>
+        <picklistValues>
+            <masterLabel>False</masterLabel>
+            <translation><!-- False --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>True</masterLabel>
+            <translation><!-- True --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Promo Code Expiry Date --></label>
+        <name>Promo_Code_Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the promo code for existing sbuscribers for the MGM scheme. --></help>
+        <label><!-- Promo Code --></label>
+        <name>Promo_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promotion Name --></label>
+        <name>Promotion_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- RET ID --></label>
+        <name>RET_ID__c</name>
+    </fields>
+    <fields>
+        <name>Rating</name>
+        <picklistValues>
+            <masterLabel>Cold</masterLabel>
+            <translation><!-- Cold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hot</masterLabel>
+            <translation><!-- Hot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Warm</masterLabel>
+            <translation><!-- Warm --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Recently Lapsed End Date --></label>
+        <name>Recently_Lapsed_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Refused Email Reason --></label>
+        <name>Refused_Email__c</name>
+        <picklistValues>
+            <masterLabel>Declined to provide E-Mail</masterLabel>
+            <translation><!-- Declined to provide E-Mail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Does not have E-Mail address</masterLabel>
+            <translation><!-- Does not have E-Mail address --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Retailer Active Sub Count --></label>
+        <name>Retailer_Active_Sub_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retailer --></label>
+        <name>Retailer__c</name>
+        <relationshipLabel><!-- Retailers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Retmulti Description --></label>
+        <name>Retmulti_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retmulti --></label>
+        <name>Retmulti__c</name>
+    </fields>
+    <fields>
+        <help><!-- Revenue Total Generated from the Agency.  Typically Integrated from Billing System. --></help>
+        <label><!-- Revenue Total (Previous Year) --></label>
+        <name>Revenue_Total_Previous_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- RollUpActivesub --></label>
+        <name>RollUpActivesub__c</name>
+    </fields>
+    <fields>
+        <label><!-- SRN --></label>
+        <name>SRN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Salutation Text Hidden --></label>
+        <name>Salutation_Text_Hidden__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sat Net --></label>
+        <name>Sat_Net__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sat Supply --></label>
+        <name>Sat_Supply__c</name>
+    </fields>
+    <fields>
+        <label><!-- School Reference Number --></label>
+        <name>School_Reference_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shop Name --></label>
+        <name>Shop_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Industry --></label>
+        <name>Sub_Industry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscriber Digital Status --></label>
+        <name>Subscriber_Digital_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- New subscriber number reference --></help>
+        <label><!-- Subscriber Number --></label>
+        <name>Subscriber_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscriber Number (static) --></label>
+        <name>Subscriber_Number_static__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscriber Type Name (CACI) --></label>
+        <name>Subscriber_Type_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Frequency --></label>
+        <name>Subscription_Frequency__c</name>
+        <picklistValues>
+            <masterLabel>13 weeks</masterLabel>
+            <translation><!-- 13 weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>26 weeks</masterLabel>
+            <translation><!-- 26 weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>52 weeks</masterLabel>
+            <translation><!-- 52 weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>continuous</masterLabel>
+            <translation><!-- continuous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>monthly</masterLabel>
+            <translation><!-- monthly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>yearly</masterLabel>
+            <translation><!-- yearly --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subscriber Status --></label>
+        <name>Subscription_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Status calc --></label>
+        <name>Subscription_Status_calc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sun Net --></label>
+        <name>Sun_Net__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sun Supply --></label>
+        <name>Sun_Supply__c</name>
+    </fields>
+    <fields>
+        <label><!-- TDT --></label>
+        <name>TDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG Loyalty Email --></label>
+        <name>TMG_Loyalty_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG Loyalty Mail --></label>
+        <name>TMG_Loyalty_Mail__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG Loyalty Phone --></label>
+        <name>TMG_Loyalty_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG Loyalty SMS --></label>
+        <name>TMG_Loyalty_SMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG_Partner_Promo_Email --></label>
+        <name>TMG_Partner_Promo_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG_Partner_Promo_Phone --></label>
+        <name>TMG_Partner_Promo_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG_Partner_Promo_Post --></label>
+        <name>TMG_Partner_Promo_Post__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG_Partner_Promo_SMS --></label>
+        <name>TMG_Partner_Promo_SMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG_Promo_Email --></label>
+        <name>TMG_Promo_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG_Promo_Phone --></label>
+        <name>TMG_Promo_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG_Promo_Post --></label>
+        <name>TMG_Promo_Post__c</name>
+    </fields>
+    <fields>
+        <label><!-- TMG_Promo_SMS --></label>
+        <name>TMG_Promo_SMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tablet First Accessed --></label>
+        <name>Tablet_First_Accessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tablet Last Accessed --></label>
+        <name>Tablet_Last_Accessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Age --></label>
+        <name>Target_Age__c</name>
+        <picklistValues>
+            <masterLabel>Adult (30-45)</masterLabel>
+            <translation><!-- Adult (30-45) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adult (46-60)</masterLabel>
+            <translation><!-- Adult (46-60) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Children</masterLabel>
+            <translation><!-- Children --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seniors (60+)</masterLabel>
+            <translation><!-- Seniors (60+) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Teens</masterLabel>
+            <translation><!-- Teens --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Young Adult (20-30)</masterLabel>
+            <translation><!-- Young Adult (20-30) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Target Audience --></label>
+        <name>Target_Audience__c</name>
+        <picklistValues>
+            <masterLabel>All</masterLabel>
+            <translation><!-- All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Female</masterLabel>
+            <translation><!-- Female --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Male</masterLabel>
+            <translation><!-- Male --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Technology Partner --></label>
+        <name>Technology_Partner__c</name>
+        <relationshipLabel><!-- Accounts (Technology Partner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Telegraph Readership Frequency --></label>
+        <name>Telegraph_Readership_Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Telegraph Sunday Readership Frequency --></label>
+        <name>Telegraph_Sunday_Readership_Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Record --></label>
+        <name>Test_Record__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the Vanity title field. (Lord, Lady, Sir etc.) --></help>
+        <label><!-- Given Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Token Source --></label>
+        <name>Token_Source__c</name>
+    </fields>
+    <fields>
+        <help><!-- Does the custoemr wish to subscribe to the Travel E-mail? --></help>
+        <label><!-- Travel Email --></label>
+        <name>Travel_Email__c</name>
+    </fields>
+    <fields>
+        <name>Type</name>
+        <picklistValues>
+            <masterLabel>Analyst</masterLabel>
+            <translation><!-- Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ex-Customer</masterLabel>
+            <translation><!-- Ex-Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Integrator</masterLabel>
+            <translation><!-- Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investor</masterLabel>
+            <translation><!-- Investor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Press</masterLabel>
+            <translation><!-- Press --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospect</masterLabel>
+            <translation><!-- Prospect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reseller</masterLabel>
+            <translation><!-- Reseller --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- URN --></label>
+        <name>URN__c</name>
+    </fields>
+    <fields>
+        <help><!-- Company&apos;s VAT registration number --></help>
+        <label><!-- VAT Registration Number --></label>
+        <name>VAT_Registration_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value Segmentation --></label>
+        <name>Value_Segmentation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vendor Concatenated ID --></label>
+        <name>Vendor_Concatenated_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Handling --></label>
+        <name>Voucher_Handling__c</name>
+        <picklistValues>
+            <masterLabel>APP Only</masterLabel>
+            <translation><!-- APP Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HND Only</masterLabel>
+            <translation><!-- HND Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Over The Counter Only</masterLabel>
+            <translation><!-- Over The Counter Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Voucher Resends --></label>
+        <name>Voucher_Resends__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wave ID --></label>
+        <name>Wave_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website First Accessed --></label>
+        <name>Website_First_Accessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website Last Accessed --></label>
+        <name>Website_Last_Accessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Week Ending Date --></label>
+        <name>Week_Ending_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weekly Number --></label>
+        <name>Weekly_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wholesaler --></label>
+        <name>Wholesaler__c</name>
+    </fields>
+    <fields>
+        <label><!-- iPad Access --></label>
+        <name>iPadAccess__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Full Name --></label>
+        <name>if_correspondence_name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Loyalty Access --></label>
+        <name>loyaltyAccess__c</name>
+    </fields>
+    <fields>
+        <label><!-- Webpack Access --></label>
+        <name>smartphoneAccess__c</name>
+    </fields>
+    <fields>
+        <label><!-- tablet app first accessed datetime --></label>
+        <name>tablet_app_first_accessed_datetime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website Access --></label>
+        <name>websiteAccess__c</name>
+    </fields>
+    <fields>
+        <label><!-- website first accessed datetime --></label>
+        <name>website_first_accessed_datetime__c</name>
+    </fields>
+    <layouts>
+        <layout>Account Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Adsales SuperUser Advertiser Layout with Artesian</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Agency Information --></label>
+            <section>Agency Information</section>
+        </sections>
+        <sections>
+            <label><!-- Billing Address Information --></label>
+            <section>Billing Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Campaign Spend --></label>
+            <section>Campaign Spend</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Surveillance --></label>
+            <section>Surveillance</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Adsales SuperUser Agency Layout with Artesian</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Agency Specific Details --></label>
+            <section>Agency Specific Details</section>
+        </sections>
+        <sections>
+            <label><!-- Artesian --></label>
+            <section>Artesian</section>
+        </sections>
+        <sections>
+            <label><!-- Billing Address Information --></label>
+            <section>Billing Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Campaign Spend --></label>
+            <section>Campaign Spend</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Advertiser Layout</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Agency Information --></label>
+            <section>Agency Information</section>
+        </sections>
+        <sections>
+            <label><!-- Billing Address Information --></label>
+            <section>Billing Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Advertiser Layout with Artesian</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Agency Information --></label>
+            <section>Agency Information</section>
+        </sections>
+        <sections>
+            <label><!-- Billing Address Information --></label>
+            <section>Billing Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Surveillance --></label>
+            <section>Surveillance</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Agency Layout</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Agency Specific Details --></label>
+            <section>Agency Specific Details</section>
+        </sections>
+        <sections>
+            <label><!-- Billing Address Information --></label>
+            <section>Billing Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Agency Layout - Ad Sales Management</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Agency Specific Details --></label>
+            <section>Agency Specific Details</section>
+        </sections>
+        <sections>
+            <label><!-- Billing Address Information --></label>
+            <section>Billing Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Agency Layout with Artesian</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Agency Specific Details --></label>
+            <section>Agency Specific Details</section>
+        </sections>
+        <sections>
+            <label><!-- Artesian --></label>
+            <section>Artesian</section>
+        </sections>
+        <sections>
+            <label><!-- Billing Address Information --></label>
+            <section>Billing Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMG Retailer Layout</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Newspaper Information --></label>
+            <section>Newspaper Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMG Retailer SYSADMIN Layout</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- AdSales --></label>
+            <section>AdSales</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Newspaper Information --></label>
+            <section>Newspaper Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>eCommerce Advertiser</layout>
+        <sections>
+            <label><!-- Account Information --></label>
+            <section>Account Information</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Address Information --></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Advertiser Account --></label>
+        <name>AdvertiserAccount</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Agency Account --></label>
+        <name>AgencyAccount</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Business Account --></label>
+        <name>BusinessAccount</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Retailer Account --></label>
+        <name>RetailerAccount</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Age Should be greater than 16 years and less than 100 years --></errorMessage>
+        <name>Age_will_be_greater_than_16</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a Closed Date if the Closed checkbox is checked. --></errorMessage>
+        <name>Closed_Checked_Closed_Date_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Age Should be greater than 16 years and less than 100 years --></errorMessage>
+        <name>Date_of_bith_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- An executor address can not be entered unless the Subscriber is marked as Deceased --></errorMessage>
+        <name>Executor_fields_read_only</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Fax number must start with zero. --></errorMessage>
+        <name>Fax_Start_Zero</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Phone number must start with zero. --></errorMessage>
+        <name>Home_Phone_Start_Zero</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Last Name can only contain letters --></errorMessage>
+        <name>Last_Name_Only_Text</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This subscriber is registered on the loyalty portal. Email address updates must take place via the portal. --></errorMessage>
+        <name>Loyalty_Portal_Email_Change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Mobile number must start with zero. --></errorMessage>
+        <name>Mobile_Start_Zero</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Phone number must start with zero. --></errorMessage>
+        <name>Phone_Start_Zero</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only System Administrator or Subs Administrator users can select Price Plan 0 --></errorMessage>
+        <name>Price_Plan_Zero</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only SuperUser and Finance users can create or edit Accounts of type Agency. --></errorMessage>
+        <name>Sales_Can_Only_Create_Advertisers</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter a valid postcode. --></errorMessage>
+        <name>UK_Post_Code_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Account Name and Shop Address fields are read-only for Wholesalers. --></errorMessage>
+        <name>Wholesaler_Fields_Read_Only</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Change_Email_Request --></label>
+        <name>Change_Email_Request</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Digital_Soft_Cancel_Subscriptions --></label>
+        <name>Digital_Soft_Cancel_Subscriptions</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Hard_Cancel_Subscriptions --></label>
+        <name>Hard_Cancel_Subscriptions</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Helpline_Address_Change --></label>
+        <name>Helpline_Address_Change</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Holiday_Policy --></label>
+        <name>Holiday_Policy</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- HooversProfile --></label>
+        <name>HooversProfile</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Illness_Policy --></label>
+        <name>Illness_Policy</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Inbound_Acquisition_Coupon --></label>
+        <name>Inbound_Acquisition_Coupon</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Inbound_Acquistion_Fixed_Price --></label>
+        <name>Inbound_Acquistion_Fixed_Price</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Inbound_Acquistion_Variable_Price --></label>
+        <name>Inbound_Acquistion_Variable_Price</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Inbound_Home_Delivery_Service --></label>
+        <name>Inbound_Home_Delivery_Service</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Inbound_Price_Register_Interest --></label>
+        <name>Inbound_Price_Register_Interest</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Inbound_Renewal_Coupon --></label>
+        <name>Inbound_Renewal_Coupon</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Inbound_Renewals --></label>
+        <name>Inbound_Renewals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- MPP_Take_One_Off_Payment --></label>
+        <name>MPP_Take_One_Off_Payment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- MissingVouchersHelpline --></label>
+        <name>MissingVouchersHelpline</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Gift_Subscription --></label>
+        <name>New_Gift_Subscription</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Subsciption --></label>
+        <name>New_Subsciption</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Newspaper_Amendments_Closures --></label>
+        <name>Newspaper_Amendments_Closures</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Newspaper_Wholesale_Supply_Credit --></label>
+        <name>Newspaper_Wholesale_Supply_Credit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Outbound_Renewal --></label>
+        <name>Outbound_Renewal</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Credit_Card_Payment --></label>
+        <name>PAYCP1__Credit_Card_Payment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Reactivate_Subscriptions --></label>
+        <name>Reactivate_Subscriptions</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Refund_Customer --></label>
+        <name>Refund_Customer</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Renewal_Email --></label>
+        <name>Send_Renewal_Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Resend_Welcome_Email_Pack --></label>
+        <name>Send_Resend_Welcome_Email_Pack</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Soft_Cancel_Subscriptions --></label>
+        <name>Soft_Cancel_Subscriptions</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Subscriber_Console --></label>
+        <name>Subscriber_Console</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+</CustomObjectTranslation>

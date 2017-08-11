@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <fields>
+        <fullName>Acquired_By__c</fullName>
+        <externalId>false</externalId>
+        <formula>Related_Quote__r.Owner:User.FirstName +&quot; &quot;+ Related_Quote__r.Owner:User.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Acquired By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Acquisition_Channel__c</fullName>
+        <externalId>false</externalId>
+        <label>Acquisition Channel</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Call Centre</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>TCUK</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CampaignCode__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign Code</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Campaign_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Effective_Date_Time_String__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Effective Date Time String</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Effective_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Effective Date Time</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATEVALUE( Cancellation_Effective_Date_Time__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Cancellation Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Process_Date_Time_String__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Process Date Time String</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Process_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Process Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Reason__c</fullName>
+        <description>Cancellation reason values, the value is stored on description field in amendments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the cancellation reason</inlineHelpText>
+        <label>Cancellation Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Price</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Editorial</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Political</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lack of content</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>App performance</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Competitor</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No compatible devices</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lack of time</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Functionality</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Product switch</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Amendment</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not known</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Ill health</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Download</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Look and feel</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Apple news</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Duplicate subscription</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Failed Credit Card Payment</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Failed Direct Debit Payment</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HiddenEffectiveStartDate__c</fullName>
+        <description>A hidden field used to trigger a time dependent workflow to update the initial and ongoing prices at the effective start date of the product and charge</description>
+        <externalId>false</externalId>
+        <label>Hidden Effective Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>HiddenInitialSubscriptionPrice__c</fullName>
+        <description>A hidden field that will be used to populate the Initial Subscription Price at the product effective start date</description>
+        <externalId>false</externalId>
+        <label>Hidden Initial Subscription Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>HiddenOnGoingSubscriptionPrice__c</fullName>
+        <description>A hidden field that will be used to populate the On Going Subscription Price at the product effective start date</description>
+        <externalId>false</externalId>
+        <label>Hidden On Going Subscription Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Initial_Subscription_Price__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Initial Subscription Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>LastPriceChange__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Price Change</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Master_Quote__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Master Quote</label>
+        <referenceTo>zqu__Quote__c</referenceTo>
+        <relationshipLabel>Subscriptions</relationshipLabel>
+        <relationshipName>Subscriptions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>On_Going_Subscription_Price__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>On-Going Subscription Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Original_Zuora_Subscription_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Zuora Subscription ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Previous_Subscription_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Related_Quote__r.Previous_Subscription__c</formula>
+        <label>Previous Subscription ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PriceSegmentCode__c</fullName>
+        <externalId>false</externalId>
+        <label>Price Segment Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PromoCode__c</fullName>
+        <description>Promo code with which subscription was sold.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Promo code with which subscription was sold.</inlineHelpText>
+        <label>Promo Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Quote__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Related Quote</label>
+        <referenceTo>zqu__Quote__c</referenceTo>
+        <relationshipLabel>Subscriptions (Related Quote)</relationshipLabel>
+        <relationshipName>Subscriptions1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Cancellation_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Cancellation Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Cancellation_Reason__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Brexit</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Price increase</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Free Trial</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Price</controllingFieldValue>
+                <valueName>Price increase</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Price</controllingFieldValue>
+                <valueName>Free Trial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Price</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Editorial</controllingFieldValue>
+                <valueName>Brexit</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subscription_Origin__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription Origin</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Inbound</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Outbound</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Coupon</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subscription_Product__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription Product</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subscription_Rate_Plan_Term_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription Rate Plan Term Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subscription_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>if( Zuora__Version__c==1,
+ &apos;Subscription&apos;,
+ if(Zuora__Version__c&gt;1,&apos;Amended Subscription&apos;,&apos;&apos;)
+ )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Subscription Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Value__c</fullName>
+        <externalId>false</externalId>
+        <formula>Related_Quote__r.zqu__Previewed_Total__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zuora_Subscription_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>Case(Zuora__Status__c, 
+&apos;Pending Cancellation&apos;,&apos;Cancelled&apos;, 
+&apos;Pending Activation&apos;,&apos;Active&apos;,
+Zuora__Status__c)</formula>
+        <label>Zuora Subscription Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <webLinks>
+        <fullName>Cancel_Subscription</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Cancel Subscription</masterLabel>
+        <openType>noSidebar</openType>
+        <page>ZuoraSubscriptionCancellation</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Manage_Mid_Term_Discounts</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Manage Mid Term Discounts</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var subscrptionStatus=&apos;{!Zuora__Subscription__c.Zuora__Status__c}&apos;;
+var subscriptionRatePlanTermType=&apos;{!Zuora__Subscription__c.Subscription_Rate_Plan_Term_Type__c}&apos;;
+var subscriptionId=&apos;{!Zuora__Subscription__c.Id}&apos;;
+
+if(subscrptionStatus==&apos;Active&apos; || subscrptionStatus==&apos;Pending Activation&apos;){
+
+  if(subscriptionRatePlanTermType==&apos;Annual&apos;){
+     alert(&apos;{!$Label.Mid_Term_Discounts_Annual_Subscription_Error}&apos;);
+  }else{
+      window.open(&apos;/apex/Zuora_ManageMidTermDiscounts?subId=&apos;+subscriptionId,&apos;_self&apos;);
+  }
+}else{
+  alert(&apos;{!$Label.Mid_Term_Discount_Status_Error_Message}&apos;);
+}</url>
+    </webLinks>
+</CustomObject>

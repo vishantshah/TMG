@@ -1,0 +1,34 @@
+<apex:page standardController="Account" extensions="SubscriberConsoleController" sidebar="false" showHeader="false" tabstyle="Account">
+	<apex:form id="formId">
+		<apex:outputPanel id="entitlementPanel">
+			<apex:pageBlock mode="maindetail" title="Entitlement Change" id="detailBlock">
+				<apex:pageBlockSection columns="1">
+					<apex:outputPanel >
+						Select entitlement to change to: 
+						<apex:selectList value="{!newEntitlementForFix}" multiselect="false" size="1">
+				            <apex:selectOptions value="{!entitlementsFromSettings}"/>
+				        </apex:selectList>
+					</apex:outputPanel>
+					
+					<apex:outputPanel id="messageSection" rendered="{!(!ISNULL(confirmMessage))}">
+						<apex:outputText value="{!confirmMessage}" style="{!ConfirmStyle}" />
+					</apex:outputPanel>
+					
+					<apex:outputPanel id="errorSection" rendered="{!(!ISNULL(ErrorLabel))}">
+						<apex:outputText value="{!ErrorLabel}" style="{!ErrorStyle}" />
+					</apex:outputPanel>
+				</apex:pageBlockSection>
+				<apex:pageBlockButtons location="bottom">      
+                	<apex:actionStatus id="entitlementChangeStatus">
+                		<apex:facet name="start">
+                			<apex:commandButton action="{!doEntitlementFix}" value="Making Change..." disabled="true" status="entitlementChangeStatus" rerender="detailBlock" />
+                		</apex:facet>
+                		<apex:facet name="stop">
+                			<apex:commandButton action="{!doEntitlementFix}" value="Make Change" disabled="false" status="entitlementChangeStatus" rerender="detailBlock" />
+                		</apex:facet>
+                	</apex:actionStatus>
+            	</apex:pageBlockButtons>
+			</apex:pageBlock>
+		</apex:outputPanel>
+	</apex:form>
+</apex:page>

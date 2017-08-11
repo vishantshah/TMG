@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpportunitySharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <ownerRules>
+        <fullName>TMGAdSalesD</fullName>
+        <sharedTo>
+            <roleAndSubordinates>TMGAdSales</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinates>TMGAdSales</roleAndSubordinates>
+        </sharedFrom>
+        <name>TMG AdSalesD</name>
+        <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    </ownerRules>
+</OpportunitySharingRules>

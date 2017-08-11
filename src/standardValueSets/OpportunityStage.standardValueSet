@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Sales - (5%) In Conversation</fullName>
+        <default>false</default>
+        <label>Sales - (5%) In Conversation</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>5</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales - (25%) Proactively Pitching</fullName>
+        <default>false</default>
+        <label>Sales - (25%) Proactively Pitching</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>25</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales - (50%) Briefed, No Proposal Out</fullName>
+        <default>false</default>
+        <label>Sales - (50%) Briefed, No Proposal Out</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>50</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales - (75%) Proposal Out, Negotiation</fullName>
+        <default>false</default>
+        <label>Sales - (75%) Proposal Out, Negotiation</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>75</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales - (90%) Agreed, Awaiting IO</fullName>
+        <default>false</default>
+        <label>Sales - (90%) Agreed, Awaiting IO</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>90</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales - Closed Lost</fullName>
+        <default>false</default>
+        <label>Sales - Closed Lost</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales - Closed, Won</fullName>
+        <default>false</default>
+        <label>Sales - Closed, Won</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelled</fullName>
+        <default>false</default>
+        <label>Cancelled</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>AdOps - Approved</fullName>
+        <default>false</default>
+        <label>AdOps - Approved</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>AdOps - IO Added - Awaiting Creative</fullName>
+        <default>false</default>
+        <label>AdOps - IO Added - Awaiting Creative</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>AdOps - Creative Received in Full</fullName>
+        <default>false</default>
+        <label>AdOps - Creative Received in Full</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>AdOps - Live</fullName>
+        <default>false</default>
+        <label>AdOps - Live</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>AdOps - Complete</fullName>
+        <default>false</default>
+        <label>AdOps - Complete</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Establish Opportunity</fullName>
+        <default>false</default>
+        <label>eCommerce - Establish Opportunity</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>5</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Make Contact</fullName>
+        <default>false</default>
+        <label>eCommerce - Make Contact</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>5</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Meeting</fullName>
+        <default>false</default>
+        <label>eCommerce - Meeting</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>25</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Proposal</fullName>
+        <default>false</default>
+        <label>eCommerce - Proposal</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>50</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Agree Commmercials</fullName>
+        <default>false</default>
+        <label>eCommerce - Agree Commmercials</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>75</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Technical Requirements</fullName>
+        <default>false</default>
+        <label>eCommerce - Technical Requirements</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>75</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Instruct Legal</fullName>
+        <default>false</default>
+        <label>eCommerce - Instruct Legal</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>75</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Agree Live Date</fullName>
+        <default>false</default>
+        <label>eCommerce - Agree Live Date</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>75</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Go Live</fullName>
+        <default>false</default>
+        <label>eCommerce - Go Live</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Closed/Lost</fullName>
+        <default>false</default>
+        <label>eCommerce - Closed/Lost</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>CS - Inventory Checked/Authorised</fullName>
+        <default>false</default>
+        <label>CS - Inventory Checked/Authorised</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>AdOps - QA</fullName>
+        <default>false</default>
+        <label>AdOps - QA</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+</StandardValueSet>

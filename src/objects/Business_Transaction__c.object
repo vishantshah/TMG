@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object created with Flexible Prixing project. Defines upgrade transactions.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Customer&apos;s salesforce Account link</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Business Transactions</relationshipLabel>
+        <relationshipName>Business_Transactions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Agent_Name__c</fullName>
+        <description>Defines name of agent executing the transaction or blank when online.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines name of agent executing the transaction or blank when online.</inlineHelpText>
+        <label>Agent Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alternative_Offers_Names__c</fullName>
+        <description>List of Alternative Offer Friendly Names that was emailed to the customer</description>
+        <externalId>false</externalId>
+        <label>Alternative Offers Names</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Alternative_Offers__c</fullName>
+        <description>List of Alternative Offer Codes that was emailed to the customer</description>
+        <externalId>false</externalId>
+        <label>Alternative Offers</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Channel__c</fullName>
+        <description>Default blank
+If Origin==Online THEN Channel=TCUK
+If Origin==Inbound THEN Channel=Contact Centre</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Default blank
+If Origin==Online THEN Channel=TCUK
+If Origin==Inbound THEN Channel=Contact Centre</inlineHelpText>
+        <label>Channel</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>TCUK</fullName>
+                <default>false</default>
+                    <label>TCUK</label>
+                </value>
+                <value>
+                <fullName>Contact Centre</fullName>
+                <default>false</default>
+                    <label>Contact Centre</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Date_of_Action__c</fullName>
+        <description>Populated for alternative or discretionary price change only, with the date that the transaction was initiated (online/offline) - to be populated by Core API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Populated for alternative or discretionary price change only, with the date that the transaction was initiated (online/offline)</inlineHelpText>
+        <label>Date of Action</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Email_Template__c</fullName>
+        <description>Email template name that was used for notifying the customer</description>
+        <externalId>false</externalId>
+        <label>Email Template</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>From_Offer_Code__c</fullName>
+        <description>Offer that was on the subscription before the price change occurred</description>
+        <externalId>false</externalId>
+        <label>From Offer Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>From_Offer_Name__c</fullName>
+        <description>Friendly Name of the Offer that was on the subscription before the price change occurred</description>
+        <externalId>false</externalId>
+        <label>From Offer Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_Subscription__c</fullName>
+        <description>Zuora subscription name (ie. A-S00002) of the new subscription. This is text only, not a link</description>
+        <externalId>false</externalId>
+        <label>New Subscription</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>No_Price_Change__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This will indicate that a No Price Change email, potentially with Alternative Offers, was sent to the customer as part of the Price Change process.</description>
+        <externalId>false</externalId>
+        <label>No Price Change</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Origin__c</fullName>
+        <description>If BTX Status==Complete THEN Origin=Auto-Renewal
+If BTX Status==Alternate AND AgentName is null THEN Origin=Online
+If BTX Status==Alternate AND AgentName not null THEN Origin=Inbound
+If BTX Status==Discretionary THEN Origin=Inbound</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines the origin of the transaction.</inlineHelpText>
+        <label>Origin</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>Auto-Renewal</fullName>
+                <default>false</default>
+                    <label>Auto-Renewal</label>
+                </value>
+                <value>
+                <fullName>Inbound</fullName>
+                <default>false</default>
+                    <label>Inbound</label>
+                </value>
+                <value>
+                <fullName>Outbound</fullName>
+                <default>false</default>
+                    <label>Outbound</label>
+                </value>
+                <value>
+                <fullName>Online</fullName>
+                <default>false</default>
+                    <label>Online</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Plan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Plan</label>
+        <referenceTo>Plan__c</referenceTo>
+        <relationshipLabel>Business Transactions</relationshipLabel>
+        <relationshipName>Business_Transactions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Price_Change_Date__c</fullName>
+        <description>Date the price change is scheduled to occur</description>
+        <externalId>false</externalId>
+        <label>Price Change Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Selected_Offer_Code__c</fullName>
+        <description>Text field that will be populated with the Offer Code of either the Alternative Offer or Discretionary Price Change Offer, if either of those processes are invoked</description>
+        <externalId>false</externalId>
+        <label>Selected Offer Code</label>
+        <length>225</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Selected_Offer_Name__c</fullName>
+        <description>Text field that will be populated with the Offer Friendly Name of either the Alternative Offer or Discretionary Price Change Offer, if either of those processes are invoked</description>
+        <externalId>false</externalId>
+        <label>Selected Offer Name</label>
+        <length>225</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                <fullName>Complete</fullName>
+                <default>false</default>
+                    <label>Complete</label>
+                </value>
+                <value>
+                <fullName>Error</fullName>
+                <default>false</default>
+                    <label>Error</label>
+                </value>
+                <value>
+                <fullName>Alternative</fullName>
+                <default>false</default>
+                    <label>Alternative</label>
+                </value>
+                <value>
+                <fullName>Discretionary</fullName>
+                <default>false</default>
+                    <label>Discretionary</label>
+                </value>
+                <value>
+                <fullName>Payment Failure</fullName>
+                <default>false</default>
+                    <label>Payment Failure</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subscription__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Customer&apos;s zsubscription link</description>
+        <externalId>false</externalId>
+        <label>Subscription</label>
+        <referenceTo>Zuora__Subscription__c</referenceTo>
+        <relationshipLabel>Business Transactions</relationshipLabel>
+        <relationshipName>Business_Transactions</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>To_Offer_Code__c</fullName>
+        <description>Offer that was on the subscription after the price change occurred. This field does not alter if an Alternative Offer, or a Discretionary Price Change is performed</description>
+        <externalId>false</externalId>
+        <label>To Offer Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>To_Offer_Name__c</fullName>
+        <description>Friendly Name of the Offer that was on the subscription after the price change occurred.</description>
+        <externalId>false</externalId>
+        <label>To Offer Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Business Transaction</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Status__c</columns>
+        <columns>Subscription__c</columns>
+        <columns>Plan__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>TX-{00000}</displayFormat>
+        <label>Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Business Transactions</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Price_Change</fullName>
+        <active>true</active>
+        <description>Record Type for Price Change</description>
+        <label>Price Change</label>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Contact Centre</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TCUK</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Origin__c</picklist>
+            <values>
+                <fullName>Auto-Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inbound</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Alternative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discretionary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Payment Failure</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>SAM_Migrate</fullName>
+        <active>true</active>
+        <description>Record type for SAM accounts migration</description>
+        <label>SAM Migrate</label>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Contact Centre</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TCUK</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Origin__c</picklist>
+            <values>
+                <fullName>Auto-Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inbound</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Alternative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Discretionary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Payment Failure</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

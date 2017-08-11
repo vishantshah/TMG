@@ -1,0 +1,2805 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Subscription</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Subscriptions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Asset Calculation Value (Hidden) --></label>
+        <name>Asset_Calc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Astra Migration Balance --></label>
+        <name>Astra_Migration_Balance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Astra Subscription key --></label>
+        <name>Astra_Subscription_key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Calling Bucket --></label>
+        <name>Calling_Bucket__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancellation Date Reached --></label>
+        <name>Cancellation_Date_Reached__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancellation Date Workflow trigger --></label>
+        <name>Cancellation_Date_Workflow_trigger__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancellation Date --></label>
+        <name>Cancellation_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancellation Method --></label>
+        <name>Cancellation_Method__c</name>
+        <picklistValues>
+            <masterLabel>ADDACS Notification</masterLabel>
+            <translation><!-- ADDACS Notification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AUDDIS Notification</masterLabel>
+            <translation><!-- AUDDIS Notification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD Migration Failure</masterLabel>
+            <translation><!-- DD Migration Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD Reject</masterLabel>
+            <translation><!-- DD Reject --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DDIC Report</masterLabel>
+            <translation><!-- DDIC Report --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Letter</masterLabel>
+            <translation><!-- Letter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Task</masterLabel>
+            <translation><!-- Task --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Cancellation Reason --></label>
+        <name>Cancellation_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Competitor Offer</masterLabel>
+            <translation><!-- Competitor Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD Account Closed</masterLabel>
+            <translation><!-- DD Account Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD Cancelled by Payer</masterLabel>
+            <translation><!-- DD Cancelled by Payer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD Incorrect Account Type</masterLabel>
+            <translation><!-- DD Incorrect Account Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD Incorrect Bank Details</masterLabel>
+            <translation><!-- DD Incorrect Bank Details --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD Indemnity Claim</masterLabel>
+            <translation><!-- DD Indemnity Claim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD Migration Failure</masterLabel>
+            <translation><!-- DD Migration Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD No Instruction</masterLabel>
+            <translation><!-- DD No Instruction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD Refer to Payer</masterLabel>
+            <translation><!-- DD Refer to Payer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DM Mailing Error</masterLabel>
+            <translation><!-- DM Mailing Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deceased</masterLabel>
+            <translation><!-- Deceased --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital</masterLabel>
+            <translation><!-- Digital --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dislike Paper</masterLabel>
+            <translation><!-- Dislike Paper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Problems</masterLabel>
+            <translation><!-- Distribution Problems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate File</masterLabel>
+            <translation><!-- Duplicate File --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Editorial Issues</masterLabel>
+            <translation><!-- Editorial Issues --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emigration</masterLabel>
+            <translation><!-- Emigration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extended Holiday</masterLabel>
+            <translation><!-- Extended Holiday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fears Commitment</masterLabel>
+            <translation><!-- Fears Commitment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gone Away</masterLabel>
+            <translation><!-- Gone Away --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent i</masterLabel>
+            <translation><!-- Independent i --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kindle</masterLabel>
+            <translation><!-- Kindle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Main Reader Deceased</masterLabel>
+            <translation><!-- Main Reader Deceased --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moved to Care Home</masterLabel>
+            <translation><!-- Moved to Care Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moving House (UK)</masterLabel>
+            <translation><!-- Moving House (UK) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Subscriber Incentive</masterLabel>
+            <translation><!-- New Subscriber Incentive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Occasional Reader</masterLabel>
+            <translation><!-- Occasional Reader --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poor eyesight</masterLabel>
+            <translation><!-- Poor eyesight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prefers online content</masterLabel>
+            <translation><!-- Prefers online content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Increase</masterLabel>
+            <translation><!-- Price Increase --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected holiday policy</masterLabel>
+            <translation><!-- Rejected holiday policy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review of personal finances/cannot afford</masterLabel>
+            <translation><!-- Review of personal finances/cannot afford --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Error</masterLabel>
+            <translation><!-- Salesforce Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serious illness</masterLabel>
+            <translation><!-- Serious illness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Too much to read.</masterLabel>
+            <translation><!-- Too much to read. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unpaid Cheque</masterLabel>
+            <translation><!-- Unpaid Cheque --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voucher Style</masterLabel>
+            <translation><!-- Voucher Style --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Within 14 days</masterLabel>
+            <translation><!-- Within 14 days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>£3.00 ACQ Offer</masterLabel>
+            <translation><!-- £3.00 ACQ Offer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Cancelled Voucher Position --></label>
+        <name>Cancelled_Voucher_Position__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commitment Concern --></label>
+        <name>Commitment_Concern__c</name>
+        <picklistValues>
+            <masterLabel>Duration of Subscription (26/52 Week)</masterLabel>
+            <translation><!-- Duration of Subscription (26/52 Week) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Readership Style (Day Reader)</masterLabel>
+            <translation><!-- Readership Style (Day Reader) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Cur Week Pos Final Text (Hidden) --></label>
+        <name>Cur_Week_Pos_Final_Text_Hidden__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Pack Outstanding Balance --></label>
+        <name>Current_Pack_Outstanding_Balance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Pack Position Final --></label>
+        <name>Current_Pack_Position_Final__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Pack Position --></label>
+        <name>Current_Pack_Position__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Week Position Final --></label>
+        <name>Current_Week_Position_Final__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Week Position --></label>
+        <name>Current_Week_Position__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value of vouchers supplied --></help>
+        <label><!-- (DA) Standard Voucher Extraction --></label>
+        <name>DA_Standard_Voucher_Extraction__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF DD First Collection Hidden --></label>
+        <name>DD_First_Collection_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF DD Ongoing Collection Amount Hidden --></label>
+        <name>DD_Ongoing_Collection_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Force deferred asset and revenue re-calc --></help>
+        <label><!-- Deferred Calc Force Update --></label>
+        <name>Deferred_Calc_Force_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delivery Type --></label>
+        <name>Delivery_Type__c</name>
+        <picklistValues>
+            <masterLabel>HND</masterLabel>
+            <translation><!-- HND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OTC</masterLabel>
+            <translation><!-- OTC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Destination --></label>
+        <name>Destination__c</name>
+        <picklistValues>
+            <masterLabel>Overseas</masterLabel>
+            <translation><!-- Overseas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UK</masterLabel>
+            <translation><!-- UK --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Digital VAT Rate --></label>
+        <name>Digital_VAT_Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Discount --></label>
+        <name>Discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dislike Paper Reason --></label>
+        <name>Dislike_Paper_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Content</masterLabel>
+            <translation><!-- Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Move to Digital Content</masterLabel>
+            <translation><!-- Move to Digital Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Style - Layout</masterLabel>
+            <translation><!-- Style - Layout --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Style- Written</masterLabel>
+            <translation><!-- Style- Written --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Duration --></label>
+        <name>Duration__c</name>
+        <picklistValues>
+            <masterLabel>13 Weeks</masterLabel>
+            <translation><!-- 13 Weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>26 Weeks</masterLabel>
+            <translation><!-- 26 Weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>52 Weeks</masterLabel>
+            <translation><!-- 52 Weeks --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Editorial Reason --></label>
+        <name>Editorial_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Content</masterLabel>
+            <translation><!-- Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Style - Layout</masterLabel>
+            <translation><!-- Style - Layout --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Style - Written</masterLabel>
+            <translation><!-- Style - Written --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Renewal --></label>
+        <name>FirstRenewal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Tells who is going to receive the Gift Pack --></help>
+        <label><!-- Gift Box Recipient --></label>
+        <name>Gift_Box_Recipient__c</name>
+        <picklistValues>
+            <masterLabel>Gift Donor</masterLabel>
+            <translation><!-- Gift Donor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gift Recipient</masterLabel>
+            <translation><!-- Gift Recipient --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Donor of the Gift Subscription --></help>
+        <label><!-- Gift Donor --></label>
+        <name>Gift_Donor__c</name>
+        <relationshipLabel><!-- Gift Subscriptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The book sent with Gift pack --></help>
+        <label><!-- Gift Pack Book --></label>
+        <name>Gift_Pack_Book__c</name>
+        <picklistValues>
+            <masterLabel>Am I Alone in Thinking...? - Iain Hollingshead</masterLabel>
+            <translation><!-- Am I Alone in Thinking...? - Iain Hollingshead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Display of lights (9) - Val Gilbert</masterLabel>
+            <translation><!-- Display of lights (9) - Val Gilbert --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Much depends on dinner - Carolyn Hart</masterLabel>
+            <translation><!-- Much depends on dinner - Carolyn Hart --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Expenses spared - Robert Winnett &amp; Gordon Rayner</masterLabel>
+            <translation><!-- No Expenses spared - Robert Winnett &amp; Gordon Rayner --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Holiday Duration --></label>
+        <name>Holiday_Duration__c</name>
+        <picklistValues>
+            <masterLabel>1 Month</masterLabel>
+            <translation><!-- 1 Month --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2-3 Months</masterLabel>
+            <translation><!-- 2-3 Months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3-5 Months</masterLabel>
+            <translation><!-- 3-5 Months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6 Months +</masterLabel>
+            <translation><!-- 6 Months + --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer unsure</masterLabel>
+            <translation><!-- Customer unsure --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IF 11 Week Renewal Update Date Hidden --></label>
+        <name>IF_11_Week_Renewal_Update_Date_Hidden__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Active Value --></label>
+        <name>IF_Active_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCA Extraction Date --></label>
+        <name>IF_CCA_Extraction_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- D03 Extraction Date --></label>
+        <name>IF_DD_D03_Extraction_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_DD_Ongoing_Date --></label>
+        <name>IF_DD_Ongoing_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF In Renewal Value --></label>
+        <name>IF_In_Renewal_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Is_This_First_Payment --></label>
+        <name>IF_Is_This_First_Payment__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Lapsed Value --></label>
+        <name>IF_Lapsed_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Last_Payment_Date --></label>
+        <name>IF_Last_Payment_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Next_DD_Payment_Date --></label>
+        <name>IF_Next_DD_Payment_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Past End Date --></label>
+        <name>IF_Past_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Previous_Price_Less --></label>
+        <name>IF_Previous_Price_Less__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_Voucher_Extraction_DD_Amount__c --></label>
+        <name>IF_Voucher_Extraction_DD_Amount_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Act_Pay_Type --></label>
+        <name>IF_WAC_Act_Pay_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Active_Exp --></label>
+        <name>IF_WAC_Active_Exp__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Delivery_Type --></label>
+        <name>IF_WAC_Delivery_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Fst_DD --></label>
+        <name>IF_WAC_Fst_DD__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Last_Pay_Date --></label>
+        <name>IF_WAC_Last_Pay_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Lst_Amount --></label>
+        <name>IF_WAC_Lst_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Lst_Pay --></label>
+        <name>IF_WAC_Lst_Pay__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Next_Pay_Date --></label>
+        <name>IF_WAC_Next_Pay_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Pay_Type --></label>
+        <name>IF_WAC_Pay_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Renewal_Price --></label>
+        <name>IF_WAC_Renewal_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF_WAC_Subscriber_Has_Offer --></label>
+        <name>IF_WAC_Subscriber_Has_Offer__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Is Cancellation Date This Week --></label>
+        <name>If_Is_Cancellation_Date_This_Week__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is First Renewal --></label>
+        <name>Is_First_Renewal__c</name>
+    </fields>
+    <fields>
+        <help><!-- If this flag is checked, then the automated batch process has added this letter to the MPP_DDCCA csv file sent to the fulfillment team for the creation of DD/CCA letters. --></help>
+        <label><!-- Is MPP DDCCA Letter Extracted --></label>
+        <name>Is_MPP_DDCCA_Letter_Extracted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is One Off Payment --></label>
+        <name>Is_One_Off_Payment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Renewal? --></label>
+        <name>Is_Renewal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Using MPP --></label>
+        <name>Is_Using_MPP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lapsed Status --></label>
+        <name>Lapsed_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Status Change --></label>
+        <name>Last_Status_Change__c</name>
+    </fields>
+    <fields>
+        <label><!-- Liability Calculation Value (Hidden) --></label>
+        <name>Liab_Calc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lock All Fields --></label>
+        <name>Lock_All_Fields__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP CC First Payment Amount --></label>
+        <name>MPP_CC_First_Payment_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP CC Frequency --></label>
+        <name>MPP_CC_Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP CC Next Payment Date --></label>
+        <name>MPP_CC_Next_Payment_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP DD First Payment Amount --></label>
+        <name>MPP_DD_First_Payment_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP DD Frequency --></label>
+        <name>MPP_DD_Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP DD Next Payment Date --></label>
+        <name>MPP_DD_Next_Payment_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP Pay Schedule End Date --></label>
+        <name>MPP_Pay_Schedule_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP Pay Schedule Start Date --></label>
+        <name>MPP_Pay_Schedule_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP Premium Subscription ID --></label>
+        <name>MPP_Premium_Subscription_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPP Scheduled First Payment Date --></label>
+        <name>MPP_Scheduled_First_Payment_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Migration_Stage_failure --></label>
+        <name>Migration_Stage_failure__c</name>
+    </fields>
+    <fields>
+        <label><!-- Smartphone Last Accessed --></label>
+        <name>Mobile_Last_Accessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Move to Digital --></label>
+        <name>Move_to_Digital__c</name>
+        <picklistValues>
+            <masterLabel>E-Paper</masterLabel>
+            <translation><!-- E-Paper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kindle</masterLabel>
+            <translation><!-- Kindle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Based</masterLabel>
+            <translation><!-- Web Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>iPad</masterLabel>
+            <translation><!-- iPad --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MppDDCalloutAttemptCount --></label>
+        <name>MppDDCalloutAttemptCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- MppDDCalloutStage --></label>
+        <name>MppDDCalloutStage__c</name>
+        <picklistValues>
+            <masterLabel>DirectDebit</masterLabel>
+            <translation><!-- DirectDebit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DirectDebit-Failed</masterLabel>
+            <translation><!-- DirectDebit-Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GetPayment</masterLabel>
+            <translation><!-- GetPayment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PaymentSchedule</masterLabel>
+            <translation><!-- PaymentSchedule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PaymentSchedule-Failed</masterLabel>
+            <translation><!-- PaymentSchedule-Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UserManage</masterLabel>
+            <translation><!-- UserManage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UserManage-Failed</masterLabel>
+            <translation><!-- UserManage-Failed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MppDDLastCalloutDateTime --></label>
+        <name>MppDDLastCalloutDateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Sub Duration --></label>
+        <name>New_Sub_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Voucher Batch Start Override --></label>
+        <name>Next_Voucher_Batch_Start_Override__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Voucher Batch Start --></label>
+        <name>Next_Voucher_Batch__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Voucher Extraction Override --></label>
+        <name>Next_Voucher_Extraction_Override__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Voucher Extraction --></label>
+        <name>Next_Voucher_Extraction__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Voucher Resends --></label>
+        <name>Number_of_Voucher_Resends__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offered Price --></label>
+        <name>Offered_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- Company that takes a new sub order - populated by Synthesis --></help>
+        <label><!-- Order Taken By (Company) --></label>
+        <name>Order_Taken_By_Company__c</name>
+    </fields>
+    <fields>
+        <help><!-- User (for Chatham) or Department (for 3rd party) that takes a new sub order - populated by Synthesis --></help>
+        <label><!-- Order Taken By (User/Department) --></label>
+        <name>Order_Taken_By_User_Department__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date of the order from Synthesis --></help>
+        <label><!-- Order Taken Date --></label>
+        <name>Order_Taken_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Method of order - populated from Synthesis --></help>
+        <label><!-- Order Taken Method --></label>
+        <name>Order_Taken_Method__c</name>
+        <picklistValues>
+            <masterLabel>Auto Renewal</masterLabel>
+            <translation><!-- Auto Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coupon</masterLabel>
+            <translation><!-- Coupon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Details of order wave - populated by Synthesis. Manual population should use 535T or 615T --></help>
+        <label><!-- Order Taken Wave --></label>
+        <name>Order_Taken_Wave__c</name>
+        <picklistValues>
+            <masterLabel>111V</masterLabel>
+            <translation><!-- 111V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>112V</masterLabel>
+            <translation><!-- 112V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>113V</masterLabel>
+            <translation><!-- 113V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>114V</masterLabel>
+            <translation><!-- 114V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>115V</masterLabel>
+            <translation><!-- 115V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>116V</masterLabel>
+            <translation><!-- 116V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>117V</masterLabel>
+            <translation><!-- 117V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>118V</masterLabel>
+            <translation><!-- 118V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>181V</masterLabel>
+            <translation><!-- 181V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>210V</masterLabel>
+            <translation><!-- 210V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>211V</masterLabel>
+            <translation><!-- 211V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>212V</masterLabel>
+            <translation><!-- 212V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>213V</masterLabel>
+            <translation><!-- 213V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>228V</masterLabel>
+            <translation><!-- 228V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>535T</masterLabel>
+            <translation><!-- 535T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>615T</masterLabel>
+            <translation><!-- 615T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>631T</masterLabel>
+            <translation><!-- 631T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>741T</masterLabel>
+            <translation><!-- 741T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>749T</masterLabel>
+            <translation><!-- 749T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>767T</masterLabel>
+            <translation><!-- 767T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>769T</masterLabel>
+            <translation><!-- 769T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>775T</masterLabel>
+            <translation><!-- 775T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>776T</masterLabel>
+            <translation><!-- 776T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>780T</masterLabel>
+            <translation><!-- 780T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>791T</masterLabel>
+            <translation><!-- 791T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>793T</masterLabel>
+            <translation><!-- 793T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>798T</masterLabel>
+            <translation><!-- 798T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>803T</masterLabel>
+            <translation><!-- 803T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>810T</masterLabel>
+            <translation><!-- 810T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>811T</masterLabel>
+            <translation><!-- 811T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>812T</masterLabel>
+            <translation><!-- 812T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>813T</masterLabel>
+            <translation><!-- 813T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>814T</masterLabel>
+            <translation><!-- 814T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>815T</masterLabel>
+            <translation><!-- 815T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>816T</masterLabel>
+            <translation><!-- 816T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>817T</masterLabel>
+            <translation><!-- 817T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>818T</masterLabel>
+            <translation><!-- 818T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>820T</masterLabel>
+            <translation><!-- 820T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>824T</masterLabel>
+            <translation><!-- 824T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>832T</masterLabel>
+            <translation><!-- 832T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>833T</masterLabel>
+            <translation><!-- 833T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>834T</masterLabel>
+            <translation><!-- 834T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>835T</masterLabel>
+            <translation><!-- 835T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>836T</masterLabel>
+            <translation><!-- 836T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>841T</masterLabel>
+            <translation><!-- 841T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>842T</masterLabel>
+            <translation><!-- 842T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>843T</masterLabel>
+            <translation><!-- 843T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>844T</masterLabel>
+            <translation><!-- 844T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>845T</masterLabel>
+            <translation><!-- 845T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>848T</masterLabel>
+            <translation><!-- 848T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>850T</masterLabel>
+            <translation><!-- 850T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>851T</masterLabel>
+            <translation><!-- 851T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>857T</masterLabel>
+            <translation><!-- 857T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>858T</masterLabel>
+            <translation><!-- 858T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>859T</masterLabel>
+            <translation><!-- 859T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>860T</masterLabel>
+            <translation><!-- 860T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>861T</masterLabel>
+            <translation><!-- 861T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>862T</masterLabel>
+            <translation><!-- 862T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>863T</masterLabel>
+            <translation><!-- 863T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>864T</masterLabel>
+            <translation><!-- 864T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>865T</masterLabel>
+            <translation><!-- 865T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>873T</masterLabel>
+            <translation><!-- 873T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>876T</masterLabel>
+            <translation><!-- 876T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>878T</masterLabel>
+            <translation><!-- 878T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>879T</masterLabel>
+            <translation><!-- 879T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>880T</masterLabel>
+            <translation><!-- 880T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>881T</masterLabel>
+            <translation><!-- 881T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>883T</masterLabel>
+            <translation><!-- 883T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>884T</masterLabel>
+            <translation><!-- 884T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>887T</masterLabel>
+            <translation><!-- 887T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>888T</masterLabel>
+            <translation><!-- 888T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>890T</masterLabel>
+            <translation><!-- 890T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>891T</masterLabel>
+            <translation><!-- 891T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>892T</masterLabel>
+            <translation><!-- 892T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>893T</masterLabel>
+            <translation><!-- 893T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>894T</masterLabel>
+            <translation><!-- 894T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>897T</masterLabel>
+            <translation><!-- 897T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>898T</masterLabel>
+            <translation><!-- 898T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>899T</masterLabel>
+            <translation><!-- 899T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>900T</masterLabel>
+            <translation><!-- 900T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>903T</masterLabel>
+            <translation><!-- 903T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>904T</masterLabel>
+            <translation><!-- 904T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>905T</masterLabel>
+            <translation><!-- 905T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>906T</masterLabel>
+            <translation><!-- 906T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>907T</masterLabel>
+            <translation><!-- 907T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>910T</masterLabel>
+            <translation><!-- 910T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>912T</masterLabel>
+            <translation><!-- 912T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>913T</masterLabel>
+            <translation><!-- 913T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>914T</masterLabel>
+            <translation><!-- 914T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>915T</masterLabel>
+            <translation><!-- 915T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>916T</masterLabel>
+            <translation><!-- 916T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>917T</masterLabel>
+            <translation><!-- 917T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>918T</masterLabel>
+            <translation><!-- 918T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>919T</masterLabel>
+            <translation><!-- 919T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>921T</masterLabel>
+            <translation><!-- 921T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>922T</masterLabel>
+            <translation><!-- 922T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>923T</masterLabel>
+            <translation><!-- 923T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>924T</masterLabel>
+            <translation><!-- 924T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>925T</masterLabel>
+            <translation><!-- 925T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>927T</masterLabel>
+            <translation><!-- 927T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>928T</masterLabel>
+            <translation><!-- 928T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>929T</masterLabel>
+            <translation><!-- 929T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>930T</masterLabel>
+            <translation><!-- 930T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>931T</masterLabel>
+            <translation><!-- 931T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>932T</masterLabel>
+            <translation><!-- 932T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>933T</masterLabel>
+            <translation><!-- 933T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>934T</masterLabel>
+            <translation><!-- 934T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>935T</masterLabel>
+            <translation><!-- 935T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>936T</masterLabel>
+            <translation><!-- 936T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>937T</masterLabel>
+            <translation><!-- 937T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>938T</masterLabel>
+            <translation><!-- 938T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>939T</masterLabel>
+            <translation><!-- 939T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>940T</masterLabel>
+            <translation><!-- 940T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>941T</masterLabel>
+            <translation><!-- 941T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>942T</masterLabel>
+            <translation><!-- 942T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>943T</masterLabel>
+            <translation><!-- 943T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>944T</masterLabel>
+            <translation><!-- 944T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>945T</masterLabel>
+            <translation><!-- 945T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>946T</masterLabel>
+            <translation><!-- 946T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>947T</masterLabel>
+            <translation><!-- 947T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>948T</masterLabel>
+            <translation><!-- 948T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>950T</masterLabel>
+            <translation><!-- 950T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>951T</masterLabel>
+            <translation><!-- 951T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>952T</masterLabel>
+            <translation><!-- 952T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>955T</masterLabel>
+            <translation><!-- 955T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>956T</masterLabel>
+            <translation><!-- 956T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>958T</masterLabel>
+            <translation><!-- 958T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>959T</masterLabel>
+            <translation><!-- 959T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>960T</masterLabel>
+            <translation><!-- 960T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>961T</masterLabel>
+            <translation><!-- 961T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>962T</masterLabel>
+            <translation><!-- 962T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>963T</masterLabel>
+            <translation><!-- 963T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>964T</masterLabel>
+            <translation><!-- 964T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>965T</masterLabel>
+            <translation><!-- 965T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>966T</masterLabel>
+            <translation><!-- 966T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>976T</masterLabel>
+            <translation><!-- 976T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>977T</masterLabel>
+            <translation><!-- 977T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>978T</masterLabel>
+            <translation><!-- 978T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>979T</masterLabel>
+            <translation><!-- 979T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>980T</masterLabel>
+            <translation><!-- 980T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>981T</masterLabel>
+            <translation><!-- 981T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>982T</masterLabel>
+            <translation><!-- 982T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>983T</masterLabel>
+            <translation><!-- 983T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>985T</masterLabel>
+            <translation><!-- 985T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>986T</masterLabel>
+            <translation><!-- 986T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>989T</masterLabel>
+            <translation><!-- 989T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>990T</masterLabel>
+            <translation><!-- 990T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>993T</masterLabel>
+            <translation><!-- 993T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>995T</masterLabel>
+            <translation><!-- 995T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>996T</masterLabel>
+            <translation><!-- 996T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>997T</masterLabel>
+            <translation><!-- 997T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>998T</masterLabel>
+            <translation><!-- 998T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>999T</masterLabel>
+            <translation><!-- 999T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canx Team</masterLabel>
+            <translation><!-- Canx Team --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D3</masterLabel>
+            <translation><!-- D3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Late Renewal</masterLabel>
+            <translation><!-- Late Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewal</masterLabel>
+            <translation><!-- Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>T2</masterLabel>
+            <translation><!-- T2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TL1</masterLabel>
+            <translation><!-- TL1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TL2</masterLabel>
+            <translation><!-- TL2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Outstanding Balance Voucher Adjustment --></label>
+        <name>Outstanding_Balance_Voucher_Adjustment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outstanding Balance to Customer --></label>
+        <name>Outstanding_Balance__c</name>
+    </fields>
+    <fields>
+        <help><!-- If positive, outstanding balance is to customer. If negative, customer owes TMG. --></help>
+        <label><!-- Outstanding Balance to/(from) Customer --></label>
+        <name>Outstanding_Balance_to_from_Customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Paid Until --></label>
+        <name>Paid_Until__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Date --></label>
+        <name>PaymentDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Details Received --></label>
+        <name>Payment_Details_Received__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Schedule --></label>
+        <name>Payment_Schedule__c</name>
+    </fields>
+    <fields>
+        <help><!-- Estimated start date for first payment. DD payments need a lead time of 2 days so is subtracted from initial start date. --></help>
+        <label><!-- Payment Start Date --></label>
+        <name>Payment_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Type --></label>
+        <name>Payment_Type__c</name>
+        <picklistValues>
+            <masterLabel>Charge Card</masterLabel>
+            <translation><!-- Charge Card --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cheque</masterLabel>
+            <translation><!-- Cheque --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Card</masterLabel>
+            <translation><!-- Credit Card --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit/Debit Card</masterLabel>
+            <translation><!-- Credit/Debit Card --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Debit Card</masterLabel>
+            <translation><!-- Debit Card --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Debit</masterLabel>
+            <translation><!-- Direct Debit --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Previous Voucher Start Date --></label>
+        <name>Previous_Pack_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Price --></label>
+        <name>Previous_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Subscription Expiry --></label>
+        <name>Previous_Subscription_Expiry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Subscription --></label>
+        <name>Previous_Subscription__c</name>
+        <relationshipLabel><!-- Subscriptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Price Plan --></label>
+        <name>Price_Plan__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price --></label>
+        <name>Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing Error --></label>
+        <name>Pricing_Error__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promo Code Expiry Date --></label>
+        <name>Promo_Code_Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promo Code --></label>
+        <name>Promo_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promotion Name --></label>
+        <name>Promotion_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Readership (Days) --></label>
+        <name>Readership_Days__c</name>
+        <picklistValues>
+            <masterLabel>1 Day</masterLabel>
+            <translation><!-- 1 Day --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 Days</masterLabel>
+            <translation><!-- 2 Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 Days</masterLabel>
+            <translation><!-- 3 Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 Days</masterLabel>
+            <translation><!-- 4 Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 Days</masterLabel>
+            <translation><!-- 5 Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6 Days</masterLabel>
+            <translation><!-- 6 Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7 Days</masterLabel>
+            <translation><!-- 7 Days --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Renewal Source --></label>
+        <name>Renewal_Source__c</name>
+        <picklistValues>
+            <masterLabel>Coupon</masterLabel>
+            <translation><!-- Coupon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DM</masterLabel>
+            <translation><!-- DM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound Call</masterLabel>
+            <translation><!-- Inbound Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Order</masterLabel>
+            <translation><!-- Web Order --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Renewal Status --></label>
+        <name>Renewal_Status__c</name>
+        <picklistValues>
+            <masterLabel>DD Price Increase</masterLabel>
+            <translation><!-- DD Price Increase --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L3 Sent</masterLabel>
+            <translation><!-- L3 Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R1 Sent</masterLabel>
+            <translation><!-- R1 Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R2 Sent</masterLabel>
+            <translation><!-- R2 Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R3 Sent</masterLabel>
+            <translation><!-- R3 Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewed</masterLabel>
+            <translation><!-- Renewed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>T2 Call Scheduled</masterLabel>
+            <translation><!-- T2 Call Scheduled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TL1 Call Scheduled</masterLabel>
+            <translation><!-- TL1 Call Scheduled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TL2 Call Scheduled</masterLabel>
+            <translation><!-- TL2 Call Scheduled --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Retailer Name (CACI) --></label>
+        <name>Retailer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retailer --></label>
+        <name>Retailer__c</name>
+        <relationshipLabel><!-- Subscriptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Amount of revenue write-off - any balance due from customer --></help>
+        <label><!-- Revenue Write-off Amount --></label>
+        <name>Revenue_Write_off_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Reason for any revenue write-off --></help>
+        <label><!-- Revenue Write-off Reason --></label>
+        <name>Revenue_Write_off_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Additional DD Payments Taken</masterLabel>
+            <translation><!-- Additional DD Payments Taken --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Additional Payment</masterLabel>
+            <translation><!-- Additional Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amount not owed by customer</masterLabel>
+            <translation><!-- Amount not owed by customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auto write-off</masterLabel>
+            <translation><!-- Auto write-off --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call Centre error</masterLabel>
+            <translation><!-- Call Centre error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancellation No Refund</masterLabel>
+            <translation><!-- Cancellation No Refund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer appeasement</masterLabel>
+            <translation><!-- Customer appeasement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DD error</masterLabel>
+            <translation><!-- DD error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deceased</masterLabel>
+            <translation><!-- Deceased --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Final DD Collection Not Taken</masterLabel>
+            <translation><!-- Final DD Collection Not Taken --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gone Away</masterLabel>
+            <translation><!-- Gone Away --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insufficient vouchers returned</masterLabel>
+            <translation><!-- Insufficient vouchers returned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mailing Error</masterLabel>
+            <translation><!-- Mailing Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monthly Payment Calculation Discrepancy</masterLabel>
+            <translation><!-- Monthly Payment Calculation Discrepancy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newsagent Cheque Received</masterLabel>
+            <translation><!-- Newsagent Cheque Received --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No response to phone calls/letters</masterLabel>
+            <translation><!-- No response to phone calls/letters --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not prepared to pay/return vouchers</masterLabel>
+            <translation><!-- Not prepared to pay/return vouchers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oustanding Balance showed in error</masterLabel>
+            <translation><!-- Oustanding Balance showed in error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QA Review</masterLabel>
+            <translation><!-- QA Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refund Calculation Error</masterLabel>
+            <translation><!-- Refund Calculation Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retention</masterLabel>
+            <translation><!-- Retention --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Calculation Error</masterLabel>
+            <translation><!-- Salesforce Calculation Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TMG error</masterLabel>
+            <translation><!-- TMG error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Too many vouchers returned</masterLabel>
+            <translation><!-- Too many vouchers returned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undated Vouchers Purchased</masterLabel>
+            <translation><!-- Undated Vouchers Purchased --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Staff Offer Recipient --></label>
+        <name>StaffOfferRecipient__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start_Date_Hidden --></label>
+        <name>Start_Date_Hidden__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date Weekday --></label>
+        <name>Start_Date_Weekday__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Indicator --></label>
+        <name>Status_Indicator__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Status Not Started Text (Hidden) --></label>
+        <name>Sub_Status_Not_Started_Text_Hidden__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscriber --></label>
+        <name>Subscriber__c</name>
+        <relationshipLabel><!-- Subscriptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Subscription Duration (Weeks) Override --></label>
+        <name>Subscription_Duration_Number_Override__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Duration (Weeks) - Hidden --></label>
+        <name>Subscription_Duration_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Duration (Weeks) --></label>
+        <name>Subscription_Duration_Picklist__c</name>
+        <picklistValues>
+            <masterLabel>13</masterLabel>
+            <translation><!-- 13 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>26</masterLabel>
+            <translation><!-- 26 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>52</masterLabel>
+            <translation><!-- 52 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Subscription Product --></label>
+        <name>Subscription_Product__c</name>
+        <picklistValues>
+            <masterLabel>7 Day - 13 weeks</masterLabel>
+            <translation><!-- 7 Day - 13 weeks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7 Day - Gift</masterLabel>
+            <translation><!-- 7 Day - Gift --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7 Day - Standard</masterLabel>
+            <translation><!-- 7 Day - Standard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schools</masterLabel>
+            <translation><!-- Schools --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Earliest Subscription Start Calc --></label>
+        <name>Subscription_Start_Calc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subscription Status --></label>
+        <name>Subscription_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined</masterLabel>
+            <translation><!-- Declined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Renewal</masterLabel>
+            <translation><!-- In Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lapsed</masterLabel>
+            <translation><!-- Lapsed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offered</masterLabel>
+            <translation><!-- Offered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Cancellation</masterLabel>
+            <translation><!-- Pending Cancellation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Temporary Suspension</masterLabel>
+            <translation><!-- Temporary Suspension --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Withdrawn</masterLabel>
+            <translation><!-- Withdrawn --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Net sum of all successful payments for this subscription (less any refunds) --></help>
+        <label><!-- Sum of Payments in Salesforce --></label>
+        <name>Sum_of_Payments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Synthesis Id --></label>
+        <name>Synthesis_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Synthesis Key --></label>
+        <name>Synthesis_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- TCodeManagement --></label>
+        <name>TCode__c</name>
+        <relationshipLabel><!-- Subscriptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- TDT --></label>
+        <name>TDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tablet Last Accessed --></label>
+        <name>Tablet_Last_Accessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gross Payment --></label>
+        <name>Total_DD_Payment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Price --></label>
+        <name>Total_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- Net sum of all payments by the subscriber --></help>
+        <label><!-- Total of All Payments --></label>
+        <name>Total_of_All_Payments__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value of vouchers that the subscriber has in hand for this subscription (Deferred Asset value) --></help>
+        <label><!-- Value of Vouchers in Hand --></label>
+        <name>Value_of_Vouchers_in_Hand__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Voucher Adjustment Reason --></label>
+        <name>Voucher_Adjustment_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Adjustment Start Date --></label>
+        <name>Voucher_Adjustment_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Amount Used --></label>
+        <name>Voucher_Amount_Used__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher_Extraction_DD_Date --></label>
+        <name>Voucher_Extraction_DD_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Offset --></label>
+        <name>Voucher_Offset__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field displays the end date of Voucher Pack 1. This field is blank if the subscription is of type 104 or 156. --></help>
+        <label><!-- Voucher Pack 1 End Date --></label>
+        <name>Voucher_Pack_1_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Pack 1 Start Date --></label>
+        <name>Voucher_Pack_1_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Pack 2 End Date --></label>
+        <name>Voucher_Pack_2_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Pack 2 Start Date --></label>
+        <name>Voucher_Pack_2_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Pack 3 End Date --></label>
+        <name>Voucher_Pack_3_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Pack 3 Start Date --></label>
+        <name>Voucher_Pack_3_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Pack 4 End Date --></label>
+        <name>Voucher_Pack_4_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Pack 4 Start Date --></label>
+        <name>Voucher_Pack_4_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Pack Duration --></label>
+        <name>Voucher_Pack_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Resend Date --></label>
+        <name>Voucher_Resend_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Resend Extraction Date Calc --></label>
+        <name>Voucher_Resend_Extraction_Date_Calc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Resend Extraction Date --></label>
+        <name>Voucher_Resend_Extraction_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voucher Resend Number --></label>
+        <name>Voucher_Resend_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vouchers Valid Until --></label>
+        <name>Vouchers_Valid_Until__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website Last Accessed --></label>
+        <name>WebsiteLastAccessed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weekly Digital Price --></label>
+        <name>WeeklyDigitalPrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weekly Digital VAT --></label>
+        <name>WeeklyDigitalVAT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weekly Print Price --></label>
+        <name>WeeklyPrintPrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weekly Smartphone Price --></label>
+        <name>WeeklySmartphonePrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weekly Tablet Price --></label>
+        <name>WeeklyTabletPrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weekly Website Price --></label>
+        <name>WeeklyWebsitePrice__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weekly Price --></label>
+        <name>Weekly_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- What&apos;s Read --></label>
+        <name>What_Read__c</name>
+        <picklistValues>
+            <masterLabel>Saturday</masterLabel>
+            <translation><!-- Saturday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sunday</masterLabel>
+            <translation><!-- Sunday --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplement</masterLabel>
+            <translation><!-- Supplement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Weekday</masterLabel>
+            <translation><!-- Weekday --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Who --></label>
+        <name>Who__c</name>
+        <picklistValues>
+            <masterLabel>Broadsheet</masterLabel>
+            <translation><!-- Broadsheet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital</masterLabel>
+            <translation><!-- Digital --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tabloid</masterLabel>
+            <translation><!-- Tabloid --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Within 14 Day Reason --></label>
+        <name>Within_14_Day_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Competitor Offer</masterLabel>
+            <translation><!-- Competitor Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Content</masterLabel>
+            <translation><!-- Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duration of Subscription</masterLabel>
+            <translation><!-- Duration of Subscription --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Move to Digital Content</masterLabel>
+            <translation><!-- Move to Digital Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Readership Style (Day Reader)</masterLabel>
+            <translation><!-- Readership Style (Day Reader) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review of Personal Finances</masterLabel>
+            <translation><!-- Review of Personal Finances --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Style - Layout</masterLabel>
+            <translation><!-- Style - Layout --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Style - Written</masterLabel>
+            <translation><!-- Style - Written --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- R01 Extraction Date --></label>
+        <name>if_11_Week_Renewal_Date_Hidden__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF 2 Week Renewal Date Hidden --></label>
+        <name>if_2_Week_Renewal_Date_Hidden__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF 4 Week DD Increase Extraction Date --></label>
+        <name>if_4_Week_DD_Increase_Extraction_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF 7 Week Renewal Date Hidden --></label>
+        <name>if_7_Week_Renewal_Date_Hidden__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF DD Collection Period Hidden --></label>
+        <name>if_DD_Collection_Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF DD First Collection Date Hidden --></label>
+        <name>if_DD_First_Collection_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Is Renewal Binary Hidden --></label>
+        <name>if_Is_Renewal_Binary__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Is Renewal Letter Version --></label>
+        <name>if_Is_Renewal_Letter_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Renewal Letter Version --></label>
+        <name>if_Renewal_Letter_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Renewal Offer Expiry --></label>
+        <name>if_Renewal_Offer_Expiry__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Resend Letter Version --></label>
+        <name>if_Resend_Letter_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Payment Type --></label>
+        <name>if_continuous_DD__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF First Voucher Pack --></label>
+        <name>if_first_voucher_pack__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Next Monday --></label>
+        <name>if_next_monday_hidden__c</name>
+    </fields>
+    <fields>
+        <label><!-- IF Delivery Type --></label>
+        <name>if_voucher_type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Is it a Continuous Subscription --></help>
+        <label><!-- isContinuous --></label>
+        <name>isContinuous__c</name>
+    </fields>
+    <layouts>
+        <layout>Admin User Layout</layout>
+        <sections>
+            <label><!-- Active Direct Debits --></label>
+            <section>Active Direct Debits</section>
+        </sections>
+        <sections>
+            <label><!-- Cancellation Details --></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Credit Card Details --></label>
+            <section>Credit Card Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label><!-- MPP Details --></label>
+            <section>MPP Details</section>
+        </sections>
+        <sections>
+            <label><!-- MPP Payment Schedule Details --></label>
+            <section>MPP Payment Schedule Details</section>
+        </sections>
+        <sections>
+            <label><!-- Order Taken Details --></label>
+            <section>Order Taken Details</section>
+        </sections>
+        <sections>
+            <label><!-- Orders --></label>
+            <section>Orders</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>ConsoleView</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- Order Taken Details --></label>
+            <section>Order Taken Details</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Managers Page Layout</layout>
+        <sections>
+            <label><!-- Cancellation Details --></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>New Agent Subscription + School user Layout</layout>
+        <sections>
+            <label><!-- Cancellation Details --></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- Order Taken Details --></label>
+            <section>Order Taken Details</section>
+        </sections>
+        <sections>
+            <label><!-- Previous Subscription Info --></label>
+            <section>Previous Subscription Info</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>New Agent Subscription Layout</layout>
+        <sections>
+            <label><!-- Active Direct Debits --></label>
+            <section>Active Direct Debits</section>
+        </sections>
+        <sections>
+            <label><!-- Cancellation Details --></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Credit Card Details --></label>
+            <section>Credit Card Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- Order Taken Details --></label>
+            <section>Order Taken Details</section>
+        </sections>
+        <sections>
+            <label><!-- Orders --></label>
+            <section>Orders</section>
+        </sections>
+        <sections>
+            <label><!-- Previous Subscription Info --></label>
+            <section>Previous Subscription Info</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMG - Subscription NEW</layout>
+        <sections>
+            <label><!-- Active Direct Debits --></label>
+            <section>Active Direct Debits</section>
+        </sections>
+        <sections>
+            <label><!-- Cancellation Details --></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Credit Card Details --></label>
+            <section>Credit Card Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- MPP Details --></label>
+            <section>MPP Details</section>
+        </sections>
+        <sections>
+            <label><!-- Order Taken Details --></label>
+            <section>Order Taken Details</section>
+        </sections>
+        <sections>
+            <label><!-- Orders --></label>
+            <section>Orders</section>
+        </sections>
+        <sections>
+            <label><!-- Promo Details --></label>
+            <section>Promo Details</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMG - Subscription admin NEW</layout>
+        <sections>
+            <label><!-- Active Direct Debits --></label>
+            <section>Active Direct Debits</section>
+        </sections>
+        <sections>
+            <label><!-- Cancellation Details --></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Credit Card Details --></label>
+            <section>Credit Card Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- MPP Details --></label>
+            <section>MPP Details</section>
+        </sections>
+        <sections>
+            <label><!-- Order Taken Details --></label>
+            <section>Order Taken Details</section>
+        </sections>
+        <sections>
+            <label><!-- Orders --></label>
+            <section>Orders</section>
+        </sections>
+        <sections>
+            <label><!-- Promo Details --></label>
+            <section>Promo Details</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMG Schools</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMG Schools Admin</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMG Subscription Layout</layout>
+        <sections>
+            <label><!-- Active Direct Debits --></label>
+            <section>Active Direct Debits</section>
+        </sections>
+        <sections>
+            <label><!-- Credit Card Details --></label>
+            <section>Credit Card Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- MPP Details --></label>
+            <section>MPP Details</section>
+        </sections>
+        <sections>
+            <label><!-- Order Taken Details --></label>
+            <section>Order Taken Details</section>
+        </sections>
+        <sections>
+            <label><!-- Orders --></label>
+            <section>Orders</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Temp Super User Subscription Layout</layout>
+        <sections>
+            <label><!-- Cancellation Details --></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- Order Taken Details --></label>
+            <section>Order Taken Details</section>
+        </sections>
+        <sections>
+            <label><!-- Previous Subscription Info --></label>
+            <section>Previous Subscription Info</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Third Party Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>mini</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Information --></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label><!-- Order Taken Details --></label>
+            <section>Order Taken Details</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156) --></label>
+            <section>Voucher Date Details (N/A for Subscriptions of type 104 &amp; 156)</section>
+        </sections>
+        <sections>
+            <label><!-- Voucher Details --></label>
+            <section>Voucher Details</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Default --></label>
+        <name>Default</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Schools --></label>
+        <name>Schools</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please check Cancellation date. It is after the subscription end date. --></errorMessage>
+        <name>Canc_Date_After_Sub_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please check the cancellation date. It is earlier than the start date of the sub. --></errorMessage>
+        <name>Canc_date_not_before_start_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- IsContinuous is required for DD or when MPP CC Frequency is not blank. --></errorMessage>
+        <name>Check_for_Is_Continuous</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- All Direct Debit Subscriptions must have a duration of 52 weeks --></errorMessage>
+        <name>DD_Subs_must_be_52_week_length</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please check that these values are valid for a Gift Sub:
+-Weekly = 7.30, 7.00, 6.50 or 6.00
+-Duration= 13 weeks
+-Delivery Type= OTC
+-Order Taken Method= Inbound
+-Order Taken Method= 857T or 996T
+-Select Gift Pack Recipient
+-Select Gift Pack Book --></errorMessage>
+        <name>Gift_Subs_RequiredValue</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A normal Sub can&apos;t have 13 weeks duration, gift donor, gift book or gift pack recipient. --></errorMessage>
+        <name>No_Gift_Value_for_Normal_Sub</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Order Taken Details are required for every Subscription - please fill in details of the Date, Method, Wave and Company --></errorMessage>
+        <name>Order_Taken_Details_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- PaymentDate needs to be 1 or 15 --></errorMessage>
+        <name>PaymentDateEqual1or15</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a Cancellation Date if the Subscription Status is Pending Cancellation. --></errorMessage>
+        <name>Pending_Cancellation_Date_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a Cancellation Method if the Subscription Status is Pending Cancellation. --></errorMessage>
+        <name>Pending_Cancellation_Method_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a Cancellation Reason if the Subscription Status is Pending Cancellation. --></errorMessage>
+        <name>Pending_Cancellation_Reason_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The subscription price is invalid --></errorMessage>
+        <name>Price_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Retailer must not be specified as this Subscription is marked for Over The Counter delivery --></errorMessage>
+        <name>Retailer_must_not_be_present_on_OTC_Subs</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Retailer must be specified as this Subscription is marked for Home Delivery --></errorMessage>
+        <name>Retailer_required_for_HD_Subs</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Revenue write-off reason is required if the write-off amount is above zero. --></errorMessage>
+        <name>Revenue_writeoff_reason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Start Date can not be changed unless the Subscription Status is Offered. --></errorMessage>
+        <name>Start_Date_Changed_Sub_Status_Offered</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Start Date must be at least the second Monday in the future, and after 10/01/2011 for a Gift Subscription. --></errorMessage>
+        <name>Start_Date_Second_Monday_Future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- For renewals the Start Date must be at least the fourth Monday in the future. --></errorMessage>
+        <name>Start_Date_Second_Monday_Future_Renewal</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Subscription Product, Subscription Duration, Payment Type and Discount fields are Read-Only when the Subscription Status is NOT Offered. --></errorMessage>
+        <name>Status_Not_Offered_Read_Only_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Weekly Price, Payment Type, Delivery Type and Voucher Pack Duration fields are Required when the Subscription Status is NOT Offered, Withdrawn or Declined. --></errorMessage>
+        <name>Status_Not_Offered_Required_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- All fields are locked once the Subscription Status is Withdrawn, Declined, Cancelled or Lapsed. --></errorMessage>
+        <name>Subscription_Status_Lock_All_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Payment details must be received in order for the Subscription Status to be Pending, Active, In Renewal, Pending Cancellation or Cancelled. --></errorMessage>
+        <name>Subscription_Status_Payment_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Retailer must accept HND vouchers. --></errorMessage>
+        <name>Voucher_Handling_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only Admins can set a sub to Withdrawn --></errorMessage>
+        <name>Withdrawn_Selection</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- CC_Payment_for_Failed_Premium_DD --></label>
+        <name>CC_Payment_for_Failed_Premium_DD</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- MPP_Cancel_Payment --></label>
+        <name>MPP_Cancel_Payment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- MPP_Change_Frequency_to_Monthly --></label>
+        <name>MPP_Change_Frequency_to_Monthly</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- MPP_Change_Payment_Day --></label>
+        <name>MPP_Change_Payment_Day</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- MPP_Reactivate_Payment --></label>
+        <name>MPP_Reactivate_Payment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- MPP_Take_One_Off_Payment --></label>
+        <name>MPP_Take_One_Off_Payment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- MPP_Update_Payment_Schedule --></label>
+        <name>MPP_Update_Payment_Schedule</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_DebitStream --></label>
+        <name>New_DebitStream</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Part_Card_Payment --></label>
+        <name>New_Part_Card_Payment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Subscription --></label>
+        <name>New_Subscription</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Refund_Vouchers --></label>
+        <name>Refund_Vouchers</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Single_Card_Payment --></label>
+        <name>Single_Card_Payment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Update_Payment_Start_Date --></label>
+        <name>Update_Payment_Start_Date</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- new_card_payment --></label>
+        <name>new_card_payment</name>
+    </webLinks>
+    <workflowTasks>
+        <description><!-- A Full Replacement Pack has been sent. --></description>
+        <name>FullVoucherReplacementPackSent</name>
+        <subject><!-- Full Voucher Replacement Pack Sent --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>GoodwillApplied</name>
+        <subject><!-- Goodwill Applied --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>HolidayReturns</name>
+        <subject><!-- Holiday Returns --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>LapsedStartDateUpdatedFollowingPayment</name>
+        <subject><!-- Lapsed Start Date Updated Following Payment --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <description><!-- Replacement Vouchers (undated) need to be sent. --></description>
+        <name>ReplacementVoucherstobeSent</name>
+        <subject><!-- Replacement Vouchers to be Sent --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>RequestforPDDLetter</name>
+        <subject><!-- Request for PDD Letter --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>T2CallDue</name>
+        <subject><!-- T2 Call Due --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>T2CallDue28Days</name>
+        <subject><!-- T2 Call Due 28 Days --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>TL1CallDue</name>
+        <subject><!-- TL1 Call Due --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>TL2CallDue</name>
+        <subject><!-- TL2 Call Due --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>VouchersReturned</name>
+        <subject><!-- Vouchers Returned --></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

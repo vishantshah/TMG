@@ -1,0 +1,3 @@
+<apex:page standardController="Home_Delivery_Voucher__c" extensions="HomeDeliveryVoucherOverride" action="{!redirect}">
+	
+</apex:page>

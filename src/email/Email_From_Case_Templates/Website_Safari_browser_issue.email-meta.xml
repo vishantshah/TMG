@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Website - Safari browser issue</name>
+    <style>none</style>
+    <subject>Case:{!Case.CaseNumber} {!EmailMessage.Subject}</subject>
+    <textOnly>The Telegraph Digital Services Team
+
+{!Case.CreatedDate}
+
+
+
+Dear {!Contact.FirstName},
+
+Thank you for contacting The Telegraph.
+
+We are currently experiencing issues when viewing the Telegraph website in Safari. We believe this has recently occurred due to an update within the Safari browser which prevents customers from being recognised as subscribers.
+
+Having raised this with our technical team for investigation, during this time we ask that you try using Safari&apos;s private browsing or another browser to ensure access.
+
+We would like to apologise for the inconvenience while this investigation continues and please be assured, this problem is with our technical team who are working towards a solution which will fix this problem. Sadly we are unable to provide a time frame at present but as soon as we have an update, we will of course be in contact with you.
+
+Should you require any further assistance please do not hesitate to contact us at digitalservices@telegraph.co.uk Alternatively, you can call our free helpline on 0800 316 3500, or for outside the UK 0044 1622 33 5007. Our representatives are available to take your call, Monday to Friday 9am to 5pm and Saturday 9am to 1pm.
+
+Kind regards,
+
+Digital Services
+
+The Telegraph Media Group
+
+For more information or help regarding our Digital products please visit www.telegraph.co.uk/help.
+
+*The Telegraph Contact Centre is open Monday to Friday, 9am-5pm and Saturdays, 9am-1pm. Closed on Sundays and Bank Holidays.
+
+You have received this email in relation to your Telegraph Subscription. Please do not reply to this email.
+
+In accordance with the 1998 Data Protection Act, Telegraph Media Group Limited is committed to protecting your privacy. If you wish to know more, please access our privacy policy.
+
+This email is from Telegraph Media Group Limited - 111 Buckingham Palace Road, London SW1W 0DT. Registered in England under No. 451593.</textOnly>
+    <type>custom</type>
+</EmailTemplate>

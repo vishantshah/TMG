@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Ideas Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Custom Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Customer Portal Account Id --></label>
+        <name>Customer_Portal_Account_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- comma separated list of statuses which need to demoted on the Ideas website. --></help>
+        <label><!-- Demoted Statuses --></label>
+        <name>Demoted_Statuses__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ideas Site Context --></label>
+        <name>Ideas_Site_Context__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ideas Site Domain Name --></label>
+        <name>Ideas_Site_Domain_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,152 @@
+<apex:component controller="SubscriberDetailsController" allowDML="true">
+    
+    <apex:attribute name="AccountIdpr" 
+                    description="Salesforce Id of the Account whose Case is in context" 
+                    type="Id" 
+                    required="true" 
+                    assignTo="{!AccountId}" />
+    
+    <apex:attribute name="showPermissions" 
+                    description="Should the permission section be enabled?" 
+                    type="Boolean" 
+                    required="true" 
+                    assignTo="{!showAccountPermissions}" />
+    
+    
+    <apex:componentBody >
+        <!-- Subscriber details -->
+        <apex:outputPanel id="subscriberDetails">
+            <apex:outputPanel id="subscriberDetailsMsg">
+                <apex:pageMessages rendered="{!subscriberDetailsMsg}"/>
+            </apex:outputPanel>
+            
+            <apex:pageBlock >
+                <apex:pageBlockSection columns="2" title="{!$Label.OC_Subscriber_Details}" collapsible="false">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="TS Number"/>
+                        <apex:outputLink value="/{!thisAccount.Id}" target="_blank">{!thisAccount.Subscriber_Number__c}</apex:outputLink>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:outputField value="{!thisAccount.PersonHomePhone}" rendered="{!!accEditEnabled}"/>
+                    <apex:inputField value="{!thisAccount.PersonHomePhone}" rendered="{!accEditEnabled}"/>
+                    
+                    <apex:outputField value="{!thisAccount.Salutation}" rendered="{!!accEditEnabled}"/>
+                    <apex:inputField value="{!thisAccount.Salutation}" rendered="{!accEditEnabled}"/>
+                    
+                    <apex:outputField value="{!thisAccount.Phone}" rendered="{!!accEditEnabled}"/>
+                    <apex:inputField value="{!thisAccount.Phone}" rendered="{!accEditEnabled}"/>
+                    
+                    <apex:outputField value="{!thisAccount.Title__c}" rendered="{!!accEditEnabled}"/>
+                    <apex:inputField value="{!thisAccount.Title__c}" rendered="{!accEditEnabled}"/>
+                    
+                    <apex:outputField value="{!thisAccount.PersonMobilePhone}" rendered="{!!accEditEnabled}"/>
+                    <apex:inputField value="{!thisAccount.PersonMobilePhone}" rendered="{!accEditEnabled}"/>
+                    
+                    <apex:outputField value="{!thisAccount.FirstName}" rendered="{!!accEditEnabled}"/>
+                    <apex:inputField value="{!thisAccount.FirstName}" rendered="{!accEditEnabled}" required="true"/>
+                    
+                    <apex:outputField value="{!thisAccount.Preferred_Phone_Contact__pc}" rendered="{!!accEditEnabled}"/>
+                    <apex:inputField value="{!thisAccount.Preferred_Phone_Contact__pc}" rendered="{!accEditEnabled}"/>
+                    
+                    <apex:outputField value="{!thisAccount.LastName}" rendered="{!!accEditEnabled}"/>
+                    <apex:inputField value="{!thisAccount.LastName}" rendered="{!accEditEnabled}" required="true"/>
+                    
+                    <!-- CHANGE EMAIL -->
+                    <apex:pageBlockSectionItem rendered="{!accEditEnabled}">
+                        <apex:outputLabel value="Email" styleClass="emailStyle" />
+                        <apex:outputPanel id="addChangeEmailPanel">
+                            <apex:outputText value="{!thisAccount.PersonEmail}" styleClass="r10" />
+                            <apex:commandButton action="{!displayChangeEmailIFrame}" value="{!$Label.Add_Change_Email}" rerender="addChangeEmailPanel" status="loadStatus" />
+                            <apex:actionFunction action="{!hideChangeEmailIFrame}" name="hideIFrame" rerender="addChangeEmailPanel" status="loadStatus"/>
+                            <apex:actionFunction action="{!refetchSubscriberEmail}" name="refetchEmail" rerender="addChangeEmailPanel" status="loadStatus"/>
+                            <!-- Add/Change Email iFrame -->
+                            <apex:outputPanel rendered="{!showEmailIFrame}">
+                                <apex:iframe width="400" height="280" src="/apex/SubscriberEmailManagementIFrame?id={!thisAccount.Id}&isiframe=true" scrolling="true" />
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:outputField value="{!thisAccount.PersonEmail}" rendered="{!!accEditEnabled}" />
+                    
+                    <apex:outputField value="{!thisAccount.Teleappended_Date__c}" rendered="{!!accEditEnabled}"/>
+                    <apex:inputField value="{!thisAccount.Teleappended_Date__c}" rendered="{!accEditEnabled}"/>
+                    
+                    <!-- PERSON ADDRESS -->
+                    <apex:pageBlockSectionItem rendered="{!!accEditEnabled}">
+                        <apex:outputLabel value="Address"/>
+                        <apex:outputText value="{!subscriberAddress}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSection collapsible="false" columns="1" rendered="{!accEditEnabled}">
+                        <apex:inputField value="{!thisAccount.PersonMailingStreet}" id="PersonMailingStreet" required="true"/>
+                        <apex:inputField value="{!thisAccount.PersonMailingCity}" id="PersonMailingCity" required="true"/>
+                        <apex:inputField value="{!thisAccount.PersonMailingState}" id="PersonMailingState" />
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="PersonMailingPostalCode"
+                                              value="{!$Label.OC_Post_Code}" />
+                            <apex:outputPanel >
+                                <apex:inputField value="{!thisAccount.PersonMailingPostalCode}" style="float: left;" id="PersonMailingPostalCode" required="true"/>
+                                <script>
+                                var PostCode = '{!$Component.PersonMailingPostalCode}';
+                                var Field1 = '{!$Component.PersonMailingStreet}';
+                                var Field2 = '{!$Component.PersonMailingCity}';
+                                var Field3 = '{!$Component.PersonMailingState}';
+                                </script>
+                                <c:PostCodeLookup />
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="countries" value="{!$Label.OC_Country}" />
+                            <apex:selectList id="countries" value="{!thisAccount.PersonMailingCountry}" size="1" title="{!$Label.OC_Mailing_Country}">
+                                <apex:selectOptions value="{!Countries}" />
+                            </apex:selectList>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection columns="1">
+                        <apex:outputPanel layout="block" html-align="right">
+                            <apex:commandButton action="{!cancelAccountEdit}" value="Cancel" reRender="subscriberDetails, mainTopBtn, mainBottomBtn, subscriberDetailsMsg" rendered="{!accEditEnabled}" immediate="true" html-formnovalidate="formnovalidate" status="loadStatus"/>
+                            <apex:commandButton action="{!saveAccount}" value="Save" reRender="subscriberDetails, mainTopBtn, mainBottomBtn, subscriberDetailsMsg" rendered="{!accEditEnabled}" status="loadStatus"/>
+                            <apex:commandButton action="{!enableEditAccount}" value="Edit" reRender="subscriberDetails, mainTopBtn, mainBottomBtn" rendered="{!!accEditEnabled}" status="loadStatus"/>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    
+                </apex:pageBlockSection>
+                
+                <!--  Account permissions -->  
+                <apex:pageBlockSection columns="1" title="{!$Label.OC_Permissions}" rendered="{!AND(NOT(ISNULL(thisAccount)),showAccountPermissions)}" collapsible="false">
+                    <apex:outputPanel id="accountPermissionsMsg">
+                        <apex:pageMessages rendered="{!accountPermissionsMsg}"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel id="permissionsSection" rendered="{!NOT(ISNULL(thisAccount))}">
+                            <br />
+                            <table style="text-align: left; width: 100%;" border="0" cellspacing="10">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: bold;width:40%;">{!$Label.OC_Permission_Type}</td>
+                                        <td style="font-weight: bold;width:15%;">{!$Label.OC_Email}</td>
+                                        <td style="font-weight: bold;width:15%;">{!$Label.OC_Phone}</td>
+                                        <td style="font-weight: bold;width:15%;">{!$Label.OC_Post}</td>
+                                        <td style="font-weight: bold;width:15%;">{!$Label.OC_SMS}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span style="font-weight: bold;">{!$Label.OC_2nd_Party}</span><br /> {!$Label.OC_Internal_Telegraph_offers}
+                                        </td>
+                                        <td><apex:inputcheckbox value="{!p2ndemail}"/></td>
+                                        <td><apex:inputcheckbox value="{!p2ndphone}"/></td>
+                                        <td><apex:inputcheckbox value="{!p2ndpost}"/></td>
+                                        <td><apex:inputcheckbox value="{!p2ndSMS}"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <apex:pageBlockSection columns="1">
+                                <apex:outputPanel layout="block" html-align="center">
+                                    <apex:commandbutton action="{!saveAccountPermissions}" value="{!$Label.OC_Save_Permissions}" status="loadStatus" rerender="permissionsSection,accountPermissions"/>
+                                </apex:outputPanel>
+                            </apex:pageBlockSection>
+                    </apex:outputPanel>
+                </apex:pageBlockSection> 
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:componentBody>
+</apex:component>

@@ -1,0 +1,41 @@
+<apex:page standardController="Plan__c" extensions="PricePlanRulesCloneController">
+	<apex:form>	
+		<apex:pageBlock title="{!$Label.Price_Plan_Edit_Plan}">
+
+			<apex:pageMessages />
+
+			<apex:pageBlockButtons>
+				<apex:commandButton value="{!$Label.Price_Plan_Cancel}" action="{!returnToOriginalPlanPage}"/>
+				<apex:commandButton value="{!$Label.Price_Plan_Save_and_Cancel}" action="{!saveChildRecords}"/>
+				<apex:commandButton value="{!$Label.Price_Plan_Save}" action="{!saveClonedRecord}"/>
+			</apex:pageBlockButtons>
+			
+			<apex:pageBlockSection id="pgsPlanDetails" title="{!$Label.Price_Plan_Details}" columns="2" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Price_Plan_Name}"/>
+                    <apex:outputPanel> 
+                        <div class="requiredInput">
+                            <div class="requiredBlock"></div>
+			                <apex:inputField value="{!planClone.Name}"/>
+			            </div>
+			        </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Price_Plan_Valid}"/>
+                    <apex:inputField value="{!planClone.Is_Valid__c}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Price_Plan_Description}"/>
+                    <apex:inputField value="{!planClone.Description__c}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Price_Plan_Days_Before}"/>
+                    <apex:inputField value="{!planClone.Days_Before__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

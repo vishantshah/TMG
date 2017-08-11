@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <fields>
+        <fullName>MandateID_ExternalID__c</fullName>
+        <externalId>true</externalId>
+        <label>Original MandateID</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Method_Status__c</fullName>
+        <description>Shows if payment method is Active</description>
+        <externalId>false</externalId>
+        <formula>IF((today()-DATEVALUE(CreatedDate))&lt;5,IMAGE(&quot;/img/samples/flag_yellow.gif&quot;,&quot;&quot;,25,25),
+
+IMAGE( 
+CASE( 
+TEXT(Zuora__PaymentMethodStatus__c), 
+&quot;Active&quot;, &quot;/img/samples/flag_green.gif&quot;,
+&quot;Closed&quot;, &quot;/img/samples/flag_red.gif&quot;
+,&quot;/s.gif&quot;), 
+&quot;Status Flag&quot;)
+
+
+)</formula>
+        <inlineHelpText>Shows if payment method is Active</inlineHelpText>
+        <label>Payment Method Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>

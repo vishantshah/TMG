@@ -1,0 +1,39 @@
+<apex:page standardController="MPP_Transaction_History__c" extensions="subscriberDiagnosticsMppTxHistController" sidebar="false" showHeader="false">
+    
+    <script>
+        window.onload=function()
+        { 
+
+         document.getElementById(orderId).value = "{!$CurrentPage.parameters.orderId}";
+         document.getElementById(paymentDate).value = "{!$CurrentPage.parameters.paymentDate}";
+         document.getElementById(saleType).value = "{!$CurrentPage.parameters.saleType}";
+         document.getElementById(netAmount).value = "{!$CurrentPage.parameters.netAmount}";
+         document.getElementById(totalAmount).value = "{!$CurrentPage.parameters.netAmount}";         
+         document.getElementById(accountId).value = "{!$CurrentPage.parameters.accountId}";       
+                                             
+        };
+    </script>  
+    <apex:form >
+        <apex:pageBlock title="Create MPP Transaction History for Missing Order" mode="edit">
+            <apex:pageBlockButtons >  
+                <apex:commandButton action="{!save}" value="Save"/> 
+                <apex:commandButton action="{!cancel}" value="Cancel"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Order Details" columns="2">
+            	<apex:outputField id="accountName" value="{!acc.Name}"/>
+                <apex:inputField id="orderId" value="{!MPP_Transaction_History__c.Order_ID__c}" required="TRUE"/>
+                <script>var orderId = "{!$Component.orderId}"; </script> 
+                <apex:inputField id="paymentDate" value="{!MPP_Transaction_History__c.Payment_Date__c}" required="TRUE"/>
+                <script>var paymentDate = "{!$Component.paymentDate}"; </script> 
+                <apex:inputField id="saleType" value="{!MPP_Transaction_History__c.Sale_Type__c}" required="TRUE"/>
+                <script>var saleType = "{!$Component.saleType}";  </script> 
+                <apex:inputField id="netAmount" value="{!MPP_Transaction_History__c.Net_Amount__c}" required="TRUE"/>
+                <script>var netAmount = "{!$Component.netAmount}";  </script>        
+                <apex:inputField id="totalAmount" value="{!MPP_Transaction_History__c.Total_Price__c}" required="TRUE"/>
+                <script>var totalAmount = "{!$Component.totalAmount}";  </script> 
+                <apex:inputHidden value="{!MPP_Transaction_History__c.Subscriber__c}" id="accountId"/>
+                <script>var accountId = "{!$Component.accountId}";  </script> 
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

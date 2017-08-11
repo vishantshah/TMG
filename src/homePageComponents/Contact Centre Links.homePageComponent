@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <links>Custom_Case_Search</links>
+    <links>Subscriber_Subscription_Search</links>
+    <links>SAM_admin</links>
+    <links>MPP_Management_console</links>
+    <links>Help_site</links>
+    <links>TCUK</links>
+    <links>Outbound_callback_form</links>
+    <links>Temp_subscriber_card</links>
+    <links>Undated_vouchers</links>
+    <links>T_Cs</links>
+    <links>Loyalty_site</links>
+    <links>Remove_from_database</links>
+    <links>Bright_index</links>
+    <links>Department_Transfer_Form</links>
+    <links>Decommission_SAM_Account</links>
+    <pageComponentType>links</pageComponentType>
+</HomePageComponent>

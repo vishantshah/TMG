@@ -1,0 +1,49 @@
+<apex:page id="CpcTemplate" showHeader="false" standardStylesheets="false">
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.CpcStyles, 'cpc-styles/css/general.css')}" />
+		
+        <style>
+        	html,body{
+        		height: 100%;
+        		width: auto;
+        	}
+        
+        	/* Utility Styles */
+        	.clear{
+        		clear: both;
+        	}
+        	
+        	.left{
+        		float: left;
+        	}	
+        	
+        	/* Field Styles */
+        	.fieldBlock{
+        		overflow: auto;
+        	}
+        	
+        	
+        	.output-field{
+        		float: left;
+        		width: 200px;
+        	}
+        	
+        	/* CPC Style overrides */
+        	#container{
+        		height: 100%;
+        		width: auto !important;
+        	}
+        	
+        
+        </style>
+	</head>
+
+	<body>
+		<!-- insert content here -->
+		<div id="container">
+			<apex:insert name="body"/>
+		</div>
+	</body>
+
+</apex:page>

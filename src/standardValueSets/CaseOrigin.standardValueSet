@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Email</fullName>
+        <default>true</default>
+        <label>Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Phone</fullName>
+        <default>false</default>
+        <label>Phone</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Web</fullName>
+        <default>false</default>
+        <label>Web</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Letter</fullName>
+        <default>false</default>
+        <label>Letter</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Digital Services - Email</fullName>
+        <default>false</default>
+        <label>Digital Services - Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>App Feedback - Email</fullName>
+        <default>false</default>
+        <label>App Feedback - Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Live Chat</fullName>
+        <default>false</default>
+        <label>Live Chat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Zuora - Direct Debit</fullName>
+        <default>false</default>
+        <label>Zuora - Direct Debit</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Zuora - Card</fullName>
+        <default>false</default>
+        <label>Zuora - Card</label>
+    </standardValue>
+</StandardValueSet>

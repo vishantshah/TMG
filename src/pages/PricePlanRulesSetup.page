@@ -1,0 +1,191 @@
+<apex:page controller="PricePlanRulesSetupController" tabStyle="Plan__c" id="ppSetupPage">
+    <style>
+        body .bPageBlock .pbBody .ratePlanEntryStyle .pbSubheader{
+            background-color:#00BFFF;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function isChecked(){
+            return document.getElementById("{!$Component.ppSetupPage.frmPricePlanRuleSetup.pgPricePlanRule.pgOffers.checkboxSection.priceChangeCheckbox}").checked;
+        }
+
+        function toggleDefaultOfferPicklist() {
+            var element = document.getElementById("{!$Component.ppSetupPage.frmPricePlanRuleSetup.pgPricePlanRule.pgOffers.pgSectionItem.defaultOfferPicklist}");
+            element.disabled = isChecked();
+        }
+    </script>
+    
+    <!-- Plan Details - Pricing Segment Details -->
+    <apex:form id="frmPricePlanRuleSetup">
+        <apex:actionFunction name="returnToDetailPage" action="{!returnToDetailPage}" immediate="true"/>
+        <apex:pageBlock id="pgPlanDetails">
+
+            <apex:pageBlockButtons id="pgblockButtons">
+                <apex:commandButton value="{!$Label.Price_Plan_Cancel}" action="{!returnToDetailPage}"/>
+                <apex:commandButton value="{!$Label.Add_Price_Plan_Rule}" action="{!AddNewPricePlanRule}" rerender="pnlEditSection"/>
+            </apex:pageBlockButtons>
+                
+            <apex:pageBlockSection id="pgsPlanDetails" title="{!$Label.Price_Plan_Details}" columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Price_Plan_Name}"/>
+                    <apex:outputfield value="{!planObj.Name}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Price_Plan_Valid}"/>
+                    <apex:outputfield value="{!planObj.Is_Valid__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Price_Plan_Description}"/>
+                    <apex:outputfield value="{!planObj.Description__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Price_Plan_Days_Before}"/>
+                    <apex:outputfield value="{!planObj.Days_Before__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        
+        <!-- Pricing Segment Plan rules -->
+            <apex:pageBlockSection id="pgsPricePlanRules" title="{!$Label.Price_Plan_Rules}" columns="1">
+                
+                <apex:outputPanel rendered="{!lstPricePlanRules.size=0}">
+                    {!$Label.Price_Plan_No_Records}
+                </apex:outputPanel>
+                
+                <apex:pageBlockTable value="{!lstPricePlanRules}" var="pricePlanObj" columnsWidth="10%,18%,18%,18%,18%" rendered="{!lstPricePlanRules.size>0}">
+                    <apex:column >
+                        <apex:commandLink action="{!EditPricePlanRule}" value="{!$Label.Price_Plan_Edit}" rerender="pnlEditSection">
+                             <apex:param assignTo="{!selectedPricePlanRuleId}" value="{!pricePlanObj.id}" name="pricePlanRuleId" />
+                        </apex:commandLink>&nbsp;|&nbsp;
+                        <apex:commandLink action="{!ClonePricePlanRule}" value="{!$Label.Price_Plan_Clone}" rerender="pnlEditSection">
+                             <apex:param assignTo="{!selectedPricePlanRuleId}" value="{!pricePlanObj.id}" name="pricePlanRuleId" />
+                        </apex:commandLink>&nbsp;|&nbsp; 
+                        <apex:commandLink action="{!DeletePricePlanRule}" value="{!$Label.Price_Plan_Delete}" rerender="pgsPricePlanRules" onclick="if(!confirm('{!$Label.Price_Plan_Confirm_Delete}')){return false;}">
+                             <apex:param assignTo="{!selectedPricePlanRuleId}" value="{!pricePlanObj.id}" name="pricePlanRuleId" />
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    
+                    <apex:column headerValue="{!$Label.Price_Plan_Rule_Name}">
+                        <apex:outputText value="{!pricePlanObj.Name}"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$Label.Price_Plan_Product}">
+                        <apex:outputField value="{!pricePlanObj.Product_From__c}"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$Label.Price_Plan_Frequency}">
+                        <apex:outputText value="{!pricePlanObj.Frequency__c}"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$Label.Price_Plan_Start_Price}">
+                        <apex:outputField value="{!pricePlanObj.Low_Price__c}"/>
+                    </apex:column>
+                    <apex:column headerValue="{!$Label.Price_Plan_End_Price}">
+                        <apex:outputField value="{!pricePlanObj.High_Price__c}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <apex:outputPanel id="pnlEditSection">
+            <apex:outputPanel id="pnlOfferDetails" rendered="{!displayEditSection}">
+                <apex:pageBlock id="pgPricePlanRule">
+                    <apex:pageMessages />
+                    <apex:pageBlockButtons id="pgblockButtons">
+                        <apex:commandButton value="{!$Label.Price_Plan_Save_Rule_Changes}" action="{!SavePricePlanRuleChanges}" rerender="pnlEditSection,pgsPricePlanRules" oncomplete="toggleDefaultOfferPicklist()"/>
+                        <apex:commandButton value="{!$Label.Price_Plan_Cancel_Rule_Changes}" action="{!CancelPricePlanRuleChanges}" rerender="pnlEditSection,pgsPricePlanRules"/>
+                    </apex:pageBlockButtons>
+                    
+                    <apex:outputPanel styleClass="ratePlanEntryStyle" layout="block">
+                    	<apex:pageBlockSection id="pgMainSectionQuoteDetails" title="{!$Label.Price_Plan_Rule_Details}" columns="1">
+                            <apex:pageBlockSectionItem >
+                                <apex:outputlabel value="{!$Label.Price_Plan_Product}"/>
+                                <apex:outputPanel > 
+	                                <div class="requiredInput">
+	                                    <div class="requiredBlock"></div>
+	                                    <apex:SelectList value="{!pricePlanRuleObj.Product_From__c}" multiselect="false" size="1">
+		                                    <apex:actionSupport event="onchange" reRender="pgOffers,pgMainSectionQuoteDetails" status="AjaxStatus" oncomplete="toggleDefaultOfferPicklist()"/>
+			                				<apex:selectOptions value="{!ZuoraProducts}"/>
+	                                	</apex:SelectList>
+	                                </div>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputlabel value="{!$Label.Price_Plan_Frequency}"/> 
+                                <apex:outputPanel > 
+	                                <div class="requiredInput">
+	                                    <div class="requiredBlock"></div>
+		                                <apex:SelectList Value="{!pricePlanRuleObj.Frequency__c}" multiselect="false" size="1">
+		                                    <apex:actionSupport event="onchange" reRender="pgOffers,pgMainSectionQuoteDetails" status="AjaxStatus" oncomplete="toggleDefaultOfferPicklist()"/>
+			                				<apex:selectOptions value="{!PossibleFrequencyValues}"/>
+		                                </apex:SelectList>
+                                	</div>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputlabel value="{!$Label.Price_Plan_Price_Range_Start}"/> 
+                                <apex:outputPanel > 
+	                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                            			<apex:inputText value="{!pricePlanRuleObj.Low_Price__c}"/>
+                                	</div>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputlabel value="{!$Label.Price_Plan_Price_Range_End}"/> 
+                                <apex:outputPanel > 
+	                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                            			<apex:inputText value="{!pricePlanRuleObj.High_Price__c}"/>
+                                	</div>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputlabel value="{!$Label.Price_Plan_Email_Template}"/> 
+                                <apex:inputField value="{!pricePlanRuleObj.Email_Template__c}"/>
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+
+                        <apex:pageBlockSection id="pgOffers" title="{!$Label.Price_Plan_Price_Change}" columns="2" >
+                            <apex:pageBlockSectionItem id="pgSectionItem">
+                                <apex:outputlabel value="{!$Label.Price_Plan_Default_Offer}"/>
+                                <apex:outputPanel id="pgOutput"> 
+                                    <div class="requiredInput" id="pgDiv">
+                                        <div class="requiredBlock"></div>
+                                        <apex:SelectList Value="{!pricePlanDefaultOffer.Offer_Code__c}" multiselect="false" size="1" id="defaultOfferPicklist">
+                                            <apex:selectOptions Value="{!lstDefaultOfferCodes}"/>
+                                        </apex:SelectList>
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem id="checkboxSection">
+                                <apex:outputlabel value="{!$ObjectType.Price_Plan__c.fields.No_Price_Change__c.Label}"/>
+                                <apex:outputPanel > 
+	                                <apex:inputCheckbox value="{!pricePlanRuleObj.No_Price_Change__c}" id="priceChangeCheckbox">
+                                        <apex:actionSupport event="onchange" reRender="pgOffers,pgMainSectionQuoteDetails" status="AjaxStatus" oncomplete="toggleDefaultOfferPicklist()"/>
+                                    </apex:inputCheckbox>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem >
+                            	<apex:outputlabel value="{!$Label.Price_Plan_Alternative_Offers}"/>
+                            	<apex:outputPanel >
+                            		<apex:pageBlockTable id="tblAlternativeOffers" value="{!lstAlternativeOffers}" var="altOffer" style="Width: 30% !important">
+	                            		<apex:column >
+	                            			<apex:SelectList value="{!altOffer.alternativeOfferCode}" multiselect="false" size="1">
+			                                    <apex:selectOptions value="{!lstAllAvailableOffers}"/>
+			                                </apex:SelectList>
+	                            		</apex:column>
+	                            		<apex:column >
+	                            			<apex:commandbutton action="{!removeAlternativeOffer}" rerender="tblAlternativeOffers" image="{!URLFOR($Resource.DeleteButton)}" style="height:20px;width:20px;border-width:0px;cursor:pointer;" onclick="if(!confirm('{!$Label.Price_Plan_Confirm_Remove}')){return false;}">
+				        						<apex:param name="deleteAlternativeOffer" value="true" assignTo="{!altOffer.isDeleted}"/>
+				        					</apex:commandbutton>
+	                            		</apex:column>
+	                           		</apex:pageBlockTable><apex:commandButton value="{!$Label.Price_Plan_Add_Offer}" action="{!AddAlternativeOffer}" rerender="tblAlternativeOffers"/> 
+                           		</apex:outputPanel>                           		
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                </apex:pageBlock>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

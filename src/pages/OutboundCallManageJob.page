@@ -1,0 +1,110 @@
+<apex:page standardController="Outbound_Call_Batch_Setting__c" extensions="OutboundCallManageJobExtension">
+
+    <apex:form>
+        <apex:outputPanel id="errorMessage">
+            <apex:pageMessages escape="false"/>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="manageJobPanel">
+            <apex:outputPanel rendered="{!hasBatchClassName}">
+                <apex:pageBlock>
+
+                    <apex:outputPanel rendered="{!hasJob}">
+                        <apex:pageBlockSection columns="2">
+                            <apex:outputField value="{!ct.CronJobDetail.Name}" />
+                            <apex:outputField value="{!ct.CronJobDetail.JobType}" />
+                            <apex:outputField value="{!ct.NextFireTime}" />
+                            <apex:outputField value="{!ct.TimesTriggered}" />
+                            <apex:outputField value="{!ct.CronExpression}" />
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+
+                    <apex:outputPanel rendered="{!NOT(hasJobId)}">
+                        <apex:pageBlockSection columns="1">
+                            {!$Label.Outbound_Call_Batch_Setting_Job_Id_Not_Found}
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+
+                    <apex:pageBlockButtons location="bottom">
+                            <apex:actionStatus id="checkStatus">
+                                <apex:facet name="start">
+                                    <apex:outputPanel>
+                                        <apex:image value="/img/loading32.gif" style="height:15px;" />
+                                        <apex:commandButton value="Processing..." disabled="true" />
+                                    </apex:outputPanel>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:outputPanel >
+                                        <apex:commandButton action="{!checkJobStatus}" value="Check Job Status" rerender="manageJobPanel, errorMessage" disabled="{!NOT(hasJob)}" status="checkStatus" />
+                                    </apex:outputPanel>
+                                </apex:facet>
+                            </apex:actionStatus>
+
+                            <apex:actionStatus id="scheduleStatus">
+                                <apex:facet name="start">
+                                        <apex:commandButton value="Processing..." disabled="true" />
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandButton value="Schedule Job" onclick="schedule_job('{!ocbs.Id}');" rerender="manageJobPanel" disabled="{!NOT(isActive)}" status="scheduleStatus" />
+                                </apex:facet>
+                            </apex:actionStatus>
+
+                            <apex:actionStatus id="unscheduleStatus">
+                                <apex:facet name="start">
+                                        <apex:commandButton value="Processing..." disabled="true" />
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandButton value="Unschedule Job" onclick="unschedule_job('{!ocbs.Id}');" rerender="manageJobPanel" disabled="{!NOT(hasJob)}" status="unscheduleStatus" />
+                                </apex:facet>
+                            </apex:actionStatus>
+
+                            <apex:actionFunction name="showErrorMessage" action="{!showErrorMessage}" rerender="manageJobPanel, errorMessage">
+                                <apex:param name="errorMessage" assignTo="{!errorMessage}" value="" />
+                            </apex:actionFunction>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+            </apex:outputPanel>
+
+        </apex:outputPanel>
+    </apex:form>
+
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <script>
+        var j = jQuery.noConflict();
+        function schedule_job(id){
+            OutboundCallManageJobExtension.scheduleJob(
+                id,
+                function(result, event){
+                    if(event.status){
+                        if(result == 'success'){
+                            window.top.location.href = '/' + id;
+                        }else{
+                            showErrorMessage(result);
+                        }
+                    }else{
+                        alert('VFRemoting error - request failed.');
+                    }
+                },
+                {escape:true}
+            );
+        }
+        function unschedule_job(id){
+            OutboundCallManageJobExtension.unscheduleJob(
+                id,
+                function(result, event){
+                    if(event.status){
+                        if(result == 'success'){
+                            window.top.location.href = '/' + id;
+                        }else{
+                            showErrorMessage(result);
+                        }
+                    }else{
+                        alert('VFRemoting error - request failed.');
+                    }
+                },
+                {escape:true}
+            );
+        }
+    </script>
+
+</apex:page>

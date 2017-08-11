@@ -1,0 +1,393 @@
+<apex:page id="pgZuoraOffer" controller="Zuora_OfferSearchController" action="{!LoadAllAvailableOffers}">
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/js/jqueryui/jquery-ui.min.css')}"/>
+    <style type="text/css">
+        .rowClass{cursor:pointer;}
+        .selectedColor{background-color: #E3F3FF!Important;}
+    </style>
+
+    <apex:form id="pgForm">
+        <apex:actionFunction name="prepopulatePreview" action="{!getOfferDetails}" rerender="tstpopup" oncomplete="onActionCallback();">
+            <apex:param name="selectedOfferCode" value="" assignTo="{!strSelectedOfferCode}"/>
+        </apex:actionFunction>
+        <apex:pageMessages id="errors" />
+        <!-- Open Offers -->
+        <div id="topList">
+            <apex:outputPanel id="pnlOpenAvailableOffers">
+                 <apex:pageblock title="{!$Label.Offer_Search_Open_Offers_Label}" id="pgBlockOpenOfferAvailOffers">
+                    <apex:pageBlockSection columns="1" id="pgBlockSectionIdVal">
+                        <apex:pageBlockTable value="{!lstAvailableOpenOffers}" rowClasses="rowClass" var="offerObj">
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Campaign_Column_Label}" oncomplete="bindJs();">
+                                      <apex:param value="{!sortByTcodeNameValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                      <apex:outputPanel rendered="{!sortExpression == sortByTcodeNameValue}">
+                                         &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                      </apex:outputPanel>
+                                    </apex:commandLink>
+                                 </apex:facet>
+                                <a href="/{!offerObj.tcodeObj.id}" target="_blank">{!offerObj.tcodeObj.name}</a>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Campaign_Description_Column_Label}" oncomplete="bindJs();">
+                                      <apex:param value="{!sortByTcodeDescriptionValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                      <apex:outputPanel rendered="{!sortExpression == sortByTcodeDescriptionValue}">
+                                         &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                      </apex:outputPanel>
+                                    </apex:commandLink>
+                                </apex:facet>
+                                <div style="display: none;" class="offerId">{!offerObj.offerId}</div>
+                                {!offerObj.tcodeObj.Description__c}
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Offer_Name_Column_Label}" oncomplete="bindJs();">
+                                      <apex:param value="{!sortByOfferFriendlyNameValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                      <apex:outputPanel rendered="{!sortExpression==sortByOfferFriendlyNameValue}">
+                                         &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                      </apex:outputPanel>
+                                    </apex:commandLink>
+                                 </apex:facet>
+                                <a href="/{!offerObj.offerId}" target="_blank">{!offerObj.strOfferFriendlyName}</a>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Product_Column_Label}" oncomplete="bindJs();">
+                                      <apex:param value="{!sortProductNameValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                      <apex:outputPanel rendered="{!sortExpression==sortProductNameValue}">
+                                         &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                      </apex:outputPanel>
+                                    </apex:commandLink>
+                                </apex:facet>
+                               {!offerObj.offerProductName}
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Offer_price_column_label}" oncomplete="bindJs();">
+                                      <apex:param value="{!sortBasePrice}" name="column" assignTo="{!sortExpression}" />
+                                      <apex:outputPanel rendered="{!sortExpression==sortBasePrice}">
+                                         &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                      </apex:outputPanel>
+                                    </apex:commandLink>
+                                </apex:facet>
+                                <apex:outputText value="{0, number, £ #,###,###,###,###,##0.00}" >
+                                    <apex:param value="{!offerObj.basePrice}"/>
+                                </apex:outputText>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Weekly_price_column_label}" oncomplete="bindJs();">
+                                      <apex:param value="{!sortProductWeeklyPrice}" name="column" assignTo="{!sortExpression}" />
+                                      <apex:outputPanel rendered="{!sortExpression==sortProductWeeklyPrice}">
+                                         &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                      </apex:outputPanel>
+                                    </apex:commandLink>
+                                 </apex:facet>
+                                {!offerObj.weeklyPrice}
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Frequency_Column_Label}" oncomplete="bindJs();">
+                                      <apex:param value="{!sortProductFrequencyValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                      <apex:outputPanel rendered="{!sortExpression==sortProductFrequencyValue}">
+                                         &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                      </apex:outputPanel>
+                                    </apex:commandLink>
+                                 </apex:facet>
+                                {!offerObj.offerProductFrequencey}
+                            </apex:column>
+                            <apex:column headerValue="{!$Label.Offer_Search_Incentives_Column_Label}">
+                               {!offerObj.sIncentives}
+                            </apex:column>
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+                </apex:pageblock>
+            </apex:outputPanel>
+        </div>
+        <!-- Search Criteria Section -->
+        <apex:pageblock title="{!$Label.Offer_Search_Promotional_Offers_Search_Section_Label}" id="pgSearchPanel">
+                <apex:actionfunction name="refreshSearchPanel" rerender="pgSearchPanel" action="{!refreshSearchPanel}"/>
+                <apex:pageBlockSection columns="1">
+                    <apex:selectRadio value="{!strSelectedSearchCriteria}" onchange="refreshSearchPanel()">
+                        <apex:selectOptions value="{!lstSearchOptions}"/>
+                    </apex:selectRadio>
+
+                    <apex:pageblockSectionItem rendered="{!OR(strSelectedSearchCriteria==CampaignSearchOptionValue,strSelectedSearchCriteria==PocIDSearchOptionValue)}">
+                        <apex:outputLabel value="{!$Label.Offer_Search_Search_Text_Label}"/>
+                        <apex:inputText value="{!strSearchText}"/>
+                    </apex:pageblockSectionItem>
+
+                    <apex:pageblockSectionItem rendered="{!strSelectedSearchCriteria==PocLastNamePostalCodeOptionValue}">
+                        <apex:outputLabel value="{!$Label.Offer_Search_Last_Name_Label}"/>
+                        <apex:inputText value="{!strPOCSearchLastName}"/>
+                    </apex:pageblockSectionItem>
+                    <apex:pageblockSectionItem rendered="{!strSelectedSearchCriteria==PocLastNamePostalCodeOptionValue}">
+                        <apex:outputLabel value="{!$Label.Offer_Search_Postal_Code_Label}"/>
+                        <apex:inputText value="{!strPOCSearchPostalCode}"/>
+                    </apex:pageblockSectionItem>
+
+                    <apex:pageBlockSectionItem >
+                        <apex:commandButton value="{!$Label.Offer_Search_Button_Search_label}" action="{!searchOffers}" rerender="pnlPromotionalOffers,pnlNotification" status="searchPOC" oncomplete="bindBottomJsOnly();"/>
+                        <apex:commandButton value="{!$Label.Offer_Search_Clear_Search_Button_text}" action="{!showAllOffers}" rerender="pnlPromotionalOffers,pgSearchPanel" status="searchPOC" oncomplete="bindBottomJsOnly();"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:actionStatus id="searchPOC">
+                        <apex:facet name="start">
+                            <apex:outputPanel >
+                                <apex:image value="{!$Resource.Loading_Gif}" /> {!$Label.Please_wait}
+                            </apex:outputPanel>
+                        </apex:facet>
+                    </apex:actionStatus>
+                </apex:pageBlockSection>
+         </apex:pageblock>
+
+         <!--All Promotional offers and search results of promotional offers -->
+         <apex:outputPanel id="pnlPromotionalOffers">
+            <apex:pageBlock title="{!PromotionalOffersSectionLabel}" id="pgBlockFilteredPromotionalAvailOffers">
+                <apex:outputPanel rendered="{!AND(lstPromotionalOfferProducts.size>0, lstPromotionalOfferCampaignNames.size>0, lstPromotionalOfferFrequencies.size>0)}">
+                    <center>
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                                <td>
+                                    <apex:outputLabel styleClass="labelCol" value="{!$Label.Offer_Search_Product_Picklist_Label}"/>
+                                    <apex:selectList value="{!strSelectedFilterProductName}" multiselect="false" size="1">
+                                        <apex:actionSupport event="onchange" action="{!filterOffers}" rerender="pnlPromotionalOffers" oncomplete="bindBottomJsOnly();"/>
+                                        <apex:selectOptions value="{!lstPromotionalOfferProducts}"/>
+                                    </apex:selectList>
+                                </td>
+                                <td>
+                                    <apex:outputLabel styleClass="labelCol" value="{!$Label.Offer_Search_Campaign_Name_Picklist_Label}"/>
+                                    <apex:selectList value="{!strSelectedFilterCampaignName}" multiselect="false" size="1">
+                                        <apex:actionSupport event="onchange" action="{!filterOffers}" rerender="pnlPromotionalOffers" oncomplete="bindBottomJsOnly();"/>
+                                        <apex:selectOptions value="{!lstPromotionalOfferCampaignNames}"/>
+                                    </apex:selectList>
+                                </td>
+                                <td>
+                                    <apex:outputLabel styleClass="labelCol" value="{!$Label.Offer_Search_Frequency_Picklist_Label}"/>
+                                    <apex:selectList value="{!strSelectedFilterFrequency}" multiselect="false" size="1">
+                                        <apex:actionSupport event="onchange" action="{!filterOffers}" rerender="pnlPromotionalOffers" oncomplete="bindBottomJsOnly();"/>
+                                        <apex:selectOptions value="{!lstPromotionalOfferFrequencies}"/>
+                                    </apex:selectList>
+                                </td>
+                            </tr>
+                        </table>
+                    </center>
+                    <br/>
+                </apex:outputPanel>
+                <div id="bottomList">
+                    <apex:pageBlockTable value="{!lstVisiblePromotionalOffers}" var="offerObj" rowClasses="rowClass" rendered="{!lstVisiblePromotionalOffers.size>0}">
+                        <apex:column headerValue="{!$Label.Offer_Search_POC_Column_Header_Label}" rendered="{!OR(strSelectedSearchCriteria==PocIDSearchOptionValue,strSelectedSearchCriteria==PocLastNamePostalCodeOptionValue)}">
+                             <apex:outputLink value="/{!offerObj.pocObj.id}">{!offerObj.pocObj.POC_ID__c}</apex:outputLink>
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Campaign_Column_Label}" oncomplete="bindJs();">
+                                  <apex:param value="{!sortByTcodeNameValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                  <apex:outputPanel rendered="{!sortExpression==sortByTcodeNameValue}">
+                                     &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                  </apex:outputPanel>
+                                </apex:commandLink>
+                             </apex:facet>
+                            <apex:outputLink value="/{!offerObj.tcodeObj.id}" target="_blank">{!offerObj.tcodeObj.name}</apex:outputLink>
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Campaign_Description_Column_Label}" oncomplete="bindJs();">
+                                  <apex:param value="{!sortByTcodeDescriptionValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                  <apex:outputPanel rendered="{!sortExpression==sortByTcodeDescriptionValue}">
+                                     &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                  </apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                            <div style="display: none;" class="offerId">{!offerObj.offerId}</div>
+                            {!offerObj.tcodeObj.Description__c}
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Offer_Name_Column_Label}" oncomplete="bindJs();">
+                                  <apex:param value="{!sortByOfferFriendlyNameValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                  <apex:outputPanel rendered="{!sortExpression==sortByOfferFriendlyNameValue}">
+                                     &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                  </apex:outputPanel>
+                                </apex:commandLink>
+                             </apex:facet>
+                            <a href="/{!offerObj.offerId}" target="_blank">{!offerObj.strOfferFriendlyName}</a>
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Product_Column_Label}" oncomplete="bindJs();">
+                                  <apex:param value="{!sortProductNameValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                  <apex:outputPanel rendered="{!sortExpression==sortProductNameValue}">
+                                     &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                  </apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                            {!offerObj.offerProductName}
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Offer_price_column_label}" oncomplete="bindJs();">
+                                  <apex:param value="{!sortBasePrice}" name="column" assignTo="{!sortExpression}" />
+                                  <apex:outputPanel rendered="{!sortExpression==sortBasePrice}">
+                                     &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                  </apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                            <apex:outputText value="{0, number, £ #,###,###,###,###,##0.00}" >
+                                <apex:param value="{!offerObj.basePrice}"/>
+                            </apex:outputText>
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Weekly_price_column_label}" oncomplete="bindJs();">
+                                  <apex:param value="{!sortProductWeeklyPrice}" name="column" assignTo="{!sortExpression}" />
+                                  <apex:outputPanel rendered="{!sortExpression==sortProductWeeklyPrice}">
+                                     &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                  </apex:outputPanel>
+                                </apex:commandLink>
+                             </apex:facet>
+                            {!offerObj.weeklyPrice}
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortData}" rerender="pnlOpenAvailableOffers,pnlPromotionalOffers" value="{!$Label.Offer_Search_Frequency_Column_Label}" oncomplete="bindJs();">
+                                  <apex:param value="{!sortProductFrequencyValue}" name="column" assignTo="{!sortExpression}" ></apex:param>
+                                  <apex:outputPanel rendered="{!sortExpression==sortProductFrequencyValue}">
+                                     &nbsp;<apex:image value="{!IF(sortDirection = ascendingOrderValue,'/img/arrowUp.gif','/img/arrowDown.gif')}"/>
+                                  </apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                            {!offerObj.offerProductFrequencey}
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.Offer_Search_Incentives_Column_Label}">
+                            {!offerObj.sIncentives}
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </div>
+                <apex:outputLabel value="No Result Found..." rendered="{!NOT(lstVisiblePromotionalOffers.size>0)}"/>
+            </apex:pageBlock>
+         </apex:outputPanel>
+         
+        <!-- popup for payment details -->
+        <div id="dialogPanel">
+            <div id="dialogPanelContent" style="display:none;">
+                <apex:outputPanel id="tstpopup">
+                    <apex:outputPanel styleClass="custPopup" id="popupBody" layout="block">
+                         <apex:outputPanel id="pnlOfferDetails">
+                             <apex:pageblock title="{!$Label.Offer_Search_Offer_Details_Section_Label}" id="pgBlockOfferDetails">
+                                <apex:pageBlockSection columns="1">
+                                    <apex:pageblockSectionItem >
+                                        <apex:outputLabel value="{!$Label.Offer_Search_Label_Offer}"/>
+                                        <apex:outputText value="{!selectedOfferCodeDetailsObj.friendlyName}"/>
+                                    </apex:pageblockSectionItem>
+
+                                    <apex:pageblockTable value="{!selectedOfferCodeDetailsObj.discounts}" var="discountDetail" rendered="{!AND(selectedOfferCodeDetailsObj.discounts!=null,selectedOfferCodeDetailsObj.discounts.size>0)}">
+                                        <apex:column headerValue="{!$Label.Offer_Search_Payment_Frequency_Column_Label}" value="{!discountDetail.billingPeriod}"/>
+                                        <apex:column headerValue="{!$Label.Offer_Search_Number_of_Periods_Column_Label}" value="{!discountDetail.numberOfPeriods}"/>
+                                        <apex:column headerValue="{!$Label.Offer_Search_Discount_Amount_Column_Label}">
+                                            <apex:outputText value="{0, number, £ #,###,###,###,###,##0.00}" >
+                                                <apex:param value="{!discountDetail.discountAmount}"/>
+                                            </apex:outputText>
+                                        </apex:column>
+                                    </apex:pageblockTable>
+                                </apex:pageBlockSection>
+                             </apex:pageblock>
+                         </apex:outputPanel>
+
+                        <apex:outputPanel id="pnlBillingPreview">
+                            <apex:pageblock title="{!$Label.Offer_Search_Billing_Preview_Section_Label}" id="pgBlockBillingPreview">
+                                <apex:pageBlockSection columns="1">
+                                    <apex:pageBlockSectionItem >
+                                        <apex:outputLabel value="{!$Label.Offer_Search_Product_Price_Label}"/>
+                                        <apex:outputText value="{0, number, £ #,###,###,###,###,##0.00}"  id="TotalServiceId">
+                                                <apex:param value="{!productPrice}"/>
+                                        </apex:outputText>
+                                    </apex:pageBlockSectionItem>
+
+                                    <apex:pageblockTable value="{!lstInvoices}" var="invoiceOj">
+                                        <apex:column headerValue="{!$Label.Offer_Search_Invoice_No_Column_Label}" value="Invoice # {!invoiceOj.invoiceNo}">
+                                            <apex:facet name="footer">
+                                                <apex:outputText value="{!$Label.Offer_Search_Total_Label}" style="float: right;"/>
+                                            </apex:facet>
+                                        </apex:column>
+                                        <apex:column headerValue="{!$Label.Offer_Search_Invoice_Amount_Column_Label}">
+                                            <apex:outputText value="{0, number, £ #,###,###,###,###,##0.00}"  id="TotalServiceId">
+                                                <apex:param value="{!invoiceOj.invoiceAmount}"/>
+                                            </apex:outputText>
+                                            <apex:facet name="footer">
+                                                    <apex:outputLabel value="{!$Label.Offer_Search_Grand_Total_Label}"/>
+                                                    <apex:outputText value="{0, number, £ #,###,###,###,###,##0.00}"  id="GrandTotalService">
+                                                        <apex:param value="{!totalInvoiceValue}"/>
+                                                    </apex:outputText>
+                                             </apex:facet>
+                                        </apex:column>
+                                    </apex:pageblockTable>
+                                </apex:pageBlockSection>
+                             </apex:pageblock>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </div>
+        </div>
+    </apex:form>
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jqueryui/jquery-ui.min.js')}"/>
+     <script type="text/javascript">
+        j$ = jQuery.noConflict();
+        var elementBuffer;
+        function openDialog(element){
+            j$('#dialogPanel').dialog({
+                width: '40%',
+                position: { my: 'center top', at:'bottom', of: element},
+                modal: true,
+                show: true,
+                title: 'Offer Preview',
+                buttons: {
+                    Ok : function(){cancelWindowActions(this);}
+                },
+                close: function(event, ui){
+                    cancelWindowActions(this);
+                }
+            });
+            j$('#dialogPanelContent').css('display', 'block');
+        }
+
+        function cancelWindowActions(element){
+            j$('#dialogPanelContent').css('display', 'none');
+            j$(element).dialog('destroy');
+            elementBuffer.removeClass('selectedColor');
+            elementBuffer = null;
+        }
+  
+        function bindJs(){
+            j$('#topList .rowClass, #bottomList .rowClass').on('click', function(e){
+                elementBuffer = j$(this);
+                elementBuffer.addClass('selectedColor');
+                prepopulatePreview(elementBuffer.find('.offerId').html());
+            });
+    
+            j$('#topList .rowClass a, #bottomList .rowClass a').on('click', function(e){
+                e.stopPropagation();
+            });
+        }
+
+        function bindBottomJsOnly(){
+            j$('#bottomList .rowClass').on('click', function(e){
+                elementBuffer = j$(this);
+                elementBuffer.addClass('selectedColor');
+                prepopulatePreview(elementBuffer.find('.offerId').html());
+            });
+    
+            j$('#bottomList .rowClass a').on('click', function(e){
+                e.stopPropagation();
+            });
+        }
+        
+        function onActionCallback(){
+            openDialog(elementBuffer);
+        }
+      
+        j$(document).ready(function(){
+            bindJs();
+        });
+    </script>
+</apex:page>

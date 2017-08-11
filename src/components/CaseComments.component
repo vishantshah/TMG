@@ -1,0 +1,105 @@
+<apex:component controller="CaseCommentsController" allowDML="true">
+
+    <!-- Attribute Definition -->
+    <apex:attribute name="caseId" 
+        description="Salesforce Id of the Case whose Case Comments needs to be rendered" 
+        type="Id" 
+        required="true" 
+        assignTo="{!thisCaseId}" 
+    />
+
+    <apex:attribute name="orderByFieldName" 
+        description="Case field name cases ordered by" 
+        type="String" 
+        required="false" 
+        assignTo="{!orderBy}"
+        default="CreatedDate"  
+    />
+    <apex:attribute name="isDescOrder" 
+        description="Display results in descending or ascending order" 
+        type="Boolean" 
+        required="false" 
+        assignTo="{!isDesc}"
+        default="true" 
+    />
+    <apex:attribute name="queryLimit" 
+        description="The number of case records are retrieved" 
+        type="Integer" 
+        required="false" 
+        assignTo="{!maxNumberOfComments}"
+        default="20"
+    />
+
+    <apex:attribute name="displayLimit" 
+        description="The number of case records are retrieved" 
+        type="Integer" 
+        required="false" 
+        assignTo="{!numberOfCommentsToDisplay}"
+        default="5"
+    />
+
+    <style>
+    .removeBorder .bPageBlock{border:none!Important;}
+    </style>
+
+    <!-- Component Body -->
+    <apex:componentBody rendered="{!NOT(ISNULL(caseId))}">
+        <div class="removeBorder">
+            <apex:outputPanel id="caseComments">
+                <apex:pageBlock>
+                    <apex:pageBlockSection title="Case Comments" columns="1" collapsible="false">
+                        <apex:pageMessages rendered="{!showMessage}"/>
+                        <apex:outputPanel rendered="{!showData}" >
+                            <apex:pageBlockTable value="{!CaseComments}" var="c">
+                                <apex:column headerValue="Comment" value="{!c.CommentBody}"/>
+                                <apex:column value="{!c.CreatedById}"/>
+                                <apex:column value="{!c.CreatedDate}"/>
+                            </apex:pageBlockTable>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!!showData}">
+                            <apex:outputText value="There are no comments for this case"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!showData}">
+                            <apex:panelGrid id="caseCountPanel" columns="2" rendered="{!showCountPanel}">
+                                <apex:outputText value="{!CommentsCount}" />
+                                <apex:commandLink action="{!showHideAll}" rerender="caseComments" status="loadStatus">{!commandLinkLabel}</apex:commandlink>
+                            </apex:panelGrid>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    <apex:outputPanel id="newCaseComment" rendered="{!initState}">
+                        <apex:commandbutton action="{!createNewComment}" oncomplete="charcounter();clearFlags();return false;" value="Add New Comment" rerender="caseComments" status="loadStatus" rendered="{!!showNewComment}"/>
+                        <apex:pageBlockSection title="New Comment" columns="1" collapsible="false" rendered="{!showNewComment}" id="newCommentSection">
+                            <apex:inputField label="Comment" value="{!newComment.commentbody}" style="width:700px;height:150px;"/>
+                        </apex:pageBlockSection>
+                        <div style="width:800px; margin:0 auto;">
+                            <apex:commandbutton oncomplete="clearFlags1();return false;" action="{!cancelSaveNewComment}" value="Cancel" rerender="caseComments" status="loadStatus" rendered="{!buttonNewClicked}"/>
+                            <apex:commandbutton action="{!clearFlags}"  onclick="save(getTextInput());return false;" value="Save Comment" rerender="caseComments" status="loadStatus" rendered="{!buttonNewClicked}"/>
+                        </div>
+                    </apex:outputPanel>
+                    <apex:outputPanel id="fakeBox"/>
+                </apex:pageBlock>
+                <apex:actionFunction action="{!clearFlags}" name="clearFlags1" rerender="caseComments"></apex:actionFunction>
+                <apex:actionFunction action="{!saveNewComment}" name="save" rerender="caseComments">
+                    <apex:param name="firstParam" assignTo="{!CaseCommentTxt}" value="{!newComment.commentbody}" />
+                </apex:actionFunction>
+                <apex:actionFunction action="{!clearFlags}" name="clearFlags" rerender="fakeBox"></apex:actionFunction>
+            </apex:outputPanel>
+        </div>
+    </apex:componentBody>
+    
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <script>
+        j$ = jQuery.noConflict();
+        function charcounter(){
+            j$('div[id*="newCommentSection"]').find('textarea').each(function(){
+                var htmlToInsertForCounter = '<div class="textCounterOuter"><div class="textCounterMiddle warn"><div id="'+j$(this).attr('id')+'_counter" class="textCounter"></div></div></div>';
+                j$(this).closest('.data2Col').prev('.labelCol').append(htmlToInsertForCounter);
+            });
+        }
+
+        function getTextInput() {
+            var returnValue =   j$('div[id*="newCommentSection"]').find('textarea').val();
+            return returnValue;
+        }
+    </script>
+</apex:component>

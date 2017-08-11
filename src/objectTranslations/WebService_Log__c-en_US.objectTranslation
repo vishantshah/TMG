@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>WebService Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>WebService Logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Direction --></label>
+        <name>Direction__c</name>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Endpoint --></label>
+        <name>Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Extra Details --></label>
+        <name>Extra_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Method Name --></label>
+        <name>Method_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parameters --></label>
+        <name>Parameters__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Id --></label>
+        <name>ProfileId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Time --></label>
+        <name>Request_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Content --></label>
+        <name>Response_Content__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Time --></label>
+        <name>Response_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Session Id --></label>
+        <name>SessionId__c</name>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- WebService Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- time taken --></label>
+        <name>time_taken__c</name>
+    </fields>
+    <layouts>
+        <layout>WebService Log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- User Details --></label>
+            <section>User Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

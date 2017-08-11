@@ -1,0 +1,57 @@
+<apex:component controller="LatestSubscriptionController" >
+    <script>
+    function isNumber(event, refAmt) {
+        if (event.key == '.' && refAmt.value.indexOf('.') == -1)
+            return true;
+        else 
+            return $.isNumeric( event.key );
+
+    }
+
+    function openWindow(url, target, openWindow){
+        if ( openWindow ) { 
+            window.open(url, target); 
+        }
+    }
+    </script>
+    
+    <c:LoadingBox />
+
+	<apex:attribute name = "target" 	type="String" required="true"  description="Url link target" />
+	<apex:attribute name = "caseRecord" type="Case"   required="false" assignTo="{!thisCase}"  description="Case record in context" />
+    <apex:attribute name = "tcode"      type="String" required="false" assignTo="{!tCodeName}"  description="TCode Name" />
+	<apex:attribute name = "subProductId" 	type="String" required="false" assignTo="{!productId}" 	description="Product Id" />
+
+    <apex:componentBody>
+    	<apex:pageBlock id="comp">
+
+            <apex:pageMessages />
+
+    		<apex:pageBlockButtons location="bottom" rendered="{!NOT(ISNULL(newSubscriptionType))}"> 
+            	<apex:commandButton value="Create New Subscription" action="{!createNewSubscription}" oncomplete="openWindow ('{!newSubscriptionUrl}', '{!target}', {!windowOpen}); " status="loadStatus" reRender="comp"/>
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection columns="1" title="Latest Subscription" id="latestSubscription" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Subscription Type"/>
+                    <apex:selectRadio value="{!newSubscriptionType}">
+                        <apex:selectOption itemLabel="Print" itemValue="Print"/>
+                        <apex:selectOption itemLabel="Digital" itemValue="Digital"/>
+                        <apex:actionSupport event="onclick" reRender="comp" status="loadStatus"/>  
+                    </apex:selectRadio>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem rendered="{!AND(NOT(ISNULL(caseRecord)), newSubscriptionType = 'Print')}">
+                    <apex:outputLabel>Weekly Price</apex:outputLabel>
+                    <apex:inputText value="{!weeklyPrice}" onkeypress="return isNumber(event, this)"/> 
+                </apex:pageBlockSectionItem>
+	            
+                <apex:inputField value="{!caseRecord.Print_Subscription__c}" rendered="{!AND(NOT(ISNULL(caseRecord)), newSubscriptionType = 'Print')}"/>
+	            
+                <apex:inputField value="{!caseRecord.Subscription__c}" rendered="{!AND(NOT(ISNULL(caseRecord)), newSubscriptionType = 'Digital')}"/>
+	       	
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:componentBody>
+
+</apex:component>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPageWebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availability>online</availability>
+    <description>Note:  You will need to update the URL in the Link URL value to reference the All Agencies view in the Accounts tab.   To do so, click on the Accounts Tab, select the appropriate view, copy the URL from your browser, and past the value in the Link URL value for this Custom Link.  See installation guide for further detail.</description>
+    <displayType>link</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>All Agencies</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>https://emea.salesforce.com/001?fcf=00B20000004PxxM</url>
+</CustomPageWebLink>

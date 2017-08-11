@@ -1,0 +1,75 @@
+<apex:page controller="OutboundCallingCCExpiryCtrl" tabStyle="Outbound_Calling_New__tab" docType="html-5.0">
+<apex:form id="form">
+    <c:OutboundCallMenu />
+    
+        <apex:outputPanel id="errorPanel">
+            <apex:pageMessages />
+        </apex:outputPanel>
+
+        <apex:outputPanel id="customerPanel">
+            <apex:pageBlock title="Customers available: {!casesTotal}">
+
+                <apex:pageBlockButtons location="top">
+                    <apex:actionstatus id="getCustomerStatus">
+                        <apex:facet name="start">
+                            <apex:outputPanel >
+                                <apex:image value="/img/loading32.gif" style="height:15px;" />
+                                <apex:commandButton value="Processing..." disabled="true" />
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:facet name="stop">
+                            <apex:outputPanel >
+                                <apex:commandButton action="{!getCustomer}" value="Get Customer" rendered="{!NOT(hasCustomer)}" rerender="customerPanel, errorPanel" 
+                                    disabled="{!casesTotalCount=0}" status="getCustomerStatus" />
+
+                                <apex:commandButton action="{!saveSelectedCustomer}" value="Save Changes to Selected Customer" rendered="{!hasCustomer}" rerender="customerPanel, errorPanel" disabled="{!NOT(isSaveButtonEnabled)}" status="getCustomerStatus" />
+                                <apex:commandButton action="{!getCustomer}" value="Get Next Customer" rendered="{!hasCustomer}" rerender="customerPanel, errorPanel" 
+                                    status="getCustomerStatus" />
+                            </apex:outputPanel>
+                        </apex:facet>
+                    </apex:actionstatus>
+                </apex:pageBlockButtons>
+
+                <apex:outputPanel rendered="{!casesTotalCount=0}">
+                There are no Cases eligible for Credit Card Expiry.
+                </apex:outputPanel>
+
+                <apex:outputPanel rendered="{!AND(casesTotalCount>0,NOT(hasCustomer))}">
+                No customer selected. Click the Get Customer button.
+                </apex:outputPanel>
+
+                <apex:outputPanel rendered="{!hasCustomer}">
+                    <apex:pageBlockSection columns="2" title="Case details">
+                        <apex:outputField value="{!selectedCase.CaseNumber}" />
+                        <apex:outputField value="{!selectedCase.OC_Call_Stage__c}" />
+                        <apex:outputField value="{!selectedCase.Status}" />
+                         <apex:inputField value="{!selectedCase.OC_Outcome__c}"  onchange="enableSaveButton();" />
+                    </apex:pageBlockSection>
+                    <apex:actionFunction action="{!enableSaveButton}" name="enableSaveButton" rerender="customerPanel, errorPanel"/>
+
+                    <c:CaseComments caseId="{!selectedCase.Id}" />
+                    
+                    <apex:pageBlockSection columns="2" title="Account details">
+                        <apex:outputField value="{!selectedCase.AccountId}" />
+                        <apex:outputField value="{!selectedCase.Account.Subscriber_Number_static__c}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonEmail}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMobilePhone}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonHomePhone}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingCountry}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingPostalCode}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingState}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingStreet}" />
+                        <apex:outputField value="{!selectedCase.Account.PersonMailingCity}" />
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1" title="MPP Credit Card">
+                        <apex:outputPanel id="iframePanel">
+                            <apex:iframe src="{!mpp.BASE_MPP_URL}management/embedded/ewalletdetailsnoaddress.aspx?affiliateToken={!mpp.MPP_GUID}&parameterName=TSNumber&clientUserId={!selectedCase.Account.Subscriber_Number_static__c}&serverUrl={!$Api.Partner_Server_URL_210}&sessionId={!GETSESSIONID()}" 
+                            scrolling="true" id="theIframe"/>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    <br/>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

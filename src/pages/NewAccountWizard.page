@@ -1,0 +1,416 @@
+<apex:page controller="NewAccountWizardController" id="pgAccountWizard" tabStyle="New_Account_Wizard__tab">
+    <style>
+        .MarketingPos {float:left; padding-top:4px}
+    </style>
+    <script>
+        var MkTMGEmail;
+        var MkTMGPhone;
+        var MkTMGPost;
+        var MkTMGSMS;
+
+        function SelectAllTMG(setting){
+            if(setting == true){
+                document.getElementById(MkTMGEmail).checked = true;
+                document.getElementById(MkTMGPhone).checked = true;
+                document.getElementById(MkTMGPost).checked = true;
+                document.getElementById(MkTMGSMS).checked = true;
+            }else{
+                document.getElementById(MkTMGEmail).checked = false;
+                document.getElementById(MkTMGPhone).checked = false;
+                document.getElementById(MkTMGPost).checked = false;
+                document.getElementById(MkTMGSMS).checked = false;
+            }
+        }
+    </script>
+    <apex:form id="frmAccountWizard">
+        <apex:actionFunction name="searchAccount" action="{!FindAccount}" rerender="frmAccountWizard" status="findAccountStatus"/>
+        <apex:pagemessages id="pgmsg"/>
+        <apex:outputPanel id="pnlMain">
+
+            <apex:outputpanel id="pnlDigitalProduct" rendered="{!showSearchPanel}">
+
+                <!-- search page block -->
+                <apex:pageblock title="{!$Label.Find_Account}" id="pbFindAcc">     
+                   <apex:pageBlockSection columns="1" >
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="txtSurname" value="{!$Label.Surname}"/>
+                            <apex:outputpanel >
+                                <apex:inputText id="txtSurname" value="{!strSearchSurname}" onkeydown="if(event.code == 'Enter') {searchAccount(); return false;}"/>
+                            </apex:outputpanel>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="txtPostCode" value="{!$Label.Post_Code}"/>
+                            <apex:outputpanel >
+                                <apex:inputText id="txtPostCode" value="{!strSearchPostCode}" onblur="this.value=this.value.toUpperCase()" onkeydown="if(event.code == 'Enter') {this.value=this.value.toUpperCase(); searchAccount(); return false;}" style="float: left;"/>
+                            </apex:outputpanel>
+                        </apex:pageBlockSectionItem>   
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="txtEmail" value="{!$Label.Email}"/>
+                            <apex:outputpanel >
+                                <apex:inputText id="txtEmail" value="{!strSearchEmail}" style="float: left;" onkeydown="if(event.code == 'Enter') {searchAccount(); return false;}"/>
+                            </apex:outputpanel>
+                        </apex:pageBlockSectionItem>   
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="txtTsNumber" value="{!$Label.TS_Number}"/>
+                            <apex:inputText id="txtTsNumber" value="{!strSearchTsNumber}" onkeydown="if(event.code == 'Enter') {searchAccount(); return false;}" />
+                        </apex:pageBlockSectionItem>  
+                    </apex:pageBlockSection>   
+                    <apex:pageBlockButtons location="bottom"> 
+                        <apex:commandButton value="{!$Label.Check_Existing_Accounts}" action="{!FindAccount}" rerender="frmAccountWizard" status="findAccountStatus"/> 
+                        <apex:commandButton value="{!$Label.Create_New_Account_Registrant_Button_Label}" action="{!ShowNewAccountSection}" rerender="frmAccountWizard" immediate="true"/>
+                        <apex:commandButton value="{!$Label.Print_Products_Label}" action="{!redirectPrintProduct}" rerender="pnlMain"/>
+                        <apex:actionStatus id="findAccountStatus">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image value="{!$Resource.Loading_Gif}" /> {!$Label.Please_wait}
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:pageBlockButtons>
+                </apex:pageblock>
+
+                <!-- Search Result Block -->
+                <apex:outputpanel id="pbResults">
+                    <apex:pageBlock title="{!$Label.Search_Results}" rendered="{!isShowResults}">
+                       <!-- Repeated char links -->
+                        <apex:pageBlockSection columns="1"> 
+                            <apex:pageBlockSectionItem dataStyle="text-align: left;"> 
+                                <apex:repeat value="{!lAlphaList}" var="letter">
+                                    <apex:commandLink action="{!getSortedAccountsByChar}" value="{!letter}" status="filterStatus" reRender="pbResults, pbsFilterErrorMsg" style="{!IF(sortCharacter==letter,'font-weight: bold; color: #0066CC;','')}">
+                                         <apex:param assignTo="{!sortCharacter}" value="{!letter}" name="sortCharacter" />
+                                    </apex:commandLink>
+                                    &nbsp;|&nbsp;
+                                </apex:repeat>          
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSection rendered="{!isNoResultAfterFilter}" id="pbsFilterErrorMsg" >
+                                <apex:outputpanel >
+                                    {!$Label.Error_No_Account_Matching_Search_Criteria} 
+                                </apex:outputpanel>
+                                 <apex:outputPanel style="font-weight:bold">
+                                        <apex:actionStatus id="filterStatus" startText="{!$Label.Please_wait}" stopText=""/>
+                                </apex:outputPanel>
+                           </apex:pageBlockSection>
+                       </apex:pageBlockSection>
+
+                       <!-- Registrant Accounts -->
+                       <apex:pageBlockSection title="{!$Label.Registrant_Accounts_PageBlock_Label}" columns="1" rendered="{!noOfRecords>0}" id="pbsReg">
+                            <apex:panelGrid columns="7" rendered="{!noOfRecords > numberOfAccountsPerPage}">
+                                <apex:commandButton status="fetchStatus" reRender="pbsReg" value="|<" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" title="First Page"/>
+                                <apex:commandButton status="fetchStatus" reRender="pbsReg" value="<" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page"/>
+                                <apex:commandButton status="fetchStatus" reRender="pbsReg" value=">" action="{!setCon.next}" disabled="{!!setCon.hasNext}" title="Next Page"/>
+                                <apex:commandButton status="fetchStatus" reRender="pbsReg" value=">|" action="{!setCon.last}" disabled="{!!setCon.hasNext}" title="Last Page"/>
+                                <apex:outputText >{!(setCon.pageNumber * numberOfAccountsPerPage)+1-numberOfAccountsPerPage}-{!IF((setCon.pageNumber * numberOfAccountsPerPage)>noOfRecords, noOfRecords,(setCon.pageNumber * numberOfAccountsPerPage))} of {!noOfRecords}</apex:outputText>
+                                <apex:outputPanel style="font-weight:bold">
+                                    <apex:actionStatus id="fetchStatus" startText="{!$Label.Please_wait}" stopText=""/>
+                                </apex:outputPanel>
+                            </apex:panelGrid>
+                            <apex:pageBlockTable value="{!Registrants}" var="RegAccount" columnsWidth="10%,10%,10%,10%,10%,10%,10%,10%,10%,10%">
+                                <apex:column headerValue="{!$Label.Subscriber_Number}" title="{!$Label.Subscriber_Number}" value="{!RegAccount.Subscriber_Number_static__c}"/>    
+                                <apex:column headerValue="{!$Label.Name_Header}" title="{!$Label.Name_Header}" >
+                                    <apex:outputLink value="/{!RegAccount.id}" rendered="{!NOT(ISBLANK(RegAccount.Salutation))}">{!RegAccount.Salutation} {!RegAccount.FirstName} {!RegAccount.LastName}</apex:outputLink>
+                                	<apex:outputLink value="/{!RegAccount.id}" rendered="{!ISBLANK(RegAccount.Salutation)}">{!RegAccount.Title__c} {!RegAccount.FirstName} {!RegAccount.LastName}</apex:outputLink>
+                                </apex:column>
+                                <apex:column value="{!RegAccount.FirstName}"/>
+                                <apex:column value="{!RegAccount.LastName}"/>
+                                <apex:column headerValue="{!$Label.Mailing_Street_Header}" title="{!$Label.Mailing_Street_Header}" value="{!RegAccount.PersonMailingStreet}"/>
+                                <apex:column headerValue="{!$Label.Mailing_City_Header}"   title="{!$Label.Mailing_City_Header}"   value="{!RegAccount.PersonMailingCity}"/>
+                                <apex:column headerValue="{!$Label.Post_Code_Header}" title="{!$Label.Post_Code_Header}" value="{!RegAccount.PersonMailingPostalCode}"/>
+                                <apex:column headerValue="{!$Label.Phone_Header}" title="{!$Label.Phone_Header}" value="{!RegAccount.PersonMobilePhone}" rendered="{!Not(ISBLANK(RegAccount.PersonMobilePhone))}"/>
+                                <apex:column headerValue="{!$Label.Phone_Header}" title="{!$Label.Phone_Header}" value="{!RegAccount.PersonHomePhone}" rendered="{!ISBLANK(RegAccount.PersonMobilePhone)}"/>
+                                <apex:column headerValue="{!$Label.Email_Header}" title="{!$Label.Email_Header}" value="{!RegAccount.PersonEmail}"/>
+                                <apex:column headerValue="{!$Label.Subscription_Type_Header}" title="{!$Label.Subscription_Type_Header}">
+                                    <apex:outputField value="{!RegAccount.recordtypeid}"/>
+                                </apex:column>
+                                <apex:column headerValue="{!$Label.Product_Header}" title="{!$Label.Product_Header}">
+                                    <apex:outputpanel rendered="{!if(RegAccount.R00N40000001lGjTEAU__r.size>0,true,false)}">
+                                        <apex:outputtext value="{!RegAccount.R00N40000001lGjTEAU__r[0].Zuora__ProductName__c}"/>
+                                    </apex:outputpanel>
+                                </apex:column>
+                                <apex:column headerValue="Print Status" title="Print Status" value="{!RegAccount.Subscription_Status__c}"/>
+                                <apex:column headerValue="Digital Status" title="{!$Label.Subscriber_Status_Header}" value="{!RegAccount.Digital_Status__c}"/>
+                           
+                           </apex:pageBlockTable>
+                       </apex:pageBlockSection>
+                       
+                       <!-- Non Registrant Accounts -->
+                       <apex:pageBlockSection title="Other Accounts" columns="1" rendered="{!noOfOtherRecords>0}" id="pbsNonreg">
+                            <apex:panelGrid columns="7" rendered="{!noOfOtherRecords > numberOfAccountsPerPage}">
+                                <apex:commandButton status="fetchStatus2" reRender="pbsNonreg" value="|<" action="{!nonCon.first}" disabled="{!!nonCon.hasPrevious}" title="First Page"/>
+                                <apex:commandButton status="fetchStatus2" reRender="pbsNonreg" value="<" action="{!nonCon.previous}" disabled="{!!nonCon.hasPrevious}" title="Previous Page"/>
+                                <apex:commandButton status="fetchStatus2" reRender="pbsNonreg" value=">" action="{!nonCon.next}" disabled="{!!nonCon.hasNext}" title="Next Page"/>
+                                <apex:commandButton status="fetchStatus2" reRender="pbsNonreg" value=">|" action="{!nonCon.last}" disabled="{!!nonCon.hasNext}" title="Last Page"/>
+                                <apex:outputText >{!(nonCon.pageNumber * numberOfAccountsPerPage)+1-numberOfAccountsPerPage}-{!IF((nonCon.pageNumber * numberOfAccountsPerPage)>noOfOtherRecords, noOfOtherRecords,(nonCon.pageNumber * numberOfAccountsPerPage))} of {!noOfOtherRecords}</apex:outputText>
+                                <apex:outputPanel style="font-weight:bold">
+                                    <apex:actionStatus id="fetchStatus2" startText="{!$Label.Please_wait}" stopText=""/>
+                                </apex:outputPanel>
+                            </apex:panelGrid>
+                           <apex:pageBlockTable value="{!NonRegistrants}" var="NonRegAccount" columnsWidth="10%,10%,10%,10%,10%,10%,10%,10%,10%,10%">
+                                <apex:column headerValue="{!$Label.Subscriber_Number}" title="{!$Label.Subscriber_Number}" value="{!NonRegAccount.Subscriber_Number_static__c}"/>    
+                                <apex:column headerValue="{!$Label.Name_Header}" title="{!$Label.Name_Header}" >
+                                    <apex:outputLink value="/{!NonRegAccount.id}" rendered="{!NOT(ISBLANK(NonRegAccount.Salutation))}">{!NonRegAccount.Salutation} {!NonRegAccount.FirstName} {!NonRegAccount.LastName}</apex:outputLink>
+                                    <apex:outputLink value="/{!NonRegAccount.id}" rendered="{!ISBLANK(NonRegAccount.Salutation)}">{!NonRegAccount.Title__c} {!NonRegAccount.FirstName} {!NonRegAccount.LastName}</apex:outputLink>
+                                </apex:column>
+                                <apex:column value="{!NonRegAccount.FirstName}"/>
+                                <apex:column value="{!NonRegAccount.LastName}"/>
+                                <apex:column headerValue="{!$Label.Mailing_Street_Header}" title="{!$Label.Mailing_Street_Header}" value="{!NonRegAccount.PersonMailingStreet}"/>
+                                <apex:column headerValue="{!$Label.Mailing_City_Header}"   title="{!$Label.Mailing_City_Header}"   value="{!NonRegAccount.PersonMailingCity}"/>
+                                <apex:column headerValue="{!$Label.Post_Code_Header}" title="{!$Label.Post_Code_Header}" value="{!NonRegAccount.PersonMailingPostalCode}"/>
+                                <apex:column headerValue="{!$Label.Phone_Header}" title="{!$Label.Phone_Header}" value="{!NonRegAccount.PersonMobilePhone}"/>
+                                <apex:column headerValue="{!$Label.Email_Header}" title="{!$Label.Email_Header}" value="{!NonRegAccount.PersonEmail}"/>
+                                <apex:column headerValue="{!$Label.Subscription_Type_Header}" title="{!$Label.Subscription_Type_Header}">
+                                    <apex:outputField value="{!NonRegAccount.recordtypeid}"/>
+                                </apex:column>
+                                <apex:column headerValue="{!$Label.Product_Header}" title="{!$Label.Product_Header}">
+                                    <apex:outputtext rendered="{!NonRegAccount.recordtypeid==DigitalSubscriberRecordTypeId}" value="{!$Label.Digital_Product_Value}"/>
+                                    <apex:outputpanel rendered="{!NonRegAccount.Subscriptions1__r.size>0}">
+                                        <apex:outputtext rendered="{!NonRegAccount.recordtypeid==IndividualSubscriberRecordTypeId}" value="{!$Label.Print_Product_Value}"/>
+                                    </apex:outputpanel>
+                                </apex:column>
+                                <apex:column headerValue="Print Status" title="Print Status" value="{!NonRegAccount.Subscription_Status__c}"/>
+                                <apex:column headerValue="Digital Status" title="Digital Status" value="{!NonRegAccount.Digital_Status__c}"/>
+                                <apex:column >
+                                    <apex:commandButton value="{!$Label.Convert_Account}" action="/apex/Account_ConvertToRegistrant?id={!NonRegAccount.Id}"/>
+                                </apex:column>
+                           </apex:pageBlockTable>
+                       </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </apex:outputpanel>
+                
+                <!--SAM notification-->
+                <apex:outputpanel id="pbSAM">
+                    <apex:pageBlock title="SAM" rendered="{!showNotifications}">
+                        <apex:pageBlockSection >
+                            <apex:outputLabel value="{!$Label.Email_ExistsInSAM_Question}"/>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockButtons location="bottom">
+                             <apex:commandButton value="YES" action="{!assignSAMaccountToNewAccount}" reRender="pdNewAccount,pbSAM, pgmsg" />
+                             <apex:commandButton value="NO" action="{!RefreshUI}" reRender="pdNewAccount,pbSAM, pgmsg" />
+                        </apex:pageBlockButtons> 
+                    </apex:pageBlock>
+                </apex:outputpanel>
+            </apex:outputpanel>
+
+            <!--New Account form section-->
+            <apex:outputPanel id="pdNewAccount">
+                <apex:pageBlock rendered="{!isNoResultFound}">
+                    <apex:outputpanel title="{!$Label.Search_Results}">
+                       {!$Label.Error_No_Account_Matching_Search_Criteria} 
+                    </apex:outputpanel>
+                </apex:pageBlock>
+
+                <apex:pageBlock id="pgBlockNewAccount" title="{!accountFormTitle}" rendered="{!OR(AND(NOT(isShowResults),OR(isNoResultFound,isShowNewAccountSection)),NOT(showSearchPanel))}">
+                    <apex:pageBlockSection columns="1" id="pgBlockSectionNewAccount">
+                        <apex:pageBlockSectionItem HelpText="{!if(isTitleRequired,$Label.Title_Help_Text,'')}">
+                            {!$Label.Title}
+                            <apex:outputPanel >
+                                <apex:outputPanel rendered="{!isTitleRequired}">
+                                    <div class="requiredInput">
+                                        <div class="requiredBlock"></div>
+                                        <apex:inputfield value="{!newContactObj.Salutation}"/>
+                                        &nbsp;&nbsp;<apex:outputlabel value="{!$ObjectType.account.fields.Title__c.Label}" styleClass="labelCol"/>
+                                        &nbsp;&nbsp;<apex:inputfield value="{!newAccountObj.Title__c}"/>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!Not(isTitleRequired)}">
+                                    <apex:inputfield value="{!newContactObj.Salutation}"/>
+                                    &nbsp;&nbsp;<apex:outputlabel value="{!$ObjectType.account.fields.Title__c.Label}" styleClass="labelCol"/>
+                                    &nbsp;&nbsp;<apex:inputfield value="{!newAccountObj.Title__c}"/>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            {!$ObjectType.Contact.fields.FirstName.Label} 
+                            <apex:outputPanel >
+                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                    <apex:inputField value="{!newContactObj.FirstName}"/>
+                                 </div>
+                           </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            {!$ObjectType.Account.fields.LastName.Label}
+                            <apex:outputPanel id="newLastNamePanel">
+                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                    <apex:inputText value="{!newContactObj.LastName}" />
+                                </div>
+                           </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                                           
+                        <apex:pageBlockSectionItem >
+                            {!$ObjectType.Account.fields.DateofBirth__c.Label}
+                            <apex:outputPanel id="newBirthDatePanel">
+                                    <apex:inputfield value="{!newAccountObj.DateofBirth__c}"/>
+                           </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+
+                        <apex:pageBlockSectionItem >
+                            {!$ObjectType.Account.fields.PersonEmail.Label} 
+                            <apex:outputPanel>
+                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                    <apex:inputfield value="{!newAccountObj.PersonEmail}" style="width:300px;"/>
+                                </div>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem> 
+                         
+                        <apex:pageBlockSectionItem >
+                            {!$ObjectType.Account.fields.PersonMailingPostalCode.Label} 
+                            <apex:outputpanel >
+                            	<apex:outputPanel rendered="{!isPostalCodeRequired}">
+    	                        	<div class="requiredInput">
+    	                              <div class="requiredBlock"></div>
+    	                              <apex:inputfield id="PostCodeMan" value="{!newAccountObj.PersonMailingPostalCode}" onblur="this.value=this.value.toUpperCase()" style="float: left;"/>
+    	                           	  <script>
+    		                                 var PostCode = '{!$Component.PostCodeMan}';
+    		                           </script>
+    		                           <c:PostCodeLookup findAddressButtonTextValue="{!$Label.Find_UK_Address_Label}"/>
+    	                           </div>
+                               </apex:outputPanel>
+                               <apex:outputPanel rendered="{!Not(isPostalCodeRequired)}">
+                                     <apex:inputfield id="PostCode" value="{!newAccountObj.PersonMailingPostalCode}" onblur="this.value=this.value.toUpperCase()" style="float: left;"/>
+                                     <script>
+                                          var PostCode = '{!$Component.PostCode}';
+                                     </script>
+                                     <c:PostCodeLookup findAddressButtonTextValue="{!$Label.Find_UK_Address_Label}"/> 
+                                 </apex:outputPanel>
+                            </apex:outputpanel> 
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageblocksectionItem >
+                            {!$ObjectType.Account.fields.PersonMailingStreet.Label} 
+                            <apex:outputpanel >
+                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputfield id="Addrline1" value="{!newAccountObj.PersonMailingStreet}"/>
+                                    </div>
+                                    <script>
+                                        var Field1 = '{!$Component.Addrline1}';               
+                                   </script>
+                           </apex:outputpanel>
+                        </apex:pageblocksectionItem>
+                        
+                        <apex:pageblockSectionItem >
+                            {!$ObjectType.Account.fields.PersonMailingCity.Label}
+                            <apex:outputpanel >
+                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                    <apex:inputfield id="City" value="{!newAccountObj.PersonMailingCity}"/>
+                                    <script>
+                                        var Field2 = '{!$Component.City}';
+                                    </script>
+                                </div>
+                           </apex:outputpanel>
+                        </apex:pageblockSectionItem>
+                        
+                        <apex:pageblockSectionItem >
+                            {!$ObjectType.Account.fields.PersonMailingState.Label} 
+                            <apex:outputPanel >
+                                <apex:outputPanel rendered="{!isStateRequired}">
+                                    <div class="requiredInput">
+                                        <div class="requiredBlock"></div>
+                                        <apex:selectList id="CountyMan" value="{!newAccountObj.PersonMailingState}" size="1" title="State" required="false">
+    	                                    <apex:selectOptions value="{!States}" />
+    	                                </apex:selectList>
+                                    </div>
+                                    <script>
+                                     var Field3 = '{!$Component.CountyMan}';
+                                 </script>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!Not(isStateRequired)}">
+                                <apex:inputfield id="County" value="{!newAccountObj.PersonMailingState}"/>
+                                <script>
+                                 var Field3 = '{!$Component.County}';
+                             </script>
+                            </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:pageblockSectionItem>
+                        
+                        <apex:pageblockSectionItem >
+                            {!$ObjectType.Account.fields.PersonMailingCountry.Label} 
+                            <apex:outputpanel >
+                                <div class="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                    <apex:selectList id="countries" value="{!newAccountObj.PersonMailingCountry}" size="1" title="Country" required="true">
+                                    	<apex:actionSupport event="onchange" action="{!RefreshUI}" reRender="pdNewAccount,newLastNamePanel"/>
+                                        <apex:selectOptions value="{!Countries}" />
+                                    </apex:selectList>
+                                </div>
+                                <script>
+                                 var Field4 = '{!$Component.countries}';
+                             </script>
+                            </apex:outputPanel>
+                        </apex:pageblockSectionItem>
+                        
+                        <apex:pageBlockSectionItem>
+                        	<apex:outputLabel value="{!$ObjectType.Account.fields.PersonMobilePhone.Label} "/>
+                        	<apex:inputfield id="mobile" value="{!newAccountObj.PersonMobilePhone}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem>
+                        	<apex:outputLabel value="{!$ObjectType.Account.fields.PersonHomePhone.Label} "/>
+                        	<apex:inputfield id="homePhone" value="{!newAccountObj.PersonHomePhone}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:outputPanel>
+                            <h3 style="margin-left: 0px" class="formSubHead">Marketing Preferences</h3>
+                            <p><i>{!$Label.Marketing_Preference_Group_Companies}</i></p>
+                            <p><i>
+                            <apex:outputPanel layout="block" style="overflow:auto">
+                                <apex:outputLabel styleClass="checkbox">
+                                    <apex:inputCheckBox onchange="SelectAllTMG(this.checked)" styleClass="checkbox" style="float:left"/>
+                                    <apex:outputText value="Select All/None" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                                <apex:outputLabel style="margin-left: -10px" styleClass="checkbox">
+                                    <apex:inputCheckBox id="TMG_Promo_Email" value="{!tmgPromoEmail}" styleClass="checkbox SpaceChkBox" style="float:left"/>
+                                    <apex:outputText value="Email" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                                <apex:outputLabel style="margin-left: -10px" styleClass="checkbox">
+                                    <apex:inputCheckBox id="TMG_Promo_Phone" value="{!tmgPromoPhone}" styleClass="checkbox SpaceChkBox" style="float:left"/>
+                                    <apex:outputText value="Phone" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                                <apex:outputLabel style="margin-left: -10px" styleClass="checkbox">
+                                    <apex:inputCheckBox id="TMG_Promo_Post" value="{!tmgPromoPost}" styleClass="checkbox SpaceChkBox" style="float:left"/>
+                                    <apex:outputText value="Post" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                                <apex:outputLabel style="margin-left: -10px" styleClass="checkbox">
+                                    <apex:inputCheckBox id="TMG_Promo_Sms" value="{!tmgPromoSms}" styleClass="checkbox SpaceChkBox" style="float:left"/>
+                                    <apex:outputText value="SMS" styleclass="MarketingPos" />
+                                </apex:outputLabel>
+                            </apex:outputPanel>
+                            </i></p>
+
+                            <p style="display:block">Our <a target="_blank" href="{!$Setup.Configuration__c.Privacy_Policy_URL__c}"><u>Privacy Policy</u></a> on our website will give you more information on how we handle data.</p>
+                            <br/>
+
+                            <script type="text/javascript">
+                                MkTMGEmail = '{!$Component.TMG_Promo_Email}';
+                                MkTMGPhone = '{!$Component.TMG_Promo_Phone}';
+                                MkTMGPost = '{!$Component.TMG_Promo_Post}';
+                                MkTMGSMS = '{!$Component.TMG_Promo_Sms}';
+                            </script>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+
+                    <apex:pageBlockButtons id="pgButtons" location="bottom">
+                        <apex:actionStatus id="buttonStatus">
+                            <apex:facet name="start">
+                                <apex:outputPanel>
+                                    <apex:image value="/img/loading32.gif" style="height:15px;" />
+                                    <apex:commandButton value="Processing..." disabled="true" />
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:facet name="stop">
+                                <apex:outputPanel >
+                                    <apex:commandButton id="btnSaveNewAccount" value="{!accountFormTitle}" action="{!SaveNewAccount}" rerender="frmAccountWizard" status="buttonStatus"/>
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

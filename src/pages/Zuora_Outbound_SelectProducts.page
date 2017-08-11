@@ -1,0 +1,17 @@
+<apex:page standardController="zqu__Quote__c" extensions="Zuora_Outbound_SelectProductsCtrl" action="{!addOutboundProduct}">
+	<apex:form >
+		<apex:actionFunction name="goToQuotePage" action="{!goToQuotePage}" immediate="true" />
+		<zqu:Notification options="{!notificationOptions}" />
+	
+		<apex:inputHidden value="{!zqu__Quote__c.Outbound_Selected_Product__c}"/>
+		<apex:inputHidden value="{!zqu__Quote__c.Outbound_Payment_Frequency__c}"/>
+		<apex:inputHidden value="{!zqu__Quote__c.Outbound_POC__c}"/>
+		<apex:inputHidden value="{!zqu__Quote__c.Subscription_Origin__c}"/>
+		<apex:inputHidden value="{!zqu__Quote__c.Outbound_Start_Periods__c}"/>
+		<apex:inputHidden value="{!zqu__Quote__c.Outbound_Start_Price__c}"/>
+		<apex:inputHidden value="{!zqu__Quote__c.Outbound_Subsequent_Price__c}"/>
+		<apex:inputHidden value="{!zqu__Quote__c.Outbound_POC__r.Subscription_Acquired__c}"/>
+		<apex:inputHidden value="{!zqu__Quote__c.Outbound_POC__r.TCodeManagement__c}"/>
+		<apex:inputHidden value="{!zqu__Quote__c.zqu__SubscriptionType__c}"/>
+	</apex:form>
+</apex:page>

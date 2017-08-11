@@ -1,0 +1,11 @@
+<apex:page showHeader="true" sidebar="false" controller="Zuora_RevokeCancellationController" tabStyle="zqu__Quote__c" action="{!onLoad}">
+	<apex:form id="formId">
+	<apex:pageMessages />
+		<apex:pageBlock id="pb">
+			<apex:pageBlockButtons location="bottom"> 
+				<apex:commandButton value="{!$Label.Back}" action="{!backToRecord}"/>            
+	    	</apex:pageBlockButtons>
+	    </apex:pageBlock>            	
+	</apex:form>
+
+</apex:page>

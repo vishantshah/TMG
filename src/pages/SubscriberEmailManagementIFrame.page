@@ -1,0 +1,55 @@
+<apex:page standardController="Account" extensions="SubscriberEmailManagementController" showHeader="false" sidebar="false">
+    <style>
+        body{
+            background-color: #f8f8f8;
+
+        }
+        .iframeStyle{
+            background-color: #f8f8f8;
+        }
+        .w270{
+            width: 270px;
+        }
+    </style>
+
+    <apex:form >
+        <apex:outputPanel id="tstpopup">
+            <!-- start page -->
+            <apex:outputPanel styleClass="iframeStyle" layout="block" rendered="{!NOT(iFrameSuccess)}">
+                <apex:pageMessages />
+                <apex:pageblock id="changeEmailBlockId">
+                    <apex:pageBlockSection columns="1">
+                        <apex:outputLabel value="If no duplicates are detected, the new email will be updated across the systems."/>
+                        <apex:outputLabel value="If no SAM account exists, one will be created and an email will be sent to the customer to allow them to change their password."/>
+                        <apex:outputLabel value="If the customer has already registered the email address online, the SAM account will be linked to this one."/>
+                        <apex:inputField value="{!Account.PersonEmail}" styleClass="w270" />
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:actionStatus id="saveStatus">
+                            <apex:facet name="stop">
+                                <apex:outputPanel >
+                                    <apex:commandButton value="Save" action="{!saveNewEmail}" rerender="tstpopup" status="saveStatus" />
+                                    <apex:commandButton value="Cancel" onclick="window.parent.hideIFrame();" status="saveStatus" />
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image value="/img/loading32.gif" style="height: 15px;" />
+                                    <apex:commandButton value="Please wait..." disabled="true" />
+                                    <apex:commandButton value="Cancel" disabled="true" />
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:pageBlockButtons>
+                </apex:pageblock>
+            </apex:outputPanel>
+
+            <!-- success page - autoclose -->
+            <apex:outputPanel styleClass="iframeStyle" layout="block" rendered="{!iFrameSuccess}">
+                <script>
+                    window.parent.refetchEmail();
+                </script>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

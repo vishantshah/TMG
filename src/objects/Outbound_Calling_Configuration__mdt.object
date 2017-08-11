@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Auto_Close_Case__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Auto Close Case</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Project</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>DD Cancellation</fullName>
+                    <default>true</default>
+                    <label>DD Cancellation</label>
+                </value>
+                <value>
+                    <fullName>DD Winback</fullName>
+                    <default>false</default>
+                    <label>DD Winback</label>
+                </value>
+                <value>
+                    <fullName>Outbound Calling (DD Cancellation)</fullName>
+                    <default>false</default>
+                    <label>Outbound Calling (DD Cancellation)</label>
+                </value>
+                <value>
+                    <fullName>Outbound Calling (DD Winback)</fullName>
+                    <default>false</default>
+                    <label>Outbound Calling (DD Winback)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Reason</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Outbound Calling Configuration</label>
+    <pluralLabel>Outbound Calling Configuration</pluralLabel>
+    <visibility>Protected</visibility>
+</CustomObject>

@@ -1,0 +1,31 @@
+<apex:page standardController="Account" extensions="MppUtil">
+	<apex:form id="myfrm">
+		<apex:pageMessages />
+		<apex:pageBlock >
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Cancel" action="{!cancel}"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection >
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Amount" />
+					<apex:outputPanel styleClass="requiredInput" layout="block">  
+					   <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+					      <apex:inputText value="{!oneOffAmount}" size="10" maxlength="8"/>
+					      &nbsp;<!-- apex:commandButton value="Submit" action="{!submitOneOffPaymentAmount}" -->     
+
+			                <!-- PP-1697 Start -->
+							<apex:actionStatus id="mySave">
+							 <apex:facet name="start">
+									<apex:commandButton value="Submit" action="{!submitOneOffPaymentAmount}" disabled="true" status="mySave" />
+							 </apex:facet>
+							 <apex:facet name="stop">
+									<apex:commandButton value="Submit" action="{!submitOneOffPaymentAmount}"  status="mySave" disabled="false" reRender="myfrm"  />
+							</apex:facet>
+							</apex:actionStatus>
+			                <!-- PP-1697 End -->
+					</apex:outputPanel>              
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form> 
+</apex:page>

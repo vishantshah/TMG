@@ -1,0 +1,63 @@
+<apex:page standardcontroller="Account" extensions="MarketingPermsPageController" showHeader="{!consts.displayHeaderCustomSinglePayment}" >
+    
+    <body style="">
+        <apex:messages style="color:red;" />
+        <apex:form id="mp">
+            <apex:outputPanel id="everything">
+                <table style="text-align: left; width: 100%;" border="0" cellspacing="10">
+                    <tbody>
+                        <tr>
+                            <td colspan="4">
+                                {!$Label.Marketing_Preference_Group_Companies}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;width:40%;">Permission Type</td>
+                            <td style="font-weight: bold;width:15%;">Email</td>
+                            <td style="font-weight: bold;width:15%;">Phone</td>
+                            <td style="font-weight: bold;width:15%;">Post</td>
+                            <td style="font-weight: bold;width:15%;">SMS</td>
+                        </tr>
+                        <tr>
+                            <td><span style="font-weight: bold;">2nd Party</span><br />
+                                Internal Telegraph offers</td>
+                            <td><apex:inputcheckbox value="{!p2ndemail}" /></td>
+                            <td><apex:inputcheckbox value="{!p2ndphone}" /></td>
+                            <td><apex:inputcheckbox value="{!p2ndpost}" /></td>
+                            <td><apex:inputcheckbox value="{!p2ndSMS}" /></td>
+                        </tr>
+                        
+                        <tr style="display:{!if(bShowMarketingPreferences,'all', 'none')}">
+                            <td><span style="font-weight: bold;">{!$Label.Marketing_Preference_Subscriber_Label}</span><br />
+                                Telegraph Subscriber offers</td>
+                            <td><apex:inputcheckbox value="{!ployemail}" /></td>
+                            <td><apex:inputcheckbox value="{!ployphone}" /></td>
+                            <td><apex:inputcheckbox value="{!ploypost}" /></td>
+                            <td><apex:inputcheckbox value="{!ploySMS}" /></td>
+                        </tr>
+
+                        <tr style="display:{!if(bShowMarketingPreferences,'all', 'none')}">
+                            <td><span style="font-weight: bold;">3rd party</span><br />
+                                Companies external of TMG</td>
+                            <td><apex:inputcheckbox value="{!p3rdemail}" /></td>
+                            <td><apex:inputcheckbox value="{!p3rdphone}" /></td>
+                            <td><apex:inputcheckbox value="{!p3rdpost}" /></td>
+                            <td><apex:inputcheckbox value="{!p3rdSMS}" /></td>
+                        </tr>
+                        
+                        <tr style="display:{!if(bShowMarketingPreferences,'all', 'none')}">
+                            <td colspan="4">
+                                Last date change of permissions: &nbsp;<strong><apex:outputtext value="{!lastUpdateDate}" /></strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </apex:outputPanel>
+            <apex:actionregion >
+                <apex:commandbutton action="{!saveperms}" value="Save Permissions" />
+                <apex:actionStatus id="savestatus" startText="(saving...)" stopText="" />
+            </apex:actionregion>
+            <p style="display:block">Our <a target="_blank" href="{!$Setup.Configuration__c.Privacy_Policy_URL__c}"><u>Privacy Policy</u></a> on our website will give you more information on how we handle data.</p>
+        </apex:form>
+    </body>
+</apex:page>

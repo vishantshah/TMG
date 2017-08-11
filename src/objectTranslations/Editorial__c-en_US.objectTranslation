@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Editorial</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Editorial</value>
+    </caseValues>
+    <fields>
+        <label><!-- Author --></label>
+        <name>Author__c</name>
+        <relationshipLabel><!-- Editorial (Author) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Body --></label>
+        <name>Body__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+        <picklistValues>
+            <masterLabel>Baby</masterLabel>
+            <translation><!-- Baby --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beauty</masterLabel>
+            <translation><!-- Beauty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do It Yourself</masterLabel>
+            <translation><!-- Do It Yourself --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Family Activity</masterLabel>
+            <translation><!-- Family Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fashion/Trends/Celebrity</masterLabel>
+            <translation><!-- Fashion/Trends/Celebrity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food / Epicurean</masterLabel>
+            <translation><!-- Food / Epicurean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health</masterLabel>
+            <translation><!-- Health --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home</masterLabel>
+            <translation><!-- Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lifestyle</masterLabel>
+            <translation><!-- Lifestyle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology</masterLabel>
+            <translation><!-- Technology --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue --></label>
+        <name>Issue__c</name>
+        <picklistValues>
+            <masterLabel>2008-APR</masterLabel>
+            <translation><!-- 2008-APR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-AUG</masterLabel>
+            <translation><!-- 2008-AUG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-DEC</masterLabel>
+            <translation><!-- 2008-DEC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-FEB</masterLabel>
+            <translation><!-- 2008-FEB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-JAN</masterLabel>
+            <translation><!-- 2008-JAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-JUL</masterLabel>
+            <translation><!-- 2008-JUL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-JUN</masterLabel>
+            <translation><!-- 2008-JUN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-MAR</masterLabel>
+            <translation><!-- 2008-MAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-MAY</masterLabel>
+            <translation><!-- 2008-MAY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-NOV</masterLabel>
+            <translation><!-- 2008-NOV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-OCT</masterLabel>
+            <translation><!-- 2008-OCT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008-SEP</masterLabel>
+            <translation><!-- 2008-SEP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Photographer --></label>
+        <name>Photographer__c</name>
+        <relationshipLabel><!-- Editorial (Photographer) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Section --></label>
+        <name>Section__c</name>
+        <picklistValues>
+            <masterLabel>Section 1: Do It Yourself</masterLabel>
+            <translation><!-- Section 1: Do It Yourself --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Section 2: Furniture</masterLabel>
+            <translation><!-- Section 2: Furniture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Section 3: Homes</masterLabel>
+            <translation><!-- Section 3: Homes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Section 4: Lifestyle</masterLabel>
+            <translation><!-- Section 4: Lifestyle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Section 5: Recipes</masterLabel>
+            <translation><!-- Section 5: Recipes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Section 6: Classifieds</masterLabel>
+            <translation><!-- Section 6: Classifieds --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <layouts>
+        <layout>[ADSALES] Editorial Layout</layout>
+        <sections>
+            <label><!-- Editorial Content --></label>
+            <section>Editorial Content</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

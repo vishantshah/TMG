@@ -1,0 +1,40 @@
+<apex:component controller="OutboundCallMenuController" id="OutboundCallMenuComponent">
+    <div class="custom-header">
+        <table class="custom-header-table">
+            <tr>
+            <td><apex:image value="{!$Resource.Icon_Phone_Transparent}" /></td>
+            <td><span class="header-text">Outbound Calling</span></td>
+       		</tr>
+        </table>
+    </div>
+    <div class="custom-menu">
+        <ul>
+        	<apex:repeat value="{!menuParams}" var="node">
+                <li class="{!IF($CurrentPage.Name ==node.Visualforce_Page__c ,'active','')}{!IF(node.Visualforce_Page__c='OutboundCallingDirectDebit','hideme','')}">
+                    <a href="/apex/{!node.Visualforce_Page__c}" >
+                    	<apex:image value="{!$Resource[node.Icon_Image_Resource_Name__c]}" />
+                        <span class="custom-menu-item-text">{!node.Menu_Name__c}</span>
+                    </a>
+                </li>
+            </apex:repeat>
+        </ul>
+        <div style="clear:left;" />
+    </div>
+	<style type="text/css">
+        .hideme{display:none !important;}
+        .custom-header-table{border-collapse: collapse; margin:0px!Important;padding:0px!Important;}
+        .custom-header-table td{vertical-align:middle!Important;padding:0px!Important}
+        .custom-header-table td img{vertical-align:middle;padding-left:20px;height:19px;}
+        .custom-header{font-size:18px; background-color:#5f5f5f; width:100%; color:#fff; margin:0px;line-height:45px; border-bottom:2px solid #fff;}
+        .header-text{padding-left:8px; color:#fff}
+    	.custom-menu{font-size: 17px; background-color:#5f5f5f; width:100%;margin-bottom:12px;}
+    	.custom-menu ul{float:left; list-style:none; margin:0px!Important; display:block; padding:0px 0px;}
+    	.custom-menu li{display: inline-block; float: left; padding:0px!Important; margin:0px!Important;}
+    	.custom-menu a{color:#f1f1f1; display:block; line-height:45px; text-decoration: none!Important; padding:0px 20px; }
+    	.custom-menu a:hover{color:#fff!Important}
+        .custom-menu li:hover{background-color:#000000; color:#fff;}
+		.custom-menu li.active{background-color:#72166b; color:#fff;}
+        .custom-menu li img{height:19px;vertical-align: text-top;}
+        .custom-menu-item-text{padding-left:10px;}
+	</style>
+</apex:component>

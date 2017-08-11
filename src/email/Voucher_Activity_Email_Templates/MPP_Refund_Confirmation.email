@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>The Telegraph - Subscriber</title>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#75d1f5">
+  <tr>
+    <td bgcolor="#75d1f5">
+        
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="39" bgcolor="#75d1f5"></td>
+          </tr>
+    	</table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="111" bgcolor="#007ec3"><img src="http://image.email.telegraph.co.uk/lib/fe991570766c027975/m/38/140331_triggers_head_acknow.jpg" width="600" height="111" alt="The Telegraph Subscriber" style="font-family:Helvetica, Arial, sans-serif; font-size:16px; color:#FFFFFF; display:block" border="0"></td>
+          </tr>
+    	</table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="25" bgcolor="#FFFFFF"></td>
+          </tr>
+    	</table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="20" height="10" bgcolor="#FFFFFF"></td>
+            <td width="560" height="10" bgcolor="#FFFFFF" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#000001; text-align:left"><strong>Dear {!Contact.Salutation} {!Contact.LastName},</strong>
+<br><br>
+<p>Thank you for your recent communication regarding the Telegraph Subscription Service.<p/>
+<p>We would like to confirm receipt of your vouchers dated {!Voucher_Adjustment__c.Start_Date__c} to {!Voucher_Adjustment__c.End_Date__c}, returned under our holiday policy.</p>
+<p>A refund of {!Voucher_Adjustment__c.Refund_Amount__c} has been credited to the card used to pay for your subscription and should show in your account within five working days.</p>
+<p>We take this opportunity to remind you of our holiday policy.</p>
+<p>If you are going abroad on holiday and are unable to use your vouchers, you may return them to us and we will refund you for them at your subscription rate at the time, provided you send back a minimum of one consecutive weeks' worth of vouchers within three months of your holiday. The maximum number of vouchers that can be returned in an annual subscription period is 5 weeks, pro-rata for shorter term subscriptions.</p><p>Pre-notification is required for all holiday returns, either by e-mail to customerservice@telegraph.co.uk or by phoning 0800 33 20 20. We are available to take your call Monday to Friday 9am-5pm and Saturday 9am-1pm. </p> 
+Yours sincerely,
+<br><br><strong>The Telegraph Subscriber Team</strong></td>
+            <td width="20" height="10" bgcolor="#FFFFFF"></td>
+          </tr>
+    	</table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="40" bgcolor="#FFFFFF"></td>
+          </tr>
+    	</table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="23" bgcolor="#75d1f5"><img src="http://image.email.telegraph.co.uk/lib/fe991570766c027975/m/38/12098EMR_footerv2.png" width="600" height="23" style="display:block" border="0"></td>
+          </tr>
+    	</table>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td width="600" height="39" bgcolor="#75d1f5"></td>
+          </tr>
+    	</table>
+    </td>
+  </tr>
+</table>
+<input type="hidden" value="V8 - RefundConfirmation.htm">
+</body>
+</html>

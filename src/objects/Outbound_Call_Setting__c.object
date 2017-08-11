@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Configuration object for Outbound Calling</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Active setting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define whether Setting is active</inlineHelpText>
+        <label>Active</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Available_In_Tab__c</fullName>
+        <description>These picklist values should match the api name of the tab</description>
+        <externalId>false</externalId>
+        <inlineHelpText>These picklist values should match the api name of the tab</inlineHelpText>
+        <label>Available In Tab</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Outbound_Calling_New</fullName>
+                    <default>false</default>
+                    <label>Outbound_Calling_New</label>
+                </value>
+                <value>
+                    <fullName>Balance_Review</fullName>
+                    <default>false</default>
+                    <label>Balance_Review</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Case_Field_Map__c</fullName>
+        <description>Which fields of Case Should be updated with values from OC fields</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Which fields of Case Should be updated with values from OC fields : holds JSON String</inlineHelpText>
+        <label>Case Field Map</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Case_Record_Type__c</fullName>
+        <description>Case record type label name. Settings are applied to all case records with specified record type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Case record typelabel name. Settings are applied to all case records with specified record type</inlineHelpText>
+        <label>Case Record Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_Queue_Name__c</fullName>
+        <description>Default queue name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define default queue name</inlineHelpText>
+        <label>Default Queue Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Icon_Image_Resource_Name__c</fullName>
+        <description>Defines the image name from static resources for menu.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines the image name from static resources for menu.</inlineHelpText>
+        <label>Icon Image Resource Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Menu_Name__c</fullName>
+        <description>Menu name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define menu name of the call</inlineHelpText>
+        <label>Menu Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <description>Order number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define in what order the outbound calling items are shown on the Outbound Calling page</inlineHelpText>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parameters__c</fullName>
+        <description>Setting parameters in json format</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define Setting parameters in json format</inlineHelpText>
+        <label>Parameters</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reports__c</fullName>
+        <externalId>false</externalId>
+        <label>Reports</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Visualforce_Page__c</fullName>
+        <description>Visualforce Page name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define the Visualforce page that serves the functionality</inlineHelpText>
+        <label>Visualforce Page</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Outbound Call Setting</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Menu_Name__c</columns>
+        <columns>Order__c</columns>
+        <columns>Visualforce_Page__c</columns>
+        <columns>Default_Queue_Name__c</columns>
+        <columns>Icon_Image_Resource_Name__c</columns>
+        <columns>Active__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Outbound Call Setting Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Outbound Call Settings</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Menu_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Visualforce_Page__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Order__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Default_Queue_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Case_Record_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Active__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UPDATEDBY_USER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Visualforce_Page__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Menu_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Order__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Active__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Visualforce_Page__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Menu_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Order__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Active__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Recalculate</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Recalculate</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/OutboundCaseRequeue?recTypeName={!Outbound_Call_Setting__c.Case_Record_Type__c}&amp;retURL=/{!Outbound_Call_Setting__c.Id}</url>
+    </webLinks>
+</CustomObject>

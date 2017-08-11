@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <fields>
+        <fullName>Person_Contact_Reference__c</fullName>
+        <externalId>false</externalId>
+        <formula>Zuora__Account__r.PersonContact.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Person Contact Reference</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RefundReason__c</fullName>
+        <externalId>false</externalId>
+        <label>Refund Reason</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>DD error</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Emigration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Holiday Refund</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Serious Illness</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Indemnity</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Marketed price issue</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>CC Error</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Good will</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Poor Eyesight</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Review Of Personal Finances</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Price Increase</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Competitor Offer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Too Much To Read</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Extended Holiday</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Distribution Problems</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Salesforce Error</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Occasional Reader</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Moved To a Care Home</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Degregation in service</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Usability</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Editorial Content</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>App performance</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No compatible devices</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Functionality</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Refund_Mode__c</fullName>
+        <description>Group system generated Vs manual refunds</description>
+        <externalId>false</externalId>
+        <formula>CASE(Zuora__ReasonCodeName__c, 
+&apos;Other&apos;, &apos;System Generated&apos;, 
+&apos;Payment Rejection&apos;, &apos;System Generated&apos;, 
+&apos;Payment Reversal&apos;, &apos;System Generated&apos;, 
+&apos;Standard Refund&apos;, &apos;Agent Refund&apos;, 
+&apos;NOT AVAILABLE&apos;)</formula>
+        <inlineHelpText>If refund was system generated or Agent refunded manually</inlineHelpText>
+        <label>Refund Mode</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Zuora__RefundMethodType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Denotes how an external refund was issued (paid out) to a customer.
+This field is required if you are using external refunds.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Denotes how an external refund was issued (paid out) to a customer.
+This field is required if you are using external refunds.</inlineHelpText>
+        <label>Refund Method Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACH,</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cash,</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cheque,</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>CreditCard,</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PayPal,</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>WireTransfer,</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>DebitCard,</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>CreditCardReferenceTransaction</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>BankTransfer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+</CustomObject>

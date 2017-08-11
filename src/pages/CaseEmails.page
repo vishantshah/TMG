@@ -1,0 +1,154 @@
+<apex:page standardController="Case" extensions="CaseEmailsControllerExtension">
+    
+    <apex:includeScript value="/support/console/37.0/integration.js"/>
+
+    <style>
+        .sendEmailButton.btn{
+            margin-left: 480px;
+            margin-bottom: 10px;
+            height: 18px;
+            padding: 0 3px;
+        }
+        .filter{
+            float:right;
+            padding-right: 10px;
+        }
+        .hasMotif{
+            margin: 0 0px; /* iframe table */
+        }
+        .bPageBlock .detailList tr td{ 
+            border-bottom: 0px; /* line above panelGrid */
+        }
+        #errorMsg{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        /* Javascript to handle pages load in parent page or in new tab (console) */
+        var showTabId = function showTabId(result){
+            sforce.console.openSubtab(result.id, goto, true, tabName, null, null, null);            
+        };
+        
+        //returns url for Send an Email button
+        function sendEmail() {
+            goto = '{!SendEmailUrl}';
+            tabName = 'Send an Email';
+            if (sforce.console.isInConsole()) sforce.console.getFocusedPrimaryTabId(showTabId);
+            else window.parent.location = goto;
+        }
+
+        //returns url for Reply/ToAll button links
+        function reply(msgId, replyToAll){
+            goto =  '{!ReplyUrl}'.format(msgId, replyToAll);
+            tabName = 'Send an Email';
+            if (sforce.console.isInConsole()) sforce.console.getFocusedPrimaryTabId(showTabId);
+            else window.parent.location = goto;
+        }
+
+        function forward(msgId){
+            goto = '{!ForwardUrl}'.format(msgId, 1, '{!Case.Id}');
+            tabName = 'Send an Email';
+            if (sforce.console.isInConsole()) sforce.console.getFocusedPrimaryTabId(showTabId);
+            else window.parent.location = goto;
+        }
+
+        //returns url for Go to list » link button
+        function goToList(){
+            goto = '{!ShowAllUrl}';
+            tabName = 'Email Messages for Case {!Case.CaseNumber}';
+            if (sforce.console.isInConsole()) sforce.console.getFocusedPrimaryTabId(showTabId);
+            else window.parent.location = goto;
+        }
+
+        //Javascript analog for String.format() function in Apex
+        String.prototype.format = function(){
+            var content = this;
+            for (var i=0; i < arguments.length; i++){
+                var replacement = '{' + i + '}';
+                content = content.replace(replacement, arguments[i]);
+            }
+            return content;
+        };
+
+        // Set timeout at page level for remote action function
+        Visualforce.remoting.timeout = 120000;
+
+        //remote action to delete the email message and handle potential DML exceptions
+        function deleteEmailMessage(msgId) {
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.CaseEmailsControllerExtension.deleteMessage}',
+                msgId, 
+                function(result, event){
+                    if (event.status) {
+                         window.parent.location = '/{!Case.Id}';
+                    } else if (event.type === 'exception') {
+                        document.getElementById("errorMsg").innerHTML = 
+                            event.message + "<br/>\n<pre>" + event.where + "</pre>";
+                    } else {
+                        document.getElementById("errorMsg").innerHTML = event.message;
+                    }
+                }, 
+                {escape: true}
+            );
+        }
+
+    </script>
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock mode="maindetail" rendered="{!thisCase != NULL}">
+            <apex:commandButton value="Send an Email" oncomplete="sendEmail();" styleClass="sendEmailButton" />
+            <div class="filter" id="filter">
+                <apex:inputCheckbox value="{!autoResponse}">
+                    <apex:actionSupport status="filterLoadStatus" event="onclick" reRender="emailMsgTable" action="{!getEmailMessages}">
+                      <apex:actionStatus id="filterLoadStatus">
+                          <apex:facet name="start">
+                              <apex:outputPanel >
+                                <apex:image value="/img/loading32.gif" style="height:15px;" />
+                              </apex:outputPanel>
+                          </apex:facet>
+                          <apex:facet name="stop"/>
+                      </apex:actionStatus>
+                    </apex:actionSupport>
+                </apex:inputCheckbox>
+                <apex:outputLabel value="Show Auto-Response Emails" />
+            </div>
+            <apex:pageBlockSection id="emailMsgTable" columns="1" >
+                <div id="errorMsg"/>
+                <apex:pageBlockTable styleClass="msgTable" value="{!emailMsgWrapperList}" var="msg" rendered="{!emailMsgWrapperList.size > 0}">
+                    <apex:column headerValue="Action" styleClass="actionColumn" >
+                        <a href="#" onclick="reply('{!msg.eMsg.Id}', '0');" class="actionLink">Reply</a>&nbsp;|&nbsp;
+                        <a href="#" onclick="reply('{!msg.eMsg.Id}', '1');" class="actionLink">To All</a>&nbsp;|&nbsp;
+                        <a href="#" onclick="forward('{!msg.eMsg.Id}');" class="actionLink">Fwd</a>&nbsp;|&nbsp;
+                        <a href="#" onclick="if(!confirm('Are you sure?')) return false; deleteEmailMessage('{!msg.eMsg.Id}');" class="actionLink">Del</a>
+                    </apex:column>
+
+                    <apex:column value="{!msg.eMsg.Status}" style="width:50px" />
+                     <apex:column headerValue="" style="width:25px">
+                        <apex:image height="13" width="16" url="{!IF(msg.eMsg.Incoming, '/img/emailInbound.gif' , '/img/emailOutbound.gif')}"  title="{!IF(msg.eMsg.Incoming, 'Inbound' , 'Outbound')}"></apex:image> &nbsp;
+                        <apex:image height="13" width="16" rendered="{!msg.eMsg.hasAttachment}" url="/img/emailHasAttach.gif" title="Has Attachment"></apex:image>
+                    </apex:column> 
+
+                    <apex:column headerValue="Subject" >
+                        <apex:outputLink value="/{!msg.eMsg.Id}" style="font-weight:bold;" rendered="{!msg.eMsg.Status = '0'}" target="_parent">{!msg.eMsg.Subject}</apex:outputLink>
+                        <apex:outputLink value="/{!msg.eMsg.Id}" rendered="{!msg.eMsg.Status != '0'}" target="_parent">{!msg.eMsg.Subject}</apex:outputLink>
+                        <br/>
+                        <apex:outputText value="{!msg.initialText}" style="font-style:italic;font-decoration:none;font-size:11px;"/>
+                    </apex:column>
+                    
+                    <apex:column value="{!msg.eMsg.FromAddress}" />
+                    <apex:column value="{!msg.eMsg.ToAddress}" />
+                    <apex:column value="{!msg.eMsg.MessageDate}" />
+                </apex:pageBlockTable>
+                <apex:outputText value="No Emails Available" rendered="{!NOT(emailMsgWrapperList.size > 0)}"/>
+                <apex:panelGrid columns="2" rendered="{!emailMsgWrapperList.size < emailMessageList.size}" >
+                    <apex:commandLink action="{!showMore}" value="Show more »" reRender="emailMsgTable"/>&nbsp;|&nbsp;
+                    <a href="#" onclick="goToList();">Go to list »</a>
+                </apex:panelGrid>
+            </apex:pageBlockSection>
+ 
+        </apex:pageBlock>
+
+    </apex:form>
+</apex:page>

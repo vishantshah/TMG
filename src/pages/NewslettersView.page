@@ -1,0 +1,79 @@
+<apex:page controller="NewslettersViewController" action="{!validateParameters}" sidebar="false" tabStyle="Newsletters__tab">
+
+    <style type="text/css">
+        .breadCrumb {
+            color: #015ba7;
+            text-decoration: none;
+        }
+        .breadCrumb:hover {
+            text-decoration: none;
+        }
+        .paddingAdjust {
+            padding: 0 !important;
+        }
+    </style>
+	
+	<apex:sectionHeader title="Newsletter" subtitle="{!nw.name}" />
+
+	<div class="bPageTitle ptBreadcrumb paddingAdjust">
+		<a class="bPageTitle ptBreadcrumb breadCrumb" href="{!$Site.BaseCustomUrl}{!$CurrentPage.parameters.retUrl}">&nbsp;&laquo;&nbsp; Back to Newsletters list</a>
+	</div>
+	<apex:form >
+		<apex:pageBlock mode="maindetail">
+
+			<apex:pageBlockButtons >
+				<apex:commandButton action="{!editRecord}" value="Edit"/>
+			</apex:pageBlockButtons>
+
+			<apex:pageBlockSection title="Newsletter Details" columns="1" collapsible="false">
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Id}" />
+					<apex:outputText value="{!nw.id}"/>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Name}" />
+					<apex:outputText value="{!nw.name}"/>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Category}" />
+					<apex:outputText value="{!nw.category}"/>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Frequency}" />
+					<apex:outputText value="{!nw.frequency}"/>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Description}"/>
+					<apex:outputText value="{!nw.description}"/>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Public_Facing_Url}"/>
+					<apex:outputLink value="{!nw.publicFacingUrl}" target="_blank">{!nw.publicFacingUrl}</apex:outputLink>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Sample_Url}"/>
+					<apex:outputLink value="{!nw.sampleUrl}" target="_blank">{!nw.sampleUrl}</apex:outputLink>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Hide_Sample}" />
+					<apex:outputText value="{!IF(nw.hideSample, 'Yes', 'No')}"/>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Retired}" />
+					<apex:outputText value="{!IF(nw.retired, 'Yes', 'No')}"/>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem rendered="{! CONTAINS($Profile.Name, allowChangeToDefaultAccess)}">
+					<apex:outputLabel value="{!$Label.Newsletter_Default_Access}" />
+					<apex:outputText value="{!IF(nw.defaultAccess, 'Yes', 'No')}"/>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$Label.Newsletter_Image_Url}"/>
+					<apex:image value="{!nw.imageUrl}" width="200" height="100" 
+					title="{!nw.imageUrl}" onclick="window.open('{!nw.imageUrl}','_blank');"/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection> 
+		</apex:pageBlock>
+	</apex:form> 
+</apex:page>

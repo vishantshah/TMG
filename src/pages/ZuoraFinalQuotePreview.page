@@ -1,0 +1,86 @@
+<apex:page showHeader="true" sidebar="false" standardController="zqu__Quote__c" extensions="ZuoraFinalQuotePreviewExt">
+    <apex:form >    	
+    
+    	<script>
+           window.onload=function()
+           {
+             updateQuoteMatrics();
+           };
+   	 	</script>
+    	<apex:actionFunction name="updateQuoteMatrics" action="{!updateQuoteMetrics}" oncomplete="showBillingPreview();" status="statusBillingPreview"/>
+    	<apex:actionFunction name="showBillingPreview" action="{!ShowBillingPreview}" rerender="pnlBillingPreview, qMetrPanel" status="statusBillingPreview"/>
+    	
+    	<apex:inputHidden value="{!zqu__Quote__c.zqu__BillToContact__c}"/>
+        <apex:inputHidden value="{!zqu__Quote__c.zqu__SoldToContact__c}"/>
+        <apex:inputHidden value="{!zqu__Quote__c.zqu__Account__c}"/>
+        <apex:inputHidden value="{!zqu__Quote__c.zqu__Status__c}"/>
+        
+        <zqu:QuotePreview options="{!previewOptions}" >
+        </zqu:QuotePreview>
+        
+        
+        <!-- Action function to return to quote detail page from popup notification component -->
+        <apex:actionFunction name="goToQuotePage" action="{!goToQuotePage}" />
+        <apex:actionFunction name="goToAccountPage" action="{!goToAccountPage}" />
+        
+        <apex:outputPanel id="qMetrPanel">
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Quote Metrics" collapsible="true" columns="1">
+                <apex:actionStatus stopText="" id="statusQuoteMetrics" startText="Loading Metrics...">
+                </apex:actionStatus>
+                
+                <apex:outputPanel >
+                	<table>
+                		<tr>
+                			<td><apex:outputLabel value="{!$ObjectType.zqu__Quote__c.Fields.zqu__Previewed_MRR__c.Label} " style="font-weight:bold;"/></td>
+                			<td width="5%"><apex:outputText value="{!metricsQuote.zqu__Previewed_MRR__c}"/></td>
+                		</tr>
+                		<tr>
+                			<td><apex:outputLabel value="{!$ObjectType.zqu__Quote__c.Fields.zqu__Previewed_TCV__c.Label} " style="font-weight:bold;"/></td>
+                			<td width="5%"><apex:outputText value="{!metricsQuote.zqu__Previewed_TCV__c}"/></td>
+                		</tr>
+                		<tr>
+                			<td><apex:outputLabel value="{!$ObjectType.zqu__Quote__c.Fields.zqu__Previewed_SubTotal__c.Label} " style="font-weight:bold;"/></td>
+                			<td width="5%"><apex:outputText value="{!metricsQuote.zqu__Previewed_SubTotal__c}"/></td>
+                		</tr>
+                		<tr>
+                			<td><apex:outputLabel value="{!$ObjectType.zqu__Quote__c.Fields.zqu__Previewed_Discount__c.Label} " style="font-weight:bold;"/> </td>
+                			<td width="5%"><apex:outputText value="{!metricsQuote.zqu__Previewed_Discount__c}"/></td>
+                		</tr>
+                			<tr>
+                			<td><apex:outputLabel value="{!$ObjectType.zqu__Quote__c.Fields.zqu__Previewed_Tax__c.Label} " style="font-weight:bold;"/></td>
+                			<td width="5%"><apex:outputText value="{!metricsQuote.zqu__Previewed_Tax__c}"/></td>
+                		</tr>
+                		<tr>
+                			<td><apex:outputLabel value="{!$ObjectType.zqu__Quote__c.Fields.zqu__Previewed_Total__c.Label} " style="font-weight:bold;"/></td>
+                			<td width="5%"><apex:outputText value="{!metricsQuote.zqu__Previewed_Total__c}"/></td>
+                		</tr>
+                	</table>
+                	
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:outputPanel>
+    </apex:form>
+   
+    <apex:outputPanel id="pnlBillingPreview">
+	    <apex:pageBlock >
+		    <apex:pageBlockSection title="Billing Preview" collapsible="true" columns="1">	
+		    	<apex:actionStatus stopText="" id="statusBillingPreview">
+		    		<apex:facet name="start" >
+		    			<apex:outputPanel >
+	         			  	<center>
+		         			  	<apex:outputLabel value="{!$Label.Billing_Preview_Loading_Message}"/>
+		         			   <apex:image url="{!$Resource.Loading_Gif}" height="40" width="40" />
+	         			   </center>   
+         			   </apex:outputPanel>                   
+        			</apex:facet>
+		    	</apex:actionStatus>
+    			<apex:outputPanel rendered="{!isShowBillingPreview}">
+	    			<c:Zuora_QuoteBillingPreview quoteId="{!zqu__Quote__c.id}"/>
+	    		</apex:outputPanel>
+	    	</apex:pageBlockSection>
+	    </apex:pageBlock>
+    </apex:outputPanel>
+   
+</apex:page>

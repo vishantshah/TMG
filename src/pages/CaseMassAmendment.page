@@ -1,0 +1,50 @@
+<apex:page standardController="Case" recordSetVar="cases" extensions="CaseMassAmendmentController" tabStyle="Case">
+    <style>
+        .widerText{width:320px; height:80px;}
+        .messageText a{margin-left:0px !important; margin-right:0px !important;}
+    </style>
+    <apex:sectionHeader title="{!$Label.Case_Amendment}" subtitle="{!$Label.Case_Amendment_with_additional_reason}" />
+
+    <apex:form >
+
+    <apex:pageBlock id="caseEdit" title="{!$Label.Case_Amendment}" mode="edit">
+        <apex:pageMessages escape="false"/>
+
+        <!-- amendment forms -->
+            <apex:pageBlockSection columns="1" rendered="{!NOT(noCasesError)}">
+                <apex:inputField value="{!dummyCaseAmendment.Status}" id="status" required="true" />
+                <apex:inputField value="{!dummyCaseAmendment.Reason}" id="reason" required="true" />         
+                <apex:inputField value="{!dummyCaseAmendment.Type_Of_Issue__c}" id="type" />
+                <apex:inputField value="{!dummyCaseAmendment.Digital_Details__c}" id="details" />
+                <apex:inputField value="{!dummyCaseAmendment.Digital_Details_2__c}" id="details2" />
+                <apex:inputField value="{!dummyCaseAmendment.Digital_Details_3__c}" id="details3" />
+                <apex:inputField value="{!dummyCaseAmendment.Case_Tag__c}" id="tag" />
+                <apex:inputField value="{!dummyCaseAmendment.Priority}" id="priority" />
+
+                <apex:pageBlockSectionItem>
+                    <label>Internal Comments</label>
+                    <apex:inputField value="{!caseComment.CommentBody}" id="commentText" styleClass="widerText" />
+                </apex:pageBlockSectionItem>
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!saveData}" rendered="{!NOT(noCasesError)}" />
+                <apex:commandButton value="Save and Email" action="{!saveAndEmail}" rendered="{!NOT(noCasesError)}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+
+    </apex:pageBlock>
+    </apex:form>
+
+    <apex:includeScript value="{!URLFOR($Resource.Resources,'js/jquery214min.js')}"/>
+    <script>
+        j$ = jQuery.noConflict();
+        j$(document).ready(function() {
+            j$('div[id*="caseEdit"]').find('textarea').each(function(){
+                var htmlToInsertForCounter = '<div class="textCounterOuter"><div class="textCounterMiddle warn"><div id="'+j$(this).attr('id')+'_counter" class="textCounter"></div></div></div>';
+                j$(this).closest('.data2Col').prev('.labelCol').append(htmlToInsertForCounter);
+            });
+        });
+    </script>
+</apex:page>

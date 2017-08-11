@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>Default auto response</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>Gojimo Support</value>
+            </criteriaItems>
+            <notifyCcRecipients>true</notifyCcRecipients>
+            <senderEmail>tmggojimotestenv@gmail.com</senderEmail>
+            <senderName>Gojimo Support</senderName>
+            <template>Auto_Responses/Gojimo_Support_Auto_Response</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Reader Relations</value>
+            </criteriaItems>
+            <notifyCcRecipients>true</notifyCcRecipients>
+            <senderEmail>appfeedback+support@telegraph.co.uk</senderEmail>
+            <senderName>Telegraph Enquiries</senderName>
+            <template>Auto_Responses/Reader_Relations_Auto_Response</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>App Feedback - Email</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>appfeedback+support@telegraph.co.uk</senderEmail>
+            <senderName>App Feedback Support</senderName>
+            <template>Auto_Responses/App_Feedback_Auto</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Digital Services - Email</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>digitalservices@telegraph.co.uk</replyToEmail>
+            <senderEmail>digitalservices+support@telegraph.co.uk</senderEmail>
+            <senderName>Digital Services</senderName>
+            <template>Auto_Responses/Digital_Services_Auto_Response</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>customerservice@telegraph.co.uk</replyToEmail>
+            <senderEmail>customerservice+support@telegraph.co.uk</senderEmail>
+            <senderName>Customer Services</senderName>
+            <template>Auto_Responses/Customer_Services_Auto_Response</template>
+        </ruleEntry>
+    </autoResponseRule>
+</AutoResponseRules>

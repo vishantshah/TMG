@@ -1,0 +1,61 @@
+<apex:page standardcontroller="Case"  extensions="CaseSendEmailController"> 
+
+	<apex:form >
+	
+		 <apex:pageBlock title="Case" id="Casefields">
+			 	<apex:pageBlockSection showHeader="false" columns="1" id="Casefieldssection">
+			 	 <apex:panelGrid columns="2" id="theGrid">
+		           <apex:outputText value="Case No: "/><apex:outputText value="{!selectedCase.CaseNumber}"/>
+		           <apex:outputText value="Set Priority To: "/><apex:inputField value="{!selectedCase.priority}"/>
+		           <apex:outputText value="Set Status To: "/><apex:inputField value="{!selectedCase.Status}"/>
+		         </apex:panelGrid>
+		         <apex:commandButton value="Update Case" action="{!saveCase}" />
+			 	</apex:pageBlockSection>
+			</apex:pageBlock>
+			 	
+			 	<apex:pageBlock title="Email Details" id="Email">
+			 	<apex:messages style="color:red;" />
+			 	<apex:pageBlockButtons >
+			 	<apex:commandButton action="{!cancel}" value="Cancel Send"/>
+                <apex:commandButton value="Send Email" action="{!send}" />
+			 	</apex:pageBlockButtons>
+			 	   	<apex:pageBlockSection showHeader="false" columns="1" id="EmailSection">
+		              	<apex:panelGrid columns="2" id="theGrid">
+		           			<apex:outputText value="To: "/><apex:inputField value="{!selectedCase.ContactID}" style="width:200px;"/>
+		           			<apex:outputText value="Additional To: "/><apex:inputText value="{!additionalTo}" style="width:200px;"/>
+		                 	<apex:outputText value="CC: "/><apex:inputText value="{!ccEmail}" style="width:200px;"/>
+		 					<apex:outputText value="BCC: "/> <apex:inputText value="{!bccEmail}" style="width:200px;"/>
+		 					<apex:outputText value="Select Template: "/>
+		 					<apex:selectList size="1" value="{!selectedTemplate}" onchange="getPreview()" > 
+		 					<apex:actionFunction name="getPreview" action="{!preview}" />
+    							<apex:selectOptions value="{!templates}"  /> 
+ 							</apex:selectList>
+		 					<apex:outputText value="Subject: " /><apex:inputText value="{!subject}" id="Subject" style="width:300px;"/>
+						</apex:panelGrid>
+					
+							<apex:inputTextarea richText="true" value="{!body}" id="Body"  rows="14"  cols="10" />  
+					</apex:pageBlockSection>
+				
+				
+	   <br/>
+	    Include Attachments / Upload New:
+			 	 <apex:panelGrid columns="3" id="attachmentGrid">
+			 	  <apex:selectCheckboxes value="{!selectedAttachments}">
+           				 	<apex:selectOptions value="{!attachments}"/><br/>
+       					 	</apex:selectCheckboxes>
+          					
+        				</apex:panelGrid>
+        		 <apex:panelGrid columns="2" id="uploadGrid">
+        		 <apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" id="file"/>
+			 				<apex:commandButton value="Upload new file" action="{!upload}" />
+        		 </apex:panelGrid>
+        
+             
+        </apex:pageBlock>
+        
+      
+		</apex:form>
+	
+	
+
+</apex:page>

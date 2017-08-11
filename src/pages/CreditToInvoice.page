@@ -1,0 +1,89 @@
+<apex:page showHeader="true" sidebar="false" standardController="Zuora__CustomerAccount__c" tabStyle="Account" extensions="CreditToInvoiceControllerExt">
+     <script>
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if(charCode==46){ //for the "." for decimals
+                return true;
+            }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+        function dummyFunction(){}
+    </script>
+     <style>
+        .headerRow .headerStyle {
+            background-color: #E5FFD5 !important;
+            color: #000000 !important
+        }
+        .headerRow .paymentHeaderStyle {
+            background-color: #E5FFD5 !important;
+            color: #000000 !important
+        }
+        .headerRow .invoiceHeaderStyle {
+            background-color: #E5FFD5 !important;
+            color: #000000 !important
+        }
+        table .roundedEdges {
+            border-bottom-left-radius: 20px !important;
+            border-bottom-right-radius: 20px !important
+        }
+        table .roundedEdge {
+            border-top-left-radius: 20px !important;
+            border-bottom-right-radius: 20px !important;
+        }
+    </style>
+ 	
+ 	<apex:form >
+ 		<zqu:StatusModal />
+ 		<apex:actionStatus startText="" stopText="" id="action" onstart="javascript:displayStatusModal()" onstop="javascript:closeStatusModal()" />
+        <apex:outputPanel id="error">
+            <zqu:Notification options="{!notificationOptions}" />
+            <apex:actionFunction name="continueToNextPage" action="{!confirmError}" immediate="true" rerender="error" />
+        </apex:outputPanel>
+        <apex:pageBlock title="{!$Label.CreditToInvoice_Page_CustomerBalances}">
+            <apex:dataTable id="balanceTable" value="{!zAccount}" var="zA" rowClasses="line1, line2" width="50%" align="center" >
+                <apex:column headerValue="{!$Label.CreditToInvoice_Page_AccountBalance}" headerClass="invoiceHeaderStyle">
+                    <apex:outputText value="£{!zA.Zuora__Balance__c}" /></apex:column>
+                <apex:column headerValue="{!$Label.CreditToInvoice_Page_TotalInvBalance}" headerClass="invoiceHeaderStyle" >
+                    <apex:outputText value="£{!zA.Zuora__Credit_Balance__c + zA.Zuora__Balance__c}" /></apex:column>
+                <apex:column headerValue="{!$Label.CreditToInvoice_Page_CreditBalance}" headerClass="invoiceHeaderStyle">
+                    <apex:outputText value="£{!zA.Zuora__Credit_Balance__c}" /></apex:column>
+            </apex:dataTable>
+        </apex:pageBlock>
+
+        <apex:pageBlock id="amountOfMoneyToTransferFromCredit" title="{!$Label.CreditToInvoice_Page_CreditBalanceTransfer}">
+            <apex:outputPanel id="miniform">
+                <apex:outputLabel value="{!$Label.CreditToInvoice_Page_AmountToTransfer}" />
+                <apex:inputText value="{!amountInvoiceTransfer}" id="amountToTransfer" onkeypress="return isNumber(event)" />
+            </apex:outputPanel>
+        </apex:pageBlock>
+
+        <apex:pageBlock title="Positive Invoices">
+        	<apex:pageBlockTable value="{!lstViewsPositiveInvoices}" var="invoiceObj" rowclasses="line1,line2" id="invoicesTable">
+                <apex:column headerValue="Invoice Number" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="{!invoiceObj.Name}" /></apex:Column>
+                <apex:column headerValue="Balance" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="£{!invoiceObj.Zuora__Balance2__c}" /></apex:Column>
+                <apex:column headerValue="Payment Amount" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="£{!invoiceObj.Zuora__PaymentAmount__c}" /></apex:Column>
+                <apex:column headerValue="Total Amount" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="£{!invoiceObj.Zuora__TotalAmount__c}" /></apex:Column>
+                <apex:column headerValue="Refunded Amount" headerClass="headerStyle" width="13%">
+                    <apex:outputText value="£{!invoiceObj.Zuora__RefundedAmount__c}" /></apex:Column>
+                <apex:column headerValue="Status" headerClass="headerStyle" width="10%">
+                    <apex:outputText value="{!invoiceObj.Zuora__Status__c}" /></apex:Column>
+                <apex:column headerValue="" headerClass="headerStyle" width="3%">
+                    <apex:commandButton value="{!$Label.CreditToInvoice_Page_ApplyCredit}" onclick="if(!confirm('Are you sure, if you want to process this transfer?')){return false;}"  action="{!transferFundsFromCreditBalance}" status="action" rerender="error, invoicesTable, cbalance, balanceTable, miniform" rendered="{!invoiceObj.Zuora__Balance2__c > 0}">
+                        <apex:param name="posInvId" value="{!invoiceObj.Zuora__Zuora_Id__c}" assignTo="{!invoiceToTransferId}" />
+                        <apex:param name="posInvBalance" value="{!invoiceObj.Zuora__Balance2__c}" assignTo="{!selectedInvoiceBalance}" />  
+                    </apex:commandButton>
+                </apex:column>
+        	</apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:commandButton value="{!$Label.Go_Back_Button_Label}" action="{!cancel}" />
+ 	</apex:form>
+	
+</apex:page>

@@ -1,0 +1,812 @@
+<apex:page showHeader="false">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <style>
+        /* page; layout and defaults */
+        html {
+            font-size: 10px;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+            width: 100%;
+        }
+        body {
+            color: #353535;
+            font-family: Arial,sans-serif;
+            font-size: 1.4rem;
+            line-height: 2rem;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .wrapper--indented > * {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        #liveAgentWrapper {
+            margin: 0 auto;
+            max-width: 600px;
+            width: 100%;
+        }
+        #liveAgentWrapper,
+        #liveAgentClientChatSettings,
+        #liveAgentClientChat,
+        #liveAgentChatWrapper {
+            height: 100%;
+            position: relative;
+        }
+        #liveAgentActiveChatWrapper {
+            height: calc(100% - 162px); /* 100% - height of (liveAgentActiveInputWrapper + liveAgentActiveChatHeader)*/
+            overflow: auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        #liveAgentActiveInputWrapper {
+            /* changing the height of this will have knock-on effects, see liveAgentActiveChatWrapper */
+            background-color: #f9f4f0;
+            overflow: hidden;
+
+            border: 2px solid #dddcdc;
+            position: fixed;
+            bottom: 0;
+            max-width: 600px;
+            width: 100%;
+        }
+        #liveAgentActiveChatWrapper > span:last-child:after {
+            display: block;
+            content: " ";
+            clear:both;
+        }
+
+        .liveAgentActiveInputWrapper__container {
+            background-color: white;
+            border: 2px solid #dddcdc;
+            margin: 16px 20px;
+            display: flex;
+        }
+        .liveAgentActiveInputWrapper__container > :first-child {
+            flex-basis: 100%;
+        }
+
+        .liveAgentActiveInputWrapper__container input,
+        .liveAgentActiveInputWrapper__container button {
+            display: block;
+            border: 0 none;
+            background-color: transparent;
+            background-image: none;
+            font-size: 1.4rem;
+            font-weight: normal;
+            line-height: 2.8rem;
+            outline: 0;
+            padding: 0 8px;
+            width: 100%;
+        }
+        .liveAgentActiveInputWrapper__container button {
+            color: #ccc ;
+            cursor: pointer;
+            height: 100%;
+            padding: 0 22px;
+        }
+        .liveAgentActiveInputWrapper__container[active] button {
+            color: #c38419 ;
+        }
+        .liveAgentActiveInputWrapper__container > :first-child,
+        .liveAgentActiveInputWrapper__container > :last-child {
+            align-items: baseline;
+        }
+        body #liveAgentChatLog {
+            border: 0 none;
+            bottom: 10px;
+            height: auto;
+            left: 20px;
+            overflow-y: auto;
+            padding-right: 5px; /* space needed when the scroll bar kicks in */
+            position: absolute;
+            right: 20px;
+            top: 0;
+            width: auto;
+        }
+        .wrapper--indented > * {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    </style>
+    <style>
+        /*
+            waiting icon and animation
+            http://codepen.io/eointunstead/pen/oBMRyQ
+        */
+        .loading-indicator {
+            height: 100px;
+            margin: 0 auto;
+            position: relative;
+            width: 100px;
+        }
+        .loading--mediumBorder .loading-indicator__cube {
+            border-width: medium;
+        }
+        .loading-indicator__cube {
+            animation-direction: alternate;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(0.59, 0.01, 0.32, 0.98);
+            border: 1px solid #c38419;
+            box-sizing: border-box;
+            height: 20%;
+            left: 40%;
+            position: absolute;
+            top: 40%;
+            transform: rotate(45deg);
+            transform-origin: center center;
+            width: 20%;
+        }
+        .loading-indicator__cube:nth-child(1) {
+            animation-name: cube1;
+            background-color: #c38419;
+            border: 0;
+            opacity: 1;
+        }
+        .loading-indicator__cube:nth-child(2) {
+            animation-name: cube2;
+        }
+        .loading-indicator__cube:nth-child(3) {
+            animation-name: cube3;
+        }
+        .loading-indicator__cube:nth-child(4) {
+            animation-name: cube4;
+        }
+        .loading-indicator__cube:nth-child(5) {
+            animation-name: cube5;
+        }
+
+        @keyframes cube1 {
+            0% {
+                opacity: 1;
+                transform: rotate(45deg) scale(1);
+            }
+            100% {
+                transform: rotate(45deg) scale(0);
+            }
+        }
+        @keyframes cube2 {
+            0% {
+                transform: rotate(45deg) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(45deg) translate(-100%, -100%) scale(1);
+            }
+        }
+        @keyframes cube3 {
+            0% {
+                transform: rotate(45deg) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(45deg) translate(100%, 100%) scale(1);
+            }
+        }
+        @keyframes cube4 {
+            0% {
+                transform: rotate(45deg) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(45deg) translate(-100%, 100%) scale(1);
+            }
+        }
+        @keyframes cube5 {
+            0% {
+                transform: rotate(45deg) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(45deg) translate(100%, -100%) scale(1);
+            }
+        }
+
+    </style>
+    <style>
+        /* chat icons */
+        /* .me,  */
+        #liveAgentChatLogText > span.client:after{
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBREYzNkM3REU1NEUxMUU2QjIzNTk2QjUzN0Y2OUM1MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBREYzNkM3RUU1NEUxMUU2QjIzNTk2QjUzN0Y2OUM1MyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkFERjM2QzdCRTU0RTExRTZCMjM1OTZCNTM3RjY5QzUzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkFERjM2QzdDRTU0RTExRTZCMjM1OTZCNTM3RjY5QzUzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+D4mzuAAAAD9QTFRFxIUAyIwUyI0Ty5QozJQqz5w5z5w706NL06RM16ta2rNq27Nr5sqX6dKm6tKn7di17dm29OjT9/Dh+/fx////L+O2WwAAAJBJREFUKM+N0FsSgyAMBdAQaQPVaCXsf60FClKc6PT+8DgQJkBsYYfo1mMJdRQHJU5OQFDjRmA4wgNQBxrAdMArMP+Vuny8X6Fzg1Xot0GZEdfIZAxxZMRZviC2dPzO57byM1YK+Fbe2jZ7ZQigJCRYNFgSeA18gocGzwSg5g6Mtm/uHt812HPnwU/j7uRDjB/R7RGIJ8lXKwAAAABJRU5ErkJggg==');
+        }
+        /* .agent, */
+        #liveAgentChatLogText > span.operator:after {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAAAAADFHGIkAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBREYzNkM3OUU1NEUxMUU2QjIzNTk2QjUzN0Y2OUM1MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBREYzNkM3QUU1NEUxMUU2QjIzNTk2QjUzN0Y2OUM1MyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkFERjM2Qzc3RTU0RTExRTZCMjM1OTZCNTM3RjY5QzUzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkFERjM2Qzc4RTU0RTExRTZCMjM1OTZCNTM3RjY5QzUzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8++wqhgAAAAJtJREFUKM+N0C0WwyAMB/BeEJ34+E0HjV+vUp/q7hI9AB7PgEEZfWnf/oaPH4QXptgiFtGux3KqY7CmxIYTsKmxI4g5IgNwBx4AOuAVwH+lLh/vV/jcYBX+bTDMiGsUBmCJgjiHLwQqHb/zua38DIUCrpUnarNXBm+U+ASLBksCp4FL8NDgmcCouQPQ9uHu8V2DPXfuHY275HyMHyILRafINMvlAAAAAElFTkSuQmCC');
+        }
+    </style>
+    <style>
+        /* chat styles
+        #liveAgentClientChat.liveAgentStateWaiting {
+        // The CSS class that is applied when the chat request is waiting to be accepted
+        // See "Waiting State" screenshot below
+        }
+        #liveAgentClientChat {
+        // The CSS class that is applied when the chat is currently engaged
+        // See "Engaged State" screenshot below
+        }
+        #liveAgentClientChat.liveAgentStateEnded {
+        // The CSS class that is applied when the chat has ended
+        // See "Ended State" screenshot below
+        }
+        */
+        .state-waiting .no-waiting {
+            display: none;
+        }
+        #waitingMessage {
+            display: none;
+        }
+        #waitingMessage td,
+        #waitingMessage p {
+            color: inherit;
+        }
+        #liveAgentClientChat.liveAgentStateWaiting #waitingMessage {
+            color: #c38419;
+            display: table;
+            height: 60%;
+            text-align: center;
+            width: 100%;
+        }
+        #liveAgentClientChat.liveAgentStateWaiting #liveAgentActiveInputWrapper {
+            display: none;
+        }
+        #liveAgentChatTextArea {
+            word-wrap: break-word;
+        }
+        #liveAgentSaveButton, #liveAgentEndButton {
+            z-index: 2;
+        }
+        .liveAgentChatElement.liveAgentChatInput {
+            border: 0 none;
+        }
+        .liveAgentSendButton {
+        }
+        body #liveAgentChatLog {
+        }
+        #liveAgentChatLogText > span {
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            min-width: 35%;
+            padding: 4px 8px;
+            float: left;
+            clear: both;
+        }
+        #liveAgentChatLogText > span.system {
+            padding: 0;
+        }
+        #liveAgentChatLogText > span.operator {
+            background-color: #e7e7e7;
+            color: #454545;
+            /*margin-left: 30px;*/
+            position: relative;
+        }
+        #liveAgentChatLogText > span.operator:before,
+        #liveAgentChatLogText > span.operator:after {
+            background-color: inherit;
+            bottom: -4px;
+            content: "";
+            display: block;
+            height: 20px;
+            left:-30px;
+            position: absolute;
+            width: 20px;
+        }
+        body #liveAgentChatLogText > span.operator:before {
+            bottom: -4px;
+            transform: rotate(45deg);
+            height: 8px;
+            left: 8px;
+            width: 8px;
+        }
+        #liveAgentChatLogText > span.client {
+            background-color: #032F3E;
+            color: #fff;
+            float: right;
+            /*margin-right: 30px;*/
+            position: relative;
+        }
+        #liveAgentChatLogText > span.client:before,
+        #liveAgentChatLogText > span.client:after {
+            background-color: inherit;
+            bottom: -4px;
+            content: "";
+            display: block;
+            height: 20px;
+            right:-30px;
+            position: absolute;
+            width: 20px;
+        }
+        body #liveAgentChatLogText > span.client:before {
+            bottom: -4px;
+            transform: rotate(45deg);
+            height: 8px;
+            right: 8px;
+            width: 8px;
+        }
+        #liveAgentChatLogText > span.operator:after,
+        #liveAgentChatLogText > span.client:after {
+            background-size: 20px 20px;
+            display: none;
+        }
+        #liveAgentChatLogText span.name strong {
+            font-weight: normal;
+            opacity: .75;
+        }
+        #liveAgentChatLogText .operator span.name {
+        }
+        #liveAgentChatLogText > span.timestamp {
+            font-size: 80%;
+            float: none;
+            margin-top: 0;
+            padding: 0;
+            text-transform: lowercase;
+        }
+
+        /* reformat name and timestamp on the fly */
+        .mutationobserver #liveAgentChatLogText > span {
+            padding-bottom: 24px;
+        }
+        .mutationobserver #liveAgentChatLogText .timestamp {
+            display: none;
+        }
+        .mutationobserver #liveAgentChatLogText .name {
+            bottom: 8px;
+            font-size: 11px;
+            line-height: 11px;
+            position: absolute;
+        }
+        .mutationobserver #liveAgentChatLogText .client .name {
+            right: 4px;
+        }
+
+        span.client +
+        .timestamp {
+            text-align: right;
+        }
+        #liveAgentChatLogTyping {
+            clear: both;
+            display: block;
+            padding-bottom: 12px;
+        }
+        #liveAgentActiveCtaWrapper {
+            display: none;
+        }
+    </style>
+    <style>
+        .liveAgentActiveChatHeader {
+            /* telegraph branding */
+            /* changing the height of this will have knock-on effects, see liveAgentActiveChatWrapper */
+            border-bottom: 1px solid #dddcdc;
+            height: 30px;
+            margin: 0 20px;
+            padding-top: 12px;
+        }
+        .liveAgentActiveChatHeader svg {
+            height: auto;
+            width: 130px;
+        }
+    </style>
+    <style>
+        /*  file upload form  */
+        #liveAgentChatFileTransfer {
+            background-color: rgba(250,250,250,.9);
+            border: 1px solid #fff;
+            display: none;
+            left: 0;
+            position: fixed;
+            right: 0;
+            text-align: center;
+            top: 52px;
+            bottom: 0;
+            padding-top: 200px;
+        }
+        .file_transfer_requested #liveAgentChatFileTransfer {
+            display: block;
+        }
+        .liveAgentFileDragArea {
+            position: fixed;
+            top: 52px;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            padding-top: 120px;
+        }
+        .liveAgentChatFileTransfer button {
+            background: #c38419;
+            border: 1px solid #c38419;
+            border-radius: 0;
+            color: #fff;
+            display: inline-block;
+            margin: 8px;
+            outline: 0;
+            padding: 1.1rem 2.4rem;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            -webkit-transition: .25s;
+            transition: .25s;
+        }
+        .liveAgentChatFileTransfer button.liveAgentFileCancelButton {
+            background: #fff;
+            color: #c38419;
+        }
+        .liveAgentChatFileTransfer button.liveAgentFileCancelButton:hover,
+        .liveAgentChatFileTransfer button.liveAgentFileCancelButton:focus {
+
+        }
+        #fileDragLink, #fileDropLabel {
+            color: #c38419;
+        }
+    </style>
+    <header class="header-bar">
+        <style>
+            /*  header bar  */
+            .header-bar {
+                background-color: #353535;
+                color: white;
+            }
+            .header-bar__content {
+                display: flex;
+                height: 50px;
+                margin: 0 auto;
+                max-width: 600px;
+                padding: 0 5px 0 20px;
+            }
+            .header-bar__content > :last-child {
+                margin-right: 16px;
+            }
+            .header-bar__logo {
+                flex-basis: 40px;
+            }
+            .header-bar__title {
+                font-size: 1.7rem;
+                padding-left: 12px;
+                padding-top: 17px;
+                flex: 2;
+            }
+            .header-bar--graphic svg {
+                max-height: 30px;
+                max-width: 30px;
+                height: auto;
+                fill: white;
+                width: auto;
+            }
+            .header-bar__logo.header-bar--graphic svg {
+                margin-top: 11px;
+            }
+            .header-bar__button {
+                background: #c38419;
+                border: 0 none;
+                border-radius: 0;
+                color: #fff;
+                cursor: pointer;
+                font-size: 14px;
+                line-height: 16px;
+                margin: 8px 0 8px 8px;
+                padding: 0 16px ;
+                -webkit-transition: .25s;
+                transition: .25s;
+                width: auto;
+            }
+            .header-bar__button:hover,
+            .header-bar__button:focus {
+                background-color: #9e6710;
+                outline: none;
+            }
+            .header-bar__button--secondary {
+                background-color: transparent;
+            }
+            .header-bar__button--secondary:hover,
+            .header-bar__button--secondary:focus {
+                background-color: transparent;
+            }
+
+            .header-bar__button--icon {
+                padding-left: 32px;
+                position: relative;
+            }
+            .header-bar__button--icon svg {
+                position: absolute;
+                fill: currentcolor;
+                height: 14px;
+                left: 12px;
+                top: 10px;
+                width: 14px;
+            }
+        </style>
+        <div class="header-bar__content">
+            <div class="header-bar__logo header-bar--graphic">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="1792px" height="1792px" viewBox="0 0 1792 1792" enable-background="new 0 0 1792 1792" xml:space="preserve"><g>
+                    <path d="M1680.6,0H112L0,112v1121.2L112,1344h784h110.2c3.2,4.8,281.8,452.1,281.8,448c0-5.3,504-560,504-560V111.7
+                        L1680.6,0z M459.8,859.5L298.7,698.3l161.1-161.1l161.1,161.1L459.8,859.5z M895.9,859.5L734.8,698.3l161.1-161.1l161.1,161.1
+                        L895.9,859.5z M1332.2,859.5l-161.1-161.1l161.1-161.1l161.1,161.1L1332.2,859.5z"/></g>
+                </svg>
+            </div>
+            <div class="header-bar__title">Live chat</div>
+            <button class="header-bar__save header-bar__button header-bar__button--secondary no-waiting"
+                    onclick="SfdcApp.LiveAgent.Chasitor.saveChat();">Save</button>
+            <button class="header-bar__close header-bar__button header-bar__button--icon no-waiting close-button"
+                    onclick="SfdcApp.LiveAgent.Chasitor.endChat();"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    width="1792px" height="1792px" viewBox="384 -512 1792 1792" enable-background="new 384 -512 1792 1792" xml:space="preserve"><g><g><polygon points="2176,1201 1359,384 2176,-433 2097,-512 1280,305 463,-512 384,-433 1201,384 384,1201 463,1280 1280,463
+                    2097,1280"/></g></g></svg>End</button>
+        </div>
+    </header>
+    <div id="liveAgentWrapper">
+        <div class="liveAgentActiveChatHeader">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     width="612.583px" height="auto" viewBox="0 0 612.583 107.333" enable-background="new 0 0 612.583 107.333"
+                                     xml:space="preserve">
+                                <path d="M81.57,94.369c10.979-0.844,21.852-4.54,21.852-16.15V41.596l-4.964-5.064l-5.488,5.383v27.544l4.537,4.119l-10.449,9.29
+                                    H86.11l-10.24-8.767l2.747-2.74V15.315c0-4.226-3.592-6.44-5.81-6.968V7.4c0.953-0.527,2.535-0.844,4.546-0.844
+                                    c3.479,0,6.752,2.107,7.7,4.43h0.317c2.112-3.164,5.49-4.43,8.76-4.537c0.952,0,2.11,0.107,3.273,0.424v1.16
+                                    c-1.794,0.523-4.433,2.744-4.433,8.339v23.323l13.511-12.982h0.953c0.946,0.949,6.856,6.332,8.018,7.072
+                                    c0.53,0.316,1.267,0.525,1.898,0.525c1.164,0,1.902-0.422,2.852-0.844v1.481c-1.057,0.945-2.431,2.74-2.431,5.064v31.771
+                                    c0,14.036-15.404,22.586-36.201,24.064V94.369z M76.399,8.138l-0.106,0.418c1.795,0.744,4.012,2.533,4.012,6.124v57.206
+                                    l-2.217,2.215l8.651,7.286l2.538-2.112l-6.967-5.697l1.262-1.16v-57.21C83.572,10.669,79.459,8.455,76.399,8.138 M100.192,90.467
+                                    c4.115-2.635,8.083-5.812,8.083-12.036V39.59l-6.228-6.546l-2.428,2.429L105,41.17v37.261c0,5.169-1.895,8.973-5.065,11.608
+                                    L100.192,90.467z"/>
+                                <path d="M126.428,39.379c6.012-2.953,15.087-8.341,21.105-12.667h1.057c3.905,4.117,9.709,10.657,14.672,15.095v1.162
+                                    l-22.484,14.668v9.08c2.324,1.479,8.864,4.745,12.771,6.118l9.077-8.755l1.057,1.155l-18.257,17.632h-1.059
+                                    c-6.122-2.639-14.035-6.021-19.102-8.87c0.631-1.896,1.163-6.546,1.163-12.351V39.379z M147.32,79.169
+                                    c-6.116-2.746-11.604-4.961-16.464-7.599c0.317-1.794,0.421-3.904,0.421-9.814V38.637l-3.267,1.693v21.426
+                                    c0,5.91-0.109,9.706-0.637,11.394c4.751,2.645,11.51,5.494,17.734,8.237L147.32,79.169z M140.778,55.74l10.135-6.863
+                                    c-3.484-4.011-7.18-8.226-10.135-11.61V55.74z M143.947,33.257l-2.743,1.897c3.163,3.695,7.176,8.447,11.188,12.878l2.848-1.898
+                                    C151.227,41.698,147.217,36.846,143.947,33.257"/>
+                                <path d="M569.317,94.239c10.979-0.846,21.852-4.539,21.852-16.149V41.467l-4.963-5.067l-5.49,5.384v27.545l4.539,4.12l-10.448,9.289
+                                    h-0.949l-10.241-8.764l2.75-2.741V15.185c0-4.227-3.594-6.439-5.812-6.967V7.269c0.95-0.525,2.536-0.844,4.546-0.844
+                                    c3.479,0,6.75,2.109,7.699,4.432h0.316c2.114-3.164,5.491-4.432,8.761-4.537c0.951,0,2.109,0.105,3.274,0.424v1.16
+                                    c-1.796,0.525-4.436,2.744-4.436,8.336v23.324l13.512-12.981h0.953c0.945,0.949,6.856,6.331,8.019,7.073
+                                    c0.529,0.316,1.265,0.527,1.896,0.527c1.164,0,1.902-0.424,2.854-0.844v1.914c-1.06,0.945-2.433,2.741-2.433,5.066v31.334
+                                    c0,14.033-15.403,22.585-36.2,24.063V94.239z M564.145,8.009l-0.104,0.42c1.793,0.74,4.01,2.529,4.01,6.123v57.204l-2.217,2.218
+                                    l8.651,7.283l2.537-2.111l-6.968-5.697l1.264-1.161v-57.21C571.319,10.541,567.206,8.328,564.145,8.009 M587.941,90.34
+                                    c4.111-2.637,8.082-5.817,8.082-12.038V39.463l-6.229-6.55l-2.429,2.43l5.381,5.698v37.261c0,5.168-1.896,8.972-5.064,11.61
+                                    L587.941,90.34z"/>
+                                <path d="M260.124,39.25c6.015-2.953,15.096-8.34,21.109-12.667h1.055c3.905,4.118,9.712,10.657,14.669,15.096v1.162l-22.48,14.665
+                                    v9.083c2.327,1.479,8.864,4.746,12.773,6.115l9.073-8.754l1.061,1.161l-18.258,17.627h-1.059c-6.124-2.639-14.038-6.02-19.105-8.87
+                                    c0.631-1.898,1.162-6.545,1.162-12.349V39.25z M281.018,79.041c-6.113-2.746-11.607-4.961-16.46-7.603
+                                    c0.314-1.791,0.416-3.9,0.416-9.813V38.507l-3.267,1.692v21.425c0,5.913-0.105,9.71-0.635,11.397
+                                    c4.749,2.644,11.507,5.493,17.732,8.235L281.018,79.041z M274.476,55.611l10.134-6.862c-3.482-4.013-7.176-8.229-10.134-11.61
+                                    V55.611z M277.469,33.214l-2.738,1.898c3.163,3.695,7.171,8.446,11.183,12.878l2.85-1.898
+                                    C284.751,41.656,280.743,36.802,277.469,33.214"/>
+                                <path d="M317.326,13.812v54.255c0,2.318,2.217,4.533,4.327,4.955l3.271-3.27l0.949,1.16l-11.607,11.825h-0.638
+                                    c-4.431-0.953-10.661-4.861-10.661-11.72V20.461l-3.264-3.27l-3.386,3.377l-1.052-1.059L308.25,6.425h0.842L317.326,13.812z
+                                     M315.953,78.828c-4.113-1.162-8.13-3.799-8.13-9.499V18.14l-4.533-4.645l-2.428,2.428l3.691,3.798V70.7
+                                    c0,5.804,4.645,9.501,8.974,10.558L315.953,78.828z"/>
+                                <path d="M330.934,39.25c6.017-2.953,15.096-8.34,21.113-12.667h1.053c3.907,4.118,9.713,10.657,14.674,15.096v1.162l-22.479,14.665
+                                    v9.083c2.316,1.479,8.863,4.746,12.768,6.115l9.08-8.754l1.053,1.16l-18.262,17.628h-1.055c-6.118-2.639-14.036-6.02-19.102-8.87
+                                    c0.635-1.898,1.156-6.545,1.156-12.349V39.25z M351.834,79.041c-6.121-2.746-11.605-4.961-16.462-7.603
+                                    c0.312-1.791,0.422-3.9,0.422-9.813V38.507l-3.276,1.692v21.425c0,5.913-0.104,9.71-0.631,11.397
+                                    c4.751,2.644,11.505,5.493,17.73,8.235L351.834,79.041z M345.295,55.611l10.129-6.862c-3.486-4.014-7.176-8.229-10.129-11.61V55.611
+                                    z M348.459,33.128l-2.746,1.898c3.166,3.693,7.18,8.446,11.187,12.878l2.85-1.9C355.741,41.569,351.731,36.716,348.459,33.128"/>
+                                <path d="M440.746,41.467v26.6c0,2.318,2.107,4.428,4.327,4.854l3.267-3.168l0.955,1.16l-11.612,11.825h-0.738
+                                    c-4.324-0.953-10.556-4.861-10.556-11.72V40.624l-3.27-3.276l-3.38,3.378l-1.161-1.056l12.983-13.087h0.951l8.233,8.022v4.434
+                                    l10.445-12.456h0.952c2.115,2.112,5.381,5.276,8.23,7.39v0.211l-8.754,10.45h-0.218c-2.428-2.109-5.697-5.069-7.494-6.858
+                                    L440.746,41.467z M439.477,78.828c-4.219-1.162-8.232-3.798-8.232-9.499V38.302l-4.435-4.543l-2.53,2.428l3.695,3.802V70.7
+                                    c0,5.804,4.645,9.501,8.969,10.558L439.477,78.828z M444.968,36.716c1.791,1.688,4.326,4.116,6.434,5.909l2.13-2.45
+                                    c-2.008-1.801-5.068-4.434-6.543-5.914L444.968,36.716z"/>
+                                <path d="M473.984,82.738l-12.556-8.342V58.039c3.165-2.218,9.71-6.756,12.872-8.974c-4.957-2.639-9.179-5.91-11.712-9.076v-1.165
+                                    c7.49-4.219,12.771-8.123,17.311-12.241h0.947c0,0,15.415,7.282,16.148,7.601c0.85,0.422,1.482,0.638,2.324,0.638
+                                    c1.057,0,2.008-0.321,3.061-0.849v1.699c-1.16,0.844-2.43,2.431-2.43,4.751v27.43c0,2.848,2.535,4.748,4.438,5.17l3.271-3.27
+                                    l0.954,1.16l-11.618,11.825h-0.733c-4.543-1.27-9.609-5.596-10.452-10.769l-11.08,10.769H473.984z M476.733,78.724l-10.448-6.968
+                                    V56.455l-3.171,2.32V73.66l11.187,7.492L476.733,78.724z M485.598,52.019v-8.546l-14.776-7.813c-1.055,0.844-5.068,3.28-6.336,3.904
+                                    C467.972,44.208,477.153,49.909,485.598,52.019 M498.684,78.935c-3.903-1.477-8.124-4.326-8.124-9.921V40.52l-15.622-7.815
+                                    c-0.42,0.316-2.22,1.588-2.743,2.004l15.093,7.815v27.755c0,5.387,4.964,9.5,8.974,10.979L498.684,78.935z M485.598,70.174V53.603
+                                    c-3.271-0.842-6.65-2.213-9.814-3.796v20.472l5.803,3.589L485.598,70.174z"/>
+                                <path d="M373.133,74.111V39.496l18.364-12.775h1.057c3.589,1.479,15.305,6.546,16.78,7.177c0.53,0.215,1.265,0.424,1.903,0.424
+                                    c1.056,0,2.318-0.424,3.48-0.95v1.911c-1.055,0.949-2.533,3.064-2.533,4.752v29.329c0,6.859,1.479,10.903,4.223,13.656v1.162
+                                    c-4.014,4.109-13.401,13.718-17.521,18.782h-0.74c-3.907-2.218-10.659-4.012-16.149-4.012c-4.011,0-8.653,1.057-12.139,3.799
+                                    l-0.844-0.738c3.166-7.389,9.923-14.778,18.473-14.778c5.385,0,12.351,2.217,18.364,5.492c-4.113-4.643-7.809-13.229-7.916-20.408
+                                    l-10.872,10.448h-0.84L373.133,74.111z M381.998,94.413c-4.011,0-7.597,1.87-9.709,4.616v0.556c2.427-1.371,5.274-2.217,9.709-2.217
+                                    c5.383,0,12.242,1.48,16.149,3.693l2.111-2.529C395.721,96.209,389.072,94.413,381.998,94.413 M386.431,81.075l2.533-2.318
+                                    l-10.978-7.069V38.223l-3.166,2.221v32.827L386.431,81.075z M402.79,38.44l-15.302-6.444v3.38l12.032,5.17v31.245
+                                    c0,6.757,2.953,14.074,7.495,19.666l2.424-2.426c-3.903-5.168-6.649-11.018-6.649-17.768V38.44z M397.936,70.099V41.604
+                                    l-10.448-4.537v32.399l6.541,4.33L397.936,70.099z"/>
+                                <path d="M530.317,39.6l13.511-12.88h0.945c0.947,0.948,7.183,6.546,8.124,7.177c0.529,0.316,1.268,0.424,1.801,0.424
+                                    c1.16,0,2.002-0.424,2.848-0.844v1.914c-1.057,0.84-2.428,2.848-2.428,5.064v33.13c-5.806,1.371-10.452,4.537-15.409,10.343h-0.423
+                                    l-8.969-1.902v7.325l4.641,4.218l-10.978,9.182h-0.525l-10.349-8.754l2.75-2.96v-12.28c-1.061-0.209-3.195-0.53-4.244-0.845v-1.518
+                                    c1.264-0.527,4.449-3.684,4.449-6.315V40.76l-3.27-3.275l-3.379,3.377l-1.16-1.055l12.983-13.087h0.955l8.126,8.024V39.6z
+                                     M517.648,91.773l-2.218,2.107l8.341,7.181l2.533-2.213l-6.544-5.486l1.161-1.161V38.645l-4.646-4.642l-2.32,2.321l3.692,3.801
+                                    V91.773z M540.763,71.371V41.706l-4.962-5.064l-5.484,5.174v27.548C532.743,69.89,539.495,71.156,540.763,71.371 M539.18,82.133
+                                    c0.528-0.844,1.687-2.006,2.321-2.637l-11.185-2.323v3.063L539.18,82.133z M536.86,35.69l5.595,5.49v30.083l3.266-1.797V39.495
+                                    l-6.333-6.334L536.86,35.69z"/>
+                                <path d="M7.619,52.339c0-13.192,10.027-22.377,19.315-26.493l0.637,0.844c-3.383,3.905-5.805,7.71-5.805,15.727
+                                    c0,9.185,2.422,15.513,6.225,19.74c1.265-1.372,2.005-3.694,2.005-5.595V42.836l16.782-12.028l0.74,0.949
+                                    c-1.482,2.109-2.322,4.01-2.322,7.29v8.75c0,6.128-10.028,12.669-16.257,15.199c4.12,4.016,9.925,5.703,16.152,5.703
+                                    c2.321,0,4.327-0.105,6.223-0.424V29.962c-5.487-0.316-10.662-1.795-15.405-3.06c-5.07-1.477-10.24-2.85-14.673-2.85
+                                    c-6.758,0-14.989,2.32-15.095,12.136c0,0.848,0.106,1.797,0.212,2.858l-1.265,0.417c-1.163-3.059-1.797-6.018-1.797-8.973
+                                    C3.187,18.567,11.945,8.117,25.986,8.117c5.909,0,11.501,1.479,16.361,2.848c5.276,1.48,10.444,2.852,15.723,2.852
+                                    c2.638,0,4.219-1.371,4.219-3.906c0-2.533-1.263-3.797-3.266-4.326l0.211-1.269c6.018,1.056,12.656,4.644,12.656,12.25
+                                    c0,9.178-6.638,13.505-17.83,13.505h-1.158v37.995c7.387-1.369,12.239-4.854,15.933-10.657l1.156,0.635
+                                    C65.883,71.02,56.278,83.367,39.18,83.367C21.766,83.367,7.619,73.242,7.619,52.339 M53.954,25.426
+                                    c-12.452,0-23.641-6.121-32.718-6.121c-5.808,0-12.546,2.362-14.936,9.116l0.371,0.174c2.742-4.647,8.97-6.128,14.565-6.128
+                                    c9.077,0,20.266,6.128,32.718,6.128c10.027,0,15.828-3.384,16.78-11.403l-0.52-0.088C68.74,23.227,63.98,25.426,53.954,25.426
+                                     M18.286,33.021c-4.646,4.645-8.973,11.087-8.973,19.318c0,19.524,13.164,29.336,29.737,29.336c10.344,0,17.553-5.598,21.78-9.821
+                                    l-0.282-0.428c-4.853,3.904-11.472,7.083-21.498,7.083c-13.407,0-26.358-8.228-26.358-26.17c0-7.179,2.58-14.196,5.958-18.95
+                                    L18.286,33.021z M34.831,55.611l-0.087-14.354l-3.183,2.218V56.88c0,1.477-0.319,2.635-0.738,3.689l0.406,0.019
+                                    C33.229,59.281,34.831,57.333,34.831,55.611"/>
+                                <path d="M191.504,52.339c0-13.192,10.027-22.377,19.318-26.493l0.635,0.844c-3.382,3.905-5.806,7.71-5.806,15.727
+                                    c0,9.185,2.424,15.513,6.226,19.74c1.266-1.372,2.006-3.694,2.006-5.595V42.836l16.78-12.028l0.741,0.949
+                                    c-1.481,2.109-2.321,4.01-2.321,7.29v8.75c0,6.128-10.03,12.669-16.257,15.199c4.119,4.016,9.925,5.703,16.151,5.703
+                                    c2.321,0,4.329-0.105,6.224-0.424V29.962c-5.487-0.316-10.661-1.795-15.407-3.06c-5.069-1.477-10.237-2.85-14.672-2.85
+                                    c-6.759,0-14.989,2.32-15.095,12.136c0,0.848,0.105,1.797,0.213,2.858l-1.264,0.417c-1.164-3.059-1.799-6.018-1.799-8.973
+                                    c-0.104-11.925,8.654-22.375,22.695-22.375c5.908,0,11.501,1.479,16.36,2.848c5.276,1.48,10.444,2.852,15.724,2.852
+                                    c2.64,0,4.22-1.371,4.22-3.906c0-2.533-1.264-3.797-3.266-4.326l0.211-1.269c6.016,1.056,12.655,4.644,12.655,12.25
+                                    c0,9.178-6.64,13.505-17.83,13.505h-1.158v37.995c7.386-1.369,12.239-4.854,15.933-10.657l1.156,0.635
+                                    c-4.109,12.978-13.714,25.324-30.811,25.324C205.652,83.367,191.504,73.242,191.504,52.339 M237.84,25.426
+                                    c-12.452,0-23.641-6.121-32.718-6.121c-5.807,0-12.546,2.362-14.936,9.116l0.37,0.174c2.742-4.647,8.972-6.128,14.565-6.128
+                                    c9.077,0,20.266,6.128,32.718,6.128c10.028,0,15.829-3.384,16.781-11.403l-0.52-0.088C252.627,23.227,247.869,25.426,237.84,25.426
+                                     M202.173,33.021c-4.646,4.645-8.974,11.087-8.974,19.318c0,19.524,13.164,29.336,29.738,29.336c10.342,0,17.554-5.598,21.78-9.821
+                                    l-0.282-0.428c-4.854,3.904-11.474,7.083-21.498,7.083c-13.408,0-26.358-8.228-26.358-26.17c0-7.179,2.579-14.196,5.958-18.95
+                                    L202.173,33.021z M218.717,55.611l-0.086-14.354l-3.184,2.218V56.88c0,1.477-0.32,2.635-0.736,3.689l0.402,0.019
+                                    C217.116,59.281,218.717,57.333,218.717,55.611"/>
+                                </svg>
+        </div>
+        <liveAgent:clientChat >
+            <div id="liveAgentActiveCtaWrapper">
+                <liveAgent:clientChatSaveButton />
+                <liveAgent:clientChatEndButton />
+            </div>
+            <div id="liveAgentChatWrapper">
+                <liveAgent:clientChatAlertMessage />
+                <liveAgent:clientChatStatusMessage />
+                <table id="waitingMessage" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <div id="loading">
+                                <div class="loading-content">
+                                    <div class="loading-indicator loading-indicator--mediumBorder">
+                                        <div class="loading-indicator__cube"></div>
+                                        <div class="loading-indicator__cube"></div>
+                                        <div class="loading-indicator__cube"></div>
+                                        <div class="loading-indicator__cube"></div>
+                                        <div class="loading-indicator__cube"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>We are connecting you with an advisor</p>
+                        </td>
+                    </tr>
+                </table>
+                <div id="liveAgentActiveChatWrapper">
+                    <liveAgent:clientChatLog showTimeStamp="true"
+                                             visitorNameLabel="Me"
+                                             agentTypingLabel="The agent is typing..." />
+                </div>
+                <div id="liveAgentActiveInputWrapper">
+                    <div class="liveAgentActiveInputWrapper__container">
+                        <liveagent:clientChatInput useMultiline="true" />
+                        <liveAgent:clientChatSendButton label="Submit" />
+                    </div>
+                </div>
+            </div>
+            <liveAgent:clientChatFileTransfer />
+        </liveAgent:clientChat>
+    </div>
+    <script>
+        (function() {
+            var input = document.querySelector("#liveAgentChatTextArea") || document.querySelector("#liveAgentChatInput"),
+                button = document.querySelector(".liveAgentSendButton"),
+                inputContainer = document.querySelector(".liveAgentActiveInputWrapper__container");
+            if (input && button && inputContainer) {
+                input.addEventListener("focus", function () {
+                    inputContainer.setAttribute("active", "");
+                }, false);
+                button.addEventListener("click", function () {
+                    inputContainer.removeAttribute("active");
+                }, false);
+            } else {
+                console.log("CONFIGURATION ERROR");
+            }
+        })()
+    </script>
+    <script>
+        (function(){
+            var contactFirstName;
+            var agentName;
+            function nameSafe(value){
+                value = value.replace(/"/g,"''");
+                value = value.split(":").shift();
+                return value;
+            }
+            function getAgentDetail(prop){
+                var value;
+                try {
+                    value = liveagent.chasitor.getDetails().agent[prop];
+                } catch(e){
+                    value = document.querySelector("#liveAgentChatLogText span.operator strong") ? document.querySelector("#liveAgentChatLogText span.operator strong").innerText : "Agent";
+                }
+                agentName = nameSafe(value);
+                document.querySelector("#liveAgentChatLogText").setAttribute("data-agent-name", agentName );
+            }
+            function getPrechatDetail(label){
+                var name = "Me", prechatDetails, i=0, l;
+                try {
+                    prechatDetails = liveagent.chasitor.getDetails().prechatDetails;
+                    l = prechatDetails.length;
+                    for (;i<l;i++){
+                        if (prechatDetails[i].label&&prechatDetails[i].label===label&&prechatDetails[i].value){
+                            name = prechatDetails[i].value;
+                            break;
+                        }
+                    }
+                } catch (e){
+
+                }
+                contactFirstName = nameSafe(name);
+                document.querySelector("#liveAgentChatLogText").setAttribute("data-client-name", contactFirstName );
+            }
+            function setMutationObserver(){
+                if ("MutationObserver" in window) {
+                    var options = { childList: true },
+                        panel = document.getElementById("liveAgentChatLogText"),
+                        observer,
+                        formatTimestamp = function(str){
+                            str = str || "00:00:00 AM";
+                            var arr = str.split(" "),
+                                time = arr[0].split(":"),
+                                am = arr[1];
+                            time.pop();
+                            return time.join(":")+" "+ am.toLowerCase();
+                        },
+                        updateTimestamp = function(el){
+                            if (!agentName||!contactFirstName){
+                                getPrechatDetail("contactFirstName");
+                                getAgentDetail("agentName");
+                            }
+                            var timestamp = formatTimestamp(el.innerText),
+                                previousSibling = el.previousElementSibling,
+                                name;
+                            el.classList.add("touched");
+                            if (previousSibling){
+								getAgentDetail("agentName");
+                                name = previousSibling.classList.contains("operator") ? agentName : contactFirstName;
+                                previousSibling.setAttribute("data-timestamp", timestamp);
+                                previousSibling.querySelector(".name strong").innerText = name +" | "+timestamp;
+                            }
+                        };
+                    document.querySelector("html").classList.add("mutationobserver");
+
+                    observer = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutationRecord) {
+                            var els = mutationRecord.target.querySelectorAll(".timestamp:not(.touched)");
+                            [].forEach.call(els,function(el){
+                                updateTimestamp(el);
+                            });
+                        });
+                    });
+                    observer.observe(panel, options);
+                }
+            }
+            setMutationObserver();
+        })();
+    </script>
+    <script>
+        (function(){
+            // removes waiting state class name from body
+            // when agent picks up the call
+            document.querySelector("body").classList.add("state-waiting");
+            var int = 50;
+                timer = function(){
+                    setTimeout(function(){
+                        if (document.querySelector(".liveAgentStateWaiting")){
+                            timer();
+                        } else {
+                            document.querySelector("body").classList.remove("state-waiting");
+                        }
+                    },int);
+                };
+            timer();
+        })()
+    </script>
+</apex:page>

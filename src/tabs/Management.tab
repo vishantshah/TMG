@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <frameHeight>620</frameHeight>
+    <hasSidebar>true</hasSidebar>
+    <label>Management</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom50: Big top</motif>
+    <scontrol>PCA1_Management_2</scontrol>
+</CustomTab>

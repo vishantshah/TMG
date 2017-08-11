@@ -1,0 +1,112 @@
+<project name="TMGCI" basedir="." xmlns:sf="antlib:com.salesforce">
+
+	<!-- Build properties -->
+	<property name="src.dir" value="../src" />
+	<property name="lib.dir" value="../build/lib/" />
+	<property name="destructiveChanges.dir" value="../destructiveChanges" />
+	<property name="integratedDestructiveChanges.dir" value="../integratedDestructiveChanges" />
+
+	<property environment="env"/>
+	<property name="sf.destructiveChanges" value="${env.bamboo_destructive_changes}"/>
+	<property name="sf.pkgContents" value="applications/*.*, classes/*.*, customApplicationComponents/*.*, customMetadata/*.*, globalValueSets/*.*, staticresources/*.*, dashboards/*.*, documents/**/*.*, labels/*.*, objects/*.*, layouts/*.*, workflows/*.*, pages/*.*, components/*.*, tabs/*.*, homePageComponents/*.*, homePageLayouts/*.*, letterhead/*.*, queues/*.*, permissionsets/*.*, reports/**/*.*, reportTypes/*.*, sites/*.*, standardValueSets/*.*, tabs/*.*, triggers/*.*, weblinks/*.*, email/**/*.*, flows/*.*, package.xml, destructiveChangesPre.xml, destructiveChangesPost.xml" />
+
+	<!-- Setting default value for username, password and session id properties to empty string 
+	     so unset values are treated as empty. Without this, ant expressions such as ${sf.username}
+	     will be treated literally.
+	-->
+	<condition property="sf.username" value=""> <not> <isset property="sf.username"/> </not> </condition>
+	<condition property="sf.password" value=""> <not> <isset property="sf.password"/> </not> </condition>
+	<condition property="sf.sessionId" value=""> <not> <isset property="sf.sessionId"/> </not> </condition>
+
+	<!-- LOAD ant-salesforce.jar
+	* It allows to have multiple ant-salesforce.jar files in the library
+	* The lib file usage is controlled by bamboo_lib_version parameter. It must specify a folder name 
+	  from which ant-salesforce.jar should be used during the deployment.
+	  If bamboo_lib_version parameter is not specified, the default ..lib/ant-salesforce.jar file is used 
+	-->
+
+	<fail message="bamboo_lib_version property is set but directory DOES NOT EXIST !
+		Make sure the folder name and bamboo_lib_version parameter names do match.">
+		<condition>
+				<and>
+	    			<not><available file="${lib.dir}${env.bamboo_lib_version}" type="dir"/></not>
+	    			<isset property="env.bamboo_lib_version"/>
+	    		</and>
+		</condition>
+	</fail>
+
+	<condition property="env.bamboo_lib_version" value=""> 
+		<not> 
+			<isset property="env.bamboo_lib_version"/> 
+		</not> 
+	</condition>
+
+	<taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        <classpath>
+            <pathelement location="${lib.dir}${env.bamboo_lib_version}/ant-salesforce.jar" />        	
+        </classpath>
+    </taskdef>
+
+    <!-- Set API version 
+    * It is must for deployment
+	-->
+	<target name="setApiVersion">
+		<fail message="bamboo_apiVersion parameter NOT SET !">
+			<condition> 
+				<or>
+					<not><isset property="env.bamboo_apiVersion" /></not>
+					<equals arg1="env.bamboo_apiVersion" arg2=""/>
+				</or>
+			</condition>
+		</fail>
+		<replaceregexp file="${src.dir}/package.xml" match="version>(.*)./version>" replace="version>${env.bamboo_apiVersion}&lt;/version>" />
+	</target>
+
+
+	<!-- Build targets -->
+	<target name="build" depends="setApiVersion, copyDestructiveFiles, deployPackaged, deleteDestructiveFiles, destructiveChanges" />
+
+	<target name="copyDestructiveFiles" if="${env.bamboo_integratedDestructiveChanges}">
+		<copy file="${integratedDestructiveChanges.dir}/destructiveChangesPre.xml" todir="${src.dir}"/>
+		<copy file="${integratedDestructiveChanges.dir}/destructiveChangesPost.xml" todir="${src.dir}"/>
+	</target>
+	<target name="deleteDestructiveFiles" if="${env.bamboo_integratedDestructiveChanges}">
+		<delete file="${src.dir}/destructiveChangesPre.xml" />
+		<delete file="${src.dir}/destructiveChangesPost.xml" />
+	</target>
+
+	<!-- Build targets definitions -->
+	<target name="deployPackaged">
+		<zip destfile="${src.dir}/batch.zip" basedir="${src.dir}" includes="${sf.pkgContents}" />
+	    <sf:deploy
+	    	username="${env.bamboo_username}" 
+	    	password="${env.bamboo_password}" 
+	        serverurl="${env.bamboo_serverurl}" 
+	    	maxPoll="${env.bamboo_maxPoll}" 
+	    	pollWaitMillis="${env.bamboo_maxWaitMillis}"
+	    	zipFile="${src.dir}/batch.zip" 
+	    	checkOnly="${env.bamboo_checkOnly}"
+	    	testLevel="${env.bamboo_testLevel}" 
+	    	rollbackOnError="${env.bamboo_rollbackOnError}" 
+	    	ignoreWarnings="true"
+		/>
+	</target>
+
+	<target name="destructiveChanges" if="${env.bamboo_destructive_changes}">   
+			<echo>** destructive files: ${!env.bamboo_pkgContentsDestructive}</echo>
+			<zip destfile="${src.dir}/batch.zip" basedir="${src.dir}" includes="${env.bamboo_pkgContentsDestructive}" />
+			<sf:deploy username="${env.bamboo_username}" 
+			    	password="${env.bamboo_password}" 
+			        serverurl="${env.bamboo_serverurl}" 
+			    	maxPoll="${env.bamboo_maxPoll}" 
+			    	pollWaitMillis="${env.bamboo_maxWaitMillis}"
+			    	runAllTests="false" 
+			    	logType="Debugonly"
+			    	deployRoot="${destructiveChanges.dir}"
+			    	testLevel="${env.bamboo_testLevel}" 
+			    	rollbackOnError="${env.bamboo_rollbackOnError}" 
+					ignoreWarnings="true"
+			/>
+	</target>
+	
+</project>

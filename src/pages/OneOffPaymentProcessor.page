@@ -1,0 +1,4 @@
+<apex:page controller="MppUtil" showHeader="true" action="{!checkOneOffPayment}">
+    <apex:pageMessages />
+    <apex:iframe src="{!prMpp}" scrolling="false" id="theIframe" height="1000px"/>
+</apex:page>

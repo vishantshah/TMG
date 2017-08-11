@@ -1,0 +1,5 @@
+<apex:page controller="MPPInterfaceHTTP" action="{!initialiseIgnoreGuid}">
+
+<apex:iframe src="{!BASE_MPP_URL}management/management/mpplogon.aspx?affiliateId=435" scrolling="true" id="theIframe"/>
+
+</apex:page>

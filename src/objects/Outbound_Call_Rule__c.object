@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Configuration object for record selection for different types of calls</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Active setting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define whether Rule is active</inlineHelpText>
+        <label>Active</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Call_Answered__c</fullName>
+        <description>Number of minutes for the Answered call status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define the number of minutes before the Case is again ready for pick-up after call status is set to Answerphone</inlineHelpText>
+        <label>Answerphone</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Call_Busy__c</fullName>
+        <description>Number of minutes for the Busy call status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define the number of minutes before the Case is again ready for pick-up after call status is set to Busy</inlineHelpText>
+        <label>Call Busy</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Call_No_Answer__c</fullName>
+        <description>Number of minutes for the No Answer call status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define the number of minutes before the Case is again ready for pick-up after call status is set to No Answer</inlineHelpText>
+        <label>Call No Answer</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Call_Record_Entry__c</fullName>
+        <description>Call Record Entry</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Defines by how many minutes record pickup is postponed when record is brought into context</inlineHelpText>
+        <label>Call Record Entry</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Rule description</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define rule description</inlineHelpText>
+        <label>Description</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Is_Active__c</fullName>
+        <externalId>false</externalId>
+        <formula>Active__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Outbound_Call_Setting__c</fullName>
+        <description>Related Outbound Call Setting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define Outbound Call Setting Master</inlineHelpText>
+        <label>Outbound Call Setting</label>
+        <referenceTo>Outbound_Call_Setting__c</referenceTo>
+        <relationshipLabel>Outbound Call Rules</relationshipLabel>
+        <relationshipName>Outbound_Call_Rules</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Parameters__c</fullName>
+        <description>Rule parameters in json format</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define rule parameters in json format</inlineHelpText>
+        <label>Parameters</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Priority_Field__c</fullName>
+        <description>Priority field API name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define the Priority field API name for the type of the call</inlineHelpText>
+        <label>Priority Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Show_Cheques_Section__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to set whenever render cheques section or not on visualforce page</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checkbox to set whenever render cheques section or not on visualforce page</inlineHelpText>
+        <label>Show Cheques Section</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_Record_Counters__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Define if stage respective counters should appear on Outbound Calling Renewal Sales page</inlineHelpText>
+        <label>Show Record Counters</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Outbound Call Rule</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Outbound_Call_Setting__c</columns>
+        <columns>Active__c</columns>
+        <columns>Call_Record_Entry__c</columns>
+        <columns>Call_Answered__c</columns>
+        <columns>Call_Busy__c</columns>
+        <columns>Call_No_Answer__c</columns>
+        <columns>Priority_Field__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Outbound Call Rule Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Outbound Call Rules</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Outbound_Call_Setting__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Active__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Call_Answered__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Call_Busy__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Call_No_Answer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Call_Record_Entry__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Description__c</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Outbound_Call_Setting__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Active__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Call_Record_Entry__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Call_Answered__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Call_Busy__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Call_No_Answer__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Priority_Field__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Outbound_Call_Setting__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Active__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Call_Record_Entry__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Call_Answered__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Call_Busy__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Call_No_Answer__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Priority_Field__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Call_Answered_Greater_Than_Zero</fullName>
+        <active>true</active>
+        <description>Call Answered field value has to be greater than 0.</description>
+        <errorConditionFormula>Call_Answered__c &lt;= 0</errorConditionFormula>
+        <errorDisplayField>Call_Answered__c</errorDisplayField>
+        <errorMessage>Call Answered field value  has to be greater than 0.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Call_Busy_Greater_Than_Zero</fullName>
+        <active>true</active>
+        <description>Call Busy field value has to be greater than 0.</description>
+        <errorConditionFormula>Call_Busy__c &lt;= 0</errorConditionFormula>
+        <errorDisplayField>Call_Busy__c</errorDisplayField>
+        <errorMessage>Call Busy field value has to be greater than 0.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Call_No_Answer_Greater_Than_Zero</fullName>
+        <active>true</active>
+        <description>Call No Answer field value has to be greater than 0.</description>
+        <errorConditionFormula>Call_No_Answer__c &lt;= 0</errorConditionFormula>
+        <errorDisplayField>Call_No_Answer__c</errorDisplayField>
+        <errorMessage>Call No Answer field value has to be greater than 0.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Call_Record_Entry_Greater_Than_Zero</fullName>
+        <active>true</active>
+        <description>Call Record Entry field value  has to be greater than 0.</description>
+        <errorConditionFormula>Call_Record_Entry__c &lt;= 0</errorConditionFormula>
+        <errorDisplayField>Call_Record_Entry__c</errorDisplayField>
+        <errorMessage>Call Record Entry field value has to be greater than 0.</errorMessage>
+    </validationRules>
+</CustomObject>

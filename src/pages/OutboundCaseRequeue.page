@@ -1,0 +1,26 @@
+<apex:page standardController="Outbound_Call_Setting__c" extensions="OutboundCaseRequeueController" showHeader="true" sidebar="true">
+	 <apex:sectionHeader title="{!$Label.OC_ReQueue_PageHeader}" subtitle="{!$Label.OC_ReQueue_Page_SubHeader}"/>
+	 <apex:messages/>
+	<apex:form>
+		<apex:pageBlock>
+			<apex:pageBlockButtons location="bottom">
+			        <apex:commandButton value="Recalculate Queue" action="{!recalculateQueue}" rendered="{!!buttonClicked}"/>
+			        <apex:commandButton value="Back" action="{!cancel}"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection>
+			<apex:pageBlockSectionItem>
+				<apex:outputLabel value="Select outcome status" for="status" />
+				<apex:selectList value="{!StatusSelections}" multiselect="true" id="status">
+		            <apex:selectOptions value="{!callStatus}"/>
+		        </apex:selectList>
+	        </apex:pageBlockSectionItem>
+	        <apex:pageBlockSectionItem>
+		        <apex:outputLabel value="Select case stage" for="stage"  />
+				<apex:selectList value="{!StageSelections}" multiselect="true" id="stage">
+		            <apex:selectOptions value="{!caseStage}"/>
+		        </apex:selectList>
+	        </apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

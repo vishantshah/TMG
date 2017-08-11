@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object stores products that can be sold within the campaign (TCode).</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>TCodeSetup</fullName>
+        <description>The product field set used in the TCodeSetup page</description>
+        <displayedFields>
+            <field>X13_Week_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Weekly_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Low_Start_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Digital_Monthly_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Digital_Yearly_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>TCodeSetup</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>ZTCodeSetup</fullName>
+        <description>Zuora related offers Tcode Product field set.</description>
+        <displayedFields>
+            <field>Offer__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>ZTCodeSetup</label>
+    </fieldSets>
+    <fields>
+        <fullName>Digital_Monthly_Price__c</fullName>
+        <description>Used for UI only identification of old Digital monthly product.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used for UI only identification of old Digital monthly product - old acquisition flow.</inlineHelpText>
+        <label>Legacy Digital Monthly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Digital_Yearly_Price__c</fullName>
+        <description>Used for UI only identification of old Digital yearly product.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used for UI only identification of old Digital yearly product - old acquisition flow.</inlineHelpText>
+        <label>Legacy Digital Yearly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Low_Start_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Low Start Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Offer_Base_Price__c</fullName>
+        <externalId>false</externalId>
+        <formula>Offer__r.Base_Price__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Offer Base Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Offer__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Lookup to Offer.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lookup to Offer.</inlineHelpText>
+        <label>Offer</label>
+        <lookupFilter>
+            <active>false</active>
+            <errorMessage>Selected product has to match Offer product.</errorMessage>
+            <filterItems>
+                <field>$Source.Product__c</field>
+                <operation>equals</operation>
+                <valueField>Offer__c.ZProduct__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Offer__c</referenceTo>
+        <relationshipLabel>TCode Products</relationshipLabel>
+        <relationshipName>TCode_Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <referenceTo>zqu__ZProduct__c</referenceTo>
+        <relationshipLabel>TCode Products</relationshipLabel>
+        <relationshipName>TCode_Products</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>TCodeManagement__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>TCodeManagement</label>
+        <referenceTo>TCodeManagement__c</referenceTo>
+        <relationshipLabel>TCode Products</relationshipLabel>
+        <relationshipName>TCode_Products</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Uniqueness_Check__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>Field populated to make sure records are unique.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field populated to make sure records are unique.</inlineHelpText>
+        <label>Uniqueness Check</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Web_Monthly_Price__c</fullName>
+        <description>Used for UI only identification of old Web monthly product.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used for UI only identification of old Web monthly product - old acquisition flow.</inlineHelpText>
+        <label>Legacy Web Monthly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Web_Yearly_Price__c</fullName>
+        <description>Used for UI only identification of old Web yearly product.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used for UI only identification of old Web yearly product - old acquisition flow.</inlineHelpText>
+        <label>Legacy Web Yearly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Weekly Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>X13_Week_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>13 Week Price</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <label>TCode Product</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>TCP-{00000}</displayFormat>
+        <label>TCode Product Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>TCode Products</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Offer</fullName>
+        <active>true</active>
+        <label>Offer</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Zuora_Offer</fullName>
+        <active>true</active>
+        <label>Zuora Offer</label>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>TCodeManagement__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Product__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Weekly_Price__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>X13_Week_Price__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Low_Start_Price__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Digital_Monthly_Price__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Digital_Yearly_Price__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>TCodeManagement__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Product__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Weekly_Price__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>X13_Week_Price__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Low_Start_Price__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Digital_Monthly_Price__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Digital_Yearly_Price__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>NAME</lookupFilterFields>
+        <lookupFilterFields>Offer__c</lookupFilterFields>
+        <lookupFilterFields>TCodeManagement__c</lookupFilterFields>
+        <lookupFilterFields>Product__c</lookupFilterFields>
+        <lookupFilterFields>RECORDTYPE</lookupFilterFields>
+        <searchResultsAdditionalFields>TCodeManagement__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Product__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Weekly_Price__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>X13_Week_Price__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Low_Start_Price__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Digital_Monthly_Price__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Digital_Yearly_Price__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Low_Start_Price_For_Low_Start_TCode</fullName>
+        <active>true</active>
+        <description>You have to specify a valid Low Start Weekly Price for Low Start TCode type.</description>
+        <errorConditionFormula>AND( RecordType.Name == &apos;Offer&apos;, OR(ISBLANK(Low_Start_Price__c), Low_Start_Price__c &lt; 0), ISPICKVAL( TCodeManagement__r.Type__c ,&apos;Low Start&apos;))</errorConditionFormula>
+        <errorDisplayField>Low_Start_Price__c</errorDisplayField>
+        <errorMessage>Low Start Weekly Price has to be specified for a Low Start TCode.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Mandatory_fields_for_ZOffer</fullName>
+        <active>true</active>
+        <description>Offer Id, Frequency, Name, Friendly Name and Base Price are mandatory for ZOffer type.</description>
+        <errorConditionFormula>AND(RecordType.Name==&apos;Zuora Offer&apos;,OR(
+ISBLANK(Offer__c),
+ISBLANK(Product__c)
+))</errorConditionFormula>
+        <errorMessage>Offer and Product fields are mandatory for ZOffer type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>One_Off_13_Week_Price_Required</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( 
+RecordType.Name == &apos;Offer&apos;,
+(
+INCLUDES(TCodeManagement__r.Payment_Type__c,&apos;Allow One Off 13 Week&apos;) ||
+INCLUDES(TCodeManagement__r.Payment_Type__c,&apos;Allow 13 Week DD&apos;) ||
+INCLUDES(TCodeManagement__r.Payment_Type__c,&apos;Allow 13 Week CCA&apos;)
+)
+,
+ISBLANK(X13_Week_Price__c))</errorConditionFormula>
+        <errorDisplayField>X13_Week_Price__c</errorDisplayField>
+        <errorMessage>One off 13 week option requires 13 week price field to be populated.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Premium_Price_For_Low_Start_TCode</fullName>
+        <active>true</active>
+        <description>Premium Weekly Price has to be specified for a Low Start TCode.</description>
+        <errorConditionFormula>AND( RecordType.Name == &apos;Offer&apos;, OR(ISBLANK(Weekly_Price__c), Weekly_Price__c &lt; 0), ISPICKVAL(TCodeManagement__r.Type__c,&apos;Low Start&apos;))</errorConditionFormula>
+        <errorDisplayField>Weekly_Price__c</errorDisplayField>
+        <errorMessage>You have to specify a valid Premium Weekly Price for Low Start TCode type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Zuora_Offer_Product_Match</fullName>
+        <active>true</active>
+        <description>Product has to match related Offer product.</description>
+        <errorConditionFormula>AND(RecordType.Name==&apos;Zuora Offer&apos;, NOT(ISBLANK(Offer__c)), Product__c !=  Offer__r.ZProduct__c )</errorConditionFormula>
+        <errorDisplayField>Offer__c</errorDisplayField>
+        <errorMessage>Selected product has to match related offer product.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

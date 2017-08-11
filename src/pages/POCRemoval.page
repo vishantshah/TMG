@@ -1,0 +1,11 @@
+<apex:page standardController="TCodeManagement__c" tabStyle="TCodeManagement__c" extensions="POCRemovalController" showHeader="true" sidebar="true">
+	<apex:sectionHeader title="{!$Label.POC_Deletion_Title}" subtitle="{!$Label.POC_Deletion_Subtitle} {!TCodeManagement__c.name}" />
+
+	<apex:form >
+		<apex:pageBlock >
+			<apex:pageMessages />
+			<apex:commandButton action="{!deletePOCs}" value="Schedule Deletion" /> 
+			<apex:commandButton action="{!goBackToTCode}" value="Cancel" /> 
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

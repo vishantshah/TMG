@@ -1,0 +1,3 @@
+Cheque Batch {!Cheque_Batch__c.Name} is closed now. 
+
+Please click the link to view <a href={!Cheque_Batch__c.Report_Url__c}>Holiday Voucher Refund Cheques</a> report.

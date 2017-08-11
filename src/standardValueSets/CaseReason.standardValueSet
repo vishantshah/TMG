@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Account</fullName>
+        <default>false</default>
+        <label>Account</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Acquisition</fullName>
+        <default>false</default>
+        <label>Acquisition</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>ADDACS</fullName>
+        <default>false</default>
+        <label>ADDACS</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Advertising</fullName>
+        <default>false</default>
+        <label>Advertising</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>ARUDD (Rejected Payment)</fullName>
+        <default>false</default>
+        <label>ARUDD (Rejected Payment)</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>AUDDIS</fullName>
+        <default>false</default>
+        <label>AUDDIS</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Balance Review</fullName>
+        <default>false</default>
+        <label>Balance Review</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Bespoke Events</fullName>
+        <default>false</default>
+        <label>Bespoke Events</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Blackberry</fullName>
+        <default>false</default>
+        <label>Blackberry</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Banking Amendment</fullName>
+        <default>false</default>
+        <label>Banking Amendment</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancellation</fullName>
+        <default>false</default>
+        <label>Cancellation</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cashposting</fullName>
+        <default>false</default>
+        <label>Cashposting</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Change of Address</fullName>
+        <default>false</default>
+        <label>Change of Address</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Change of Newsagent</fullName>
+        <default>false</default>
+        <label>Change of Newsagent</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Circulation</fullName>
+        <default>false</default>
+        <label>Circulation</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Commerce</fullName>
+        <default>false</default>
+        <label>Commerce</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Coupon Return</fullName>
+        <default>false</default>
+        <label>Coupon Return</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cover price Increase</fullName>
+        <default>false</default>
+        <label>Cover price Increase</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Credit Card Expiry</fullName>
+        <default>false</default>
+        <label>Credit Card Expiry</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Data</fullName>
+        <default>false</default>
+        <label>Data</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>DD Bank Processing Error</fullName>
+        <default>false</default>
+        <label>DD Bank Processing Error</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>DD Cancellation</fullName>
+        <default>false</default>
+        <label>DD Cancellation</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>DD Winback</fullName>
+        <default>false</default>
+        <label>DD Winback</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>DDCX</fullName>
+        <default>false</default>
+        <label>DDCX</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Deceased</fullName>
+        <default>false</default>
+        <label>Deceased</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Department Transfer</fullName>
+        <default>false</default>
+        <label>Department Transfer</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Digital - Other</fullName>
+        <default>false</default>
+        <label>Digital - Other</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Editorial</fullName>
+        <default>false</default>
+        <label>Editorial</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Events</fullName>
+        <default>false</default>
+        <label>Events</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Financial Processing</fullName>
+        <default>false</default>
+        <label>Financial Processing</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Financial Processing Post</fullName>
+        <default>false</default>
+        <label>Financial Processing Post</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Gone Away</fullName>
+        <default>false</default>
+        <label>Gone Away</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Indemnity</fullName>
+        <default>false</default>
+        <label>Indemnity</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Kindle</fullName>
+        <default>false</default>
+        <label>Kindle</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Loyalty</fullName>
+        <default>false</default>
+        <label>Loyalty</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Miscellaneous</fullName>
+        <default>false</default>
+        <label>Miscellaneous</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Newspaper Edition App - Amazon</fullName>
+        <default>false</default>
+        <label>Newspaper Edition App - Amazon</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Newspaper Edition App - Android</fullName>
+        <default>false</default>
+        <label>Newspaper Edition App - Android</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Newspaper Edition App - iOS</fullName>
+        <default>false</default>
+        <label>Newspaper Edition App - iOS</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Outbound Calling</fullName>
+        <default>false</default>
+        <label>Outbound Calling</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Outbound Sale</fullName>
+        <default>false</default>
+        <label>Outbound Sale</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Payment Issue</fullName>
+        <default>false</default>
+        <label>Payment Issue</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Products</fullName>
+        <default>false</default>
+        <label>Products</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Promotions</fullName>
+        <default>false</default>
+        <label>Promotions</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Puzzles &amp; Games</fullName>
+        <default>false</default>
+        <label>Puzzles &amp; Games</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Redesign</fullName>
+        <default>false</default>
+        <label>Redesign</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Remove from database</fullName>
+        <default>false</default>
+        <label>Remove from database</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Renewal</fullName>
+        <default>false</default>
+        <label>Renewal</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Rewards</fullName>
+        <default>false</default>
+        <label>Rewards</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Schools</fullName>
+        <default>false</default>
+        <label>Schools</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Sponsorship</fullName>
+        <default>false</default>
+        <label>Sponsorship</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Sub Card request</fullName>
+        <default>false</default>
+        <label>Sub Card request</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Sub Offer</fullName>
+        <default>false</default>
+        <label>Sub Offer</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Subscriber Mailing</fullName>
+        <default>false</default>
+        <label>Subscriber Mailing</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Subscriber retained</fullName>
+        <default>false</default>
+        <label>Subscriber retained</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Subscriptions</fullName>
+        <default>false</default>
+        <label>Subscriptions</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Supplement request</fullName>
+        <default>false</default>
+        <label>Supplement request</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Telegraph App - Android</fullName>
+        <default>false</default>
+        <label>Telegraph App - Android</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Telegraph App - iOS</fullName>
+        <default>false</default>
+        <label>Telegraph App - iOS</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Transfer Balance</fullName>
+        <default>false</default>
+        <label>Transfer Balance</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Travel Guides</fullName>
+        <default>false</default>
+        <label>Travel Guides</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Unable to contact letter sent</fullName>
+        <default>false</default>
+        <label>Unable to contact letter sent</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Updating Address</fullName>
+        <default>false</default>
+        <label>Updating Address</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Urgent Cheque</fullName>
+        <default>false</default>
+        <label>Urgent Cheque</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Vouchers</fullName>
+        <default>false</default>
+        <label>Vouchers</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Website</fullName>
+        <default>false</default>
+        <label>Website</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Windows 8</fullName>
+        <default>false</default>
+        <label>Windows 8</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Weekly Telegraph</fullName>
+        <default>false</default>
+        <label>Weekly Telegraph</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+</StandardValueSet>

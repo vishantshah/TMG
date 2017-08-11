@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Discussed Editorial</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Discussed Editorial</value>
+    </caseValues>
+    <fields>
+        <label><!-- Date Discussed --></label>
+        <name>Date_Discussed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Editorial --></label>
+        <name>Editorial__c</name>
+        <relationshipLabel><!-- Discussed Editorial --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Interest Level --></label>
+        <name>Interest_Level__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Discussed Editorial --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

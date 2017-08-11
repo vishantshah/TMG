@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Add</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>BT__c</fullName>
+        <externalId>false</externalId>
+        <label>BT</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BT</fullName>
+                    <default>false</default>
+                    <label>BT</label>
+                </value>
+                <value>
+                    <fullName>Non-BT</fullName>
+                    <default>false</default>
+                    <label>Non-BT</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CanUseQuantitySchedule</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>CanUseRevenueSchedule</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Channel__c</fullName>
+        <externalId>false</externalId>
+        <label>Channel</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Announcements</fullName>
+                    <default>false</default>
+                    <label>Announcements</label>
+                </value>
+                <value>
+                    <fullName>Arts</fullName>
+                    <default>false</default>
+                    <label>Arts</label>
+                </value>
+                <value>
+                    <fullName>Audience</fullName>
+                    <default>false</default>
+                    <label>Audience</label>
+                </value>
+                <value>
+                    <fullName>Bespoke Subscribers</fullName>
+                    <default>false</default>
+                    <label>Bespoke Subscribers</label>
+                </value>
+                <value>
+                    <fullName>Christmas</fullName>
+                    <default>false</default>
+                    <label>Christmas</label>
+                </value>
+                <value>
+                    <fullName>Comment</fullName>
+                    <default>false</default>
+                    <label>Comment</label>
+                </value>
+                <value>
+                    <fullName>Consumer Advice</fullName>
+                    <default>false</default>
+                    <label>Consumer Advice</label>
+                </value>
+                <value>
+                    <fullName>Contextual</fullName>
+                    <default>false</default>
+                    <label>Contextual</label>
+                </value>
+                <value>
+                    <fullName>Courses</fullName>
+                    <default>false</default>
+                    <label>Courses</label>
+                </value>
+                <value>
+                    <fullName>Culture</fullName>
+                    <default>false</default>
+                    <label>Culture</label>
+                </value>
+                <value>
+                    <fullName>Dating</fullName>
+                    <default>false</default>
+                    <label>Dating</label>
+                </value>
+                <value>
+                    <fullName>Earth</fullName>
+                    <default>false</default>
+                    <label>Earth</label>
+                </value>
+                <value>
+                    <fullName>E-Commerce Other</fullName>
+                    <default>false</default>
+                    <label>E-Commerce Other</label>
+                </value>
+                <value>
+                    <fullName>Education</fullName>
+                    <default>false</default>
+                    <label>Education</label>
+                </value>
+                <value>
+                    <fullName>Entertainment</fullName>
+                    <default>false</default>
+                    <label>Entertainment</label>
+                </value>
+                <value>
+                    <fullName>Expat</fullName>
+                    <default>false</default>
+                    <label>Expat</label>
+                </value>
+                <value>
+                    <fullName>Fashion</fullName>
+                    <default>false</default>
+                    <label>Fashion</label>
+                </value>
+                <value>
+                    <fullName>Finance</fullName>
+                    <default>false</default>
+                    <label>Finance</label>
+                </value>
+                <value>
+                    <fullName>Food &amp; Drink</fullName>
+                    <default>false</default>
+                    <label>Food &amp; Drink</label>
+                </value>
+                <value>
+                    <fullName>Frontpage</fullName>
+                    <default>false</default>
+                    <label>Frontpage</label>
+                </value>
+                <value>
+                    <fullName>Galleries</fullName>
+                    <default>false</default>
+                    <label>Galleries</label>
+                </value>
+                <value>
+                    <fullName>Games</fullName>
+                    <default>false</default>
+                    <label>Games</label>
+                </value>
+                <value>
+                    <fullName>Gardening</fullName>
+                    <default>false</default>
+                    <label>Gardening</label>
+                </value>
+                <value>
+                    <fullName>Health</fullName>
+                    <default>false</default>
+                    <label>Health</label>
+                </value>
+                <value>
+                    <fullName>Horoscopes</fullName>
+                    <default>false</default>
+                    <label>Horoscopes</label>
+                </value>
+                <value>
+                    <fullName>Jobs</fullName>
+                    <default>false</default>
+                    <label>Jobs</label>
+                </value>
+                <value>
+                    <fullName>Lifestyle</fullName>
+                    <default>false</default>
+                    <label>Lifestyle</label>
+                </value>
+                <value>
+                    <fullName>Luxury</fullName>
+                    <default>false</default>
+                    <label>Luxury</label>
+                </value>
+                <value>
+                    <fullName>Miscellaneous</fullName>
+                    <default>false</default>
+                    <label>Miscellaneous</label>
+                </value>
+                <value>
+                    <fullName>Motoring</fullName>
+                    <default>false</default>
+                    <label>Motoring</label>
+                </value>
+                <value>
+                    <fullName>My Telegraph</fullName>
+                    <default>false</default>
+                    <label>My Telegraph</label>
+                </value>
+                <value>
+                    <fullName>News</fullName>
+                    <default>false</default>
+                    <label>News</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Performance Network</fullName>
+                    <default>false</default>
+                    <label>Performance Network</label>
+                </value>
+                <value>
+                    <fullName>Personal Finance</fullName>
+                    <default>false</default>
+                    <label>Personal Finance</label>
+                </value>
+                <value>
+                    <fullName>Portal</fullName>
+                    <default>false</default>
+                    <label>Portal</label>
+                </value>
+                <value>
+                    <fullName>Premium ROS</fullName>
+                    <default>false</default>
+                    <label>Premium ROS</label>
+                </value>
+                <value>
+                    <fullName>Promotions</fullName>
+                    <default>false</default>
+                    <label>Promotions</label>
+                </value>
+                <value>
+                    <fullName>Property</fullName>
+                    <default>false</default>
+                    <label>Property</label>
+                </value>
+                <value>
+                    <fullName>Run of site</fullName>
+                    <default>false</default>
+                    <label>Run of site</label>
+                </value>
+                <value>
+                    <fullName>Science</fullName>
+                    <default>false</default>
+                    <label>Science</label>
+                </value>
+                <value>
+                    <fullName>Sport</fullName>
+                    <default>false</default>
+                    <label>Sport</label>
+                </value>
+                <value>
+                    <fullName>Technology</fullName>
+                    <default>false</default>
+                    <label>Technology</label>
+                </value>
+                <value>
+                    <fullName>Travel</fullName>
+                    <default>false</default>
+                    <label>Travel</label>
+                </value>
+                <value>
+                    <fullName>TV Listings</fullName>
+                    <default>false</default>
+                    <label>TV Listings</label>
+                </value>
+                <value>
+                    <fullName>Women</fullName>
+                    <default>false</default>
+                    <label>Women</label>
+                </value>
+                <value>
+                    <fullName>Telegraph Men</fullName>
+                    <default>false</default>
+                    <label>Telegraph Men</label>
+                </value>
+                <value>
+                    <fullName>Adnostic</fullName>
+                    <default>false</default>
+                    <label>Adnostic</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Deal_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Deal Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cost Per Call</fullName>
+                    <default>false</default>
+                    <label>Cost Per Call</label>
+                </value>
+                <value>
+                    <fullName>Cost Per Click</fullName>
+                    <default>false</default>
+                    <label>Cost Per Click</label>
+                </value>
+                <value>
+                    <fullName>Cost Per Lead</fullName>
+                    <default>false</default>
+                    <label>Cost Per Lead</label>
+                </value>
+                <value>
+                    <fullName>CPA</fullName>
+                    <default>false</default>
+                    <label>CPA</label>
+                </value>
+                <value>
+                    <fullName>CPC</fullName>
+                    <default>false</default>
+                    <label>CPC</label>
+                </value>
+                <value>
+                    <fullName>Impression Goal</fullName>
+                    <default>true</default>
+                    <label>Impression Goal</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Tenancy</fullName>
+                    <default>false</default>
+                    <label>Tenancy</label>
+                </value>
+                <value>
+                    <fullName>Weighted</fullName>
+                    <default>false</default>
+                    <label>Weighted</label>
+                </value>
+                <value>
+                    <fullName>Cost Per View</fullName>
+                    <default>false</default>
+                    <label>Cost Per View</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>DisplayUrl</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>ExternalDataSourceId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Family</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Aegis_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Aegis 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_BLM_Quantum_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price BLM Quantum 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_GroupM__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price GroupM</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Group_M_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Group M 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Group_M_Motors_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Group M Motors 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Group_M_Tier_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Group M Tier 2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Interpublic_U_McCann_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Interpublic (U McCann) 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Ogilvy_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Ogilvy 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Opera_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Opera 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Opera_General_Agency__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Opera General Agency</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Opera_Key_Clients__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Opera Key Clients</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Regional_Independents_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Regional Independents_2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Standard_2009__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Standard 2009</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Standard_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Standard 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Vivaki_Starcom_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Vivaki (Starcom) 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Walker_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Walker 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Zed_2011__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Zed 2011</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price_Zed__c</fullName>
+        <externalId>false</externalId>
+        <label>Floor Price Zed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Floor_Price__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Floor price for this product</inlineHelpText>
+        <label>Floor Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Format__c</fullName>
+        <description>Ad format (Banner, MPU, Email etc)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Ad format (Banner, MPU, Email etc)</inlineHelpText>
+        <label>Format</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Button</fullName>
+                    <default>false</default>
+                    <label>Button</label>
+                </value>
+                <value>
+                    <fullName>Classified Select</fullName>
+                    <default>false</default>
+                    <label>Classified Select</label>
+                </value>
+                <value>
+                    <fullName>CV Database</fullName>
+                    <default>false</default>
+                    <label>CV Database</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>inRead</fullName>
+                    <default>false</default>
+                    <label>inRead</label>
+                </value>
+                <value>
+                    <fullName>Leaderboard</fullName>
+                    <default>false</default>
+                    <label>Leaderboard</label>
+                </value>
+                <value>
+                    <fullName>Listing</fullName>
+                    <default>false</default>
+                    <label>Listing</label>
+                </value>
+                <value>
+                    <fullName>Mobile Banner</fullName>
+                    <default>false</default>
+                    <label>Mobile Banner</label>
+                </value>
+                <value>
+                    <fullName>MPU</fullName>
+                    <default>false</default>
+                    <label>MPU</label>
+                </value>
+                <value>
+                    <fullName>Native</fullName>
+                    <default>false</default>
+                    <label>Native</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Overlay</fullName>
+                    <default>false</default>
+                    <label>Overlay</label>
+                </value>
+                <value>
+                    <fullName>Production</fullName>
+                    <default>false</default>
+                    <label>Production</label>
+                </value>
+                <value>
+                    <fullName>Skyscraper</fullName>
+                    <default>false</default>
+                    <label>Skyscraper</label>
+                </value>
+                <value>
+                    <fullName>Sponsorship</fullName>
+                    <default>false</default>
+                    <label>Sponsorship</label>
+                </value>
+                <value>
+                    <fullName>Surround Session</fullName>
+                    <default>false</default>
+                    <label>Surround Session</label>
+                </value>
+                <value>
+                    <fullName>Takeover</fullName>
+                    <default>false</default>
+                    <label>Takeover</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Geography__c</fullName>
+        <description>Where the ad product should be targeted geographically.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Where the ad product should be targeted geographically.</inlineHelpText>
+        <label>Geography</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Network</fullName>
+                    <default>false</default>
+                    <label>Network</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Specific</fullName>
+                    <default>false</default>
+                    <label>Specific</label>
+                </value>
+                <value>
+                    <fullName>UK</fullName>
+                    <default>false</default>
+                    <label>UK</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IsActive</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>ProductCode</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Product_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Name_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Product Name ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>QuantityUnitOfMeasure</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Format__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-format</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>3rd Party Ad Serving</fullName>
+                    <default>false</default>
+                    <label>3rd Party Ad Serving</label>
+                </value>
+                <value>
+                    <fullName>Ad Design &amp; Build</fullName>
+                    <default>false</default>
+                    <label>Ad Design &amp; Build</label>
+                </value>
+                <value>
+                    <fullName>Android</fullName>
+                    <default>false</default>
+                    <label>Android</label>
+                </value>
+                <value>
+                    <fullName>Auto Overlay incl LB, MPU &amp; Halfpage</fullName>
+                    <default>false</default>
+                    <label>Auto Overlay incl LB, MPU &amp; Halfpage</label>
+                </value>
+                <value>
+                    <fullName>Auto Overlay incl LB, MPU &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>Auto Overlay incl LB, MPU &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Auto Overlay incl LB, MPU &amp; Sky</fullName>
+                    <default>false</default>
+                    <label>Auto Overlay incl LB, MPU &amp; Sky</label>
+                </value>
+                <value>
+                    <fullName>Auto Overlay incl LB &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>Auto Overlay incl LB &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Billboard</fullName>
+                    <default>false</default>
+                    <label>Billboard</label>
+                </value>
+                <value>
+                    <fullName>Bookends</fullName>
+                    <default>false</default>
+                    <label>Bookends</label>
+                </value>
+                <value>
+                    <fullName>Bookends incl LB, Masthead, MPU &amp; Halfpage</fullName>
+                    <default>false</default>
+                    <label>Bookends incl LB, Masthead, MPU &amp; Halfpage</label>
+                </value>
+                <value>
+                    <fullName>Bookends incl LB, Masthead, MPU &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>Bookends incl LB, Masthead, MPU &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Bookends incl LB, MPU &amp; Halfpage</fullName>
+                    <default>false</default>
+                    <label>Bookends incl LB, MPU &amp; Halfpage</label>
+                </value>
+                <value>
+                    <fullName>Bookends incl LB, MPU &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>Bookends incl LB, MPU &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Bookends incl LB, MPU &amp; Sky</fullName>
+                    <default>false</default>
+                    <label>Bookends incl LB, MPU &amp; Sky</label>
+                </value>
+                <value>
+                    <fullName>Bookends incl LB &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>Bookends incl LB &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Cascade</fullName>
+                    <default>false</default>
+                    <label>Cascade</label>
+                </value>
+                <value>
+                    <fullName>Cascade &amp; Halfpage</fullName>
+                    <default>false</default>
+                    <label>Cascade &amp; Halfpage</label>
+                </value>
+                <value>
+                    <fullName>Cascade &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>Cascade &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Clock</fullName>
+                    <default>false</default>
+                    <label>Clock</label>
+                </value>
+                <value>
+                    <fullName>Dynamic Logic</fullName>
+                    <default>false</default>
+                    <label>Dynamic Logic</label>
+                </value>
+                <value>
+                    <fullName>Enhanced</fullName>
+                    <default>false</default>
+                    <label>Enhanced</label>
+                </value>
+                <value>
+                    <fullName>Expandable</fullName>
+                    <default>false</default>
+                    <label>Expandable</label>
+                </value>
+                <value>
+                    <fullName>Expandable Leaderboard</fullName>
+                    <default>false</default>
+                    <label>Expandable Leaderboard</label>
+                </value>
+                <value>
+                    <fullName>Facebook App</fullName>
+                    <default>false</default>
+                    <label>Facebook App</label>
+                </value>
+                <value>
+                    <fullName>First Available Impression</fullName>
+                    <default>false</default>
+                    <label>First Available Impression</label>
+                </value>
+                <value>
+                    <fullName>Flipboard App</fullName>
+                    <default>false</default>
+                    <label>Flipboard App</label>
+                </value>
+                <value>
+                    <fullName>Halfpage</fullName>
+                    <default>false</default>
+                    <label>Halfpage</label>
+                </value>
+                <value>
+                    <fullName>In Skin</fullName>
+                    <default>false</default>
+                    <label>In Skin</label>
+                </value>
+                <value>
+                    <fullName>iPad App</fullName>
+                    <default>false</default>
+                    <label>iPad App</label>
+                </value>
+                <value>
+                    <fullName>iPhone</fullName>
+                    <default>false</default>
+                    <label>iPhone</label>
+                </value>
+                <value>
+                    <fullName>Kindle App</fullName>
+                    <default>false</default>
+                    <label>Kindle App</label>
+                </value>
+                <value>
+                    <fullName>LB, MPU &amp; Halfpage</fullName>
+                    <default>false</default>
+                    <label>LB, MPU &amp; Halfpage</label>
+                </value>
+                <value>
+                    <fullName>LB, MPU &amp; Skyscraper</fullName>
+                    <default>false</default>
+                    <label>LB, MPU &amp; Skyscraper</label>
+                </value>
+                <value>
+                    <fullName>LB &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>LB &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Leaderboard</fullName>
+                    <default>false</default>
+                    <label>Leaderboard</label>
+                </value>
+                <value>
+                    <fullName>Masthead</fullName>
+                    <default>false</default>
+                    <label>Masthead</label>
+                </value>
+                <value>
+                    <fullName>MB, MPU &amp; Halfpage</fullName>
+                    <default>false</default>
+                    <label>MB, MPU &amp; Halfpage</label>
+                </value>
+                <value>
+                    <fullName>MB, MPU &amp; Sky</fullName>
+                    <default>false</default>
+                    <label>MB, MPU &amp; Sky</label>
+                </value>
+                <value>
+                    <fullName>MB &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>MB &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Megabanner</fullName>
+                    <default>false</default>
+                    <label>Megabanner</label>
+                </value>
+                <value>
+                    <fullName>Microsite</fullName>
+                    <default>false</default>
+                    <label>Microsite</label>
+                </value>
+                <value>
+                    <fullName>Mobile</fullName>
+                    <default>false</default>
+                    <label>Mobile</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>PagePeel incl LB, MPU</fullName>
+                    <default>false</default>
+                    <label>PagePeel incl LB, MPU</label>
+                </value>
+                <value>
+                    <fullName>PagePeel incl LB, MPU &amp; Halfpage</fullName>
+                    <default>false</default>
+                    <label>PagePeel incl LB, MPU &amp; Halfpage</label>
+                </value>
+                <value>
+                    <fullName>PagePeel incl LB, MPU &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>PagePeel incl LB, MPU &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>PagePeel incl LB, MPU &amp; Sky</fullName>
+                    <default>false</default>
+                    <label>PagePeel incl LB, MPU &amp; Sky</label>
+                </value>
+                <value>
+                    <fullName>Page Wrap</fullName>
+                    <default>false</default>
+                    <label>Page Wrap</label>
+                </value>
+                <value>
+                    <fullName>Post Roll</fullName>
+                    <default>false</default>
+                    <label>Post Roll</label>
+                </value>
+                <value>
+                    <fullName>Premium</fullName>
+                    <default>false</default>
+                    <label>Premium</label>
+                </value>
+                <value>
+                    <fullName>Pre Roll</fullName>
+                    <default>false</default>
+                    <label>Pre Roll</label>
+                </value>
+                <value>
+                    <fullName>Pre-Roll Interactive</fullName>
+                    <default>false</default>
+                    <label>Pre-Roll Interactive</label>
+                </value>
+                <value>
+                    <fullName>Profile</fullName>
+                    <default>false</default>
+                    <label>Profile</label>
+                </value>
+                <value>
+                    <fullName>Reskin incl LB, Masthead, MPU &amp; Halfpage</fullName>
+                    <default>false</default>
+                    <label>Reskin incl LB, Masthead, MPU &amp; Halfpage</label>
+                </value>
+                <value>
+                    <fullName>Reskin incl LB, Masthead, MPU &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>Reskin incl LB, Masthead, MPU &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Reskin incl LB, MPU &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>Reskin incl LB, MPU &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Reskin incl LB, MPU &amp; Sky</fullName>
+                    <default>false</default>
+                    <label>Reskin incl LB, MPU &amp; Sky</label>
+                </value>
+                <value>
+                    <fullName>Reskin incl LB &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>Reskin incl LB &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Sidekick</fullName>
+                    <default>false</default>
+                    <label>Sidekick</label>
+                </value>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                    <label>Standard</label>
+                </value>
+                <value>
+                    <fullName>Standard or Rich Media</fullName>
+                    <default>false</default>
+                    <label>Standard or Rich Media</label>
+                </value>
+                <value>
+                    <fullName>UI Overlay incl LB, MPU &amp; Halfpage</fullName>
+                    <default>false</default>
+                    <label>UI Overlay incl LB, MPU &amp; Halfpage</label>
+                </value>
+                <value>
+                    <fullName>UI Overlay incl LB, MPU &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>UI Overlay incl LB, MPU &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>UI Overlay incl LB, MPU &amp; Sky</fullName>
+                    <default>false</default>
+                    <label>UI Overlay incl LB, MPU &amp; Sky</label>
+                </value>
+                <value>
+                    <fullName>UI Overlay incl LB &amp; MPU</fullName>
+                    <default>false</default>
+                    <label>UI Overlay incl LB &amp; MPU</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+                <value>
+                    <fullName>Widget</fullName>
+                    <default>false</default>
+                    <label>Widget</label>
+                </value>
+                <value>
+                    <fullName>iPad Browser</fullName>
+                    <default>false</default>
+                    <label>iPad Browser</label>
+                </value>
+                <value>
+                    <fullName>Google Currents</fullName>
+                    <default>false</default>
+                    <label>Google Currents</label>
+                </value>
+                <value>
+                    <fullName>All Formats</fullName>
+                    <default>false</default>
+                    <label>All Formats</label>
+                </value>
+                <value>
+                    <fullName>Native Display</fullName>
+                    <default>false</default>
+                    <label>Native Display</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sub_channel__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-channel</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Art</fullName>
+                    <default>false</default>
+                    <label>Art</label>
+                </value>
+                <value>
+                    <fullName>Aud Extension</fullName>
+                    <default>false</default>
+                    <label>Aud Extension</label>
+                </value>
+                <value>
+                    <fullName>AudSci Bespoke</fullName>
+                    <default>false</default>
+                    <label>AudSci Bespoke</label>
+                </value>
+                <value>
+                    <fullName>AudSci Standard</fullName>
+                    <default>false</default>
+                    <label>AudSci Standard</label>
+                </value>
+                <value>
+                    <fullName>Business Bullet</fullName>
+                    <default>false</default>
+                    <label>Business Bullet</label>
+                </value>
+                <value>
+                    <fullName>Candidate</fullName>
+                    <default>false</default>
+                    <label>Candidate</label>
+                </value>
+                <value>
+                    <fullName>Collectibles</fullName>
+                    <default>false</default>
+                    <label>Collectibles</label>
+                </value>
+                <value>
+                    <fullName>Cricket</fullName>
+                    <default>false</default>
+                    <label>Cricket</label>
+                </value>
+                <value>
+                    <fullName>Cruise</fullName>
+                    <default>false</default>
+                    <label>Cruise</label>
+                </value>
+                <value>
+                    <fullName>Design</fullName>
+                    <default>false</default>
+                    <label>Design</label>
+                </value>
+                <value>
+                    <fullName>Diary</fullName>
+                    <default>false</default>
+                    <label>Diary</label>
+                </value>
+                <value>
+                    <fullName>Drink</fullName>
+                    <default>false</default>
+                    <label>Drink</label>
+                </value>
+                <value>
+                    <fullName>Fantasy Football</fullName>
+                    <default>false</default>
+                    <label>Fantasy Football</label>
+                </value>
+                <value>
+                    <fullName>Fine Arts</fullName>
+                    <default>false</default>
+                    <label>Fine Arts</label>
+                </value>
+                <value>
+                    <fullName>Football</fullName>
+                    <default>false</default>
+                    <label>Football</label>
+                </value>
+                <value>
+                    <fullName>Formula One</fullName>
+                    <default>false</default>
+                    <label>Formula One</label>
+                </value>
+                <value>
+                    <fullName>Gadget Inspectors</fullName>
+                    <default>false</default>
+                    <label>Gadget Inspectors</label>
+                </value>
+                <value>
+                    <fullName>Golf</fullName>
+                    <default>false</default>
+                    <label>Golf</label>
+                </value>
+                <value>
+                    <fullName>Grapeshot Bespoke</fullName>
+                    <default>false</default>
+                    <label>Grapeshot Bespoke</label>
+                </value>
+                <value>
+                    <fullName>Grapeshot Standard</fullName>
+                    <default>false</default>
+                    <label>Grapeshot Standard</label>
+                </value>
+                <value>
+                    <fullName>Hilary &amp; Co</fullName>
+                    <default>false</default>
+                    <label>Hilary &amp; Co</label>
+                </value>
+                <value>
+                    <fullName>Homepage</fullName>
+                    <default>false</default>
+                    <label>Homepage</label>
+                </value>
+                <value>
+                    <fullName>Horse Racing</fullName>
+                    <default>false</default>
+                    <label>Horse Racing</label>
+                </value>
+                <value>
+                    <fullName>Jewellery</fullName>
+                    <default>false</default>
+                    <label>Jewellery</label>
+                </value>
+                <value>
+                    <fullName>Job Alerts</fullName>
+                    <default>false</default>
+                    <label>Job Alerts</label>
+                </value>
+                <value>
+                    <fullName>Men&apos;s Style</fullName>
+                    <default>false</default>
+                    <label>Men&apos;s Style</label>
+                </value>
+                <value>
+                    <fullName>Motoring</fullName>
+                    <default>false</default>
+                    <label>Motoring</label>
+                </value>
+                <value>
+                    <fullName>News Now</fullName>
+                    <default>false</default>
+                    <label>News Now</label>
+                </value>
+                <value>
+                    <fullName>Olympics</fullName>
+                    <default>false</default>
+                    <label>Olympics</label>
+                </value>
+                <value>
+                    <fullName>On This Day</fullName>
+                    <default>false</default>
+                    <label>On This Day</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Overseas Property</fullName>
+                    <default>false</default>
+                    <label>Overseas Property</label>
+                </value>
+                <value>
+                    <fullName>Peak Performance</fullName>
+                    <default>false</default>
+                    <label>Peak Performance</label>
+                </value>
+                <value>
+                    <fullName>Property</fullName>
+                    <default>false</default>
+                    <label>Property</label>
+                </value>
+                <value>
+                    <fullName>Real Trips</fullName>
+                    <default>false</default>
+                    <label>Real Trips</label>
+                </value>
+                <value>
+                    <fullName>Recruiter</fullName>
+                    <default>false</default>
+                    <label>Recruiter</label>
+                </value>
+                <value>
+                    <fullName>Restaurants &amp; Bars</fullName>
+                    <default>false</default>
+                    <label>Restaurants &amp; Bars</label>
+                </value>
+                <value>
+                    <fullName>Rugby Union</fullName>
+                    <default>false</default>
+                    <label>Rugby Union</label>
+                </value>
+                <value>
+                    <fullName>Shop</fullName>
+                    <default>false</default>
+                    <label>Shop</label>
+                </value>
+                <value>
+                    <fullName>Snow &amp; Ski</fullName>
+                    <default>false</default>
+                    <label>Snow &amp; Ski</label>
+                </value>
+                <value>
+                    <fullName>Something for the Weekend</fullName>
+                    <default>false</default>
+                    <label>Something for the Weekend</label>
+                </value>
+                <value>
+                    <fullName>Special</fullName>
+                    <default>false</default>
+                    <label>Special</label>
+                </value>
+                <value>
+                    <fullName>Targeted</fullName>
+                    <default>false</default>
+                    <label>Targeted</label>
+                </value>
+                <value>
+                    <fullName>Technology</fullName>
+                    <default>false</default>
+                    <label>Technology</label>
+                </value>
+                <value>
+                    <fullName>Tennis</fullName>
+                    <default>false</default>
+                    <label>Tennis</label>
+                </value>
+                <value>
+                    <fullName>Theatre</fullName>
+                    <default>false</default>
+                    <label>Theatre</label>
+                </value>
+                <value>
+                    <fullName>The Culture Minute</fullName>
+                    <default>false</default>
+                    <label>The Culture Minute</label>
+                </value>
+                <value>
+                    <fullName>Travel</fullName>
+                    <default>false</default>
+                    <label>Travel</label>
+                </value>
+                <value>
+                    <fullName>UCAS</fullName>
+                    <default>false</default>
+                    <label>UCAS</label>
+                </value>
+                <value>
+                    <fullName>UK Property</fullName>
+                    <default>false</default>
+                    <label>UK Property</label>
+                </value>
+                <value>
+                    <fullName>Untargeted</fullName>
+                    <default>false</default>
+                    <label>Untargeted</label>
+                </value>
+                <value>
+                    <fullName>Value Pot</fullName>
+                    <default>false</default>
+                    <label>Value Pot</label>
+                </value>
+                <value>
+                    <fullName>Watches</fullName>
+                    <default>false</default>
+                    <label>Watches</label>
+                </value>
+                <value>
+                    <fullName>Westminster Whispers</fullName>
+                    <default>false</default>
+                    <label>Westminster Whispers</label>
+                </value>
+                <value>
+                    <fullName>Women&apos;s Style</fullName>
+                    <default>false</default>
+                    <label>Women&apos;s Style</label>
+                </value>
+                <value>
+                    <fullName>Your Money Their Hands</fullName>
+                    <default>false</default>
+                    <label>Your Money Their Hands</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Target_Price_GroupM__c</fullName>
+        <externalId>false</externalId>
+        <label>Target Price GroupM</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Target_Price_Zed__c</fullName>
+        <externalId>false</externalId>
+        <label>Target Price Zed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Target_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Target Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <listViews>
+        <fullName>AllProducts</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Products</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Active_Products</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRODUCT2.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>All Active Products</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>PRODUCT2.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PRODUCT2.DESCRIPTION</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.DESCRIPTION</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.FAMILY</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.DESCRIPTION</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.FAMILY</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.DESCRIPTION</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.FAMILY</searchResultsAdditionalFields>
+    </searchLayouts>
+</CustomObject>

@@ -1,0 +1,7 @@
+<apex:page controller="Zuora_ManageSubscriptionRedirectCont" action="{!RedirectManageSubscription}">
+	<apex:form >
+		<apex:actionFunction name="goToAccountPage" action="{!goToAccountPage}" immediate="true" />
+		<apex:actionFunction name="goToListAccountaPage" action="{!goToListAccountaPage}" immediate="true" />
+		<zqu:Notification options="{!notificationOptions}" />
+	</apex:form>
+</apex:page>

@@ -1,0 +1,5 @@
+<apex:page id="SearchRetailers" sidebar="false">
+	<apex:form>
+		<c:SearchRetailer displaySelectColumn="false" defaultDelivery="HND" displaySelectDeliveryType="false" />
+	</apex:form>
+</apex:page>

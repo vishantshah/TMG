@@ -1,0 +1,7 @@
+<apex:page standardController="Subscription_Plan_Upload__c" extensions="NotifyZuoraController" action="{!calloutToCoreAPI}">
+	<apex:pageMessage severity="error" summary="{!pageText}" strength="3" rendered="{!pageText != $Label.Notify_Zuora_Message_Sent}"/>		
+	<apex:pageMessage severity="confirm" summary="{!pageText}" strength="3" rendered="{!pageText == $Label.Notify_Zuora_Message_Sent}"/>		
+	<apex:form>
+		<apex:commandButton value="{!$Label.Notify_Zuora_Back}" action="{!cancel}"/>
+	</apex:form>
+</apex:page>

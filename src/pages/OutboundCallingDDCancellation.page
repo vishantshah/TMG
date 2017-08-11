@@ -1,0 +1,155 @@
+<apex:page controller="OutboundCallingDDCancellationController" tabStyle="Outbound_Calling_New__tab">
+
+    <c:LoadingBox />
+
+    <style>
+        .emailStyle{
+            padding-top:5px; 
+            display:block;
+        }
+        .r10{margin-right:10px} 
+        fieldset{padding:0px; margin-top:-2px; margin-left:-3px}
+        input + label{margin:0px 20px 0px 0px !important}
+        input[id*='offeredSubStartDate'] + span.dateFormat{display:none}
+    </style>
+
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/css/tableStyle.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Resources, '/css/offlineFlowStyle.css')}"/>
+
+    <apex:form id="form">
+
+        <c:OutboundCallMenu />
+
+        <apex:pageMessages id="formMsg" rendered="{!formMsg}"/>
+        
+        <apex:pageBlock id="callDetails" rendered="{!AND(NOT(ISNULL(ocRule)))}">
+            <apex:pageMessages id="callDetailsTopMsg" rendered="{!callDetailsTopMsg}"/>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton id="getCustomerBtn" 
+                    action="{!onClickGetCustomer}" 
+                    value="{!$Label.OC_Get_Customer}" 
+                    rendered="{!ISNULL(thisCase)}" 
+                    reRender="form" 
+                    status="loadStatus" />
+                <apex:commandButton id="mainTopBtn" 
+                    action="{!onClickSaveAndGetNextCustomer}" 
+                    value="{!$Label.OC_Save_And_Next}" 
+                    rendered="{!NOT(ISNULL(thisCase))}" 
+                    rerender="form" 
+                    status="loadStatus"
+                    disabled="{!OR(thisCase.OC_Outcome__c = 'Not Started')}" /> 
+            </apex:pageBlockButtons>
+
+            <apex:outputPanel rendered="{!thisCase=null}">
+                No customer selected. Click <b>Get Customer</b> button.
+            </apex:outputPanel>
+
+            <!-- Case details -->
+            <apex:outputPanel id="caseDetailsMsg">
+                <apex:pageMessages rendered="{!caseDetailsMsg}"/>
+            </apex:outputPanel>
+
+            <apex:pageBlockSection columns="2" title="{!$Label.OC_Case_Details}" rendered="{!NOT(ISNULL(thisCase))}" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Case Number"/>
+                    <apex:outputLink value="/{!thisCase.Id}" target="_blank">{!thisCase.CaseNumber}</apex:outputLink>
+                </apex:pageBlockSectionItem>
+
+                <br/>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Call Stage"/>
+                    <apex:outputField value="{!thisCase.OC_Call_Stage__c}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Subject"/>
+                    <apex:outputField value="{!thisCase.Subject}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$ObjectType.Case.Fields.OC_Outcome__c.Label}"/>
+                    <apex:outputPanel >
+                        <apex:actionRegion >
+                            <apex:inputField value="{!thisCase.OC_Outcome__c}" required="true" onchange="caseOutcomeChange();" />
+                            <apex:actionFunction action="{!caseOutcomeChange}" name="caseOutcomeChange" rerender="form,currentSubscriptionSection,callDetails" status="loadStatus"/>
+                        </apex:actionRegion>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem rendered="{!thisCase.OC_Outcome__c = 'No Sale'}">
+                    <apex:outputLabel value="No Sale Reason" />
+                    <apex:outputPanel >
+                        <apex:inputField value="{!thisCase.OC_No_Sale_Reason__c}"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem rendered="{!!OR(editScheduleCallback, NOT(thisCase.OC_Outcome__c = 'No Sale'), NOT(thisCase.OC_Outcome__c='NATC'))}"/>
+                <apex:pageBlockSectionItem rendered="{!editScheduleCallback}">
+                    <apex:outputLabel value="{!$ObjectType.Case.Fields.OC_Scheduled_Callback__c.Label}"/>
+                    <apex:outputPanel >
+                        <apex:inputField value="{!thisCase.OC_Scheduled_Callback__c}" required="true" onchange="caseScheduledCallbackChange();"/><br/>
+                        <div style="margin-top:5px;">The Case can only be rescheduled until 1pm this Saturday</div>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Status"/>
+                    <apex:outputField value="{!thisCase.Status}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem rendered="{!thisCase.OC_Outcome__c='NATC'}">
+                    <apex:outputLabel value="NATC Reason"/>
+                    <apex:outputPanel rendered="{!thisCase.OC_Outcome__c='NATC'}">
+                        <apex:actionRegion >
+                            <apex:inputField value="{!thisCase.NATC_Reason__c}" onchange="changedNATC()" />
+                            <apex:actionFunction name="changedNATC" rerender="callDetails" status="loadStatus"/>
+                        </apex:actionRegion>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem rendered="{!thisCase.NATC_Reason__c='Other'}">
+                    <apex:outputLabel value="Other NATC Reason"/>
+                    <apex:outputPanel id="natcOtherReason">
+                        <apex:inputField value="{!thisCase.Other_NATC_Reason__c}"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+                <apex:inputField value="{!thisCase.Debt_Collected__c}" rendered="{!showDebtCollected}">
+                    <apex:actionSupport event="onchange" reRender="currentSubscriptionSection,callDetails" status="loadStatus"/>
+                </apex:inputField>
+
+                <apex:inputField value="{!thisCase.Debt_Collected_Amount__c}" rendered="{!AND(showDebtCollected,thisCase.Debt_Collected__c='Yes')}"/>
+
+            </apex:pageBlockSection>
+
+            <apex:actionFunction action="{!caseScheduledCallbackChange}" name="caseScheduledCallbackChange" rerender="scheduledCallbackPanel, caseDetailsMsg" status="loadStatus" />
+
+            <!-- Case comments -->
+            <c:CaseComments caseId="{!thisCase.Id}" rendered="{!NOT(ISNULL(thisCase))}"/>
+
+        </apex:pageBlock>
+
+        <!-- Account -->
+        <c:SubscriberDetails AccountIdpr="{!thisCase.AccountId}" showPermissions="true" rendered="{!NOT(ISNULL(thisCase.AccountId))}"/> 
+
+        <!-- current Subscription -->
+        <apex:pageBlock id="currentSubscriptionSection" rendered="{!NOT(ISNULL(thisCase))}">
+            <apex:pageBlockSection columns="2" title="{!$Label.OC_Current_Subscription}" rendered="{!NOT(ISNULL(thisCase))}" id="currentSubscription" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.OC_Subscription_Ref}" />
+                    <apex:outputLink value="/{!thisSubscription.Id}" target="_blank">{!thisSubscription.Name}</apex:outputLink>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem />
+
+                <apex:repeat value="{!$ObjectType.Subscription__c.FieldSets.OutboundCallingDDCX}" var="f">
+                    <apex:outputField value="{!thisSubscription[f.fieldPath]}"/>
+                </apex:repeat>
+
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+         <!-- new Subscription -->
+        <c:LatestSubscription rendered="{!thisCase.OC_Outcome__c='Sale'}" caseRecord="{!thisCase}" target="_blank" tcode="{!tCodeName}" subProductId="{!thisSubscription.Product__c}"/>
+
+    </apex:form>
+</apex:page>

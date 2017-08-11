@@ -1,0 +1,155 @@
+<apex:page controller="IOPageController2" showheader="false" sidebar="false" cache="True" contentType="{!contentType}">
+
+<apex:outputText value="An error occured, please contact your administrator:" style="position:relative; left:700px" rendered="{!showError}" /><br/>
+
+<apex:outputText value="Internal use only:" style="position:relative; left:700px" rendered="{!noError}"/><br/>
+<apex:outputText value="IO Number: {!ioNumber}" style="position:relative; left:700px" rendered="{!noError}"/><br/>
+<apex:outputText value="DTI Number: {!dtiNumber}" style="position:relative; left:700px" rendered="{!noError}"/><p/>
+
+<h1>Insertion Order</h1>
+Please sign and fax back to 00 44 20 7931 3379<p/>
+
+
+<apex:panelGrid columns="4" id="initialInfo" border="1" cellpadding="5" width="800px" style="border-collapse:collapse" rendered="{!noError}">
+    <apex:outputText style="font-weight:bold" value="Advertiser:" id="AdvertiserLabel"/>
+    <apex:outputText value="{!advertiser}" id="Advertiser"/>
+    <apex:outputText style="font-weight:bold" value="Agency:" id="AgencyLabel"/>
+    <apex:outputText value="{!agency}" id="Agency"/>
+    <apex:outputText style="font-weight:bold" value="Campaign Name:" id="CampaignLabel"/>
+    <apex:outputText value="{!campaignName}" id="Campaign"/>
+    <apex:outputText style="font-weight:bold" value="PO/Adazzle number:" id="AgencyRefLabel"/>
+    <apex:outputText value="{!agencyRef} ." id="AgencyRef"/>
+    <apex:outputText style="font-weight:bold" value="Campaign Start Date:" id="CampaignStartLabel"/>
+    <apex:outputText value=" {!campaignStart}." id="CampaignStart"/>
+    <apex:outputText style="font-weight:bold" value="Campaign End Date:" id="CampaignEndLabel"/>
+    <apex:outputText value=" {!campaignEnd}." id="CampaignEnd"/>
+</apex:panelGrid>
+
+<p/>
+
+<apex:panelGrid columns="4" id="contactInfo" border="1" cellpadding="5" width="800px" style="border-collapse:collapse" rendered="{!noError}">
+    <apex:outputText style="font-weight:bold" value="CAMPAIGN CONTACTS" />
+    <apex:outputText style="font-weight:bold" value="Name" />
+    <apex:outputText style="font-weight:bold" value="Phone" />
+    <apex:outputText style="font-weight:bold" value="Email" />
+    
+    <apex:outputText style="font-weight:bold" value="Agency" />
+    <apex:outputText value="{!agencyContactName}" />
+    <apex:outputText value="{!agencyContactPhone} ." />
+    <apex:outputText value="{!agencyContactEmail}" />
+    
+    <apex:outputText style="font-weight:bold" value="Agency Traffic" />
+    <apex:outputText value="" />
+    <apex:outputText value="" />
+    <apex:outputText value="" />
+    
+    <apex:outputText style="font-weight:bold" value="Sales Rep" />
+    <apex:outputText value="{!salesRepName}" />
+    <apex:outputText value="{!salesRepPhone} ." />
+    <apex:outputText value="{!salesRepEmail}" />
+        
+    <apex:outputText style="font-weight:bold" value="Booked By" />
+    <apex:outputText value="{!bookingRepName}" />
+    <apex:outputText value="{!bookingRepPhone} ." />
+    <apex:outputText value="{!bookingRepEmail}" />
+    
+    <apex:outputText style="font-weight:bold" value="TMG Advertising Operations" />
+    <apex:outputText value="Advertising Operations" />
+    <apex:outputText value="020 7931 3029" />
+    <apex:outputText value="adops@telegraph.co.uk" />   
+  
+</apex:panelGrid>
+
+<p/>
+Campaign Details
+<apex:dataTable value="{!olis}" id="lineItems" var="oli" border="1" cellpadding="5" rendered="{!noError}">
+        <apex:column >
+            <apex:facet name="header">Flight Start</apex:facet>
+            <apex:outputtext value="{!oli.startDate}."/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Flight End</apex:facet>
+            <apex:outputtext value="{!oli.endDate}."/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Ad Format</apex:facet>
+            <apex:outputtext value="{!oli.format}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Channel</apex:facet>
+            <apex:outputtext value="{!oli.channel}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Geo Targetting</apex:facet>
+            <apex:outputtext value="{!oli.geo}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Delivery type</apex:facet>
+            <apex:outputtext value="{!oli.deal}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">BT / Other Info</apex:facet>
+            <apex:outputtext value="{!oli.other}"/>
+        </apex:column>      
+        <apex:column >
+            <apex:facet name="header">Quantity (000's)</apex:facet>
+            <apex:outputtext value="{!oli.quantity}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">CPM / Fixed Cost</apex:facet>
+            <apex:outputtext value="{!oli.price}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Gross</apex:facet>
+            <apex:outputtext value="&pound;{!oli.gross}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Nett</apex:facet>
+            <apex:outputtext value="&pound;{!oli.nett}"/>
+        </apex:column>      
+</apex:dataTable>
+
+<p/>
+<apex:panelGrid columns="2" id="otherInformation" border="1" cellpadding="5" width="1000px" style="border-collapse:collapse" rendered="{!noError}">
+    <apex:outputText style="font-weight:bold" value="Other Campaign Information" />
+    <apex:outputText value="" />
+    <apex:outputText style="font-weight:bold" value="Creative Deadlines" />
+    <apex:outputText value="Creative/tags for standard campaigns to be received no less than 3 working days prior to live date (5 working days for non standard campaigns such as page takeovers.). Late creative/tags may result in reduced campaign duration but may be invoiced in full. PLEASE SEND TO adops@telegraph.co.uk" />
+    <apex:outputText style="font-weight:bold" value="Required Campaign Reports" />
+    <apex:outputText value="Selection of screengrabs provided on first working day of campaign. Full campaign delivery report within 5 working days of campaign end." />   
+    <apex:outputText style="font-weight:bold" value="Required Format of Advertisement" />
+    <apex:outputText value="www.telegraph.co.uk/adspecs" />
+    <apex:outputText style="font-weight:bold" value="Billing" />
+    <apex:outputText value="Net is net of Agency commission where applicable. Costs exclude VAT." />
+</apex:panelGrid>
+
+<p/>
+<apex:panelGrid columns="4" id="signedForInformation" border="1" cellpadding="5" style="border-collapse:collapse" rendered="{!noError}">
+    <apex:outputText style="font-weight:bold" value="SIGNED FOR AND ON BEHALF OF THE BUYER:" />
+    <apex:outputText value="" />
+    <apex:outputText style="font-weight:bold" value="SIGNED FOR AND ON BEHALF OF TELEGRAPH MEDIA GROUP LTD:" />
+    <apex:outputText value="" />
+    <apex:outputText style="font-weight:bold" value="Signed:" />
+    <apex:outputText style="font-weight:bold" value="__________________________________" />
+    <apex:outputText style="font-weight:bold" value="Signed:" />
+    <apex:outputText style="font-weight:bold" value="__________________________________" />
+    <apex:outputText style="font-weight:bold" value="Name:" />
+    <apex:outputText style="font-weight:bold" value="__________________________________" />
+    <apex:outputText style="font-weight:bold" value="Name:" />
+    <apex:outputText style="font-weight:bold" value="__________________________________" />
+    <apex:outputText style="font-weight:bold" value="Job Title:" />
+    <apex:outputText style="font-weight:bold" value="__________________________________" />
+    <apex:outputText style="font-weight:bold" value="Job Title:" />
+    <apex:outputText style="font-weight:bold" value="__________________________________" />
+    <apex:outputText style="font-weight:bold" value="Date:" />
+    <apex:outputText style="font-weight:bold" value="__________________________________" />
+    <apex:outputText style="font-weight:bold" value="Date:" />
+    <apex:outputText style="font-weight:bold" value="__________________________________" />
+</apex:panelGrid>
+<p/>
+<apex:outputText style="font-size:75%" value="{!blurb}" rendered="{!noError}"></apex:outputText>
+<p/>
+<apex:outputText style="font-size:75%" value="{!address1}" rendered="{!noError}"></apex:outputText><br/>
+<apex:outputText style="font-size:75%" value="{!address2}" rendered="{!noError}"></apex:outputText><br/>
+<apex:outputText style="font-size:75%" value="{!address3}" rendered="{!noError}"></apex:outputText><br/>
+</apex:page>
